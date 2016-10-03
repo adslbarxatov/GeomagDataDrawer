@@ -1,0 +1,13 @@
+Geomag data drawer changes log
+
+Version 3.8
+• Publishing on GitHub
+
+Version 4.0
+• English (USA) variant of interface added; help file not translated yet;
+• Internal dialogs have been updated and unified;Унифицированы внутренние интерфейсы программы;
+• Mouse placement of curve images bug fixed;
+• Some artifacts fixed;
+• Grid drawing updated and corrected;
+• Data redundancy in DiagramData class fixed.
+*.gdd and *.gddstyle from 3.8 are compatible with 4.0
