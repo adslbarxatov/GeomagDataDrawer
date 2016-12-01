@@ -15,5 +15,5 @@ Version 4.0
 Version 4.1
 • EMF (Windows metafile) support added (saving diagrams) (compatible with Office applications);
 • Curve drawing bug (incorrect displaying of curve's break) in vector image formats fixed (but
-  it causes increasing them sizes; EMZ and SVGZ will solve this problem).
+  it causes increasing of them sizes; EMZ and SVGZ will solve this problem).
 New *.gdd and *.gddstyle files are compatible with previous version of application
