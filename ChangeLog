@@ -1,7 +1,7 @@
 Geomag data drawer changes log
 
 Version 3.8
-• Publishing on GitHub
+• Publishing on GitHub.
 
 Version 4.0
 • English (USA) variant of interface added; help file not translated yet;
@@ -10,10 +10,17 @@ Version 4.0
 • Some artifacts fixed;
 • Grid drawing updated and corrected;
 • Data redundancy in DiagramData class fixed.
-*.gdd and *.gddstyle from 3.8 are compatible with 4.0
+*.gdd and *.gddstyle from 3.8 are compatible with 4.0.
 
 Version 4.1
 • EMF (Windows metafile) support added (saving diagrams) (compatible with Office applications);
 • Curve drawing bug (incorrect displaying of curve's break) in vector image formats fixed (but
   it causes increasing of them sizes; EMZ and SVGZ will solve this problem).
-New *.gdd and *.gddstyle files are compatible with previous version of application
+New *.gdd and *.gddstyle files are compatible with previous version of application.
+
+Version 4.2
+• Added data table generation function. Now user can enter analytical representation of function
+and set plotting range for it. And get a diagram as a result;
+• Added 'Close diagram' function. Sometimes it is necessary;
+• Some artifacts fixed.
+New *.gdd and *.gddstyle files are compatible with previous version of application.
