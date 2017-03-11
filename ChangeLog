@@ -20,7 +20,16 @@ New *.gdd and *.gddstyle files are compatible with previous version of applicati
 
 Version 4.2
 • Added data table generation function. Now user can enter analytical representation of function
-and set plotting range for it. And get a diagram as a result;
+  and set plotting range for it. And get a diagram as a result;
 • Added 'Close diagram' function. Sometimes it is necessary;
 • Some artifacts fixed.
+New *.gdd and *.gddstyle files are compatible with previous version of application.
+
+Version 4.3
+• Improved data table generation function. Now user can enter a SET of analytical representations
+of functions and set plotting range for them. And get a diagram with SET of curves as a result;
+• Some artifacts in formula evaluation class fixed: speed of lexemes extraction seriously increased;
+• Some other interface bugs fixed;
+• Count of curves in diagram decreased from 100 to 20: don't think that it is necessary to have too
+  many curves on a diagram.
 New *.gdd and *.gddstyle files are compatible with previous version of application.
