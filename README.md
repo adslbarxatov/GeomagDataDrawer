@@ -1,4 +1,4 @@
-# GeomagDataDrawer v 4.2
+# GeomagDataDrawer v 4.3
 An utility for plotting and preparing of data diagrams without special software
 
 Annotation (first page of helpfile, ru_ru only):
@@ -20,6 +20,8 @@ Geomag data drawer поддерживает следующие форматы п
 В части визуализации и обработки данных Geomag data drawer обеспечивает следующие основные возможности:
 
 — Построение диаграмм по представленным данным;
+
+— Генерация данных для построения кривых по аналитически заданной функции;
 
 — Редактирование данных диаграммы во встроенном редакторе;
 
