@@ -27,9 +27,18 @@ New *.gdd and *.gddstyle files are compatible with previous version of applicati
 
 Version 4.3
 • Improved data table generation function. Now user can enter a SET of analytical representations
-of functions and set plotting range for them. And get a diagram with SET of curves as a result;
+  of functions and set plotting range for them. And get a diagram with SET of curves as a result;
 • Some artifacts in formula evaluation class fixed: speed of lexemes extraction seriously increased;
 • Some other interface bugs fixed;
 • Count of curves in diagram decreased from 100 to 20: don't think that it is necessary to have too
   many curves on a diagram.
 New *.gdd and *.gddstyle files are compatible with previous version of application.
+
+Version 4.4
+• Graphical shapes added; now user can seriously increase informativity of his diagrams by using
+  free text labels, pointing lines, rectangles and ellipses (up to 50 in this version);
+• Some picture saving bugs fixed;
+• Axes notches count autoevaluation has been reviewed;
+• Curves merging bugs fixed;
+• Configuration panels behaviour has been reviewed.
+*.gdd and *.gddstyle files from old and new versions of application are compatible in both directions.
