@@ -38,7 +38,7 @@ Version 4.4
 • Graphical shapes added; now user can seriously increase informativity of his diagrams by using
   free text labels, pointing lines, rectangles and ellipses (up to 50 in this version);
 • Some picture saving bugs fixed;
-• Axes notches count autoevaluation has been reviewed;
+• Axes notches count autoevaluation has been revised;
 • Curves merging bugs fixed;
-• Configuration panels behaviour has been reviewed.
+• Configuration panels behaviour has been revised.
 *.gdd and *.gddstyle files from old and new versions of application are compatible in both directions.
