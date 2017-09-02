@@ -42,3 +42,9 @@ Version 4.4
 • Curves merging bugs fixed;
 • Configuration panels behaviour has been revised.
 *.gdd and *.gddstyle files from old and new versions of application are compatible in both directions.
+
+Version 4.5
+• Upgraded additional object 'line': endpoints coordinates setting has been simplifyed;
+• Some minor defects have been fixed.
+New *.gdd and *.gddstyle files are compatible with previous version of application, but you may need
+to re-add 'line' objects to your diagram.
