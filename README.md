@@ -1,4 +1,4 @@
-# GeomagDataDrawer v 4.4
+# GeomagDataDrawer v 4.5
 An utility for plotting and preparing of data diagrams without special software
 
 #
