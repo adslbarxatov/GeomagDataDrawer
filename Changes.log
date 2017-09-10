@@ -46,5 +46,9 @@ Version 4.4
 Version 4.5
 • Upgraded additional object 'line': endpoints coordinates setting has been simplifyed;
 • Some minor defects have been fixed.
+Sub-version 4.5c
+• Some raster images drawing bugs fixed (invalid rectangles cropping, line's first marker absence);
+• 'Usage tips' section added to help file.
 New *.gdd and *.gddstyle files are compatible with previous version of application, but you may need
 to re-add 'line' objects to your diagram.
+
