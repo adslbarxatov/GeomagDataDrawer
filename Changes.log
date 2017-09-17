@@ -52,3 +52,7 @@ Sub-version 4.5c
 New *.gdd and *.gddstyle files are compatible with previous version of application, but you may need
 to re-add 'line' objects to your diagram.
 
+Version 4.6
+• Microsoft Excel format support added (file opening). Based on MIT license. Read user manual for more
+  information.
+New *.gdd and *.gddstyle files are compatible with previous version of application.
