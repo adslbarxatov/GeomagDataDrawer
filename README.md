@@ -42,3 +42,5 @@ Geomag data drawer поддерживает следующие форматы п
 #
 
 Needs Windows XP and newer, Framework 4.0 and newer. Interface languages: ru_ru, en_us. Help language: ru_ru
+
+Требуется ОС Windows XP и новее, Framework 4.0 и новее. Языки интерфейса: ru_ru, en_us. Язык документации: ru_ru
