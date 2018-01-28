@@ -1,63 +1,69 @@
 Geomag data drawer changes log
 
 Version 3.8
-â€¢ Publishing on GitHub.
+• Publishing on GitHub.
 
 Version 4.0
-â€¢ English (USA) variant of interface added; help file not translated yet;
-â€¢ Internal dialogs have been updated and unified;
-â€¢ Mouse placement of curve images bug fixed;
-â€¢ Some artifacts fixed;
-â€¢ Grid drawing updated and corrected;
-â€¢ Data redundancy in DiagramData class fixed.
+• English (USA) variant of interface added; help file not translated yet;
+• Internal dialogs have been updated and unified;
+• Mouse placement of curve images bug fixed;
+• Some artifacts fixed;
+• Grid drawing updated and corrected;
+• Data redundancy in DiagramData class fixed.
 *.gdd and *.gddstyle from 3.8 are compatible with 4.0.
 
 Version 4.1
-â€¢ EMF (Windows metafile) support added (saving diagrams) (compatible with Office applications);
-â€¢ Curve drawing bug (incorrect displaying of curve's break) in vector image formats fixed (but
+• EMF (Windows metafile) support added (saving diagrams) (compatible with Office applications);
+• Curve drawing bug (incorrect displaying of curve's break) in vector image formats fixed (but
   it causes increasing of them sizes; EMZ and SVGZ will solve this problem).
 New *.gdd and *.gddstyle files are compatible with previous version of application.
 
 Version 4.2
-â€¢ Added data table generation function. Now user can enter analytical representation of function
+• Added data table generation function. Now user can enter analytical representation of function
   and set plotting range for it. And get a diagram as a result;
-â€¢ Added 'Close diagram' function. Sometimes it is necessary;
-â€¢ Some artifacts fixed.
+• Added 'Close diagram' function. Sometimes it is necessary;
+• Some artifacts fixed.
 New *.gdd and *.gddstyle files are compatible with previous version of application.
 
 Version 4.3
-â€¢ Improved data table generation function. Now user can enter a SET of analytical representations
+• Improved data table generation function. Now user can enter a SET of analytical representations
   of functions and set plotting range for them. And get a diagram with SET of curves as a result;
-â€¢ Some artifacts in formula evaluation class fixed: speed of lexemes extraction seriously increased;
-â€¢ Some other interface bugs fixed;
-â€¢ Count of curves in diagram decreased from 100 to 20: don't think that it is necessary to have too
+• Some artifacts in formula evaluation class fixed: speed of lexemes extraction seriously increased;
+• Some other interface bugs fixed;
+• Count of curves in diagram decreased from 100 to 20: don't think that it is necessary to have too
   many curves on a diagram.
 New *.gdd and *.gddstyle files are compatible with previous version of application.
 
 Version 4.4
-â€¢ Graphical shapes added; now user can seriously increase informativity of his diagrams by using
+• Graphical shapes added; now user can seriously increase informativity of his diagrams by using
   free text labels, pointing lines, rectangles and ellipses (up to 50 in this version);
-â€¢ Some picture saving bugs fixed;
-â€¢ Axes notches count autoevaluation has been revised;
-â€¢ Curves merging bugs fixed;
-â€¢ Configuration panels behaviour has been revised.
+• Some picture saving bugs fixed;
+• Axes notches count autoevaluation has been revised;
+• Curves merging bugs fixed;
+• Configuration panels behaviour has been revised.
 *.gdd and *.gddstyle files from old and new versions of application are compatible in both directions.
 
 Version 4.5
-â€¢ Upgraded additional object 'line': endpoints coordinates setting has been simplifyed;
-â€¢ Some minor defects have been fixed.
+• Upgraded additional object 'line': endpoints coordinates setting has been simplifyed;
+• Some minor defects have been fixed.
 Sub-version 4.5c
-â€¢ Some raster images drawing bugs fixed (invalid rectangles cropping, line's first marker absence);
-â€¢ 'Usage tips' section added to help file.
+• Some raster images drawing bugs fixed (invalid rectangles cropping, line's first marker absence);
+• 'Usage tips' section added to help file.
 New *.gdd and *.gddstyle files are compatible with previous version of application, but you may need
 to re-add 'line' objects to your diagram.
 
 Version 4.6
-â€¢ Microsoft Excel format support added (file opening). Based on MIT license. Read user manual for more
+• Microsoft Excel format support added (file opening). Based on MIT license. Read user manual for more
   information.
 New *.gdd and *.gddstyle files are compatible with previous version of application.
 
 Version 4.7
-â€¢ Curves generation interface upgraded: fixed potential 'division by zero' exception;
-â€¢ Drawing of curve's interruption points and NaN values now works correctly.
+• Curves generation interface upgraded: fixed potential 'division by zero' exception;
+• Drawing interruption curves points and NaN values now works correctly.
+New *.gdd and *.gddstyle files are compatible with previous version of application.
+
+Version 4.8
+• Loading diagram data from the clipboard is now available (use Ctrl + V);
+• Keys for data editor changed to Ctrl + E (it is more suitable);
+• Added missing tool tips for main menu.
 New *.gdd and *.gddstyle files are compatible with previous version of application.
