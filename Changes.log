@@ -67,3 +67,11 @@ Version 4.8
 • Keys for data editor changed to Ctrl + E (it is more suitable);
 • Added missing tool tips for main menu.
 New *.gdd and *.gddstyle files are compatible with previous version of application.
+
+Version 4.9
+• .any input file format has been removed; replaced with extracting option;
+• .csv and .xls[x] formats parsing now more 'tolerant': invalid and text values will be replaced
+  with zeros;
+• Application can be used from command line for data file formats conversion; use /? key or
+  user manual (part 4.5) for more information;
+• QuickSheet has been removed from user manual; it will be rewritten soon.
