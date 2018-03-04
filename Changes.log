@@ -75,3 +75,10 @@ Version 4.9
 • Application can be used from command line for data file formats conversion; use /? key or
   user manual (part 4.5) for more information;
 • QuickSheet has been removed from user manual; it will be rewritten soon.
+New *.gdd and *.gddstyle files are compatible with previous version of application.
+
+Version 4.10
+• ExcelDataReader was updated to actual version. Accidentally, it fixed some bugs in XLS
+  files loading process;
+• QuickSheet has been rewritten and now available in user manual (part 6).
+New *.gdd and *.gddstyle files are compatible with previous version of application.
