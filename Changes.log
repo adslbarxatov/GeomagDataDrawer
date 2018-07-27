@@ -82,3 +82,15 @@ Version 4.10
   files loading process;
 • QuickSheet has been rewritten and now available in user manual (part 6).
 New *.gdd and *.gddstyle files are compatible with previous version of application.
+
+Version 4.11
+• Formula evaluation interface updated: more freedom in formula input - all letter cases allowed,
+  using and missing spaces allowed; exponential number format support removed;
+• Data rows count limit adjusted for best fitness with curves generation ranges;
+• Incorrect middle/center axes placement fixed;
+• Application menu fully reviewed: curves merging, data columns replacing, styles management and
+  preview templates have been moved to new menu item called 'Operations';
+• Application interface reviewed: only adding, deleting, hiding and selection tools are now at the
+  main window. Adding and deleting tools have been duplicated by hotkeys and now available from
+  the keyboard.
+New *.gdd and *.gddstyle files are compatible with previous version of application.
