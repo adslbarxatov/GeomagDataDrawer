@@ -94,3 +94,10 @@ Version 4.11
   main window. Adding and deleting tools have been duplicated by hotkeys and now available from
   the keyboard.
 New *.gdd and *.gddstyle files are compatible with previous version of application.
+
+Version 4.12
+• Abscissa processing variables extended to 'double';
+• Some improvements added to parsing functions;
+• Fixed some minor bugs.
+New *.gdd and *.gddstyle files ARE NOT compatible with previous version of application due to
+extension of styles' data fields.
