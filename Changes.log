@@ -101,3 +101,8 @@ Version 4.12
 • Fixed some minor bugs.
 New *.gdd and *.gddstyle files ARE NOT compatible with previous version of application due to
 extension of styles' data fields.
+
+Version 4.13
+• Fixed drawing of vector images in 'markers only' mode (lines will not draw anymore);
+• Fixed color setting for filled shapes;
+• Added ability to save an image from command line (PNG or SVG; uses default preview template).
