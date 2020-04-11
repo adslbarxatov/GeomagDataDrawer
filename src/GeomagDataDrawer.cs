@@ -2,12 +2,12 @@
 using System.Threading;
 using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс-описатель программы
 	/// </summary>
-	public static class Program
+	public static class GeomagDataDrawerProgram
 		{
 		/// <summary>
 		/// Главная точка входа для приложения
@@ -23,7 +23,7 @@ namespace GeomagDataDrawer
 			Mutex instance = new Mutex (true, ProgramDescription.AssemblyTitle, out result);
 			if (!result)
 				{
-				MessageBox.Show (string.Format (LanguageProvider.GetText ("ProgramLaunchedError", ca.InterfaceLanguage),
+				MessageBox.Show (string.Format (Localization.GetText ("ProgramLaunchedError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
@@ -38,7 +38,7 @@ namespace GeomagDataDrawer
 				// Справка по командной строке
 				if (args[0].Contains ("?"))
 					{
-					MessageBox.Show (LanguageProvider.GetText ("CommandLineHelp", ca.InterfaceLanguage),
+					MessageBox.Show (Localization.GetText ("CommandLineHelp", ca.InterfaceLanguage),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 					return;
 					}
@@ -68,7 +68,7 @@ namespace GeomagDataDrawer
 				// Только открытие файла
 				if (args.Length == 1)
 					{
-					Application.Run (new MainForm (args[0], inputType));
+					Application.Run (new GeomagDataDrawerForm (args[0], inputType));
 					return;
 					}
 
@@ -148,7 +148,7 @@ namespace GeomagDataDrawer
 				// Контроль результата
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					MessageBox.Show (string.Format (LanguageProvider.GetText ("DataFileLoadError", ca.InterfaceLanguage), args[0],
+					MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage), args[0],
 						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					return;
@@ -159,7 +159,7 @@ namespace GeomagDataDrawer
 					{
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
-						MessageBox.Show (LanguageProvider.GetText ("DataFileSaveError", ca.InterfaceLanguage),
+						MessageBox.Show (Localization.GetText ("DataFileSaveError", ca.InterfaceLanguage),
 							ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 						return;
 						}
@@ -210,7 +210,7 @@ namespace GeomagDataDrawer
 			else
 				{
 				// Случай загрузки backup-файла
-				Application.Run (new MainForm ("", DataInputTypes.Unspecified));
+				Application.Run (new GeomagDataDrawerForm ("", DataInputTypes.Unspecified));
 				}
 			}
 		}

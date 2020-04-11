@@ -1,14 +1,16 @@
-﻿using System.Windows.Forms;
+﻿using Microsoft.Win32;
+using System.Globalization;
+using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
-	/// Поддерживаемые языки интерфейса программы
+	/// Поддерживаемые языки приложения
 	/// </summary>
 	public enum SupportedLanguages
 		{
 		/// <summary>
-		/// Русский (Россия)
+		/// Русский
 		/// </summary>
 		ru_ru,
 
@@ -19,10 +21,115 @@ namespace GeomagDataDrawer
 		}
 
 	/// <summary>
-	/// Класс обеспечивает передачу в формы локализованных подписей контролов
+	/// Класс обеспечивает доступ к языковым настройкам приложения
 	/// </summary>
-	public static class LanguageProvider
+	public static class Localization
 		{
+		/// <summary>
+		/// Название параметра, хранящего текущий язык интерфейса
+		/// </summary>
+		public const string LanguageValueName = "Language";
+
+		/// <summary>
+		/// Количество доступных языков интерфейса
+		/// </summary>
+		public const uint AvailableLanguages = 2;
+
+		/// <summary>
+		/// Возвращает или задаёт текущий язык интерфейса приложения
+		/// </summary>
+		public static SupportedLanguages CurrentLanguage
+			{
+			// Запрос
+			get
+				{
+				// Получение значения
+				string lang = GetCurrentLanguage ();
+
+				// При пустом значении пробуем получить язык от системы
+				if (lang == "")
+					{
+					CultureInfo ci = CultureInfo.CurrentCulture;
+
+					switch (ci.ToString ().ToLower ())
+						{
+						case "ru-ru":
+							return SupportedLanguages.ru_ru;
+						}
+					}
+
+				// Определение
+				switch (lang)
+					{
+					case "ru_ru":
+						return SupportedLanguages.ru_ru;
+
+					default:
+						return SupportedLanguages.en_us;
+					}
+				}
+
+			// Установка
+			set
+				{
+				try
+					{
+					Registry.SetValue (ProgramDescription.AssemblySettingsKey,
+						LanguageValueName, value.ToString ());
+					}
+				catch
+					{
+					}
+				}
+			}
+
+		/// <summary>
+		/// Возвращает факт предыдущей установки языка приложения
+		/// </summary>
+		public static bool IsCurrentLanguageSpecified
+			{
+			get
+				{
+				return (GetCurrentLanguage () != "");
+				}
+			}
+
+		// Метод запрашивает настройку из реестра
+		private static string GetCurrentLanguage ()
+			{
+			// Получение значения
+			string lang = "";
+			try
+				{
+				lang = Registry.GetValue (ProgramDescription.AssemblySettingsKey,
+					LanguageValueName, "").ToString ();
+				}
+			catch
+				{
+				}
+
+			return lang;
+			}
+
+		/// <summary>
+		/// Метод возвращает локализованный текст по указанному идентификатору
+		/// </summary>
+		/// <param name="TextName">Идентификатор текстового фрагмента</param>
+		/// <param name="Language">Требуемый язык локализации</param>
+		/// <returns>Локализованный текстовый фрагмент</returns>
+		public static string GetText (string TextName, SupportedLanguages Language)
+			{
+			switch (Language)
+				{
+				default:
+					return ProgramDescription.AssemblyLocalizationRMs[0].GetString (TextName);
+
+				case SupportedLanguages.ru_ru:
+					return ProgramDescription.AssemblyLocalizationRMs[1].GetString (TextName);
+				}
+			}
+
+		#region Extended
 		/// <summary>
 		/// Метод устанавливает локализованные подписи для всех контролов, входящих в состав указанного контейнера (только Text)
 		/// </summary>
@@ -32,9 +139,9 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.Controls.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name, Language) != null)
+				if (GetControlText (Container.Name, Container.Controls[i].Name, Language) != null)
 					{
-					Container.Controls[i].Text = LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name, Language);
+					Container.Controls[i].Text = GetControlText (Container.Name, Container.Controls[i].Name, Language);
 					}
 				}
 			}
@@ -48,9 +155,9 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.Controls.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name, Language) != null)
+				if (GetControlText (Container.Name, Container.Controls[i].Name, Language) != null)
 					{
-					Container.Controls[i].Text = LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name, Language);
+					Container.Controls[i].Text = GetControlText (Container.Name, Container.Controls[i].Name, Language);
 					}
 				}
 			}
@@ -64,9 +171,9 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.Items.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.Items[i].Name, Language) != null)
+				if (GetControlText (Container.Name, Container.Items[i].Name, Language) != null)
 					{
-					Container.Items[i].Text = LanguageProvider.GetControlText (Container.Name, Container.Items[i].Name, Language);
+					Container.Items[i].Text = GetControlText (Container.Name, Container.Items[i].Name, Language);
 					}
 				}
 			}
@@ -80,14 +187,14 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.DropDownItems.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.DropDownItems[i].Name, Language) != null)
+				if (GetControlText (Container.Name, Container.DropDownItems[i].Name, Language) != null)
 					{
-					Container.DropDownItems[i].Text = LanguageProvider.GetControlText (Container.Name,
+					Container.DropDownItems[i].Text = GetControlText (Container.Name,
 						Container.DropDownItems[i].Name, Language);
 					}
-				if (LanguageProvider.GetControlText (Container.Name, Container.DropDownItems[i].Name + "_TT", Language) != null)
+				if (GetControlText (Container.Name, Container.DropDownItems[i].Name + "_TT", Language) != null)
 					{
-					Container.DropDownItems[i].ToolTipText = LanguageProvider.GetControlText (Container.Name,
+					Container.DropDownItems[i].ToolTipText = GetControlText (Container.Name,
 						Container.DropDownItems[i].Name + "_TT", Language);
 					}
 				}
@@ -102,9 +209,9 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.TabPages.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.TabPages[i].Name + "_TT", Language) != null)
+				if (GetControlText (Container.Name, Container.TabPages[i].Name + "_TT", Language) != null)
 					{
-					Container.TabPages[i].ToolTipText = LanguageProvider.GetControlText (Container.Name,
+					Container.TabPages[i].ToolTipText = GetControlText (Container.Name,
 						Container.TabPages[i].Name + "_TT", Language);
 					}
 				}
@@ -120,9 +227,9 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.Controls.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name + "_TT", Language) != null)
+				if (GetControlText (Container.Name, Container.Controls[i].Name + "_TT", Language) != null)
 					{
-					TextContainer.SetToolTip (Container.Controls[i], LanguageProvider.GetControlText (Container.Name,
+					TextContainer.SetToolTip (Container.Controls[i], GetControlText (Container.Name,
 						Container.Controls[i].Name + "_TT", Language));
 					}
 				}
@@ -138,9 +245,9 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.Controls.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name + "_TT", Language) != null)
+				if (GetControlText (Container.Name, Container.Controls[i].Name + "_TT", Language) != null)
 					{
-					TextContainer.SetToolTip (Container.Controls[i], LanguageProvider.GetControlText (Container.Name,
+					TextContainer.SetToolTip (Container.Controls[i], GetControlText (Container.Name,
 						Container.Controls[i].Name + "_TT", Language));
 					}
 				}
@@ -156,14 +263,14 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.Controls.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name, Language) != null)
+				if (GetControlText (Container.Name, Container.Controls[i].Name, Language) != null)
 					{
-					Container.Controls[i].Text = LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name, Language);
+					Container.Controls[i].Text = GetControlText (Container.Name, Container.Controls[i].Name, Language);
 					}
 
-				if (LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name + "_TT", Language) != null)
+				if (GetControlText (Container.Name, Container.Controls[i].Name + "_TT", Language) != null)
 					{
-					TextContainer.SetToolTip (Container.Controls[i], LanguageProvider.GetControlText (Container.Name,
+					TextContainer.SetToolTip (Container.Controls[i], GetControlText (Container.Name,
 						Container.Controls[i].Name + "_TT", Language));
 					}
 				}
@@ -178,9 +285,9 @@ namespace GeomagDataDrawer
 			{
 			for (int i = 0; i < Container.Controls.Count; i++)
 				{
-				if (LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name, Language) != null)
+				if (GetControlText (Container.Name, Container.Controls[i].Name, Language) != null)
 					{
-					Container.Controls[i].Text = LanguageProvider.GetControlText (Container.Name, Container.Controls[i].Name, Language);
+					Container.Controls[i].Text = GetControlText (Container.Name, Container.Controls[i].Name, Language);
 					}
 				}
 			}
@@ -197,23 +304,6 @@ namespace GeomagDataDrawer
 			return GetText (FormName + "_" + ControlName, Language);
 			}
 
-		/// <summary>
-		/// Метод возвращает локализованный текст по указанному идентификатору
-		/// </summary>
-		/// <param name="ErrorName">Идентификатор текстового фрагмента</param>
-		/// <param name="Language">Требуемый язык локализации</param>
-		/// <returns>Локализованный текстовый фрагмент</returns>
-		public static string GetText (string ErrorName, SupportedLanguages Language)
-			{
-			switch (Language)
-				{
-				case SupportedLanguages.en_us:
-					return GeomagDataDrawer.Lang_EnUs.ResourceManager.GetString (ErrorName);
-
-				case SupportedLanguages.ru_ru:	// Считается базовым
-				default:
-					return GeomagDataDrawer.Lang_RuRu.ResourceManager.GetString (ErrorName);
-				}
-			}
+		#endregion
 		}
 	}

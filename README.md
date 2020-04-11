@@ -1,4 +1,4 @@
-# GeomagDataDrawer v 4.13
+# GeomagDataDrawer v 4.14u
 
 Autonomous utility for plotting and preparing of data diagrams / Автономный инструмент построения и оформления диаграмм
 
@@ -33,7 +33,7 @@ In aims of visualization and data processing Geomag data drawer provides followi
 
 - Saving data files in Windows CSV format and format of free-tabulated data;
 
-- Customize most of graphic characteristics of diagrams: sizes, placements, colors, fonts, lines, markers, etc .;
+- Customize most of graphic characteristics of diagrams: sizes, placements, colors, fonts, lines, markers, etc.;
 
 - Setting your own coordinate plane and independent use of data columns as abscissas and ordinates for each dependency;
 
@@ -95,6 +95,6 @@ We're strongly recommend reading it before using our products.
 
 #
 
-Needs Windows XP and newer, Framework 4.0 and newer. Interface languages: ru_ru, en_us. Help language: ru_ru
+Needs Windows XP and newer, Framework 4.0 and newer. Interface languages: ru_ru, en_us. Help languages: ru_ru (chm), en_us (YouTube)
 
-Требуется ОС Windows XP и новее, Framework 4.0 и новее. Языки интерфейса: ru_ru, en_us. Язык документации: ru_ru
+Требуется ОС Windows XP и новее, Framework 4.0 и новее. Языки интерфейса: ru_ru, en_us. Языки документации: ru_ru (chm), en_us (YouTube)

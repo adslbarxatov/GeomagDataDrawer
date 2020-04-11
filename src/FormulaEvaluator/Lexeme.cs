@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает отдельную лексему

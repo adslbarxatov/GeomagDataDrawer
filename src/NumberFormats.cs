@@ -1,4 +1,4 @@
-﻿namespace GeomagDataDrawer
+﻿namespace RD_AAOW
 	{
 	/// <summary>
 	/// Возможные виды представления чисел на диаграмме

@@ -5,12 +5,12 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс обеспечивает поддержку формата SVG
 	/// </summary>
-	public class SVGAdapter:GeomagDataDrawer.IVectorAdapter
+	public class SVGAdapter:RD_AAOW.IVectorAdapter
 		{
 		// Общие переменные
 		private FileStream FS = null;

@@ -1,0 +1,1040 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AxesTab_AutoDivisions" xml:space="preserve">
+    <value>Автоопределение</value>
+  </data>
+  <data name="AxesTab_Label11" xml:space="preserve">
+    <value>Число делений на осях:</value>
+  </data>
+  <data name="AxesTab_Label12" xml:space="preserve">
+    <value>Ox, основные:</value>
+  </data>
+  <data name="AxesTab_Label13" xml:space="preserve">
+    <value>Oy, основные:</value>
+  </data>
+  <data name="AxesTab_Label14" xml:space="preserve">
+    <value>Ox, дополнительные:</value>
+  </data>
+  <data name="AxesTab_Label15" xml:space="preserve">
+    <value>Oy, дополнительные:</value>
+  </data>
+  <data name="AxesTab_Label16" xml:space="preserve">
+    <value>Толщина осей:</value>
+  </data>
+  <data name="AxesTab_Label17" xml:space="preserve">
+    <value>Цвет осей:</value>
+  </data>
+  <data name="AxesTab_Label18" xml:space="preserve">
+    <value>Расположение осей:</value>
+  </data>
+  <data name="AxesTab_Label21" xml:space="preserve">
+    <value>Форматы подписей осей:</value>
+  </data>
+  <data name="FontTab_AxesFont" xml:space="preserve">
+    <value>Шрифт подписей осей</value>
+  </data>
+  <data name="FontTab_Label27" xml:space="preserve">
+    <value>Шрифты и цвета подписей:</value>
+  </data>
+  <data name="FontTab_TextFont" xml:space="preserve">
+    <value>Шрифт подписи изображения</value>
+  </data>
+  <data name="GridTab_Label24" xml:space="preserve">
+    <value>Толщина линий сетки:</value>
+  </data>
+  <data name="GridTab_Label25" xml:space="preserve">
+    <value>Цвет основных линий:</value>
+  </data>
+  <data name="GridTab_Label26" xml:space="preserve">
+    <value>Цвет дополнительных линий:</value>
+  </data>
+  <data name="LineTab_Label28" xml:space="preserve">
+    <value>Толщина:</value>
+  </data>
+  <data name="LineTab_Label29" xml:space="preserve">
+    <value>Цвет:</value>
+  </data>
+  <data name="LineTab_Label30" xml:space="preserve">
+    <value>Стиль:</value>
+  </data>
+  <data name="LineTab_Label31" xml:space="preserve">
+    <value>Маркер:</value>
+  </data>
+  <data name="GeomagDataDrawerFormMenuStrip_MFile" xml:space="preserve">
+    <value>&amp;Файл</value>
+  </data>
+  <data name="GeomagDataDrawerFormMenuStrip_MUpperHelp" xml:space="preserve">
+    <value>&amp;Помощь</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LineStyle_0" xml:space="preserve">
+    <value>Только линия</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LineStyle_1" xml:space="preserve">
+    <value>Линия и маркеры</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LineStyle_2" xml:space="preserve">
+    <value>Только маркеры</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LoadStyleDialog" xml:space="preserve">
+    <value>Выберите файл стиля</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OFDialog" xml:space="preserve">
+    <value>Выберите файл данных</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OFDialog_F" xml:space="preserve">
+    <value>Файлы данных {0:S} (*.gdd)|*.gdd|Файлы Microsoft Excel '97 и '07|*.xls;*.xlsx|Файлы табличных данных Windows CSV|*.csv|Извлечение данных из текстовых файлов|*.*</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxFormat_0" xml:space="preserve">
+    <value>Простой</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxFormat_1" xml:space="preserve">
+    <value>Экспоненциальный</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxPlacement_0" xml:space="preserve">
+    <value>Автоматически</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxPlacement_1" xml:space="preserve">
+    <value>Сверху</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxPlacement_2" xml:space="preserve">
+    <value>Снизу</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxPlacement_3" xml:space="preserve">
+    <value>По центру</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OyPlacement_0" xml:space="preserve">
+    <value>Автоматически</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OyPlacement_1" xml:space="preserve">
+    <value>Слева</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OyPlacement_2" xml:space="preserve">
+    <value>Справа</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OyPlacement_3" xml:space="preserve">
+    <value>Посередине</value>
+  </data>
+  <data name="GeomagDataDrawerForm_SaveStyleDialog" xml:space="preserve">
+    <value>Укажите расположение для сохранения файла стиля</value>
+  </data>
+  <data name="GeomagDataDrawerForm_SFDialog" xml:space="preserve">
+    <value>Укажите расположение для сохранения файла данных</value>
+  </data>
+  <data name="GeomagDataDrawerForm_SFDialog_F" xml:space="preserve">
+    <value>Файлы данных {0:S} (*.gdd)|*.gdd|Диаграммы с произвольным набором данных (*.dat)|*.dat|Файлы табличных данных Windows CSV|*.csv</value>
+  </data>
+  <data name="GeomagDataDrawerForm_StyleDialog_F" xml:space="preserve">
+    <value>Файлы стилей диаграмм (*.gddstyle)|*.gddstyle</value>
+  </data>
+  <data name="MainTabControl_AxesTab_TT" xml:space="preserve">
+    <value>Панель настройки координатных осей</value>
+  </data>
+  <data name="MainTabControl_FontTab_TT" xml:space="preserve">
+    <value>Панель настройки шрифта и цвета подписей</value>
+  </data>
+  <data name="MainTabControl_GridTab_TT" xml:space="preserve">
+    <value>Панель настройки координатной сетки</value>
+  </data>
+  <data name="MainTabControl_LineTab_TT" xml:space="preserve">
+    <value>Панель настройки линий</value>
+  </data>
+  <data name="MainTabControl_RangeTab_TT" xml:space="preserve">
+    <value>Панель задания диапазона построения</value>
+  </data>
+  <data name="MainTabControl_SizeTab_TT" xml:space="preserve">
+    <value>Панель задания размера и расположения изображения</value>
+  </data>
+  <data name="MainTabControl_TextTab_TT" xml:space="preserve">
+    <value>Панель настройки подписей</value>
+  </data>
+  <data name="MFile_MExit" xml:space="preserve">
+    <value>В&amp;ыход</value>
+  </data>
+  <data name="MOperations_MLoadStyle" xml:space="preserve">
+    <value>&amp;Загрузить стиль...</value>
+  </data>
+  <data name="MFile_MOpenDataFile" xml:space="preserve">
+    <value>&amp;Открыть файл данных...</value>
+  </data>
+  <data name="MFile_MProgramSettings" xml:space="preserve">
+    <value>Настро&amp;йки программы</value>
+  </data>
+  <data name="MOperations_MRedactData" xml:space="preserve">
+    <value>Реда&amp;ктировать данные диаграммы...</value>
+  </data>
+  <data name="MOperations_MResetStyle" xml:space="preserve">
+    <value>С&amp;бросить стиль</value>
+  </data>
+  <data name="MFile_MSaveDataFile" xml:space="preserve">
+    <value>&amp;Сохранить файл данных...</value>
+  </data>
+  <data name="MFile_MSaveDiagramImage" xml:space="preserve">
+    <value>Сохранить &amp;диаграмму...</value>
+  </data>
+  <data name="MOperations_MSaveStyle" xml:space="preserve">
+    <value>Сохранить сти&amp;ль...</value>
+  </data>
+  <data name="MOperations_MSaveTemplate" xml:space="preserve">
+    <value>Сохранить &amp;шаблон добавления кривых...</value>
+  </data>
+  <data name="MUpperHelp_MAbout" xml:space="preserve">
+    <value>О програ&amp;мме</value>
+  </data>
+  <data name="MUpperHelp_MHelp" xml:space="preserve">
+    <value>Сп&amp;равка</value>
+  </data>
+  <data name="RangeTab_Label01" xml:space="preserve">
+    <value>Диапазоны построения:</value>
+  </data>
+  <data name="SizeTab_AlignAsColumn" xml:space="preserve">
+    <value>Расположить в столбец</value>
+  </data>
+  <data name="SizeTab_AlignAsRow" xml:space="preserve">
+    <value>Расположить в ряд</value>
+  </data>
+  <data name="SizeTab_Label02" xml:space="preserve">
+    <value>Размер и смещение изображения:</value>
+  </data>
+  <data name="SizeTab_Label03" xml:space="preserve">
+    <value>отступ слева:</value>
+  </data>
+  <data name="SizeTab_Label04" xml:space="preserve">
+    <value>отступ сверху:</value>
+  </data>
+  <data name="SizeTab_Label05" xml:space="preserve">
+    <value>ширина:</value>
+  </data>
+  <data name="SizeTab_Label06" xml:space="preserve">
+    <value>высота:</value>
+  </data>
+  <data name="TextTab_AutoTextOffset" xml:space="preserve">
+    <value>Автоопределение</value>
+  </data>
+  <data name="TextTab_Label07" xml:space="preserve">
+    <value>Смещение подписей оси Ox:</value>
+  </data>
+  <data name="TextTab_Label08" xml:space="preserve">
+    <value>Смещение подписей оси Oy:</value>
+  </data>
+  <data name="TextTab_Label09" xml:space="preserve">
+    <value>Подпись изображения:</value>
+  </data>
+  <data name="TextTab_Label10" xml:space="preserve">
+    <value>Координаты подписи:</value>
+  </data>
+  <data name="RangeTab_SwitchXY" xml:space="preserve">
+    <value>Выполнить транспонирование кривой</value>
+  </data>
+  <data name="AbortButton" xml:space="preserve">
+    <value>От&amp;мена</value>
+  </data>
+  <data name="AbortChanges" xml:space="preserve">
+    <value>Вы действительно хотите отменить все внесённые изменения?</value>
+  </data>
+  <data name="ApplicationExit" xml:space="preserve">
+    <value>Завершить работу с программой?</value>
+  </data>
+  <data name="ApplyButton" xml:space="preserve">
+    <value>&amp;ОК</value>
+  </data>
+  <data name="ApplyChanges" xml:space="preserve">
+    <value>Сохранить внесённые изменения?</value>
+  </data>
+  <data name="AxesTab_AutoDivisions_TT" xml:space="preserve">
+    <value>Флажок указывает, следует ли автоматически определять число основных делений</value>
+  </data>
+  <data name="AxesTab_AxesColorTurnOff_TT" xml:space="preserve">
+    <value>Кнопка позволяет скрыть оси</value>
+  </data>
+  <data name="AxesTab_AxesColor_TT" xml:space="preserve">
+    <value>Кнопка позволяет задать цвет линий осей</value>
+  </data>
+  <data name="AxesTab_AxesWidth_TT" xml:space="preserve">
+    <value>Поле задаёт толщину линий осей</value>
+  </data>
+  <data name="AxesTab_OxFormatCombo_TT" xml:space="preserve">
+    <value>Поле задаёт формат отображения значений на оси Ox</value>
+  </data>
+  <data name="AxesTab_OxPlacementCombo_TT" xml:space="preserve">
+    <value>Поле задаёт расположение оси Ox на изображении кривой</value>
+  </data>
+  <data name="AxesTab_OxPrimaryDiv_TT" xml:space="preserve">
+    <value>Поле задаёт количество основных делений на оси Ox</value>
+  </data>
+  <data name="AxesTab_OxSecondaryDiv_TT" xml:space="preserve">
+    <value>Поле задаёт количество дополнительных делений на оси Ox</value>
+  </data>
+  <data name="AxesTab_OyFormatCombo_TT" xml:space="preserve">
+    <value>Поле задаёт формат отображения значений на оси Oy</value>
+  </data>
+  <data name="AxesTab_OyPlacementCombo_TT" xml:space="preserve">
+    <value>Поле задаёт расположение оси Oy на изображении кривой</value>
+  </data>
+  <data name="AxesTab_OyPrimaryDiv_TT" xml:space="preserve">
+    <value>Поле задаёт количество основных делений на оси Oy</value>
+  </data>
+  <data name="AxesTab_OySecondaryDiv_TT" xml:space="preserve">
+    <value>Поле задаёт количество дополнительных делений на оси Oy</value>
+  </data>
+  <data name="BrokenFileError" xml:space="preserve">
+    <value>указанный файл не может быть загружен по одной из следующих причин:
+• файл повреждён, пуст, или данные в нём не были упорядочены в единую таблицу (для файлов Microsoft Excel);
+• файл содержит нечисловые значения или имеет неодинаковое число столбцов в строках (для всех файлов); возможно, указано слишком маленькое количество строк, используемых для поиска названий столбцов данных;
+• нарушена структура файла, или версия файла не поддерживается (для файлов программы)</value>
+  </data>
+  <data name="BrokenStyleError" xml:space="preserve">
+    <value>Указанный файл стиля недоступен или повреждён. Загружены не все элементы стилей</value>
+  </data>
+  <data name="BrokenTableError" xml:space="preserve">
+    <value>некоторые значения в таблице введены некорректно. Исправьте ошибки и повторите попытку</value>
+  </data>
+  <data name="ColumnNameInput_AbortName_TT" xml:space="preserve">
+    <value>Сохранить исходное имя столбца</value>
+  </data>
+  <data name="ColumnNameInput_ApplyName_TT" xml:space="preserve">
+    <value>Применить новое имя столбца</value>
+  </data>
+  <data name="ColumnNameInput_Label01" xml:space="preserve">
+    <value>Введите имя столбца:</value>
+  </data>
+  <data name="ColumnsAdderCmd_Correct" xml:space="preserve">
+    <value>Параметры заданы корректно</value>
+  </data>
+  <data name="ColumnsAdderCmd_DescrLabel" xml:space="preserve">
+    <value>Параметры вводятся через точку с запятой, без пробелов, в следующей последовательности: номер столбца абсцисс, номер столбца ординат, ширина изображения, высота изображения, левое смещение изображения, верхнее смещение изображения. Опционально: подпись изображения, левое смещение подписи, верхнее смещение подписи</value>
+  </data>
+  <data name="ColumnsAdderCmd_ICNError" xml:space="preserve">
+    <value>Один из номеров столбцов задан некорректно</value>
+  </data>
+  <data name="ColumnsAdderCmd_IDOError" xml:space="preserve">
+    <value>Одно из смещений диаграммы задано некорректно</value>
+  </data>
+  <data name="ColumnsAdderCmd_IDSError" xml:space="preserve">
+    <value>Один из размеров диаграммы задан некорректно</value>
+  </data>
+  <data name="ColumnsAdderCmd_IPCError" xml:space="preserve">
+    <value>Некорректное число параметров</value>
+  </data>
+  <data name="ColumnsAdderCmd_ITOError" xml:space="preserve">
+    <value>Одно из смещений подписи задано некорректно</value>
+  </data>
+  <data name="ColumnsAdderCmd_Label01" xml:space="preserve">
+    <value>Ошибки:</value>
+  </data>
+  <data name="ColumnsAdderCmd_MultiCmd" xml:space="preserve">
+    <value>Укажите файл шаблона для добавления новых кривых:</value>
+  </data>
+  <data name="ColumnsAdderCmd_OCNError" xml:space="preserve">
+    <value>Один из номеров столбцов выходит за допустимый диапазон: [1; {0:D}]</value>
+  </data>
+  <data name="ColumnsAdderCmd_ODOError" xml:space="preserve">
+    <value>Одно из смещений диаграммы выходит за допустимый диапазон: [0; {0:D}] и [0; {1:D}]</value>
+  </data>
+  <data name="ColumnsAdderCmd_ODSError" xml:space="preserve">
+    <value>Один из размеров диаграммы выходит за допустимый диапазон: [{0:D}; {1:D}] и [{2:D}; {3:D}]</value>
+  </data>
+  <data name="ColumnsAdderCmd_OFDialog" xml:space="preserve">
+    <value>Выберите файл шаблона</value>
+  </data>
+  <data name="ColumnsAdderCmd_OFDialog_F" xml:space="preserve">
+    <value>Шаблоны добавления кривых (*.txt)|*.txt</value>
+  </data>
+  <data name="ColumnsAdderCmd_OTOError" xml:space="preserve">
+    <value>Одно из смещений подписи диаграммы выходит за допустимый диапазон: [0; {0:D}] и [0; {1:D}]</value>
+  </data>
+  <data name="ColumnsAdderCmd_ProcessingMsg" xml:space="preserve">
+    <value>(введите параметры кривой)</value>
+  </data>
+  <data name="ColumnsAdderCmd_ProcessingResults" xml:space="preserve">
+    <value>(выберите файл шаблона)</value>
+  </data>
+  <data name="ColumnsAdderCmd_SelectFile" xml:space="preserve">
+    <value>&amp;Файл</value>
+  </data>
+  <data name="ColumnsAdderCmd_SFDialog" xml:space="preserve">
+    <value>Укажите расположение нового файла шаблона</value>
+  </data>
+  <data name="ColumnsAdderCmd_SingleCmd" xml:space="preserve">
+    <value>Введите параметры новой кривой:</value>
+  </data>
+  <data name="ColumnsAdderCmd_T" xml:space="preserve">
+    <value>Параметры новой кривой</value>
+  </data>
+  <data name="ColumnsAdder_Radio01" xml:space="preserve">
+    <value>Кривая на основе данных:</value>
+  </data>
+  <data name="ColumnsAdder_TE" xml:space="preserve">
+    <value>Выбор новых данных для текущей кривой</value>
+  </data>
+  <data name="ColumnsAdder_TN" xml:space="preserve">
+    <value>Добавление кривой или объекта</value>
+  </data>
+  <data name="CriticalComponentsError" xml:space="preserve">
+    <value>Отсутствует необходимый компонент программы: {0:S}. Возможно, требуется переустановить программу</value>
+  </data>
+  <data name="DataFileLoadError" xml:space="preserve">
+    <value>Ошибка загрузки файла «{0:S}»: {1:S}</value>
+  </data>
+  <data name="DataFileSaveError" xml:space="preserve">
+    <value>Не удалось записать файл данных. Возможно, выбранное расположение недоступно для записи, или файл с данным именем уже существует и занят другой программой</value>
+  </data>
+  <data name="DataProcessingError" xml:space="preserve">
+    <value>Ошибка обработки данных: {0:S}</value>
+  </data>
+  <data name="DiagramDataEditor_AbortButton_TT" xml:space="preserve">
+    <value>Отменить все внесённые изменения и закрыть окно редактирования</value>
+  </data>
+  <data name="DiagramDataEditor_AddRowAfter_TT" xml:space="preserve">
+    <value>Добавить новую строку после текущей</value>
+  </data>
+  <data name="DiagramDataEditor_AddRowBefore_TT" xml:space="preserve">
+    <value>Добавить новую строку перед текущей</value>
+  </data>
+  <data name="DiagramDataEditor_DeleteRow_TT" xml:space="preserve">
+    <value>Удалить выбранные строки</value>
+  </data>
+  <data name="DiagramDataEditor_MoveRowDown_TT" xml:space="preserve">
+    <value>Опустить строку на одну позицию вниз</value>
+  </data>
+  <data name="DiagramDataEditor_MoveRowUp_TT" xml:space="preserve">
+    <value>Поднять строку на одну позицию вверх</value>
+  </data>
+  <data name="DiagramDataEditor_SaveButton_TT" xml:space="preserve">
+    <value>Применить все внесённые изменения и перестроить диаграмму</value>
+  </data>
+  <data name="DiagramDataEditor_T" xml:space="preserve">
+    <value>Редактирование данных диаграммы</value>
+  </data>
+  <data name="DiagramMerger_PaintingAxes" xml:space="preserve">
+    <value>Окрашивать подписи осей цветами соответствующих кривых</value>
+  </data>
+  <data name="DiagramMerger_T" xml:space="preserve">
+    <value>Параметры совмещения кривых и объектов</value>
+  </data>
+  <data name="ExcelNotAvailableError" xml:space="preserve">
+    <value>файлы поддержки формата Microsoft Excel отсутствуют</value>
+  </data>
+  <data name="FileNotAvailableError" xml:space="preserve">
+    <value>указанный файл не найден или недоступен</value>
+  </data>
+  <data name="FontSelectError" xml:space="preserve">
+    <value>Не удаётся использовать выбранный шрифт для построения диаграммы. Выберите другой шрифт или отмените действие</value>
+  </data>
+  <data name="FontTab_AxesFontColor_TT" xml:space="preserve">
+    <value>Кнопка позволяет задать цвет подписей осей</value>
+  </data>
+  <data name="FontTab_AxesFont_TT" xml:space="preserve">
+    <value>Кнопка позволяет задать шрифт подписей осей</value>
+  </data>
+  <data name="FontTab_TextFontColor_TT" xml:space="preserve">
+    <value>Кнопка позволяет задать цвет подписи изображения</value>
+  </data>
+  <data name="FontTab_TextFont_TT" xml:space="preserve">
+    <value>Кнопка позволяет задать шрифт подписи изображения</value>
+  </data>
+  <data name="GridTab_GridColorTurnOff_TT" xml:space="preserve">
+    <value>Кнопка позволяет скрыть линии сетки</value>
+  </data>
+  <data name="GridTab_GridPrimaryColor_TT" xml:space="preserve">
+    <value>Кнопка позволяет задать цвет основных линий сетки</value>
+  </data>
+  <data name="GridTab_GridSecondaryColor_TT" xml:space="preserve">
+    <value>Кнопка позволяет задать цвет дополнительных линий сетки</value>
+  </data>
+  <data name="GridTab_GridWidth_TT" xml:space="preserve">
+    <value>Поле задаёт толщину линий сетки</value>
+  </data>
+  <data name="HelpFileError" xml:space="preserve">
+    <value>Файл справки не найден или недоступен. Убедитесь, что файл существует и доступен, или переустановите программу</value>
+  </data>
+  <data name="ImageSaveError" xml:space="preserve">
+    <value>Не удалось сохранить изображение диаграммы. Возможно, выбранное расположение недоступно для записи, или файл с данным именем уже существует и занят другой программой</value>
+  </data>
+  <data name="IncorrectValueError" xml:space="preserve">
+    <value>Значение введено с ошибкой. Введите допустимое целое или дробное значение или нажмите клавишу [Esc] для возврата первоначального значения</value>
+  </data>
+  <data name="LineForReplaceNSError" xml:space="preserve">
+    <value>Не выбрана кривая для изменения столбцов данных</value>
+  </data>
+  <data name="LinesDelete" xml:space="preserve">
+    <value>Удалить выбранные кривые и/или объекты?</value>
+  </data>
+  <data name="LinesForDeleteNSError" xml:space="preserve">
+    <value>Не выбраны кривые и/или объекты для удаления</value>
+  </data>
+  <data name="LinesForLoadingStylesNSError" xml:space="preserve">
+    <value>Не выбраны кривые и/или объекты для импорта стилей</value>
+  </data>
+  <data name="LinesForResetStylesNSError" xml:space="preserve">
+    <value>Не выбраны кривые и/или объекты для сброса стилей</value>
+  </data>
+  <data name="LinesForSavingStylesNSError" xml:space="preserve">
+    <value>Не выбраны кривые и/или объекты для экспорта стилей</value>
+  </data>
+  <data name="LinesForSettingNSError" xml:space="preserve">
+    <value>Не выбраны кривые и/или объекты для настройки</value>
+  </data>
+  <data name="LinesOverloadError" xml:space="preserve">
+    <value>Достигнуто максимальное ({0:D}) количество кривых на диаграмме. Дальнейшее добавление невозможно</value>
+  </data>
+  <data name="LineTab_LineColor_TT" xml:space="preserve">
+    <value>Кнопка позволяет задать цвет линии</value>
+  </data>
+  <data name="LineTab_LineMarker_TT" xml:space="preserve">
+    <value>Поле задаёт маркер, используемый для построения кривой</value>
+  </data>
+  <data name="LineTab_LineStyleCombo_TT" xml:space="preserve">
+    <value>Поле задаёт формат отображения линии кривой</value>
+  </data>
+  <data name="LineTab_LineWidth_TT" xml:space="preserve">
+    <value>Поле задаёт толщину линии</value>
+  </data>
+  <data name="GeomagDataDrawerForm_AddColumnCmd_TT" xml:space="preserve">
+    <value>Кнопка позволяет добавить новую кривую с помощью строки параметров</value>
+  </data>
+  <data name="GeomagDataDrawerForm_AddColumn_TT" xml:space="preserve">
+    <value>Кнопка позволяет добавить новую кривую или новый объект на диаграмму</value>
+  </data>
+  <data name="GeomagDataDrawerForm_DeleteColumn_TT" xml:space="preserve">
+    <value>Кнопка позволяет удалить выбранные кривые и/или объекты с диаграммы</value>
+  </data>
+  <data name="GeomagDataDrawerForm_DrawLine_TT" xml:space="preserve">
+    <value>Переключатель указывает, следует ли отображать выбранные кривые и/или объекты на диаграмме</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LineNamesList_TT" xml:space="preserve">
+    <value>Поле содержит названия кривых и объектов, добавленных на диаграмму;
+кривые и объекты, редактируемые в данный момент, выделены цветом</value>
+  </data>
+  <data name="GeomagDataDrawerForm_MergeLines_TT" xml:space="preserve">
+    <value>Кнопка позволяет совместить выбранные кривые и/или объекты</value>
+  </data>
+  <data name="GeomagDataDrawerForm_ReplaceColumn_TT" xml:space="preserve">
+    <value>Кнопка позволяет изменить столбцы данных, использованные для построения выбранной (одной) кривой</value>
+  </data>
+  <data name="GeomagDataDrawerForm_SelectionMode_TT" xml:space="preserve">
+    <value>Переключатель указывает, что курсор мыши находится в режиме выбора</value>
+  </data>
+  <data name="MergingAxes_Label01" xml:space="preserve">
+    <value>Оси совмещения:</value>
+  </data>
+  <data name="MergingAxes_OxOy" xml:space="preserve">
+    <value>Обе</value>
+  </data>
+  <data name="MergingError" xml:space="preserve">
+    <value>Для выполнения совмещения необходимо выбрать ровно два элемента диаграммы</value>
+  </data>
+  <data name="MergingVariant_Label02" xml:space="preserve">
+    <value>Вариант совмещения:</value>
+  </data>
+  <data name="MergingVariant_Line" xml:space="preserve">
+    <value>На месте кривой</value>
+  </data>
+  <data name="MFile_MExit_TT" xml:space="preserve">
+    <value>Завершение работы с программой</value>
+  </data>
+  <data name="MOperations_MLoadStyle_TT" xml:space="preserve">
+    <value>Загрузка стиля диаграммы из файла</value>
+  </data>
+  <data name="MFile_MOpenDataFile_TT" xml:space="preserve">
+    <value>Выбор файла данных для построения диаграммы</value>
+  </data>
+  <data name="MFile_MProgramSettings_TT" xml:space="preserve">
+    <value>Настройки программы</value>
+  </data>
+  <data name="MOperations_MRedactData_TT" xml:space="preserve">
+    <value>Редактирование данных диаграммы</value>
+  </data>
+  <data name="MOperations_MResetStyle_TT" xml:space="preserve">
+    <value>Сброс параметров стилей выбранных кривых и объектов до стандартных значений</value>
+  </data>
+  <data name="MFile_MSaveDataFile_TT" xml:space="preserve">
+    <value>Сохранение данных диаграммы в файл</value>
+  </data>
+  <data name="MFile_MSaveDiagramImage_TT" xml:space="preserve">
+    <value>Сохранение изображения диаграммы в файл</value>
+  </data>
+  <data name="MOperations_MSaveStyle_TT" xml:space="preserve">
+    <value>Сохранение стиля выбранных кривых и объектов в файл</value>
+  </data>
+  <data name="MOperations_MSaveTemplate_TT" xml:space="preserve">
+    <value>Сохранение шаблона добавления кривых в файл</value>
+  </data>
+  <data name="MUpperHelp_MAbout_TT" xml:space="preserve">
+    <value>Отображение сведений о программе</value>
+  </data>
+  <data name="MUpperHelp_MHelp_TT" xml:space="preserve">
+    <value>Отображение файла справки</value>
+  </data>
+  <data name="NotEnoughDataError" xml:space="preserve">
+    <value>указанный файл содержит недостаточное количество строк и/или столбцов данных. Возможно, указано слишком большое количество строк, используемых для поиска названий столбцов данных</value>
+  </data>
+  <data name="NotEnoughRowsError" xml:space="preserve">
+    <value>Для построения диаграммы необходимо не менее двух строк</value>
+  </data>
+  <data name="NotInitedError" xml:space="preserve">
+    <value>нет данных для отображения. Выберите файл данных и повторите попытку</value>
+  </data>
+  <data name="ProgramLaunchedError" xml:space="preserve">
+    <value>Программа {0:S} уже запущена</value>
+  </data>
+  <data name="ProgramSettings_ConfirmExit" xml:space="preserve">
+    <value>Требовать подтверждение выхода из программы</value>
+  </data>
+  <data name="ProgramSettings_DisableMousePlacing" xml:space="preserve">
+    <value>Отключить позиционирование изображений мышью (рекомендуется при работе на планшетных ПК)</value>
+  </data>
+  <data name="ProgramSettings_ForceSavingColumnNames" xml:space="preserve">
+    <value>Сохранять имена столбцов в файлах данных</value>
+  </data>
+  <data name="ProgramSettings_ForceShowDiagram" xml:space="preserve">
+    <value>Автоматически добавлять кривые из стандартного шаблона на диаграмму (предпросмотр)</value>
+  </data>
+  <data name="ProgramSettings_ForceUsingBackupFile" xml:space="preserve">
+    <value>Восстанавливать состояние программы при следующем запуске (загруженные данные, добавленные кривые, объекты и т.д.)</value>
+  </data>
+  <data name="ColumnsNamesSelector_Label01" xml:space="preserve">
+    <value>Количество первых строк загружаемого файла, используемых для поиска имён столбцов данных:</value>
+  </data>
+  <data name="ProgramSettings_T" xml:space="preserve">
+    <value>Настройки программы</value>
+  </data>
+  <data name="RangeTab_MaxX_TT" xml:space="preserve">
+    <value>Поле задаёт максимальную абсциссу диапазона построения</value>
+  </data>
+  <data name="RangeTab_MaxY_TT" xml:space="preserve">
+    <value>Поле задаёт максимальную ординату диапазона построения</value>
+  </data>
+  <data name="RangeTab_MinX_TT" xml:space="preserve">
+    <value>Поле задаёт минимальную абсциссу диапазона построения</value>
+  </data>
+  <data name="RangeTab_MinY_TT" xml:space="preserve">
+    <value>Поле задаёт минимальную ординату диапазона построения</value>
+  </data>
+  <data name="RangeTab_SwapX_TT" xml:space="preserve">
+    <value>Кнопка позволяет обменять местами минимальную и максимальную абсциссы диапазона построения (отразить ось Ox)</value>
+  </data>
+  <data name="RangeTab_SwapY_TT" xml:space="preserve">
+    <value>Кнопка позволяет обменять местами минимальную и максимальную ординаты диапазона построения (отразить ось Oy)</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>&amp;Сохранить</value>
+  </data>
+  <data name="SaveCfgFileError" xml:space="preserve">
+    <value>Не удалось сохранить конфигурацию программы. Возможно, место установки программы защищено от записи, или файл занят другой программой</value>
+  </data>
+  <data name="SavePicture_A3Horiz" xml:space="preserve">
+    <value>Подогнать изображение под A3 (альбомный)</value>
+  </data>
+  <data name="SavePicture_A3Vert" xml:space="preserve">
+    <value>Подогнать изображение под A3 (книжный)</value>
+  </data>
+  <data name="SavePicture_A4Horiz" xml:space="preserve">
+    <value>Подогнать изображение под A4 (альбомный)</value>
+  </data>
+  <data name="SavePicture_A4Vert" xml:space="preserve">
+    <value>Подогнать изображение под A4 (книжный)</value>
+  </data>
+  <data name="SavePicture_CustomSize" xml:space="preserve">
+    <value>Сохранить изображение в масштабе</value>
+  </data>
+  <data name="SavePicture_Label01" xml:space="preserve">
+    <value>Выберите вариант сохранения:</value>
+  </data>
+  <data name="SavePicture_SFDialog" xml:space="preserve">
+    <value>Укажите расположение для сохранения изображения</value>
+  </data>
+  <data name="SavePicture_SFDialog_FR" xml:space="preserve">
+    <value>Изображение PNG|*.png</value>
+  </data>
+  <data name="SavePicture_SFDialog_FV" xml:space="preserve">
+    <value>Векторное изображение SVG|*.svg|Векторное изображение EMF|*.emf</value>
+  </data>
+  <data name="SavePicture_T" xml:space="preserve">
+    <value>Сохранение изображения диаграммы</value>
+  </data>
+  <data name="SavePicture_VectorImage" xml:space="preserve">
+    <value>Сохранить как векторное изображение</value>
+  </data>
+  <data name="SizeTab_AlignAsColumn_TT" xml:space="preserve">
+    <value>Кнопка позволяет расположить выбранные элементы диаграммы вертикально, друг под другом</value>
+  </data>
+  <data name="SizeTab_AlignAsRow_TT" xml:space="preserve">
+    <value>Кнопка позволяет расположить выбранные элементы диаграммы горизонтально, друг за другом</value>
+  </data>
+  <data name="SizeTab_ImageHeight_TT" xml:space="preserve">
+    <value>Поле задаёт высоту изображений выбранных элементы диаграммы</value>
+  </data>
+  <data name="SizeTab_ImageWidth_TT" xml:space="preserve">
+    <value>Поле задаёт ширину изображений выбранных элементы диаграммы</value>
+  </data>
+  <data name="SizeTab_LeftOffset_TT" xml:space="preserve">
+    <value>Поле задаёт смещение изображений выбранных элементов диаграммы относительно левого края диаграммы</value>
+  </data>
+  <data name="SizeTab_TopOffset_TT" xml:space="preserve">
+    <value>Поле задаёт смещение изображений выбранных элементов диаграммы относительно верхнего края диаграммы</value>
+  </data>
+  <data name="StyleLoadingType" xml:space="preserve">
+    <value>Выберите вариант использования файла стиля:
+• Нажмите «Да», если необходимо применить стили к выделенным элементам диаграммы;
+• Нажмите «Нет», если требуется добавить указанные в стилях кривые к уже имеющимся и применить стили к ним;
+• Нажмите «Отмена», если применять стили не требуется</value>
+  </data>
+  <data name="StyleSaveError" xml:space="preserve">
+    <value>Не удалось записать файл стиля диаграммы. Возможно, выбранное расположение недоступно для записи, или файл с данным именем уже существует и занят другой программой</value>
+  </data>
+  <data name="StylesReset" xml:space="preserve">
+    <value>Сбросить стили выбранных кривых и объектов к начальным установкам?</value>
+  </data>
+  <data name="TemplateSaveError" xml:space="preserve">
+    <value>Не удалось записать файл шаблона. Возможно, выбранное расположение недоступно для записи, или файл с данным именем уже существует и занят другой программой</value>
+  </data>
+  <data name="TextTab_AutoTextOffset_TT" xml:space="preserve">
+    <value>Флажок указывает, следует ли автоматически расчитывать позиции подписей изображений выбранных кривых</value>
+  </data>
+  <data name="TextTab_LineNameLeftOffset_TT" xml:space="preserve">
+    <value>Поле задаёт смещение подписи изображения кривой относительно левого края изображения</value>
+  </data>
+  <data name="TextTab_LineNameTopOffset_TT" xml:space="preserve">
+    <value>Поле задаёт смещение подписи изображения кривой относительно верхнего края изображения</value>
+  </data>
+  <data name="TextTab_LineName_TT" xml:space="preserve">
+    <value>Поле задаёт подпись к изображению выбранной (одной) кривой</value>
+  </data>
+  <data name="TextTab_OxTextOffset_TT" xml:space="preserve">
+    <value>Поле задаёт смещение подписей оси абсцисс относительно верхнего края изображения</value>
+  </data>
+  <data name="TextTab_OyTextOffset_TT" xml:space="preserve">
+    <value>Поле задаёт смещение подписей оси ординат относительно левого края изображения</value>
+  </data>
+  <data name="RangeTab_SwitchXY_TT" xml:space="preserve">
+    <value>Флажок указывает, следует ли транспонировать выбранные кривые (обменивать абсциссы и ординаты)</value>
+  </data>
+  <data name="UnknownFileParametersSelector_Label01" xml:space="preserve">
+    <value>Ожидаемое количество столбцов данных:</value>
+  </data>
+  <data name="UnknownFileParametersSelector_Label02" xml:space="preserve">
+    <value>Это значение может быть указано «с запасом». Недостающие столбцы данных будут заполняться нулевыми значениями</value>
+  </data>
+  <data name="UnknownFileParametersSelector_T" xml:space="preserve">
+    <value>Параметры извлечения данных</value>
+  </data>
+  <data name="MUpperHelp_MLanguage_TT" xml:space="preserve">
+    <value>Выбор языка интерфейса программы</value>
+  </data>
+  <data name="GeomagDataDrawerForm_MainToolTip" xml:space="preserve">
+    <value>Назначение</value>
+  </data>
+  <data name="ColumnsNamesSelector_T" xml:space="preserve">
+    <value>Параметры загрузки файла</value>
+  </data>
+  <data name="FormulaEvaluator_Label01" xml:space="preserve">
+    <value>Введите формулу для генерации кривой
+Разрешены:
+ • числа (с точками или запятыми);
+ • знаки +, -, *, /, ^, (, );
+ • функции sin, cos, tg, ctg, arcsin, arccos, arctg, arcctg, ln, abs;
+ • константы П (pi) и e;
+ • имя переменной (x)</value>
+  </data>
+  <data name="FormulaEvaluator_T" xml:space="preserve">
+    <value>Ввод формулы для генерации кривых</value>
+  </data>
+  <data name="MFile_MClose" xml:space="preserve">
+    <value>Закрыт&amp;ь диаграмму</value>
+  </data>
+  <data name="MFile_MGenerate" xml:space="preserve">
+    <value>С&amp;генерировать кривые...</value>
+  </data>
+  <data name="ExpressionIsEmptyError" xml:space="preserve">
+    <value>Введённое выражение пусто</value>
+  </data>
+  <data name="IncorrectExpressionEndError" xml:space="preserve">
+    <value>Выражение не завершено. Лексема «{0:S}» не может завершать выражение</value>
+  </data>
+  <data name="IncorrectExpressionStartError" xml:space="preserve">
+    <value>Выражение не может начинаться с лексемы «{0:S}»</value>
+  </data>
+  <data name="LeftParenthesisWasNotClosedError" xml:space="preserve">
+    <value>Одной или нескольким открывающим скобкам не соответствует закрывающая</value>
+  </data>
+  <data name="MisplacedConstantError" xml:space="preserve">
+    <value>Константа «{0:S}» расположена в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedDivisionOperatorError" xml:space="preserve">
+    <value>Оператор деления расположен в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedExponentiationOperatorError" xml:space="preserve">
+    <value>Оператор возведения в степень расположен в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedFunctionCallError" xml:space="preserve">
+    <value>Вызов функции «{0:S}» расположен в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedLeftParenthesisError" xml:space="preserve">
+    <value>Открывающая круглая скобка расположена в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedMinusOperatorError" xml:space="preserve">
+    <value>Оператор вычитания расположен в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedMultiplicationOperatorError" xml:space="preserve">
+    <value>Оператор умножения расположен в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedNumberError" xml:space="preserve">
+    <value>Число «{0:S}» расположено в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedPlusOperatorError" xml:space="preserve">
+    <value>Оператор сложения расположен в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedRightParenthesisError" xml:space="preserve">
+    <value>Закрывающая круглая скобка расположена в недопустимой позиции</value>
+  </data>
+  <data name="MisplacedVariableError" xml:space="preserve">
+    <value>Переменная расположена в недопустимой позиции</value>
+  </data>
+  <data name="NoErrors" xml:space="preserve">
+    <value>Ошибок нет</value>
+  </data>
+  <data name="UnexpectedRightParenthesisError" xml:space="preserve">
+    <value>Одной или нескольким закрывающим скобкам не соответствует открывающая</value>
+  </data>
+  <data name="UnknownLexemeError" xml:space="preserve">
+    <value>Неопознанная лексема: «{0:S}»</value>
+  </data>
+  <data name="IncorrectRangeError" xml:space="preserve">
+    <value>Для заданных диапазона и шага построения количество точек кривой превышает максимально допустимое, или диапазон пуст</value>
+  </data>
+  <data name="FormulaEvaluator_Label02" xml:space="preserve">
+    <value>Диапазон:</value>
+  </data>
+  <data name="FormulaEvaluator_Label03" xml:space="preserve">
+    <value>Шаг:</value>
+  </data>
+  <data name="FormulaEvaluator_Label04" xml:space="preserve">
+    <value>Готовые функции:</value>
+  </data>
+  <data name="ColumnsAdder_Radio02" xml:space="preserve">
+    <value>Объект:</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_1" xml:space="preserve">
+    <value>Прямоугольник</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_2" xml:space="preserve">
+    <value>Залитый прямоугольник</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_3" xml:space="preserve">
+    <value>Эллипс</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_4" xml:space="preserve">
+    <value>Залитый эллипс</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_5" xml:space="preserve">
+    <value>Текстовая строка</value>
+  </data>
+  <data name="ObjectsOverloadError" xml:space="preserve">
+    <value>Достигнуто максимальное ({0:D}) количество дополнительных объектов на диаграмме. Дальнейшее добавление невозможно</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_6" xml:space="preserve">
+    <value>Диагональная линия (\)</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_7" xml:space="preserve">
+    <value>Диагональная линия (/)</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_8" xml:space="preserve">
+    <value>Горизонтальная линия</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_9" xml:space="preserve">
+    <value>Вертикальная линия</value>
+  </data>
+  <data name="FormulaEvaluator_Label05W" xml:space="preserve">
+    <value>Всего точек:</value>
+  </data>
+  <data name="MFile_MLoadFromClipboard" xml:space="preserve">
+    <value>Загрузить из б&amp;уфера обмена</value>
+  </data>
+  <data name="ClipboardLoadError" xml:space="preserve">
+    <value>Буфер обмена не содержит данных, подходящих для построения диаграмм</value>
+  </data>
+  <data name="MFile_MGenerate_TT" xml:space="preserve">
+    <value>Генерация кривых по аналитически заданным функциям</value>
+  </data>
+  <data name="MFile_MLoadFromClipboard_TT" xml:space="preserve">
+    <value>Загрузка данных диаграммы из буфера обмена</value>
+  </data>
+  <data name="MFile_MClose_TT" xml:space="preserve">
+    <value>Закрытие текущей диаграммы без сохранения</value>
+  </data>
+  <data name="CommandLineHelp" xml:space="preserve">
+    <value>Использование из командной строки:
+
+GeomagDataDrawer – запуск программы;
+
+GeomagDataDrawer /? – отображение этого сообщения;
+
+GeomagDataDrawer &lt;имя_файла&gt; – загрузка файла «имя_файла»;
+
+GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [ECC] – преобразование файлов из первого формата во второй;
+  [SLC] – количество строк, используемых для поиска имён столбцов; если не указан, считывается из конфигурации;
+  [ECC] – ожидаемое количество столбцов данных (для извлечения); если не указан, считывается из конфигурации</value>
+  </data>
+  <data name="GeomagDataDrawerFormMenuStrip_MOperations" xml:space="preserve">
+    <value>Оп&amp;ерации</value>
+  </data>
+  <data name="MOperations_MAddColumn" xml:space="preserve">
+    <value>Добавить кривую или объект</value>
+  </data>
+  <data name="MOperations_MAddColumnCmd" xml:space="preserve">
+    <value>Параметрическое добавление кривых</value>
+  </data>
+  <data name="MOperations_MAddColumnCmd_TT" xml:space="preserve">
+    <value>Добавление кривых на диаграмму с помощью строки параметров</value>
+  </data>
+  <data name="MOperations_MAddColumn_TT" xml:space="preserve">
+    <value>Добавление кривой или графического объекта на диаграмму</value>
+  </data>
+  <data name="MOperations_MDeleteColumn" xml:space="preserve">
+    <value>Удалить кривые и объекты</value>
+  </data>
+  <data name="MOperations_MDeleteColumn_TT" xml:space="preserve">
+    <value>Удаление выбранных кривых и объектов с диаграммы</value>
+  </data>
+  <data name="MOperations_MMergeLines" xml:space="preserve">
+    <value>Совместить кривые или объекты</value>
+  </data>
+  <data name="MOperations_MMergeLines_TT" xml:space="preserve">
+    <value>Совмещение (наложение) кривых и/или объектов</value>
+  </data>
+  <data name="MOperations_MReplaceColumn" xml:space="preserve">
+    <value>Выбор столбцов данных кривой</value>
+  </data>
+  <data name="MOperations_MReplaceColumn_TT" xml:space="preserve">
+    <value>Изменение столбцов данных, использованных для построения выбранной (одной) кривой</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxFormat_2" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="UnknownFileParametersSelector_Label03" xml:space="preserve">
+    <value>Столбец абсцисс:</value>
+  </data>
+  <data name="TemplateLoadError" xml:space="preserve">
+    <value>Указанный файл не найден или недоступен</value>
+  </data>
+  <data name="ShowVideo" xml:space="preserve">
+    <value>Показать видеоруководство пользователя на нашем YouTube-канале?</value>
+  </data>
+</root>

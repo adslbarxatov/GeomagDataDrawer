@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму редактирования данных диаграммы
@@ -47,13 +47,13 @@ namespace GeomagDataDrawer
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			LanguageProvider.SetControlsText (this, Language);	// Кнопки
-			LanguageProvider.SetControlsText (ColumnNameInput, MainToolTip, Language);	// Панель имени столбца
-			LanguageProvider.SetControlsText (this, MainToolTip, Language);	// Подсказки
+			Localization.SetControlsText (this, Language);	// Кнопки
+			Localization.SetControlsText (ColumnNameInput, MainToolTip, Language);	// Панель имени столбца
+			Localization.SetControlsText (this, MainToolTip, Language);	// Подсказки
 
-			SaveButton.Text = LanguageProvider.GetText ("SaveButton", Language);
-			AbortButton.Text = LanguageProvider.GetText ("AbortButton", Language);
-			this.Text = LanguageProvider.GetControlText (this.Name, "T", Language);
+			SaveButton.Text = Localization.GetText ("SaveButton", Language);
+			AbortButton.Text = Localization.GetText ("AbortButton", Language);
+			this.Text = Localization.GetControlText (this.Name, "T", Language);
 
 			// Сохранение параметров
 			language = Language;
@@ -88,7 +88,7 @@ namespace GeomagDataDrawer
 		// Обработка ошибки ввода данных
 		private void MainDataGrid_DataError (object sender, DataGridViewDataErrorEventArgs e)
 			{
-			MessageBox.Show (LanguageProvider.GetText ("IncorrectValueError", language),
+			MessageBox.Show (Localization.GetText ("IncorrectValueError", language),
 				ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			}
 
@@ -127,7 +127,7 @@ namespace GeomagDataDrawer
 			// Контроль количества строк
 			if (MainDataGrid.Rows.Count <= 2)
 				{
-				MessageBox.Show (LanguageProvider.GetText ("NotEnoughRowsError", language), ProgramDescription.AssemblyTitle,
+				MessageBox.Show (Localization.GetText ("NotEnoughRowsError", language), ProgramDescription.AssemblyTitle,
 					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
@@ -248,7 +248,7 @@ namespace GeomagDataDrawer
 			if (cancelled)
 				{
 				// Проверка на отмену изменений
-				if (MessageBox.Show (LanguageProvider.GetText ("AbortChanges", language), ProgramDescription.AssemblyTitle,
+				if (MessageBox.Show (Localization.GetText ("AbortChanges", language), ProgramDescription.AssemblyTitle,
 					 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
 					{
 					e.Cancel = true;
@@ -258,7 +258,7 @@ namespace GeomagDataDrawer
 			else
 				{
 				// Проверка на применение изменений
-				if (MessageBox.Show (LanguageProvider.GetText ("ApplyChanges", language), ProgramDescription.AssemblyTitle,
+				if (MessageBox.Show (Localization.GetText ("ApplyChanges", language), ProgramDescription.AssemblyTitle,
 					 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
 					{
 					e.Cancel = true;
@@ -270,7 +270,7 @@ namespace GeomagDataDrawer
 
 				if (ddt.InitResult != DiagramDataInitResults.Ok)
 					{
-					MessageBox.Show (string.Format (LanguageProvider.GetText ("DataProcessingError", language),
+					MessageBox.Show (string.Format (Localization.GetText ("DataProcessingError", language),
 						DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable, language)),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					e.Cancel = true;

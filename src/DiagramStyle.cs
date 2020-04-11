@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс-описатель стиля диаграммы
@@ -959,9 +959,7 @@ namespace GeomagDataDrawer
 			{
 			// Ограничение
 			if ((Scale < MinScale) || (Scale > MaxScale))
-				{
 				return false;
-				}
 
 			// Масштабирование (выполняется в обход ограничений, описаных в свойствах)
 			this.diagramImageHeight = (uint)((float)this.diagramImageHeight * Scale);
@@ -970,6 +968,11 @@ namespace GeomagDataDrawer
 			this.diagramImageWidth = (uint)((float)this.diagramImageWidth * Scale);
 			this.lineWidth = (uint)((float)this.lineWidth * Scale);
 			this.textFont = new Font (textFont.FontFamily, (float)this.textFont.Size * Scale, textFont.Style);
+			this.lineNameLeftOffset = (uint)((float)this.lineNameLeftOffset * Scale);
+			this.lineNameTopOffset = (uint)((float)this.lineNameTopOffset * Scale);
+			this.oxTextOffset = (uint)((float)this.oxTextOffset * Scale);
+			this.oyTextOffset = (uint)((float)this.oyTextOffset * Scale);
+
 			if (ApplyForLine)
 				{
 				this.axesLinesWidth = (uint)((float)this.axesLinesWidth * Scale);

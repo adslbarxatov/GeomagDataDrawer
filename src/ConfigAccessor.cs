@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using Microsoft.Win32;
 using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс обеспечивает доступ к конфигурации программы
@@ -16,25 +15,32 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return top;
+				try
+					{
+					return int.Parse (GetSetting ("Top"));
+					}
+				catch
+					{
+					SetSetting ("Top", ((screenHeight - MinHeight) / 2).ToString ());
+					return (screenHeight - (int)MinHeight) / 2;
+					}
 				}
 			set
 				{
-				if (value > Screen.PrimaryScreen.Bounds.Height)
+				if (value > screenHeight)
 					{
-					top = Screen.PrimaryScreen.Bounds.Height;
+					SetSetting ("Top", screenHeight.ToString ());
 					}
 				else if (value < 0)
 					{
-					top = 0;
+					SetSetting ("Top", "0");
 					}
 				else
 					{
-					top = value;
+					SetSetting ("Top", value.ToString ());
 					}
 				}
 			}
-		private int top;
 
 		/// <summary>
 		/// Возвращает или задаёт смещение окна относительно левого края экрана
@@ -43,25 +49,32 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return left;
+				try
+					{
+					return int.Parse (GetSetting ("Left"));
+					}
+				catch
+					{
+					SetSetting ("Left", ((screenWidth - MinWidth) / 2).ToString ());
+					return (screenWidth - (int)MinWidth) / 2;
+					}
 				}
 			set
 				{
-				if (value > Screen.PrimaryScreen.Bounds.Width)
+				if (value > screenWidth)
 					{
-					left = Screen.PrimaryScreen.Bounds.Width;
+					SetSetting ("Left", screenWidth.ToString ());
 					}
 				else if (value < 0)
 					{
-					left = 0;
+					SetSetting ("Left", "0");
 					}
 				else
 					{
-					left = value;
+					SetSetting ("Left", value.ToString ());
 					}
 				}
 			}
-		private int left;
 
 		/// <summary>
 		/// Возвращает или задаёт ширину окна
@@ -70,25 +83,32 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return width;
+				try
+					{
+					return uint.Parse (GetSetting ("Width"));
+					}
+				catch
+					{
+					SetSetting ("Width", MinWidth.ToString ());
+					return MinWidth;
+					}
 				}
 			set
 				{
-				if (value > Screen.PrimaryScreen.Bounds.Width)
+				if (value > screenWidth)
 					{
-					width = (uint)Screen.PrimaryScreen.Bounds.Width;
+					SetSetting ("Width", screenWidth.ToString ());
 					}
 				else if (value < MinWidth)
 					{
-					width = MinWidth;
+					SetSetting ("Width", MinWidth.ToString ());
 					}
 				else
 					{
-					width = value;
+					SetSetting ("Width", value.ToString ());
 					}
 				}
 			}
-		private uint width;
 
 		/// <summary>
 		/// Возвращает или задаёт высоту окна
@@ -97,25 +117,32 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return height;
+				try
+					{
+					return uint.Parse (GetSetting ("Height"));
+					}
+				catch
+					{
+					SetSetting ("Height", MinHeight.ToString ());
+					return MinHeight;
+					}
 				}
 			set
 				{
-				if (value > Screen.PrimaryScreen.Bounds.Height)
+				if (value > screenHeight)
 					{
-					height = (uint)Screen.PrimaryScreen.Bounds.Height;
+					SetSetting ("Height", screenHeight.ToString ());
 					}
 				else if (value < MinHeight)
 					{
-					height = MinHeight;
+					SetSetting ("Height", MinHeight.ToString ());
 					}
 				else
 					{
-					height = value;
+					SetSetting ("Height", value.ToString ());
 					}
 				}
 			}
-		private uint height;
 
 		/// <summary>
 		/// Возвращает минимально возможную ширину окна
@@ -135,10 +162,7 @@ namespace GeomagDataDrawer
 		/// <summary>
 		/// Возвращает имя стандартного файла параметров предпросмотра диаграммы
 		/// </summary>
-		public const string LineParametersFileName = "GeomagDataDrawer.txt";
-
-		// Константа с именем файла настроек приложения
-		private const string ConfigFileName = "GeomagDataDrawer.cfg";
+		public const string LineParametersFileName = ProgramDescription.AssemblyMainName + ".txt";
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость подтверждения выхода из программы
@@ -147,14 +171,13 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return forceExitConfirmation;
+				return (GetSetting ("ForceExitConfirmation") == "FEC");
 				}
 			set
 				{
-				forceExitConfirmation = value;
+				SetSetting ("ForceExitConfirmation", value ? "FEC" : "0");
 				}
 			}
-		private bool forceExitConfirmation;
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость использования автоматически сохраняемого файла данных
@@ -163,14 +186,13 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return forceUsingBackupDataFile;
+				return (GetSetting ("ForceUsingBackupDataFile") == "FUBDF");
 				}
 			set
 				{
-				forceUsingBackupDataFile = value;
+				SetSetting ("ForceUsingBackupDataFile", value ? "FUBDF" : "0");
 				}
 			}
-		private bool forceUsingBackupDataFile;
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость автоматического добавления первых столбцов на диаграмму
@@ -179,14 +201,21 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return forceShowDiagram;
+				string s = GetSetting ("ForceShowDiagram");
+
+				if (s == "")
+					{
+					SetSetting ("ForceShowDiagram", "FSD");
+					return true;
+					}
+
+				return (s == "FSD");
 				}
 			set
 				{
-				forceShowDiagram = value;
+				SetSetting ("ForceShowDiagram", value ? "FSD" : "0");
 				}
 			}
-		private bool forceShowDiagram;
 
 		/// <summary>
 		/// Возвращает или задаёт количество первых строк файла, используемых для поиска подписей
@@ -195,21 +224,28 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return skippedLinesCount;
+				try
+					{
+					return uint.Parse (GetSetting ("SkippedLinesCount"));
+					}
+				catch
+					{
+					SetSetting ("SkippedLinesCount", "0");
+					return 0;
+					}
 				}
 			set
 				{
 				if (value > MaxSkippedLinesCount)
 					{
-					skippedLinesCount = MaxSkippedLinesCount;
+					SetSetting ("SkippedLinesCount", MaxSkippedLinesCount.ToString ());
 					}
 				else
 					{
-					skippedLinesCount = value;
+					SetSetting ("SkippedLinesCount", value.ToString ());
 					}
 				}
 			}
-		private uint skippedLinesCount;
 
 		/// <summary>
 		/// Максимальное количество первых строк, пропускаемых при загрузке файла
@@ -223,14 +259,21 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return forceSavingColumnNames;
+				string s = GetSetting ("ForceSavingColumnNames");
+
+				if (s == "")
+					{
+					SetSetting ("ForceSavingColumnNames", "FSCN");
+					return true;
+					}
+
+				return (s == "FSCN");
 				}
 			set
 				{
-				forceSavingColumnNames = value;
+				SetSetting ("ForceSavingColumnNames", value ? "FSCN" : "0");
 				}
 			}
-		private bool forceSavingColumnNames;
 
 		/// <summary>
 		/// Возвращает или задаёт предполагаемое количество столбцов для опции извлечения данных
@@ -239,30 +282,42 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return expectedColumnsCount;
+				try
+					{
+					return uint.Parse (GetSetting ("ExpectedColumnsCount"));
+					}
+				catch
+					{
+					SetSetting ("ExpectedColumnsCount", MinExpectedColumnsCount.ToString ());
+					return MinExpectedColumnsCount;
+					}
 				}
 			set
 				{
 				if (value > MaxExpectedColumnsCount)
 					{
-					expectedColumnsCount = MaxExpectedColumnsCount;
+					SetSetting ("ExpectedColumnsCount", MaxExpectedColumnsCount.ToString ());
 					}
-				else if (value < 2)
+				else if (value < MinExpectedColumnsCount)
 					{
-					expectedColumnsCount = 2;
+					SetSetting ("ExpectedColumnsCount", MinExpectedColumnsCount.ToString ());
 					}
 				else
 					{
-					expectedColumnsCount = value;
+					SetSetting ("ExpectedColumnsCount", value.ToString ());
 					}
 				}
 			}
-		private uint expectedColumnsCount;
 
 		/// <summary>
 		/// Максимальное количество столбцов для опции извлечения данных
 		/// </summary>
 		public const uint MaxExpectedColumnsCount = 100;
+
+		/// <summary>
+		/// Минимальное количество столбцов для опции извлечения данных
+		/// </summary>
+		public const uint MinExpectedColumnsCount = 2;
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость отключения дополнительных функций мыши
@@ -271,121 +326,73 @@ namespace GeomagDataDrawer
 			{
 			get
 				{
-				return disableMousePlacing;
+				return (GetSetting ("DisableMousePlacing") == "DMP");
 				}
 			set
 				{
-				disableMousePlacing = value;
+				SetSetting ("DisableMousePlacing", value ? "DMP" : "0");
 				}
 			}
-		private bool disableMousePlacing;
-
-		/// <summary>
-		/// Возвращает или задаёт язык интерфейса программы
-		/// </summary>
-		public SupportedLanguages InterfaceLanguage
-			{
-			get
-				{
-				return interfaceLanguage;
-				}
-			set
-				{
-				interfaceLanguage = value;
-				}
-			}
-		private SupportedLanguages interfaceLanguage;
 
 		/// <summary>
 		/// Конструктор. Загружает ранее сохранённые параметры работы программы
 		/// </summary>
 		public ConfigAccessor ()
 			{
-			// Загрузка стандартных значений
-			width = MinWidth;
-			height = MinHeight;
-			left = (int)(Screen.PrimaryScreen.Bounds.Width - width) / 2;
-			top = (int)(Screen.PrimaryScreen.Bounds.Height - height) / 2;
-			forceExitConfirmation = true;
-			forceUsingBackupDataFile = true;
-			forceShowDiagram = true;
-			skippedLinesCount = 0;
-			forceSavingColumnNames = true;
-			expectedColumnsCount = 2;
-			disableMousePlacing = false;
-			interfaceLanguage = SupportedLanguages.ru_ru;
-
-			// Попытка открытия стандартного файла настроек
-			FileStream FS = null;
+			// Запрос размеров текущего экрана
 			try
 				{
-				FS = new FileStream (Application.StartupPath + "\\" + ConfigFileName, FileMode.Open);
-				}
-			catch
-				{
-				return;
-				}
-			BinaryReader BR = new BinaryReader (FS);
-
-			// Получение значений (присваивается через свойства для выполнения ограничений)
-			try
-				{
-				Left = BR.ReadUInt16 ();
-				Top = BR.ReadUInt16 ();
-				Width = BR.ReadUInt16 ();
-				Height = BR.ReadUInt16 ();
-				ForceExitConfirmation = BR.ReadBoolean ();
-				ForceUsingBackupDataFile = BR.ReadBoolean ();
-				ForceShowDiagram = BR.ReadBoolean ();
-				SkippedLinesCount = BR.ReadUInt16 ();
-				ForceSavingColumnNames = BR.ReadBoolean ();
-				ExpectedColumnsCount = BR.ReadUInt16 ();
-				DisableMousePlacing = BR.ReadBoolean ();
-				InterfaceLanguage = (SupportedLanguages)BR.ReadUInt16 ();
+				screenWidth = Screen.PrimaryScreen.Bounds.Width;
+				screenHeight = Screen.PrimaryScreen.Bounds.Height;
 				}
 			catch
 				{
 				}
-
-			// Завершение
-			BR.Close ();
-			FS.Close ();
 			}
 
+		private int screenWidth = 1280, screenHeight = 720;
+		private SupportedLanguages language = Localization.CurrentLanguage;
+
 		/// <summary>
-		/// Метод сохраняет параметры работы программы
+		/// Возвращает или задаёт язык интерфейса
 		/// </summary>
-		/// <returns>Возвращает true в случае успеха</returns>
-		public bool SaveConfiguration ()
+		public SupportedLanguages InterfaceLanguage
 			{
-			// Запись в файл
-			FileStream FS = null;
+			get
+				{
+				return language;
+				}
+			set
+				{
+				Localization.CurrentLanguage = language = value;
+				}
+			}
+
+		// Метод получает значение настройки из реестра
+		private string GetSetting (string ValueName)
+			{
+			string res = "";
 			try
 				{
-				FS = new FileStream (Application.StartupPath + "\\" + ConfigFileName, FileMode.Create);
+				res = Registry.GetValue (ProgramDescription.AssemblySettingsKey, ValueName, "").ToString ();
 				}
 			catch
 				{
-				return false;
 				}
-			BinaryWriter BW = new BinaryWriter (FS);
 
-			BW.Write ((UInt16)left);
-			BW.Write ((UInt16)top);
-			BW.Write ((UInt16)width);
-			BW.Write ((UInt16)height);
-			BW.Write (forceExitConfirmation);
-			BW.Write (forceUsingBackupDataFile);
-			BW.Write (forceShowDiagram);
-			BW.Write ((UInt16)skippedLinesCount);
-			BW.Write (forceSavingColumnNames);
-			BW.Write ((UInt16)expectedColumnsCount);
-			BW.Write (disableMousePlacing);
-			BW.Write ((UInt16)interfaceLanguage);
+			return res;
+			}
 
-			BW.Close ();
-			FS.Close ();
-			return true;
+		// Метод задаёт значение настройки в реестре
+		private void SetSetting (string ValueName, string Value)
+			{
+			try
+				{
+				Registry.SetValue (ProgramDescription.AssemblySettingsKey, ValueName, Value);
+				}
+			catch
+				{
+				}
 			}
 		}
 	}

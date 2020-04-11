@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму настроек программы
@@ -103,17 +103,17 @@ namespace GeomagDataDrawer
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			LanguageProvider.SetControlsText (this, Language);			// Кнопки
-			LanguageProvider.SetControlsText (MergingAxes, Language);	// Панели
-			LanguageProvider.SetControlsText (MergingVariant, Language);
+			Localization.SetControlsText (this, Language);			// Кнопки
+			Localization.SetControlsText (MergingAxes, Language);	// Панели
+			Localization.SetControlsText (MergingVariant, Language);
 
-			ApplyButton.Text = LanguageProvider.GetText ("ApplyButton", Language);
-			AbortButton.Text = LanguageProvider.GetText ("AbortButton", Language);
-			this.Text = LanguageProvider.GetControlText (this.Name, "T", Language);
+			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
+			AbortButton.Text = Localization.GetText ("AbortButton", Language);
+			this.Text = Localization.GetControlText (this.Name, "T", Language);
 
 			// Сохранение параметров
-			FirstLine.Text = LanguageProvider.GetControlText (MergingVariant.Name, "Line", Language) + " " + Line1Name;
-			SecondLine.Text = LanguageProvider.GetControlText (MergingVariant.Name, "Line", Language) + " " + Line2Name;
+			FirstLine.Text = Localization.GetControlText (MergingVariant.Name, "Line", Language) + " " + Line1Name;
+			SecondLine.Text = Localization.GetControlText (MergingVariant.Name, "Line", Language) + " " + Line2Name;
 
 			// Запуск
 			this.ShowDialog ();

@@ -1,4 +1,4 @@
-﻿namespace GeomagDataDrawer
+﻿namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс обеспечивает доступ к служебной информации, формируемой при создании новой кривой

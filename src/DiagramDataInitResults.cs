@@ -1,4 +1,4 @@
-﻿namespace GeomagDataDrawer
+﻿namespace RD_AAOW
 	{
 	/// <summary>
 	/// Перечисление результатов инициализации класса-описателя диаграммы
@@ -57,22 +57,22 @@
 			switch (Result)
 				{
 				case DiagramDataInitResults.NotInited:
-					return LanguageProvider.GetText ("NotInitedError", Language);
+					return Localization.GetText ("NotInitedError", Language);
 
 				case DiagramDataInitResults.FileNotAvailable:
-					return LanguageProvider.GetText ("FileNotAvailableError", Language);
+					return Localization.GetText ("FileNotAvailableError", Language);
 
 				case DiagramDataInitResults.BrokenFile:
-					return LanguageProvider.GetText ("BrokenFileError", Language);
+					return Localization.GetText ("BrokenFileError", Language);
 
 				case DiagramDataInitResults.NotEnoughData:
-					return LanguageProvider.GetText ("NotEnoughDataError", Language);
+					return Localization.GetText ("NotEnoughDataError", Language);
 
 				case DiagramDataInitResults.BrokenTable:
-					return LanguageProvider.GetText ("BrokenTableError", Language);
+					return Localization.GetText ("BrokenTableError", Language);
 
 				case DiagramDataInitResults.ExcelNotAvailable:
-					return LanguageProvider.GetText ("ExcelNotAvailableError", Language);
+					return Localization.GetText ("ExcelNotAvailableError", Language);
 
 				default:	// В том числе - OK
 					return "";

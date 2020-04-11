@@ -1,0 +1,1039 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AxesTab_AutoDivisions" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="AxesTab_Label11" xml:space="preserve">
+    <value>Axes divisions count:</value>
+  </data>
+  <data name="AxesTab_Label12" xml:space="preserve">
+    <value>Ox, primary:</value>
+  </data>
+  <data name="AxesTab_Label13" xml:space="preserve">
+    <value>Oy, primary:</value>
+  </data>
+  <data name="AxesTab_Label14" xml:space="preserve">
+    <value>Ox, secondary:</value>
+  </data>
+  <data name="AxesTab_Label15" xml:space="preserve">
+    <value>Oy, secondary:</value>
+  </data>
+  <data name="AxesTab_Label16" xml:space="preserve">
+    <value>Axes thickness:</value>
+  </data>
+  <data name="AxesTab_Label17" xml:space="preserve">
+    <value>Axes color:</value>
+  </data>
+  <data name="AxesTab_Label18" xml:space="preserve">
+    <value>Axes placement:</value>
+  </data>
+  <data name="AxesTab_Label21" xml:space="preserve">
+    <value>Formats of axes labels:</value>
+  </data>
+  <data name="FontTab_AxesFont" xml:space="preserve">
+    <value>Axes labels font</value>
+  </data>
+  <data name="FontTab_Label27" xml:space="preserve">
+    <value>Fonts and colors:</value>
+  </data>
+  <data name="FontTab_TextFont" xml:space="preserve">
+    <value>Image caption font</value>
+  </data>
+  <data name="GridTab_Label24" xml:space="preserve">
+    <value>Grid lines thickness:</value>
+  </data>
+  <data name="GridTab_Label25" xml:space="preserve">
+    <value>Primary lines color:</value>
+  </data>
+  <data name="GridTab_Label26" xml:space="preserve">
+    <value>Secondary lines color:</value>
+  </data>
+  <data name="LineTab_Label28" xml:space="preserve">
+    <value>Thickness:</value>
+  </data>
+  <data name="LineTab_Label29" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="LineTab_Label30" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="LineTab_Label31" xml:space="preserve">
+    <value>Marker:</value>
+  </data>
+  <data name="GeomagDataDrawerFormMenuStrip_MFile" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="GeomagDataDrawerFormMenuStrip_MUpperHelp" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LineStyle_0" xml:space="preserve">
+    <value>Line only</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LineStyle_1" xml:space="preserve">
+    <value>Line and markers</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LineStyle_2" xml:space="preserve">
+    <value>Markers only</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LoadStyleDialog" xml:space="preserve">
+    <value>Choose diagram style file</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OFDialog" xml:space="preserve">
+    <value>Choose data file</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OFDialog_F" xml:space="preserve">
+    <value>{0:S} data files (*.gdd)|*.gdd|Microsoft Excel format '97 и '07|*.xls;*.xlsx|Windows CSV tables|*.csv|Extracting data from text files|*.*</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxFormat_0" xml:space="preserve">
+    <value>Simple</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxFormat_1" xml:space="preserve">
+    <value>Exponential</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxPlacement_0" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxPlacement_1" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxPlacement_2" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxPlacement_3" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OyPlacement_0" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OyPlacement_1" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OyPlacement_2" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OyPlacement_3" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="GeomagDataDrawerForm_SaveStyleDialog" xml:space="preserve">
+    <value>Specify the location of new style file</value>
+  </data>
+  <data name="GeomagDataDrawerForm_SFDialog" xml:space="preserve">
+    <value>Specify the location of new data file</value>
+  </data>
+  <data name="GeomagDataDrawerForm_SFDialog_F" xml:space="preserve">
+    <value>{0:S} data files (*.gdd)|*.gdd|Random data set diagrams (*.dat)|*.dat|Windows CSV tables|*.csv</value>
+  </data>
+  <data name="GeomagDataDrawerForm_StyleDialog_F" xml:space="preserve">
+    <value>Diagram style files (*.gddstyle)|*.gddstyle</value>
+  </data>
+  <data name="MainTabControl_AxesTab_TT" xml:space="preserve">
+    <value>Axes panel</value>
+  </data>
+  <data name="MainTabControl_FontTab_TT" xml:space="preserve">
+    <value>Fonts and colors panel</value>
+  </data>
+  <data name="MainTabControl_GridTab_TT" xml:space="preserve">
+    <value>Grid panel</value>
+  </data>
+  <data name="MainTabControl_LineTab_TT" xml:space="preserve">
+    <value>Lines panel</value>
+  </data>
+  <data name="MainTabControl_RangeTab_TT" xml:space="preserve">
+    <value>Plotting range panel</value>
+  </data>
+  <data name="MainTabControl_SizeTab_TT" xml:space="preserve">
+    <value>Placements and dimensions panel</value>
+  </data>
+  <data name="MainTabControl_TextTab_TT" xml:space="preserve">
+    <value>Labels and captions panel</value>
+  </data>
+  <data name="MFile_MExit" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
+  <data name="MOperations_MLoadStyle" xml:space="preserve">
+    <value>&amp;Load style...</value>
+  </data>
+  <data name="MFile_MOpenDataFile" xml:space="preserve">
+    <value>&amp;Open data file...</value>
+  </data>
+  <data name="MFile_MProgramSettings" xml:space="preserve">
+    <value>Se&amp;ttings</value>
+  </data>
+  <data name="MOperations_MRedactData" xml:space="preserve">
+    <value>&amp;Edit diagram data...</value>
+  </data>
+  <data name="MOperations_MResetStyle" xml:space="preserve">
+    <value>&amp;Reset style</value>
+  </data>
+  <data name="MFile_MSaveDataFile" xml:space="preserve">
+    <value>&amp;Save data file...</value>
+  </data>
+  <data name="MFile_MSaveDiagramImage" xml:space="preserve">
+    <value>Save diagram &amp;image...</value>
+  </data>
+  <data name="MOperations_MSaveStyle" xml:space="preserve">
+    <value>Save st&amp;yle...</value>
+  </data>
+  <data name="MOperations_MSaveTemplate" xml:space="preserve">
+    <value>Save curves adding te&amp;mplate...</value>
+  </data>
+  <data name="MUpperHelp_MAbout" xml:space="preserve">
+    <value>&amp;About</value>
+  </data>
+  <data name="MUpperHelp_MHelp" xml:space="preserve">
+    <value>&amp;User manual</value>
+  </data>
+  <data name="RangeTab_Label01" xml:space="preserve">
+    <value>Plotting ranges:</value>
+  </data>
+  <data name="SizeTab_AlignAsColumn" xml:space="preserve">
+    <value>Arrange in column</value>
+  </data>
+  <data name="SizeTab_AlignAsRow" xml:space="preserve">
+    <value>Arrange in row</value>
+  </data>
+  <data name="SizeTab_Label02" xml:space="preserve">
+    <value>Image placement and dimensions:</value>
+  </data>
+  <data name="SizeTab_Label03" xml:space="preserve">
+    <value>left offset:</value>
+  </data>
+  <data name="SizeTab_Label04" xml:space="preserve">
+    <value>top offset:</value>
+  </data>
+  <data name="SizeTab_Label05" xml:space="preserve">
+    <value>width:</value>
+  </data>
+  <data name="SizeTab_Label06" xml:space="preserve">
+    <value>height:</value>
+  </data>
+  <data name="TextTab_AutoTextOffset" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="TextTab_Label07" xml:space="preserve">
+    <value>X-axis labels offset:</value>
+  </data>
+  <data name="TextTab_Label08" xml:space="preserve">
+    <value>Y-axis labels offset:</value>
+  </data>
+  <data name="TextTab_Label09" xml:space="preserve">
+    <value>Image caption:</value>
+  </data>
+  <data name="TextTab_Label10" xml:space="preserve">
+    <value>Caption placement:</value>
+  </data>
+  <data name="RangeTab_SwitchXY" xml:space="preserve">
+    <value>Perform curve transposition</value>
+  </data>
+  <data name="AbortButton" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
+  <data name="AbortChanges" xml:space="preserve">
+    <value>This will cancel all changes made. Are you sure?</value>
+  </data>
+  <data name="ApplicationExit" xml:space="preserve">
+    <value>Are you really want to exit the application?</value>
+  </data>
+  <data name="ApplyButton" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="ApplyChanges" xml:space="preserve">
+    <value>Save all changes made?</value>
+  </data>
+  <data name="AxesTab_AutoDivisions_TT" xml:space="preserve">
+    <value>Flag indicates whether or not to automatically set count of primary divisions</value>
+  </data>
+  <data name="AxesTab_AxesColorTurnOff_TT" xml:space="preserve">
+    <value>Button allows you to hide axes</value>
+  </data>
+  <data name="AxesTab_AxesColor_TT" xml:space="preserve">
+    <value>Button allows you to set color of axes lines</value>
+  </data>
+  <data name="AxesTab_AxesWidth_TT" xml:space="preserve">
+    <value>Field defines thickness of axes lines</value>
+  </data>
+  <data name="AxesTab_OxFormatCombo_TT" xml:space="preserve">
+    <value>Field defines display format of values on X-axis</value>
+  </data>
+  <data name="AxesTab_OxPlacementCombo_TT" xml:space="preserve">
+    <value>Field defines placement of X-axis on selected curve(s) image(s)</value>
+  </data>
+  <data name="AxesTab_OxPrimaryDiv_TT" xml:space="preserve">
+    <value>Field defines count of primary divisions on X-axis</value>
+  </data>
+  <data name="AxesTab_OxSecondaryDiv_TT" xml:space="preserve">
+    <value>Field defines count of secondary divisions on X-axis</value>
+  </data>
+  <data name="AxesTab_OyFormatCombo_TT" xml:space="preserve">
+    <value>Field defines display format of values on Y-axis</value>
+  </data>
+  <data name="AxesTab_OyPlacementCombo_TT" xml:space="preserve">
+    <value>Field defines placement of Y-axis on selected curve(s) image(s)</value>
+  </data>
+  <data name="AxesTab_OyPrimaryDiv_TT" xml:space="preserve">
+    <value>Field defines count of primary divisions on Y-axis</value>
+  </data>
+  <data name="AxesTab_OySecondaryDiv_TT" xml:space="preserve">
+    <value>Field defines count of secondary divisions on Y-axis</value>
+  </data>
+  <data name="BrokenFileError" xml:space="preserve">
+    <value>file cannot be loaded because of one of following reasons:
+• file is corrupted, is empty, or it's data were not arranged in a single table (for Microsoft Excel files);
+• the file contains non-numeric value, or has an unequal number of columns in rows (for all files); probably, you have specified too low count of lines that are used to search data columns names
+• broken structure of file, or file version is not supported (for program files)</value>
+  </data>
+  <data name="BrokenStyleError" xml:space="preserve">
+    <value>Specified style file is not available or is damaged. Some elements of styles was not loaded</value>
+  </data>
+  <data name="BrokenTableError" xml:space="preserve">
+    <value>some values in table is invalid. Correct wrong values and try again</value>
+  </data>
+  <data name="ColumnNameInput_AbortName_TT" xml:space="preserve">
+    <value>Retain original column name</value>
+  </data>
+  <data name="ColumnNameInput_ApplyName_TT" xml:space="preserve">
+    <value>Apply new column name</value>
+  </data>
+  <data name="ColumnNameInput_Label01" xml:space="preserve">
+    <value>Enter column name:</value>
+  </data>
+  <data name="ColumnsAdderCmd_Correct" xml:space="preserve">
+    <value>Parameters are correct</value>
+  </data>
+  <data name="ColumnsAdderCmd_DescrLabel" xml:space="preserve">
+    <value>Parameters are separated by semicolons, with no spaces, as follows: column number for X-axis, column number for Y-axis, image width, image height, left offset of image, top offset of image. Optional: image caption, left offset of caption, top offset of caption</value>
+  </data>
+  <data name="ColumnsAdderCmd_ICNError" xml:space="preserve">
+    <value>One of data column numbers is incorrect</value>
+  </data>
+  <data name="ColumnsAdderCmd_IDOError" xml:space="preserve">
+    <value>One of image offsets is incorrect</value>
+  </data>
+  <data name="ColumnsAdderCmd_IDSError" xml:space="preserve">
+    <value>One of image dimensions is incorrect</value>
+  </data>
+  <data name="ColumnsAdderCmd_IPCError" xml:space="preserve">
+    <value>Count of parameters is incorrect</value>
+  </data>
+  <data name="ColumnsAdderCmd_ITOError" xml:space="preserve">
+    <value>One of caption offsets is incorrect</value>
+  </data>
+  <data name="ColumnsAdderCmd_Label01" xml:space="preserve">
+    <value>Errors:</value>
+  </data>
+  <data name="ColumnsAdderCmd_MultiCmd" xml:space="preserve">
+    <value>Specify template file to add new curves:</value>
+  </data>
+  <data name="ColumnsAdderCmd_OCNError" xml:space="preserve">
+    <value>One of column numbers is out of range: [1; {0:D}]</value>
+  </data>
+  <data name="ColumnsAdderCmd_ODOError" xml:space="preserve">
+    <value>One of image offsets is out of range: [0; {0:D}] and [0; {1:D}]</value>
+  </data>
+  <data name="ColumnsAdderCmd_ODSError" xml:space="preserve">
+    <value>One of image dimensions is out of range: [{0:D}; {1:D}] and [{2:D}; {3:D}]</value>
+  </data>
+  <data name="ColumnsAdderCmd_OFDialog" xml:space="preserve">
+    <value>Choose template file</value>
+  </data>
+  <data name="ColumnsAdderCmd_OFDialog_F" xml:space="preserve">
+    <value>Curves adding templates (*.txt)|*.txt</value>
+  </data>
+  <data name="ColumnsAdderCmd_OTOError" xml:space="preserve">
+    <value>One of caption offsets is out of range: [0; {0:D}] and [0; {1:D}]</value>
+  </data>
+  <data name="ColumnsAdderCmd_ProcessingMsg" xml:space="preserve">
+    <value>(enter curve parameters)</value>
+  </data>
+  <data name="ColumnsAdderCmd_ProcessingResults" xml:space="preserve">
+    <value>(choose template file)</value>
+  </data>
+  <data name="ColumnsAdderCmd_SelectFile" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="ColumnsAdderCmd_SFDialog" xml:space="preserve">
+    <value>Specify the location of new template file</value>
+  </data>
+  <data name="ColumnsAdderCmd_SingleCmd" xml:space="preserve">
+    <value>Enter parameters of new curve:</value>
+  </data>
+  <data name="ColumnsAdderCmd_T" xml:space="preserve">
+    <value>New curve parameters</value>
+  </data>
+  <data name="ColumnsAdder_Radio01" xml:space="preserve">
+    <value>Curve based on:</value>
+  </data>
+  <data name="ColumnsAdder_TE" xml:space="preserve">
+    <value>Choosing new data for current curve</value>
+  </data>
+  <data name="ColumnsAdder_TN" xml:space="preserve">
+    <value>Add new curve or object</value>
+  </data>
+  <data name="CriticalComponentsError" xml:space="preserve">
+    <value>Missing required component of the program: {0:S}. Probably, you need to reinstall it</value>
+  </data>
+  <data name="DataFileLoadError" xml:space="preserve">
+    <value>File «{0:S}» loading error: {1:S}</value>
+  </data>
+  <data name="DataFileSaveError" xml:space="preserve">
+    <value>Failed to write data file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
+  </data>
+  <data name="DataProcessingError" xml:space="preserve">
+    <value>Data processing error: {0:S}</value>
+  </data>
+  <data name="DiagramDataEditor_AbortButton_TT" xml:space="preserve">
+    <value>Cancel all changes made and close editing window</value>
+  </data>
+  <data name="DiagramDataEditor_AddRowAfter_TT" xml:space="preserve">
+    <value>Add new row after the current</value>
+  </data>
+  <data name="DiagramDataEditor_AddRowBefore_TT" xml:space="preserve">
+    <value>Add new row before the current</value>
+  </data>
+  <data name="DiagramDataEditor_DeleteRow_TT" xml:space="preserve">
+    <value>Delete selected rows</value>
+  </data>
+  <data name="DiagramDataEditor_MoveRowDown_TT" xml:space="preserve">
+    <value>Move the row down</value>
+  </data>
+  <data name="DiagramDataEditor_MoveRowUp_TT" xml:space="preserve">
+    <value>Move the row up</value>
+  </data>
+  <data name="DiagramDataEditor_SaveButton_TT" xml:space="preserve">
+    <value>Apply all changes made and rebuild diagram</value>
+  </data>
+  <data name="DiagramDataEditor_T" xml:space="preserve">
+    <value>Diagram data editing</value>
+  </data>
+  <data name="DiagramMerger_PaintingAxes" xml:space="preserve">
+    <value>Paint axes labels using colors of corresponding curves</value>
+  </data>
+  <data name="DiagramMerger_T" xml:space="preserve">
+    <value>Curves and objects merging options</value>
+  </data>
+  <data name="ExcelNotAvailableError" xml:space="preserve">
+    <value>Microsoft Excel format support components are missing</value>
+  </data>
+  <data name="FileNotAvailableError" xml:space="preserve">
+    <value>specified file not found or not available</value>
+  </data>
+  <data name="FontSelectError" xml:space="preserve">
+    <value>Unable to use selected font for plotting. Select another font or cancel the action</value>
+  </data>
+  <data name="FontTab_AxesFontColor_TT" xml:space="preserve">
+    <value>Button allows you to set axes labels color</value>
+  </data>
+  <data name="FontTab_AxesFont_TT" xml:space="preserve">
+    <value>Button allows you to set axes labels font</value>
+  </data>
+  <data name="FontTab_TextFontColor_TT" xml:space="preserve">
+    <value>Button allows you to set caption color</value>
+  </data>
+  <data name="FontTab_TextFont_TT" xml:space="preserve">
+    <value>Button allows you to set caption font</value>
+  </data>
+  <data name="GridTab_GridColorTurnOff_TT" xml:space="preserve">
+    <value>Button allows you to hide grid lines</value>
+  </data>
+  <data name="GridTab_GridPrimaryColor_TT" xml:space="preserve">
+    <value>Button allows you to set color of primary grid lines</value>
+  </data>
+  <data name="GridTab_GridSecondaryColor_TT" xml:space="preserve">
+    <value>Button allows you to set color of secondary grid lines</value>
+  </data>
+  <data name="GridTab_GridWidth_TT" xml:space="preserve">
+    <value>Field defines grid lines thickness</value>
+  </data>
+  <data name="HelpFileError" xml:space="preserve">
+    <value>Help file not found or not available. Make sure the file exists and is available, or reinstall the application</value>
+  </data>
+  <data name="ImageSaveError" xml:space="preserve">
+    <value>Failed to write diagram image file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
+  </data>
+  <data name="IncorrectValueError" xml:space="preserve">
+    <value>Entered value is incorrect. Enter a valid integer or float value or press [Esc] key to return to original value</value>
+  </data>
+  <data name="LineForReplaceNSError" xml:space="preserve">
+    <value>You must select curve to perform data columns change</value>
+  </data>
+  <data name="LinesDelete" xml:space="preserve">
+    <value>Do you really want to delete selected curve(s) and/or object(s)?</value>
+  </data>
+  <data name="LinesForDeleteNSError" xml:space="preserve">
+    <value>You must select curve(s) and/or object(s) for deleting</value>
+  </data>
+  <data name="LinesForLoadingStylesNSError" xml:space="preserve">
+    <value>You must select curve(s) and/or object(s) for importing style(s)</value>
+  </data>
+  <data name="LinesForResetStylesNSError" xml:space="preserve">
+    <value>You must select curve(s) and/or object(s) for resetting style(s)</value>
+  </data>
+  <data name="LinesForSavingStylesNSError" xml:space="preserve">
+    <value>You must select curve(s) and/or object(s) for exporting style(s)</value>
+  </data>
+  <data name="LinesForSettingNSError" xml:space="preserve">
+    <value>You must select curve(s) adn/or object(s) for setting</value>
+  </data>
+  <data name="LinesOverloadError" xml:space="preserve">
+    <value>Maximum of curves count ({0:D}) has been reached. Further addition is impossible</value>
+  </data>
+  <data name="LineTab_LineColor_TT" xml:space="preserve">
+    <value>Button allows you to set line(s) color</value>
+  </data>
+  <data name="LineTab_LineMarker_TT" xml:space="preserve">
+    <value>Field defines curve(s) line marker</value>
+  </data>
+  <data name="LineTab_LineStyleCombo_TT" xml:space="preserve">
+    <value>Field defines curve(s) line type</value>
+  </data>
+  <data name="LineTab_LineWidth_TT" xml:space="preserve">
+    <value>Field defines line(s) line thickness</value>
+  </data>
+  <data name="GeomagDataDrawerForm_AddColumnCmd_TT" xml:space="preserve">
+    <value>Button allows you to add new curve(s) using parameters line</value>
+  </data>
+  <data name="GeomagDataDrawerForm_AddColumn_TT" xml:space="preserve">
+    <value>Button allows you to add new curve or object</value>
+  </data>
+  <data name="GeomagDataDrawerForm_DeleteColumn_TT" xml:space="preserve">
+    <value>Button allows you to delete selected curve(s) and/or object(s)</value>
+  </data>
+  <data name="GeomagDataDrawerForm_DrawLine_TT" xml:space="preserve">
+    <value>Switch defines whether to display selected curve(s) and/or object(s)</value>
+  </data>
+  <data name="GeomagDataDrawerForm_LineNamesList_TT" xml:space="preserve">
+    <value>Field contains names of curves and objects that have been added to diagram; curves and objects, editable at the moment, are highlighted</value>
+  </data>
+  <data name="GeomagDataDrawerForm_MergeLines_TT" xml:space="preserve">
+    <value>Button allows you to merge selected curve(s) and/or object(s)</value>
+  </data>
+  <data name="GeomagDataDrawerForm_ReplaceColumn_TT" xml:space="preserve">
+    <value>Button allows you to change data columns of selected (single) curve</value>
+  </data>
+  <data name="GeomagDataDrawerForm_SelectionMode_TT" xml:space="preserve">
+    <value>Switch indicates that cursor is in selection mode</value>
+  </data>
+  <data name="MergingAxes_Label01" xml:space="preserve">
+    <value>Axes of merging:</value>
+  </data>
+  <data name="MergingAxes_OxOy" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <data name="MergingError" xml:space="preserve">
+    <value>To perform merge you must select exactly two diagram elements</value>
+  </data>
+  <data name="MergingVariant_Label02" xml:space="preserve">
+    <value>Merging variant:</value>
+  </data>
+  <data name="MergingVariant_Line" xml:space="preserve">
+    <value>In place of</value>
+  </data>
+  <data name="MFile_MExit_TT" xml:space="preserve">
+    <value>Exiting the application</value>
+  </data>
+  <data name="MOperations_MLoadStyle_TT" xml:space="preserve">
+    <value>Load style(s) from file</value>
+  </data>
+  <data name="MFile_MOpenDataFile_TT" xml:space="preserve">
+    <value>Choose data file for plotting</value>
+  </data>
+  <data name="MFile_MProgramSettings_TT" xml:space="preserve">
+    <value>Application settings</value>
+  </data>
+  <data name="MOperations_MRedactData_TT" xml:space="preserve">
+    <value>Diagram data editing</value>
+  </data>
+  <data name="MOperations_MResetStyle_TT" xml:space="preserve">
+    <value>Return default settings for style(s) of selected curve(s) and object(s)</value>
+  </data>
+  <data name="MFile_MSaveDataFile_TT" xml:space="preserve">
+    <value>Save diagram data to file</value>
+  </data>
+  <data name="MFile_MSaveDiagramImage_TT" xml:space="preserve">
+    <value>Save diagram image to file</value>
+  </data>
+  <data name="MOperations_MSaveStyle_TT" xml:space="preserve">
+    <value>Save style(s) of selected curve(s) and object(s) to file</value>
+  </data>
+  <data name="MOperations_MSaveTemplate_TT" xml:space="preserve">
+    <value>Save curves adding template to file</value>
+  </data>
+  <data name="MUpperHelp_MAbout_TT" xml:space="preserve">
+    <value>Show short application info</value>
+  </data>
+  <data name="MUpperHelp_MHelp_TT" xml:space="preserve">
+    <value>Show help file</value>
+  </data>
+  <data name="NotEnoughDataError" xml:space="preserve">
+    <value>file contains an insufficient count of rows and / or columns of data, or you have specified too high count of lines that are used to search data columns names</value>
+  </data>
+  <data name="NotEnoughRowsError" xml:space="preserve">
+    <value>At least two rows are necessary to plotting</value>
+  </data>
+  <data name="NotInitedError" xml:space="preserve">
+    <value>no data for plotting. Choose data file and try again</value>
+  </data>
+  <data name="ProgramLaunchedError" xml:space="preserve">
+    <value>{0:S} is already running</value>
+  </data>
+  <data name="ProgramSettings_ConfirmExit" xml:space="preserve">
+    <value>Request exiting confirmation</value>
+  </data>
+  <data name="ProgramSettings_DisableMousePlacing" xml:space="preserve">
+    <value>Disable images positioning by mouse (recommended when working on tablet PC)</value>
+  </data>
+  <data name="ProgramSettings_ForceSavingColumnNames" xml:space="preserve">
+    <value>Save data columns names in data files</value>
+  </data>
+  <data name="ProgramSettings_ForceShowDiagram" xml:space="preserve">
+    <value>Automatically add curves from default template to diagram (preview)</value>
+  </data>
+  <data name="ProgramSettings_ForceUsingBackupFile" xml:space="preserve">
+    <value>Restore state of application at the next start (diagram data, added curves and objects, etc.)</value>
+  </data>
+  <data name="ColumnsNamesSelector_Label01" xml:space="preserve">
+    <value>Count of first lines of loaded data file, used to search for names of data columns:</value>
+  </data>
+  <data name="ProgramSettings_T" xml:space="preserve">
+    <value>Application settings</value>
+  </data>
+  <data name="RangeTab_MaxX_TT" xml:space="preserve">
+    <value>Field defines maximum abscissa of plotting range</value>
+  </data>
+  <data name="RangeTab_MaxY_TT" xml:space="preserve">
+    <value>Field defines maximum ordinate of plotting range</value>
+  </data>
+  <data name="RangeTab_MinX_TT" xml:space="preserve">
+    <value>Field defines minimum abscissa of plotting range</value>
+  </data>
+  <data name="RangeTab_MinY_TT" xml:space="preserve">
+    <value>Field defines minimum ordinate of plotting range</value>
+  </data>
+  <data name="RangeTab_SwapX_TT" xml:space="preserve">
+    <value>Button allows you to swap minimum and maximum abscissa of plotting range of selected curve(s) and/or object(s) (reflect X-axis)</value>
+  </data>
+  <data name="RangeTab_SwapY_TT" xml:space="preserve">
+    <value>Button allows you to swap minimum and maximum ordinate of plotting range of selected curve(s)  and/or object(s) (reflect Y-axis)</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>&amp;Save</value>
+  </data>
+  <data name="SaveCfgFileError" xml:space="preserve">
+    <value>Failed to write configuration file. Startup path may be not writable, or file is in use by another program</value>
+  </data>
+  <data name="SavePicture_A3Horiz" xml:space="preserve">
+    <value>Fit image to A3 (landscape)</value>
+  </data>
+  <data name="SavePicture_A3Vert" xml:space="preserve">
+    <value>Fit image to A3 (portrait)</value>
+  </data>
+  <data name="SavePicture_A4Horiz" xml:space="preserve">
+    <value>Fit image to A4 (landscape)</value>
+  </data>
+  <data name="SavePicture_A4Vert" xml:space="preserve">
+    <value>Fit image to A4 (portrait)</value>
+  </data>
+  <data name="SavePicture_CustomSize" xml:space="preserve">
+    <value>Save image in scale of</value>
+  </data>
+  <data name="SavePicture_Label01" xml:space="preserve">
+    <value>Choose saving variant:</value>
+  </data>
+  <data name="SavePicture_SFDialog" xml:space="preserve">
+    <value>Specify the location of new diagram image file</value>
+  </data>
+  <data name="SavePicture_SFDialog_FR" xml:space="preserve">
+    <value>PNG image|*.png</value>
+  </data>
+  <data name="SavePicture_SFDialog_FV" xml:space="preserve">
+    <value>SVG image|*.svg|EMF image|*.emf</value>
+  </data>
+  <data name="SavePicture_T" xml:space="preserve">
+    <value>Diagram image saving</value>
+  </data>
+  <data name="SavePicture_VectorImage" xml:space="preserve">
+    <value>Save as vector image</value>
+  </data>
+  <data name="SizeTab_AlignAsColumn_TT" xml:space="preserve">
+    <value>Button allows you to place selected diagram elements vertically, one below the other</value>
+  </data>
+  <data name="SizeTab_AlignAsRow_TT" xml:space="preserve">
+    <value>Button allows you to place selected diagram elements horizontally, one after the other</value>
+  </data>
+  <data name="SizeTab_ImageHeight_TT" xml:space="preserve">
+    <value>Field defines height of images of selected curve(s) and/or object(s)</value>
+  </data>
+  <data name="SizeTab_ImageWidth_TT" xml:space="preserve">
+    <value>Field defines width of images of selected curve(s) and/or object(s)</value>
+  </data>
+  <data name="SizeTab_LeftOffset_TT" xml:space="preserve">
+    <value>Field defines left offset of image(s) of selected diagram element(s) from the left edge of diagram</value>
+  </data>
+  <data name="SizeTab_TopOffset_TT" xml:space="preserve">
+    <value>Field defines top offset of image(s) of selected diagram element(s) from the top edge of diagram</value>
+  </data>
+  <data name="StyleLoadingType" xml:space="preserve">
+    <value>Select variant of using of style file:
+• Click «Yes» if you want to apply style(s) to selected diagram element(s);
+• Click «No» if you want to add new curve(s) with this style(s) to existing curve(s);
+• Click «Cancel» if you don't need to apply styles</value>
+  </data>
+  <data name="StyleSaveError" xml:space="preserve">
+    <value>Failed to write diagram style file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
+  </data>
+  <data name="StylesReset" xml:space="preserve">
+    <value>Do you want to reset style(s) of selected curve(s) and object(s) to default settings?</value>
+  </data>
+  <data name="TemplateSaveError" xml:space="preserve">
+    <value>Failed to write curves adding template file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
+  </data>
+  <data name="TextTab_AutoTextOffset_TT" xml:space="preserve">
+    <value>Flag indicates whether to automatically calculate placement of image caption and labels for selected curve(s)</value>
+  </data>
+  <data name="TextTab_LineNameLeftOffset_TT" xml:space="preserve">
+    <value>Field defines left offset of caption(s) of selected curve(s)</value>
+  </data>
+  <data name="TextTab_LineNameTopOffset_TT" xml:space="preserve">
+    <value>Field defines top offset of caption(s) of selected curve(s)</value>
+  </data>
+  <data name="TextTab_LineName_TT" xml:space="preserve">
+    <value>Field defines caption of selected (one) curve</value>
+  </data>
+  <data name="TextTab_OxTextOffset_TT" xml:space="preserve">
+    <value>Field defines top offset of X-axis labels</value>
+  </data>
+  <data name="TextTab_OyTextOffset_TT" xml:space="preserve">
+    <value>Field defines left offset of Y-axis labels</value>
+  </data>
+  <data name="RangeTab_SwitchXY_TT" xml:space="preserve">
+    <value>Flag indicates whether to perform transposition of selected curve(s) (swap abscissas and ordinates)</value>
+  </data>
+  <data name="UnknownFileParametersSelector_Label01" xml:space="preserve">
+    <value>Expected data columns count:</value>
+  </data>
+  <data name="UnknownFileParametersSelector_Label02" xml:space="preserve">
+    <value>This value can be specified «with reserve». Missing data columns will be filled with null values</value>
+  </data>
+  <data name="UnknownFileParametersSelector_T" xml:space="preserve">
+    <value>Extracting data settings</value>
+  </data>
+  <data name="MUpperHelp_MLanguage_TT" xml:space="preserve">
+    <value>Select application interface language</value>
+  </data>
+  <data name="GeomagDataDrawerForm_MainToolTip" xml:space="preserve">
+    <value>Purpose</value>
+  </data>
+  <data name="ColumnsNamesSelector_T" xml:space="preserve">
+    <value>File loading parameters</value>
+  </data>
+  <data name="FormulaEvaluator_Label01" xml:space="preserve">
+    <value>Enter formula for curve generation
+Allowed:
+ • numbers (with dots or commas);
+ • signs: +, -, *, /, ^, (, );
+ • functions: sin, cos, tg, ctg, arcsin, arccos, arctg, arcctg, ln, abs;
+ • constants П (pi) and e;
+ • variable name (x)</value>
+  </data>
+  <data name="FormulaEvaluator_T" xml:space="preserve">
+    <value>Formula for curves generation</value>
+  </data>
+  <data name="MFile_MClose" xml:space="preserve">
+    <value>&amp;Close diagram</value>
+  </data>
+  <data name="MFile_MGenerate" xml:space="preserve">
+    <value>&amp;Generate curve(s)...</value>
+  </data>
+  <data name="ExpressionIsEmptyError" xml:space="preserve">
+    <value>Expression is empty</value>
+  </data>
+  <data name="IncorrectExpressionEndError" xml:space="preserve">
+    <value>Expression is not completed. Lexem «{0:S}» cannot finish an expression</value>
+  </data>
+  <data name="IncorrectExpressionStartError" xml:space="preserve">
+    <value>Expression cannot starts with lexem «{0:S}»</value>
+  </data>
+  <data name="LeftParenthesisWasNotClosedError" xml:space="preserve">
+    <value>Some opening parenthesis was not closed</value>
+  </data>
+  <data name="MisplacedConstantError" xml:space="preserve">
+    <value>Misplaced constant «{0:S}»</value>
+  </data>
+  <data name="MisplacedDivisionOperatorError" xml:space="preserve">
+    <value>Misplaced division operator</value>
+  </data>
+  <data name="MisplacedExponentiationOperatorError" xml:space="preserve">
+    <value>Misplaced exponentiation operator</value>
+  </data>
+  <data name="MisplacedFunctionCallError" xml:space="preserve">
+    <value>Misplaced function call «{0:S}»</value>
+  </data>
+  <data name="MisplacedLeftParenthesisError" xml:space="preserve">
+    <value>Misplaced opening parenthesis</value>
+  </data>
+  <data name="MisplacedMinusOperatorError" xml:space="preserve">
+    <value>Misplaced subtraction operator</value>
+  </data>
+  <data name="MisplacedMultiplicationOperatorError" xml:space="preserve">
+    <value>Misplaced multiplication operator</value>
+  </data>
+  <data name="MisplacedNumberError" xml:space="preserve">
+    <value>Misplaced number «{0:S}»</value>
+  </data>
+  <data name="MisplacedPlusOperatorError" xml:space="preserve">
+    <value>Misplaced addition operator</value>
+  </data>
+  <data name="MisplacedRightParenthesisError" xml:space="preserve">
+    <value>Misplaced closing parenthesis</value>
+  </data>
+  <data name="MisplacedVariableError" xml:space="preserve">
+    <value>Misplaced variable</value>
+  </data>
+  <data name="NoErrors" xml:space="preserve">
+    <value>No errors</value>
+  </data>
+  <data name="UnexpectedRightParenthesisError" xml:space="preserve">
+    <value>Unexpected closing parenthesis</value>
+  </data>
+  <data name="UnknownLexemeError" xml:space="preserve">
+    <value>Unknown lexem: «{0:S}»</value>
+  </data>
+  <data name="IncorrectRangeError" xml:space="preserve">
+    <value>Count of curve's points is too big for specified range and step, or range is empty</value>
+  </data>
+  <data name="FormulaEvaluator_Label02" xml:space="preserve">
+    <value>Range:</value>
+  </data>
+  <data name="FormulaEvaluator_Label03" xml:space="preserve">
+    <value>Step:</value>
+  </data>
+  <data name="FormulaEvaluator_Label04" xml:space="preserve">
+    <value>Ready functions:</value>
+  </data>
+  <data name="ColumnsAdder_Radio02" xml:space="preserve">
+    <value>Object:</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_1" xml:space="preserve">
+    <value>Rectangle</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_2" xml:space="preserve">
+    <value>Filled rectangle</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_3" xml:space="preserve">
+    <value>Ellipse</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_4" xml:space="preserve">
+    <value>Filled ellipse</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_5" xml:space="preserve">
+    <value>Text string</value>
+  </data>
+  <data name="ObjectsOverloadError" xml:space="preserve">
+    <value>Maximum of object count ({0:D}) has been reached. Further addition is impossible</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_6" xml:space="preserve">
+    <value>Diagonal line (\)</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_7" xml:space="preserve">
+    <value>Diagonal line (/)</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_8" xml:space="preserve">
+    <value>Horizontal line</value>
+  </data>
+  <data name="ColumnsAdder_ObjectType_9" xml:space="preserve">
+    <value>Vertical line</value>
+  </data>
+  <data name="FormulaEvaluator_Label05W" xml:space="preserve">
+    <value>Points count:</value>
+  </data>
+  <data name="MFile_MLoadFromClipboard" xml:space="preserve">
+    <value>Load from clip&amp;board</value>
+  </data>
+  <data name="ClipboardLoadError" xml:space="preserve">
+    <value>Clipboard doesn't contain suitable data for diagram</value>
+  </data>
+  <data name="MFile_MGenerate_TT" xml:space="preserve">
+    <value>Generate curve(s) from analytically defined function(s)</value>
+  </data>
+  <data name="MFile_MLoadFromClipboard_TT" xml:space="preserve">
+    <value>Loading diagram data from clipboard</value>
+  </data>
+  <data name="MFile_MClose_TT" xml:space="preserve">
+    <value>Closing current diagram without saving</value>
+  </data>
+  <data name="CommandLineHelp" xml:space="preserve">
+    <value>Usage from command line:
+
+GeomagDataDrawer – for application launch;
+
+GeomagDataDrawer /? – to show this message;
+
+GeomagDataDrawer &lt;filename&gt; – loading of file «filename»;
+
+GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files conversion, from first format to second;
+  [SLC] – lines count for columns names search; will be loaded from configuration if not set;
+  [ECC] – expected count of data columns (for extracting); will be loaded from configuration if not set</value>
+  </data>
+  <data name="GeomagDataDrawerFormMenuStrip_MOperations" xml:space="preserve">
+    <value>O&amp;perations</value>
+  </data>
+  <data name="MOperations_MAddColumn" xml:space="preserve">
+    <value>Add curve or object</value>
+  </data>
+  <data name="MOperations_MAddColumnCmd" xml:space="preserve">
+    <value>Parametric curve(s) adding</value>
+  </data>
+  <data name="MOperations_MAddColumnCmd_TT" xml:space="preserve">
+    <value>Adding new curve(s) using parameters line</value>
+  </data>
+  <data name="MOperations_MAddColumn_TT" xml:space="preserve">
+    <value>Adding new curve or object</value>
+  </data>
+  <data name="MOperations_MDeleteColumn" xml:space="preserve">
+    <value>Delete curve(s) and/or object(s)</value>
+  </data>
+  <data name="MOperations_MDeleteColumn_TT" xml:space="preserve">
+    <value>Deleting selected curve(s) and/or object(s)</value>
+  </data>
+  <data name="MOperations_MMergeLines" xml:space="preserve">
+    <value>Merge curve(s) and/or object(s)</value>
+  </data>
+  <data name="MOperations_MMergeLines_TT" xml:space="preserve">
+    <value>Merging (overlaying) selected curve(s) and/or object(s)</value>
+  </data>
+  <data name="MOperations_MReplaceColumn" xml:space="preserve">
+    <value>Change curve's data columns</value>
+  </data>
+  <data name="MOperations_MReplaceColumn_TT" xml:space="preserve">
+    <value>Changing data columns of selected (single) curve</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OxFormat_2" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="UnknownFileParametersSelector_Label03" xml:space="preserve">
+    <value>Abscissas column number:</value>
+  </data>
+  <data name="TemplateLoadError" xml:space="preserve">
+    <value>Specified file is unavailable</value>
+  </data>
+  <data name="ShowVideo" xml:space="preserve">
+    <value>Do you want to view user videoguide on our YouTube channel?</value>
+  </data>
+</root>

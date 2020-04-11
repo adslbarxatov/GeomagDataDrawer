@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму генерации диаграммы на основе введённой формулы
@@ -58,10 +58,10 @@ namespace GeomagDataDrawer
 			// Инициализация и локазизация формы
 			InitializeComponent ();
 
-			this.Text = LanguageProvider.GetControlText ("FormulaEvaluator", "T", Language);
-			ApplyButton.Text = LanguageProvider.GetText ("ApplyButton", Language);
-			AbortButton.Text = LanguageProvider.GetText ("AbortButton", Language);
-			LanguageProvider.SetControlsText (this, Language);
+			this.Text = Localization.GetControlText ("FormulaEvaluator", "T", Language);
+			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
+			AbortButton.Text = Localization.GetText ("AbortButton", Language);
+			Localization.SetControlsText (this, Language);
 
 			// Сохранение параметров
 			language = Language;
@@ -88,7 +88,7 @@ namespace GeomagDataDrawer
 				((uint)(Math.Abs (EndValue.Value - StartValue.Value) / StepValue.Value) + 1 > DiagramData.MaxDataRows) ||
 				(EndValue.Value == StartValue.Value))
 				{
-				MessageBox.Show (LanguageProvider.GetText ("IncorrectRangeError", language), ProgramDescription.AssemblyTitle,
+				MessageBox.Show (Localization.GetText ("IncorrectRangeError", language), ProgramDescription.AssemblyTitle,
 					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
@@ -146,51 +146,51 @@ namespace GeomagDataDrawer
 			switch (le.FollowingStatus)
 				{
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedConstant:
-					InfoLabel.Text = string.Format (LanguageProvider.GetText ("MisplacedConstantError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedConstantError", language), le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedDivisionOperator:
-					InfoLabel.Text = LanguageProvider.GetText ("MisplacedDivisionOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedDivisionOperatorError", language);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedExponentiationOperator:
-					InfoLabel.Text = LanguageProvider.GetText ("MisplacedExponentiationOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedExponentiationOperatorError", language);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedFunctionCall:
-					InfoLabel.Text = string.Format (LanguageProvider.GetText ("MisplacedFunctionCallError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedFunctionCallError", language), le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedLeftParenthesis:
-					InfoLabel.Text = LanguageProvider.GetText ("MisplacedLeftParenthesisError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedLeftParenthesisError", language);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedMinusOperator:
-					InfoLabel.Text = LanguageProvider.GetText ("MisplacedMinusOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedMinusOperatorError", language);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedMultiplicationOperator:
-					InfoLabel.Text = LanguageProvider.GetText ("MisplacedMultiplicationOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedMultiplicationOperatorError", language);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedNumber:
-					InfoLabel.Text = string.Format (LanguageProvider.GetText ("MisplacedNumberError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedNumberError", language), le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedPlusOperator:
-					InfoLabel.Text = LanguageProvider.GetText ("MisplacedPlusOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedPlusOperatorError", language);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedRightParenthesis:
-					InfoLabel.Text = LanguageProvider.GetText ("MisplacedRightParenthesisError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedRightParenthesisError", language);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedVariable:
-					InfoLabel.Text = LanguageProvider.GetText ("MisplacedVariableError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedVariableError", language);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.UnknownLexeme:
-					InfoLabel.Text = string.Format (LanguageProvider.GetText ("UnknownLexemeError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("UnknownLexemeError", language), le.LastLexeme);
 					break;
 				}
 
@@ -210,23 +210,23 @@ namespace GeomagDataDrawer
 			switch (le.ExpressionStatus)
 				{
 				case LexemesExtractor.ExpressionStatuses.ExpressionIsEmpty:
-					InfoLabel.Text = LanguageProvider.GetText ("ExpressionIsEmptyError", language);
+					InfoLabel.Text = Localization.GetText ("ExpressionIsEmptyError", language);
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.IncorrectExpressionEnd:
-					InfoLabel.Text = string.Format (LanguageProvider.GetText ("IncorrectExpressionEndError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("IncorrectExpressionEndError", language), le.LastLexeme);
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.IncorrectExpressionStart:
-					InfoLabel.Text = string.Format (LanguageProvider.GetText ("IncorrectExpressionStartError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("IncorrectExpressionStartError", language), le.LastLexeme);
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.LeftParenthesisWasNotClosed:
-					InfoLabel.Text = LanguageProvider.GetText ("LeftParenthesisWasNotClosedError", language);
+					InfoLabel.Text = Localization.GetText ("LeftParenthesisWasNotClosedError", language);
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.MisplacedRightParenthesis:
-					InfoLabel.Text = LanguageProvider.GetText ("UnexpectedRightParenthesisError", language);
+					InfoLabel.Text = Localization.GetText ("UnexpectedRightParenthesisError", language);
 					break;
 				}
 
@@ -244,7 +244,7 @@ namespace GeomagDataDrawer
 
 			// Проверка успешно завершена
 			InfoLabel.ForeColor = Color.FromArgb (0, 128, 0);
-			InfoLabel.Text = LanguageProvider.GetText ("NoErrors", language) + "\nf(x) = ";
+			InfoLabel.Text = Localization.GetText ("NoErrors", language) + "\nf(x) = ";
 			string formula = "";
 			for (int i = 0; i < le.ExtractedLexemes.Count; i++)
 				{
@@ -283,7 +283,7 @@ namespace GeomagDataDrawer
 		// Определение количества точек
 		private void StartValue_ValueChanged (object sender, EventArgs e)
 			{
-			Label05.Text = LanguageProvider.GetControlText ("FormulaEvaluator", "Label05W", language);
+			Label05.Text = Localization.GetControlText ("FormulaEvaluator", "Label05W", language);
 			if (StepValue.Value == 0)
 				{
 				Label05.Text += " ∞";

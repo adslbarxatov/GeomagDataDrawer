@@ -1,4 +1,4 @@
-﻿namespace GeomagDataDrawer
+﻿namespace RD_AAOW
 	{
 	/// <summary>
 	/// Перечисление описывает возможные типы дополнительных объектов диаграммы

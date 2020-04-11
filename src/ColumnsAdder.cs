@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму выбора данных для построения новой кривой
@@ -76,12 +76,12 @@ namespace GeomagDataDrawer
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = LanguageProvider.GetControlText ("ColumnsAdder", "TN", Language);
+			this.Text = Localization.GetControlText ("ColumnsAdder", "TN", Language);
 
 			// Заполнение списка типов объектов
 			for (int i = 1; i <= 9; i++)
 				{
-				ObjectCombo.Items.Add (LanguageProvider.GetControlText ("ColumnsAdder", "ObjectType_" + i.ToString (), Language));
+				ObjectCombo.Items.Add (Localization.GetControlText ("ColumnsAdder", "ObjectType_" + i.ToString (), Language));
 				}
 			ObjectCombo.Text = ObjectCombo.Items[0].ToString ();
 
@@ -100,7 +100,7 @@ namespace GeomagDataDrawer
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = LanguageProvider.GetControlText ("ColumnsAdder", "TE", Language);
+			this.Text = Localization.GetControlText ("ColumnsAdder", "TE", Language);
 
 			// Запрет на обновление данных дополнительных объектов
 			Radio02.Enabled = false;
@@ -113,9 +113,9 @@ namespace GeomagDataDrawer
 		private void ColumnsAdderConstructor (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber, SupportedLanguages Language)
 			{
 			// Локазизация формы
-			ApplyButton.Text = LanguageProvider.GetText ("ApplyButton", Language);
-			AbortButton.Text = LanguageProvider.GetText ("AbortButton", Language);
-			LanguageProvider.SetControlsText (this, Language);
+			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
+			AbortButton.Text = Localization.GetText ("AbortButton", Language);
+			Localization.SetControlsText (this, Language);
 
 			// Загрузка параметров
 			for (uint col = 0; col < SourceData.DataColumnsCount; col++)

@@ -1,7 +1,14 @@
 ﻿Geomag data drawer changes log
 
 To do
-• Fix scaled image saving when texts and notches are not automated
+- Add the ability to use dates as abscissas;
+- Add standard charting templates to distribution package
+
+Version 4.14u
+• Application namespace, icon and development environment have been unified;
+• Localization system has been unified;
+• Application setting moved to system registry; configuration file will not be created anymore;
+• Fixed saving of scaled raster image when captions and notches' texts are not auto-placed
 
 Version 4.13
 • Fixed drawing of vector images in 'markers only' mode (lines will not draw anymore);

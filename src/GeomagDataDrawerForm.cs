@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает главную форму программы
 	/// </summary>
-	public partial class MainForm:Form
+	public partial class GeomagDataDrawerForm:Form
 		{
 		// Переменные
 		private DiagramData dd =
@@ -28,7 +28,7 @@ namespace GeomagDataDrawer
 		/// </summary>
 		/// <param name="SentFileName">Имя файла, полученное от операционной системе при запуске программы</param>
 		/// <param name="SentFileType">Предопределённый тип полученного файла</param>
-		public MainForm (string SentFileName, DataInputTypes SentFileType)
+		public GeomagDataDrawerForm (string SentFileName, DataInputTypes SentFileType)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
@@ -132,7 +132,7 @@ namespace GeomagDataDrawer
 				// Контроль результата (до настоящей загрузки результат BrokenFile допустим по признаку имён столбцов)
 				if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult != DiagramDataInitResults.BrokenFile))
 					{
-					MessageBox.Show (string.Format (LanguageProvider.GetText ("DataFileLoadError", ca.InterfaceLanguage), SentFileName,
+					MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage), SentFileName,
 						DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult, ca.InterfaceLanguage)),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					return;
@@ -186,7 +186,7 @@ namespace GeomagDataDrawer
 				}
 			else if (SentFileType != DataInputTypes.Unspecified)
 				{
-				MessageBox.Show (string.Format (LanguageProvider.GetText ("DataFileLoadError", ca.InterfaceLanguage), SentFileName,
+				MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage), SentFileName,
 					DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				}
@@ -199,49 +199,49 @@ namespace GeomagDataDrawer
 			// Поля настройки
 			for (int i = 0; i < MainTabControl.TabPages.Count; i++)
 				{
-				LanguageProvider.SetControlsText (MainTabControl.TabPages[i], ca.InterfaceLanguage);
-				LanguageProvider.SetControlsText (MainTabControl.TabPages[i], MainToolTip, ca.InterfaceLanguage);
+				Localization.SetControlsText (MainTabControl.TabPages[i], ca.InterfaceLanguage);
+				Localization.SetControlsText (MainTabControl.TabPages[i], MainToolTip, ca.InterfaceLanguage);
 				}
 
 			// Меню программы
-			LanguageProvider.SetControlsText (MainFormMenuStrip, ca.InterfaceLanguage);
-			LanguageProvider.SetControlsText (MFile, ca.InterfaceLanguage);
-			LanguageProvider.SetControlsText (MOperations, ca.InterfaceLanguage);
-			LanguageProvider.SetControlsText (MUpperHelp, ca.InterfaceLanguage);
+			Localization.SetControlsText (GeomagDataDrawerFormMenuStrip, ca.InterfaceLanguage);
+			Localization.SetControlsText (MFile, ca.InterfaceLanguage);
+			Localization.SetControlsText (MOperations, ca.InterfaceLanguage);
+			Localization.SetControlsText (MUpperHelp, ca.InterfaceLanguage);
 
 			// Кнопки управления
-			LanguageProvider.SetControlsText (this, MainToolTip, ca.InterfaceLanguage);
+			Localization.SetControlsText (this, MainToolTip, ca.InterfaceLanguage);
 
 			// Панель настроек
-			LanguageProvider.SetControlsText (MainTabControl, ca.InterfaceLanguage);
+			Localization.SetControlsText (MainTabControl, ca.InterfaceLanguage);
 
 			// Контролы и диалоги
-			OFDialog.Filter = string.Format (LanguageProvider.GetControlText (this.Name, "OFDialog_F", ca.InterfaceLanguage),
+			OFDialog.Filter = string.Format (Localization.GetControlText (this.Name, "OFDialog_F", ca.InterfaceLanguage),
 				ProgramDescription.AssemblyTitle);
-			OFDialog.Title = LanguageProvider.GetControlText (this.Name, "OFDialog", ca.InterfaceLanguage);
-			SFDialog.Filter = string.Format (LanguageProvider.GetControlText (this.Name, "SFDialog_F", ca.InterfaceLanguage),
+			OFDialog.Title = Localization.GetControlText (this.Name, "OFDialog", ca.InterfaceLanguage);
+			SFDialog.Filter = string.Format (Localization.GetControlText (this.Name, "SFDialog_F", ca.InterfaceLanguage),
 				ProgramDescription.AssemblyTitle);
-			SFDialog.Title = LanguageProvider.GetControlText (this.Name, "SFDialog", ca.InterfaceLanguage);
+			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog", ca.InterfaceLanguage);
 
-			LoadStyleDialog.Filter = SaveStyleDialog.Filter = LanguageProvider.GetControlText (this.Name, "StyleDialog_F", ca.InterfaceLanguage);
-			LoadStyleDialog.Title = LanguageProvider.GetControlText (this.Name, "LoadStyleDialog", ca.InterfaceLanguage);
-			SaveStyleDialog.Title = LanguageProvider.GetControlText (this.Name, "SaveStyleDialog", ca.InterfaceLanguage);
+			LoadStyleDialog.Filter = SaveStyleDialog.Filter = Localization.GetControlText (this.Name, "StyleDialog_F", ca.InterfaceLanguage);
+			LoadStyleDialog.Title = Localization.GetControlText (this.Name, "LoadStyleDialog", ca.InterfaceLanguage);
+			SaveStyleDialog.Title = Localization.GetControlText (this.Name, "SaveStyleDialog", ca.InterfaceLanguage);
 
-			MainToolTip.ToolTipTitle = LanguageProvider.GetControlText (this.Name, "MainToolTip", ca.InterfaceLanguage);
+			MainToolTip.ToolTipTitle = Localization.GetControlText (this.Name, "MainToolTip", ca.InterfaceLanguage);
 
 			for (int i = 0; i < 4; i++)
 				{
-				OxPlacementCombo.Items[i] = LanguageProvider.GetControlText (this.Name, "OxPlacement_" + i.ToString (), ca.InterfaceLanguage);
-				OyPlacementCombo.Items[i] = LanguageProvider.GetControlText (this.Name, "OyPlacement_" + i.ToString (), ca.InterfaceLanguage);
+				OxPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OxPlacement_" + i.ToString (), ca.InterfaceLanguage);
+				OyPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OyPlacement_" + i.ToString (), ca.InterfaceLanguage);
 
 				if (i < 2)
 					{
-					OxFormatCombo.Items[i] = LanguageProvider.GetControlText (this.Name, "OxFormat_" + i.ToString (), ca.InterfaceLanguage);
-					OyFormatCombo.Items[i] = LanguageProvider.GetControlText (this.Name, "OxFormat_" + i.ToString (), ca.InterfaceLanguage);
+					OxFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString (), ca.InterfaceLanguage);
+					OyFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString (), ca.InterfaceLanguage);
 					}
 				if (i < 3)
 					{
-					LineStyleCombo.Items[i] = LanguageProvider.GetControlText (this.Name, "LineStyle_" + i.ToString (), ca.InterfaceLanguage);
+					LineStyleCombo.Items[i] = Localization.GetControlText (this.Name, "LineStyle_" + i.ToString (), ca.InterfaceLanguage);
 					}
 				}
 			}
@@ -263,7 +263,6 @@ namespace GeomagDataDrawer
 
 				// Сохранение изменившегося значения
 				ca.ExpectedColumnsCount = ufps.DataColumnsCount;
-				ca.SaveConfiguration ();	// Потеря параметра несущественна
 				}
 
 			// Обработка случаев, требующих указания количества строк, используемых для поиска имён столбцов данных
@@ -279,7 +278,6 @@ namespace GeomagDataDrawer
 
 				// Сохранение изменившегося значения
 				ca.SkippedLinesCount = cns.SkippedRowsCount;
-				ca.SaveConfiguration ();	// Потеря параметра несущественна
 				}
 
 			return true;
@@ -693,7 +691,7 @@ namespace GeomagDataDrawer
 			// Подтверждение
 			if (ca.ForceExitConfirmation)
 				{
-				if (MessageBox.Show (LanguageProvider.GetText ("ApplicationExit", ca.InterfaceLanguage),
+				if (MessageBox.Show (Localization.GetText ("ApplicationExit", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo,
 					 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
 					{
@@ -706,12 +704,6 @@ namespace GeomagDataDrawer
 			ca.Top = this.Top;
 			ca.Width = (uint)this.Width;
 			ca.Height = (uint)this.Height;
-
-			if (!ca.SaveConfiguration ())
-				{
-				MessageBox.Show (LanguageProvider.GetText ("SaveCfgFileError", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				}
 			}
 
 		#endregion
@@ -742,7 +734,7 @@ namespace GeomagDataDrawer
 			// Контроль результата (до настоящей загрузки результат BrokenFile допустим по признаку имён столбцов)
 			if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult != DiagramDataInitResults.BrokenFile))
 				{
-				MessageBox.Show (string.Format (LanguageProvider.GetText ("DataFileLoadError", ca.InterfaceLanguage),
+				MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
 					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult, ca.InterfaceLanguage)),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
@@ -767,7 +759,7 @@ namespace GeomagDataDrawer
 			if (dd.InitResult != DiagramDataInitResults.Ok)
 				{
 				// Файл точно с ошибками, или выбрано некорректное количество строк для поиска имён
-				MessageBox.Show (string.Format (LanguageProvider.GetText ("DataFileLoadError", ca.InterfaceLanguage),
+				MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
 					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
@@ -859,7 +851,7 @@ namespace GeomagDataDrawer
 					}
 				else if (res == -3)
 					{
-					MessageBox.Show (string.Format (LanguageProvider.GetText ("LinesOverloadError", ca.InterfaceLanguage),
+					MessageBox.Show (string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
 						DiagramData.MaxLines), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					break;
 					}
@@ -897,7 +889,7 @@ namespace GeomagDataDrawer
 			// Сохранение
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)SFDialog.FilterIndex, ca.ForceSavingColumnNames) < 0)
 				{
-				MessageBox.Show (LanguageProvider.GetText ("DataFileSaveError", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
+				MessageBox.Show (Localization.GetText ("DataFileSaveError", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
 					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				}
 			}
@@ -967,8 +959,6 @@ namespace GeomagDataDrawer
 				{
 				dd = new DiagramData ("", DataInputTypes.Unknown, 0);
 				LineNamesList.Items.Clear ();
-				/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-					MDeleteColumn.Enabled = MReplaceColumn.Enabled = false;*/
 				ChangeControlsState (false);
 				Redraw ();
 				}
@@ -988,7 +978,7 @@ namespace GeomagDataDrawer
 			if (ddt.InitResult != DiagramDataInitResults.Ok)
 				{
 				// Файл точно с ошибками, или выбрано некорректное количество строк для поиска имён
-				MessageBox.Show (LanguageProvider.GetText ("ClipboardLoadError", ca.InterfaceLanguage),
+				MessageBox.Show (Localization.GetText ("ClipboardLoadError", ca.InterfaceLanguage),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
@@ -1021,10 +1011,13 @@ namespace GeomagDataDrawer
 		// О программе
 		private void MAbout_Click (object sender, System.EventArgs e)
 			{
-			MessageBox.Show (ProgramDescription.AssemblyTitle + "\n" + ProgramDescription.AssemblyDescription +
-				"\n\nВерсия " + ProgramDescription.AssemblyVersion +
-				" от " + ProgramDescription.AssemblyLastUpdate + "\n" + ProgramDescription.AssemblyCopyright,
-				ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+			// Основная справка
+			ProgramDescription.ShowAbout ();
+
+			// Видео
+			if (MessageBox.Show (Localization.GetText ("ShowVideo", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
+				MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+				ProgramDescription.ShowVideoManual ();
 			}
 
 		// Справка
@@ -1033,7 +1026,7 @@ namespace GeomagDataDrawer
 			// Проверка существования файла
 			if (!System.IO.File.Exists (Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[0]))
 				{
-				MessageBox.Show (LanguageProvider.GetText ("HelpFileError", ca.InterfaceLanguage),
+				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
@@ -1047,11 +1040,6 @@ namespace GeomagDataDrawer
 			{
 			// Обновление конфигурации
 			ca.InterfaceLanguage = (SupportedLanguages)MLanguage.SelectedIndex;
-			if (!ca.SaveConfiguration ())
-				{
-				MessageBox.Show (LanguageProvider.GetText ("SaveCfgFileError", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				}
 
 			// Релокализация формы
 			LocalizeForm ();
@@ -1072,7 +1060,7 @@ namespace GeomagDataDrawer
 		private void LoadStyleDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
 			{
 			// Выбор варианта использования стилей
-			switch (MessageBox.Show (LanguageProvider.GetText ("StyleLoadingType", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
+			switch (MessageBox.Show (Localization.GetText ("StyleLoadingType", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
 				 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
 				// Применение к выделенным кривым
@@ -1080,7 +1068,7 @@ namespace GeomagDataDrawer
 					// Контроль
 					if (LineNamesList.SelectedIndices.Count == 0)
 						{
-						MessageBox.Show (LanguageProvider.GetText ("LinesForLoadingStylesNSError", ca.InterfaceLanguage),
+						MessageBox.Show (Localization.GetText ("LinesForLoadingStylesNSError", ca.InterfaceLanguage),
 							ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 						return;
 						}
@@ -1088,7 +1076,7 @@ namespace GeomagDataDrawer
 					// Загрузка
 					if (dd.LoadStyle (LoadStyleDialog.FileName, LineNamesList.SelectedIndices) < 0)
 						{
-						MessageBox.Show (LanguageProvider.GetText ("BrokenStyleError", ca.InterfaceLanguage),
+						MessageBox.Show (Localization.GetText ("BrokenStyleError", ca.InterfaceLanguage),
 							ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 						return;
 						}
@@ -1101,7 +1089,7 @@ namespace GeomagDataDrawer
 
 					if (dd.LoadStyle (LoadStyleDialog.FileName) < 0)
 						{
-						MessageBox.Show (LanguageProvider.GetText ("BrokenStyleError", ca.InterfaceLanguage),
+						MessageBox.Show (Localization.GetText ("BrokenStyleError", ca.InterfaceLanguage),
 							ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 						}
 
@@ -1135,7 +1123,7 @@ namespace GeomagDataDrawer
 			// Контроль
 			if (LineNamesList.SelectedIndices.Count == 0)
 				{
-				MessageBox.Show (LanguageProvider.GetText ("LinesForSavingStylesNSError", ca.InterfaceLanguage),
+				MessageBox.Show (Localization.GetText ("LinesForSavingStylesNSError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
@@ -1149,7 +1137,7 @@ namespace GeomagDataDrawer
 			{
 			if (dd.SaveStyle (SaveStyleDialog.FileName, LineNamesList.SelectedIndices) < 0)
 				{
-				MessageBox.Show (LanguageProvider.GetText ("StyleSaveError", ca.InterfaceLanguage),
+				MessageBox.Show (Localization.GetText ("StyleSaveError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				}
 			}
@@ -1160,12 +1148,12 @@ namespace GeomagDataDrawer
 			// Контроль
 			if (LineNamesList.SelectedIndices.Count == 0)
 				{
-				MessageBox.Show (LanguageProvider.GetText ("LinesForResetStylesNSError", ca.InterfaceLanguage),
+				MessageBox.Show (Localization.GetText ("LinesForResetStylesNSError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
 
-			if (MessageBox.Show (LanguageProvider.GetText ("StylesReset", ca.InterfaceLanguage),
+			if (MessageBox.Show (Localization.GetText ("StylesReset", ca.InterfaceLanguage),
 				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
 				== DialogResult.Yes)
 				{
@@ -1191,7 +1179,7 @@ namespace GeomagDataDrawer
 					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
 
 				case -2:
-					MessageBox.Show (LanguageProvider.GetText ("TemplateSaveError", ca.InterfaceLanguage),
+					MessageBox.Show (Localization.GetText ("TemplateSaveError", ca.InterfaceLanguage),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					break;
 
@@ -1301,12 +1289,12 @@ namespace GeomagDataDrawer
 					{
 					if (cad.IsNewObjectADiagram)
 						{
-						MessageBox.Show (string.Format (LanguageProvider.GetText ("LinesOverloadError", ca.InterfaceLanguage),
+						MessageBox.Show (string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
 							DiagramData.MaxLines), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 						}
 					else
 						{
-						MessageBox.Show (string.Format (LanguageProvider.GetText ("ObjectsOverloadError", ca.InterfaceLanguage),
+						MessageBox.Show (string.Format (Localization.GetText ("ObjectsOverloadError", ca.InterfaceLanguage),
 							DiagramData.MaxAdditionalObjects), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 						}
 					return;
@@ -1342,12 +1330,12 @@ namespace GeomagDataDrawer
 			// Контроль
 			if (LineNamesList.SelectedIndices.Count == 0)
 				{
-				MessageBox.Show (LanguageProvider.GetText ("LinesForDeleteNSError", ca.InterfaceLanguage),
+				MessageBox.Show (Localization.GetText ("LinesForDeleteNSError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
 
-			if (MessageBox.Show (LanguageProvider.GetText ("LinesDelete", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
+			if (MessageBox.Show (Localization.GetText ("LinesDelete", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
 				 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
 				{
 				return;
@@ -1434,7 +1422,7 @@ namespace GeomagDataDrawer
 						}
 					else if (res == -3)
 						{
-						MessageBox.Show (string.Format (LanguageProvider.GetText ("LinesOverloadError", ca.InterfaceLanguage),
+						MessageBox.Show (string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
 							DiagramData.MaxLines), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 						break;
 						}
@@ -1583,7 +1571,7 @@ namespace GeomagDataDrawer
 			// Контроль
 			if (LineNamesList.SelectedIndices.Count != 2)
 				{
-				MessageBox.Show (LanguageProvider.GetText ("MergingError", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
+				MessageBox.Show (Localization.GetText ("MergingError", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
 					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
@@ -1689,7 +1677,7 @@ namespace GeomagDataDrawer
 			// Контроль
 			if ((LineNamesList.SelectedIndices.Count == 0) || (LineNamesList.SelectedIndex >= dd.LinesCount))
 				{
-				MessageBox.Show (LanguageProvider.GetText ("LineForReplaceNSError", ca.InterfaceLanguage),
+				MessageBox.Show (Localization.GetText ("LineForReplaceNSError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
@@ -1961,7 +1949,7 @@ namespace GeomagDataDrawer
 			// Вряд ли, но на всякий случай
 			catch
 				{
-				MessageBox.Show (LanguageProvider.GetText ("LinesForSettingNSError", ca.InterfaceLanguage),
+				MessageBox.Show (Localization.GetText ("LinesForSettingNSError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				}
 
@@ -2211,7 +2199,7 @@ namespace GeomagDataDrawer
 					}
 				catch
 					{
-					MessageBox.Show (LanguageProvider.GetText ("FontSelectError", ca.InterfaceLanguage),
+					MessageBox.Show (Localization.GetText ("FontSelectError", ca.InterfaceLanguage),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					success = false;
 					}

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает отдельный шаг вычисления выражения

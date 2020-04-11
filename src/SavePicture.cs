@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму выбора размера и сохранения конечного изображения
@@ -27,10 +27,10 @@ namespace GeomagDataDrawer
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
-			LanguageProvider.SetControlsText (this, Language);
-			SaveButton.Text = LanguageProvider.GetText ("SaveButton", Language);
-			AbortButton.Text = LanguageProvider.GetText ("AbortButton", Language);
-			this.Text = LanguageProvider.GetControlText (this.Name, "T", Language);
+			Localization.SetControlsText (this, Language);
+			SaveButton.Text = Localization.GetText ("SaveButton", Language);
+			AbortButton.Text = Localization.GetText ("AbortButton", Language);
+			this.Text = Localization.GetControlText (this.Name, "T", Language);
 
 			// Передача значений
 			for (int i = 0; i < DiagramData.LinesCount; i++)
@@ -48,7 +48,7 @@ namespace GeomagDataDrawer
 			language = Language;
 
 			// Настройка контролов
-			SFDialog.Title = LanguageProvider.GetControlText (this.Name, "SFDialog", Language);
+			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog", Language);
 
 			ImageScale.Minimum = (decimal)DiagramStyle.MinScale;
 			ImageScale.Maximum = (decimal)DiagramStyle.MaxScale;
@@ -188,7 +188,7 @@ namespace GeomagDataDrawer
 					}
 				catch
 					{
-					MessageBox.Show (LanguageProvider.GetText ("ImageSaveError", language),
+					MessageBox.Show (Localization.GetText ("ImageSaveError", language),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					}
 				b.Dispose ();
@@ -209,7 +209,7 @@ namespace GeomagDataDrawer
 						if ((emfa.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (emfa) < 0))
 							{
-							MessageBox.Show (LanguageProvider.GetText ("ImageSaveError", language),
+							MessageBox.Show (Localization.GetText ("ImageSaveError", language),
 								ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 							}
 						break;
@@ -222,7 +222,7 @@ namespace GeomagDataDrawer
 						if ((svga.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (svga) < 0))
 							{
-							MessageBox.Show (LanguageProvider.GetText ("ImageSaveError", language),
+							MessageBox.Show (Localization.GetText ("ImageSaveError", language),
 								ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 							}
 						break;
@@ -238,13 +238,13 @@ namespace GeomagDataDrawer
 		private void CustomSize_CheckedChanged (object sender, System.EventArgs e)
 			{
 			ImageScale.Enabled = true;
-			SFDialog.Filter = LanguageProvider.GetControlText (this.Name, "SFDialog_FR", language);
+			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FR", language);
 			}
 
 		private void A4Horiz_CheckedChanged (object sender, System.EventArgs e)
 			{
 			ImageScale.Enabled = false;
-			SFDialog.Filter = LanguageProvider.GetControlText (this.Name, "SFDialog_FR", language);
+			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FR", language);
 			}
 
 		private void A4Vert_CheckedChanged (object sender, System.EventArgs e)
@@ -265,7 +265,7 @@ namespace GeomagDataDrawer
 		private void VectorImage_CheckedChanged (object sender, System.EventArgs e)
 			{
 			ImageScale.Enabled = false;
-			SFDialog.Filter = LanguageProvider.GetControlText (this.Name, "SFDialog_FV", language);
+			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FV", language);
 			}
 		}
 	}

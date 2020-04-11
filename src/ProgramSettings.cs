@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму настроек программы
@@ -18,10 +18,10 @@ namespace GeomagDataDrawer
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			LanguageProvider.SetControlsText (this, ca.InterfaceLanguage);
-			SaveButton.Text = LanguageProvider.GetText ("SaveButton", ca.InterfaceLanguage);
-			AbortButton.Text = LanguageProvider.GetText ("AbortButton", ca.InterfaceLanguage);
-			this.Text = LanguageProvider.GetControlText (this.Name, "T", ca.InterfaceLanguage);
+			Localization.SetControlsText (this, ca.InterfaceLanguage);
+			SaveButton.Text = Localization.GetText ("SaveButton", ca.InterfaceLanguage);
+			AbortButton.Text = Localization.GetText ("AbortButton", ca.InterfaceLanguage);
+			this.Text = Localization.GetControlText (this.Name, "T", ca.InterfaceLanguage);
 
 			// Настройка контролов
 			ConfirmExit.Checked = ca.ForceExitConfirmation;
@@ -48,12 +48,6 @@ namespace GeomagDataDrawer
 			ca.ForceShowDiagram = ForceShowDiagram.Checked;
 			ca.ForceSavingColumnNames = ForceSavingColumnNames.Checked;
 			ca.DisableMousePlacing = DisableMousePlacing.Checked;
-
-			if (!ca.SaveConfiguration ())
-				{
-				MessageBox.Show (LanguageProvider.GetText ("SaveCfgFileError", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				}
 
 			this.Close ();
 			}

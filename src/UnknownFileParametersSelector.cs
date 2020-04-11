@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму выбора параметров извлечения данных из текстовых файлов
@@ -17,10 +17,10 @@ namespace GeomagDataDrawer
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
-			LanguageProvider.SetControlsText (this, Language);
-			ApplyButton.Text = LanguageProvider.GetText ("ApplyButton", Language);
-			AbortButton.Text = LanguageProvider.GetText ("AbortButton", Language);
-			this.Text = LanguageProvider.GetControlText (this.Name, "T", Language);
+			Localization.SetControlsText (this, Language);
+			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
+			AbortButton.Text = Localization.GetText ("AbortButton", Language);
+			this.Text = Localization.GetControlText (this.Name, "T", Language);
 
 			// Настройка контролов
 			ColumnsCount.Maximum = ConfigAccessor.MaxExpectedColumnsCount;

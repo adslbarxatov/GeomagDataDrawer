@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GeomagDataDrawer
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму ввода параметрической строки для построения новой кривой
@@ -157,15 +157,15 @@ namespace GeomagDataDrawer
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
-			LanguageProvider.SetControlsText (this, Language);
-			ApplyButton.Text = LanguageProvider.GetText ("ApplyButton", Language);
-			AbortButton.Text = LanguageProvider.GetText ("AbortButton", Language);
-			this.Text = LanguageProvider.GetControlText (this.Name, "T", Language);
+			Localization.SetControlsText (this, Language);
+			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
+			AbortButton.Text = Localization.GetText ("AbortButton", Language);
+			this.Text = Localization.GetControlText (this.Name, "T", Language);
 
 			// Настройка контролов
-			OFDialog.Filter = SFDialog.Filter = LanguageProvider.GetControlText (this.Name, "OFDialog_F", Language);
-			OFDialog.Title = LanguageProvider.GetControlText (this.Name, "OFDialog", Language);
-			SFDialog.Title = LanguageProvider.GetControlText (this.Name, "SFDialog", Language);
+			OFDialog.Filter = SFDialog.Filter = Localization.GetControlText (this.Name, "OFDialog_F", Language);
+			OFDialog.Title = Localization.GetControlText (this.Name, "OFDialog", Language);
+			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog", Language);
 
 			// Загрузка параметров
 			dataColumnsCount = DataColumnsCount;
@@ -213,7 +213,7 @@ namespace GeomagDataDrawer
 
 			// Обработка
 			ProcessingMsg.Text = ProcessCommandLine (CommandLine.Text);
-			if (ProcessingMsg.Text == LanguageProvider.GetControlText (this.Name, "Correct", language))
+			if (ProcessingMsg.Text == Localization.GetControlText (this.Name, "Correct", language))
 				{
 				// Успешно
 				ApplyButton.Enabled = true;
@@ -252,7 +252,7 @@ namespace GeomagDataDrawer
 					}
 				catch
 					{
-					return LanguageProvider.GetControlText (this.Name, "ICNError", language);
+					return Localization.GetControlText (this.Name, "ICNError", language);
 					}
 
 				try
@@ -262,7 +262,7 @@ namespace GeomagDataDrawer
 					}
 				catch
 					{
-					return LanguageProvider.GetControlText (this.Name, "IDSError", language);
+					return Localization.GetControlText (this.Name, "IDSError", language);
 					}
 
 				try
@@ -272,7 +272,7 @@ namespace GeomagDataDrawer
 					}
 				catch
 					{
-					return LanguageProvider.GetControlText (this.Name, "IDOError", language);
+					return Localization.GetControlText (this.Name, "IDOError", language);
 					}
 
 				// Длинная строка
@@ -289,37 +289,37 @@ namespace GeomagDataDrawer
 						}
 					catch
 						{
-						return LanguageProvider.GetControlText (this.Name, "ITOError", language);
+						return Localization.GetControlText (this.Name, "ITOError", language);
 						}
 					}
 				}
 			else
 				{
-				return LanguageProvider.GetControlText (this.Name, "IPCError", language);
+				return Localization.GetControlText (this.Name, "IPCError", language);
 				}
 
 			// Контроль диапазонов
 			if ((xColumnNumberT >= dataColumnsCount) || (yColumnNumberT >= dataColumnsCount))
 				{
-				return string.Format (LanguageProvider.GetControlText (this.Name, "OCNError", language), dataColumnsCount);
+				return string.Format (Localization.GetControlText (this.Name, "OCNError", language), dataColumnsCount);
 				}
 
 			if ((imageWidthT > DiagramStyle.MaxImageWidth) || (imageWidthT < DiagramStyle.MinImageWidth) ||
 				(imageHeightT > DiagramStyle.MaxImageHeight) || (imageHeightT < DiagramStyle.MinImageHeight))
 				{
-				return string.Format (LanguageProvider.GetControlText (this.Name, "ODSError", language),
+				return string.Format (Localization.GetControlText (this.Name, "ODSError", language),
 					DiagramStyle.MinImageWidth, DiagramStyle.MaxImageWidth, DiagramStyle.MinImageHeight, DiagramStyle.MaxImageHeight);
 				}
 
 			if ((imageLeftT > DiagramStyle.MaxImageWidth) || (imageTopT > DiagramStyle.MaxImageHeight))
 				{
-				return string.Format (LanguageProvider.GetControlText (this.Name, "ODOError", language),
+				return string.Format (Localization.GetControlText (this.Name, "ODOError", language),
 					DiagramStyle.MaxImageWidth, DiagramStyle.MaxImageHeight);
 				}
 
 			if ((lineNameLeftOffsetT > imageWidthT) || (lineNameTopOffsetT > imageHeightT))
 				{
-				return string.Format (LanguageProvider.GetControlText (this.Name, "OTOError", language),
+				return string.Format (Localization.GetControlText (this.Name, "OTOError", language),
 					imageWidthT, imageHeightT);
 				}
 
@@ -335,7 +335,7 @@ namespace GeomagDataDrawer
 			lineNameLeftOffset.Add (lineNameLeftOffsetT);
 			lineNameTopOffset.Add (lineNameTopOffsetT);
 
-			return LanguageProvider.GetControlText (this.Name, "Correct", language);
+			return Localization.GetControlText (this.Name, "Correct", language);
 			}
 
 		// Выбор варианта загрузки
@@ -390,7 +390,7 @@ namespace GeomagDataDrawer
 
 			if (ProcessingResults.Text == "")
 				{
-				ProcessingResults.Text = LanguageProvider.GetControlText (this.Name, "Correct", language);
+				ProcessingResults.Text = Localization.GetControlText (this.Name, "Correct", language);
 				ProcessingResults.ForeColor = Color.FromArgb (0, 192, 0);
 				}
 			}
@@ -423,7 +423,7 @@ namespace GeomagDataDrawer
 				}
 			catch
 				{
-				ProcessingResults.Text = LanguageProvider.GetText ("TemplateLoadError", language);
+				ProcessingResults.Text = Localization.GetText ("TemplateLoadError", language);
 				return false;
 				}
 
@@ -437,14 +437,14 @@ namespace GeomagDataDrawer
 				string res = ProcessCommandLine (SR.ReadLine ());
 				line++;
 
-				if (res != LanguageProvider.GetControlText (this.Name, "Correct", language))
+				if (res != Localization.GetControlText (this.Name, "Correct", language))
 					{
 					ProcessingResults.Text += ("#" + line.ToString () + ": " + res + "\r\n");
 					}
 
 				if (line >= DiagramData.MaxLines)
 					{
-					ProcessingResults.Text += (string.Format (LanguageProvider.GetText ("LinesOverloadError", language),
+					ProcessingResults.Text += (string.Format (Localization.GetText ("LinesOverloadError", language),
 						DiagramData.MaxLines) + "\r\n");
 					break;
 					}
@@ -471,12 +471,12 @@ namespace GeomagDataDrawer
 				}
 			catch
 				{
-				ProcessingResults.Text = LanguageProvider.GetText ("TemplateSaveError", language);
+				ProcessingResults.Text = Localization.GetText ("TemplateSaveError", language);
 				return false;
 				}
 
 			// Запись и завершение
-			FS.Write (GeomagDataDrawer.Properties.Resources.LineParameters, 0, GeomagDataDrawer.Properties.Resources.LineParameters.Length);
+			FS.Write (RD_AAOW.Properties.GeomagDataDrawer.LineParameters, 0, RD_AAOW.Properties.GeomagDataDrawer.LineParameters.Length);
 			FS.Close ();
 			return true;
 			}
