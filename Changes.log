@@ -7,7 +7,8 @@ To do
 - Develop a setting that allows specifying which tabs and in what order should be displayed on the settings panel
 
 Version 4.14.2
-• Fixed multiple registry reading in ConfigAccessor: now settings will be filled once and called from local variables
+• Fixed multiple registry reading in ConfigAccessor: now settings will be filled once and called from local variables;
+• Some source code improvements applied
 
 Version 4.14u
 • Application namespace, icon and development environment have been unified;
