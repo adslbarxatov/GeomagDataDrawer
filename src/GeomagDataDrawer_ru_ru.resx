@@ -1037,4 +1037,7 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   <data name="ShowVideo" xml:space="preserve">
     <value>Показать видеоруководство пользователя на нашем YouTube-канале?</value>
   </data>
+  <data name="ExceptionMessage" xml:space="preserve">
+    <value>В приложении произошла внутренняя ошибка. Требуется отладка</value>
+  </data>
 </root>

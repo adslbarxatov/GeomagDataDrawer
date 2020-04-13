@@ -1,4 +1,4 @@
-# GeomagDataDrawer v 4.14u
+# GeomagDataDrawer v 4.14.2
 
 Autonomous utility for plotting and preparing of data diagrams / Автономный инструмент построения и оформления диаграмм
 

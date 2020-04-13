@@ -169,9 +169,7 @@ namespace RD_AAOW
 					{
 					b = (Bitmap)Image.FromFile (markersImages[i]);
 					if ((b.Width < 3) || (b.Height < 3) || (b.Width > 17) || (b.Height > 17) || (b.Width != b.Height))
-						{
-						throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-						}
+						throw new Exception ();
 					}
 				catch
 					{

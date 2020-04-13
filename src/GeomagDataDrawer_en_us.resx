@@ -1036,4 +1036,7 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
   <data name="ShowVideo" xml:space="preserve">
     <value>Do you want to view user videoguide on our YouTube channel?</value>
   </data>
+  <data name="ExceptionMessage" xml:space="preserve">
+    <value>Internal error occurred in application. Debug is required</value>
+  </data>
 </root>

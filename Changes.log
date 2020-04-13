@@ -1,10 +1,13 @@
-Geomag data drawer changes log
+﻿Geomag data drawer changes log
 
 To do
 - Add the ability to use dates as abscissas;
 - Add standard charting templates to distribution package;
 - Optimize mechanism of data transferring from main to editing window;
 - Develop a setting that allows specifying which tabs and in what order should be displayed on the settings panel
+
+Version 4.14.2
+• Fixed multiple registry reading in ConfigAccessor: now settings will be filled once and called from local variables
 
 Version 4.14u
 • Application namespace, icon and development environment have been unified;

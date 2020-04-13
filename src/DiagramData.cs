@@ -332,11 +332,8 @@ namespace RD_AAOW
 		private void LoadRawText (bool FromClipboard, string DataFileName, uint ColumnsCount, uint SkippedLinesCount)
 			{
 			// Контроль значений
-			if ((ColumnsCount < 2) || (ColumnsCount > MaxDataColumns) ||
-				!FromClipboard && (DataFileName == null))
-				{
-				throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-				}
+			if ((ColumnsCount < 2) || (ColumnsCount > MaxDataColumns) || !FromClipboard && (DataFileName == null))
+				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (1)");
 
 			// Попытка открытия файла
 			FileStream FS = null;
@@ -477,9 +474,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if (Table == null)
-				{
-				throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-				}
+				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (3)");
 
 			// Вызов функции загрузки
 			LoadDataFromTable (Table, 0);
@@ -495,9 +490,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if ((X == null) || (Y == null) || (X.Count == 0))
-				{
-				throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-				}
+				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (4)");
 
 			if (X.Count < 2)
 				{
@@ -510,9 +503,7 @@ namespace RD_AAOW
 				{
 				// Контроль
 				if (X.Count != Y[c].Count)
-					{
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-					}
+					throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (5)");
 
 				// Создание структуры
 				if (c == 0)
@@ -548,9 +539,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if ((DataTable == null) || (ColumnNames == null))
-				{
-				throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-				}
+				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (6)");
 
 			if ((DataTable.Count < 2) || (ColumnNames.Count < 2))
 				{
@@ -566,9 +555,7 @@ namespace RD_AAOW
 				{
 				// Контроль
 				if (DataTable[r].Count != ColumnNames.Count)
-					{
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-					}
+					throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (7)");
 
 				for (int c = 0; c < DataTable[r].Count; c++)
 					{
@@ -622,20 +609,14 @@ namespace RD_AAOW
 			try
 				{
 				if ((rows = BR.ReadUInt16 ()) > MaxDataRows)
-					{
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);	// Значит, файл повреждён (не NotEnoughData)
-					}
+					throw new Exception ();	// Значит, файл повреждён (не NotEnoughData)
 				if ((dataColumnsCount = BR.ReadUInt16 ()) > MaxDataColumns)
-					{
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-					}
+					throw new Exception ();
 
 
 				// Контроль
 				if ((rows < 2) || (dataColumnsCount < 2))	// Программа так делать не умеет
-					{
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-					}
+					throw new Exception ();
 
 				// Разметка массива и чтение имён столбцов
 				for (int i = 0; i < dataColumnsCount; i++)
@@ -684,9 +665,7 @@ namespace RD_AAOW
 			try
 				{
 				if ((linesCount = BR.ReadUInt16 ()) > MaxLines)
-					{
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-					}
+					throw new Exception ();
 				}
 			catch
 				{
@@ -2618,9 +2597,7 @@ namespace RD_AAOW
 
 			// Готово
 			if (!VectorAdapter.CloseFile ())
-				{
-				throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-				}
+				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (8)");
 			return 0;
 			}
 

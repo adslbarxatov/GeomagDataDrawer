@@ -8,6 +8,9 @@ namespace RD_AAOW
 	/// </summary>
 	public class ConfigAccessor
 		{
+		// Переменные
+		private int screenWidth = 1280, screenHeight = 720;
+
 		/// <summary>
 		/// Возвращает или задаёт смещение окна относительно верхнего края экрана
 		/// </summary>
@@ -15,32 +18,21 @@ namespace RD_AAOW
 			{
 			get
 				{
-				try
-					{
-					return int.Parse (GetSetting ("Top"));
-					}
-				catch
-					{
-					SetSetting ("Top", ((screenHeight - MinHeight) / 2).ToString ());
-					return (screenHeight - (int)MinHeight) / 2;
-					}
+				return top;
 				}
 			set
 				{
 				if (value > screenHeight)
-					{
-					SetSetting ("Top", screenHeight.ToString ());
-					}
+					top = screenHeight;
 				else if (value < 0)
-					{
-					SetSetting ("Top", "0");
-					}
+					top = 0;
 				else
-					{
-					SetSetting ("Top", value.ToString ());
-					}
+					top = value;
+
+				SetSetting ("Top", top.ToString ());
 				}
 			}
+		private int top;
 
 		/// <summary>
 		/// Возвращает или задаёт смещение окна относительно левого края экрана
@@ -49,32 +41,21 @@ namespace RD_AAOW
 			{
 			get
 				{
-				try
-					{
-					return int.Parse (GetSetting ("Left"));
-					}
-				catch
-					{
-					SetSetting ("Left", ((screenWidth - MinWidth) / 2).ToString ());
-					return (screenWidth - (int)MinWidth) / 2;
-					}
+				return left;
 				}
 			set
 				{
 				if (value > screenWidth)
-					{
-					SetSetting ("Left", screenWidth.ToString ());
-					}
+					left = screenWidth;
 				else if (value < 0)
-					{
-					SetSetting ("Left", "0");
-					}
+					left = 0;
 				else
-					{
-					SetSetting ("Left", value.ToString ());
-					}
+					left = value;
+
+				SetSetting ("Left", left.ToString ());
 				}
 			}
+		private int left;
 
 		/// <summary>
 		/// Возвращает или задаёт ширину окна
@@ -83,32 +64,21 @@ namespace RD_AAOW
 			{
 			get
 				{
-				try
-					{
-					return uint.Parse (GetSetting ("Width"));
-					}
-				catch
-					{
-					SetSetting ("Width", MinWidth.ToString ());
-					return MinWidth;
-					}
+				return width;
 				}
 			set
 				{
 				if (value > screenWidth)
-					{
-					SetSetting ("Width", screenWidth.ToString ());
-					}
+					width = (uint)screenWidth;
 				else if (value < MinWidth)
-					{
-					SetSetting ("Width", MinWidth.ToString ());
-					}
+					width = MinWidth;
 				else
-					{
-					SetSetting ("Width", value.ToString ());
-					}
+					width = value;
+
+				SetSetting ("Width", width.ToString ());
 				}
 			}
+		private uint width;
 
 		/// <summary>
 		/// Возвращает или задаёт высоту окна
@@ -117,32 +87,21 @@ namespace RD_AAOW
 			{
 			get
 				{
-				try
-					{
-					return uint.Parse (GetSetting ("Height"));
-					}
-				catch
-					{
-					SetSetting ("Height", MinHeight.ToString ());
-					return MinHeight;
-					}
+				return height;
 				}
 			set
 				{
 				if (value > screenHeight)
-					{
-					SetSetting ("Height", screenHeight.ToString ());
-					}
+					height = (uint)screenHeight;
 				else if (value < MinHeight)
-					{
-					SetSetting ("Height", MinHeight.ToString ());
-					}
+					height = MinHeight;
 				else
-					{
-					SetSetting ("Height", value.ToString ());
-					}
+					height = value;
+
+				SetSetting ("Height", height.ToString ());
 				}
 			}
+		private uint height;
 
 		/// <summary>
 		/// Возвращает минимально возможную ширину окна
@@ -171,13 +130,15 @@ namespace RD_AAOW
 			{
 			get
 				{
-				return (GetSetting ("ForceExitConfirmation") == "FEC");
+				return forceExitConfirmation;
 				}
 			set
 				{
-				SetSetting ("ForceExitConfirmation", value ? "FEC" : "0");
+				forceExitConfirmation = value;
+				SetSetting ("ForceExitConfirmation", forceExitConfirmation ? "FEC" : "0");
 				}
 			}
+		private bool forceExitConfirmation;
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость использования автоматически сохраняемого файла данных
@@ -186,13 +147,15 @@ namespace RD_AAOW
 			{
 			get
 				{
-				return (GetSetting ("ForceUsingBackupDataFile") == "FUBDF");
+				return forceUsingBackupDataFile;
 				}
 			set
 				{
-				SetSetting ("ForceUsingBackupDataFile", value ? "FUBDF" : "0");
+				forceUsingBackupDataFile = value;
+				SetSetting ("ForceUsingBackupDataFile", forceUsingBackupDataFile ? "FUBDF" : "0");
 				}
 			}
+		private bool forceUsingBackupDataFile;
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость автоматического добавления первых столбцов на диаграмму
@@ -201,56 +164,15 @@ namespace RD_AAOW
 			{
 			get
 				{
-				string s = GetSetting ("ForceShowDiagram");
-
-				if (s == "")
-					{
-					SetSetting ("ForceShowDiagram", "FSD");
-					return true;
-					}
-
-				return (s == "FSD");
+				return forceShowDiagram;
 				}
 			set
 				{
-				SetSetting ("ForceShowDiagram", value ? "FSD" : "0");
+				forceShowDiagram = value;
+				SetSetting ("ForceShowDiagram", forceShowDiagram ? "FSD" : "0");
 				}
 			}
-
-		/// <summary>
-		/// Возвращает или задаёт количество первых строк файла, используемых для поиска подписей
-		/// </summary>
-		public uint SkippedLinesCount
-			{
-			get
-				{
-				try
-					{
-					return uint.Parse (GetSetting ("SkippedLinesCount"));
-					}
-				catch
-					{
-					SetSetting ("SkippedLinesCount", "0");
-					return 0;
-					}
-				}
-			set
-				{
-				if (value > MaxSkippedLinesCount)
-					{
-					SetSetting ("SkippedLinesCount", MaxSkippedLinesCount.ToString ());
-					}
-				else
-					{
-					SetSetting ("SkippedLinesCount", value.ToString ());
-					}
-				}
-			}
-
-		/// <summary>
-		/// Максимальное количество первых строк, пропускаемых при загрузке файла
-		/// </summary>
-		public const uint MaxSkippedLinesCount = 100;
+		private bool forceShowDiagram;
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость сохранения имён столбцов
@@ -259,21 +181,58 @@ namespace RD_AAOW
 			{
 			get
 				{
-				string s = GetSetting ("ForceSavingColumnNames");
-
-				if (s == "")
-					{
-					SetSetting ("ForceSavingColumnNames", "FSCN");
-					return true;
-					}
-
-				return (s == "FSCN");
+				return forceSavingColumnNames;
 				}
 			set
 				{
-				SetSetting ("ForceSavingColumnNames", value ? "FSCN" : "0");
+				forceSavingColumnNames = value;
+				SetSetting ("ForceSavingColumnNames", forceSavingColumnNames ? "FSCN" : "0");
 				}
 			}
+		private bool forceSavingColumnNames;
+
+		/// <summary>
+		/// Возвращает или задаёт необходимость отключения дополнительных функций мыши
+		/// </summary>
+		public bool DisableMousePlacing
+			{
+			get
+				{
+				return disableMousePlacing;
+				}
+			set
+				{
+				disableMousePlacing = value;
+				SetSetting ("DisableMousePlacing", disableMousePlacing ? "DMP" : "0");
+				}
+			}
+		private bool disableMousePlacing;
+
+		/// <summary>
+		/// Возвращает или задаёт количество первых строк файла, используемых для поиска подписей
+		/// </summary>
+		public uint SkippedLinesCount
+			{
+			get
+				{
+				return skippedLinesCount;
+				}
+			set
+				{
+				if (value > MaxSkippedLinesCount)
+					skippedLinesCount = MaxSkippedLinesCount;
+				else
+					skippedLinesCount = value;
+
+				SetSetting ("SkippedLinesCount", skippedLinesCount.ToString ());
+				}
+			}
+		private uint skippedLinesCount;
+
+		/// <summary>
+		/// Максимальное количество первых строк, пропускаемых при загрузке файла
+		/// </summary>
+		public const uint MaxSkippedLinesCount = 100;
 
 		/// <summary>
 		/// Возвращает или задаёт предполагаемое количество столбцов для опции извлечения данных
@@ -282,32 +241,21 @@ namespace RD_AAOW
 			{
 			get
 				{
-				try
-					{
-					return uint.Parse (GetSetting ("ExpectedColumnsCount"));
-					}
-				catch
-					{
-					SetSetting ("ExpectedColumnsCount", MinExpectedColumnsCount.ToString ());
-					return MinExpectedColumnsCount;
-					}
+				return expectedColumnsCount;
 				}
 			set
 				{
 				if (value > MaxExpectedColumnsCount)
-					{
-					SetSetting ("ExpectedColumnsCount", MaxExpectedColumnsCount.ToString ());
-					}
+					expectedColumnsCount = MaxExpectedColumnsCount;
 				else if (value < MinExpectedColumnsCount)
-					{
-					SetSetting ("ExpectedColumnsCount", MinExpectedColumnsCount.ToString ());
-					}
+					expectedColumnsCount = MinExpectedColumnsCount;
 				else
-					{
-					SetSetting ("ExpectedColumnsCount", value.ToString ());
-					}
+					expectedColumnsCount = value;
+
+				SetSetting ("ExpectedColumnsCount", expectedColumnsCount.ToString ());
 				}
 			}
+		private uint expectedColumnsCount;
 
 		/// <summary>
 		/// Максимальное количество столбцов для опции извлечения данных
@@ -320,19 +268,20 @@ namespace RD_AAOW
 		public const uint MinExpectedColumnsCount = 2;
 
 		/// <summary>
-		/// Возвращает или задаёт необходимость отключения дополнительных функций мыши
+		/// Возвращает или задаёт язык интерфейса
 		/// </summary>
-		public bool DisableMousePlacing
+		public SupportedLanguages InterfaceLanguage
 			{
 			get
 				{
-				return (GetSetting ("DisableMousePlacing") == "DMP");
+				return interfaceLanguage;
 				}
 			set
 				{
-				SetSetting ("DisableMousePlacing", value ? "DMP" : "0");
+				Localization.CurrentLanguage = interfaceLanguage = value;
 				}
 			}
+		private SupportedLanguages interfaceLanguage;
 
 		/// <summary>
 		/// Конструктор. Загружает ранее сохранённые параметры работы программы
@@ -348,24 +297,106 @@ namespace RD_AAOW
 			catch
 				{
 				}
-			}
 
-		private int screenWidth = 1280, screenHeight = 720;
-		private SupportedLanguages language = Localization.CurrentLanguage;
+			// Язык интерфейса
+			interfaceLanguage = Localization.CurrentLanguage;
 
-		/// <summary>
-		/// Возвращает или задаёт язык интерфейса
-		/// </summary>
-		public SupportedLanguages InterfaceLanguage
-			{
-			get
+			// Размеры и смещение окна
+			try
 				{
-				return language;
+				top = int.Parse (GetSetting ("Top"));
 				}
-			set
+			catch
 				{
-				Localization.CurrentLanguage = language = value;
+				top = (screenHeight - (int)MinHeight) / 2;
+				SetSetting ("Top", top.ToString ());
 				}
+
+			try
+				{
+				left = int.Parse (GetSetting ("Left"));
+				}
+			catch
+				{
+				left = (screenWidth - (int)MinWidth) / 2;
+				SetSetting ("Left", left.ToString ());
+				}
+
+			try
+				{
+				width = uint.Parse (GetSetting ("Width"));
+				}
+			catch
+				{
+				width = MinWidth;
+				SetSetting ("Width", width.ToString ());
+				}
+
+			try
+				{
+				height = uint.Parse (GetSetting ("Height"));
+				}
+			catch
+				{
+				height = MinHeight;
+				SetSetting ("Height", height.ToString ());
+				}
+
+			// Флаги
+			forceExitConfirmation = (GetSetting ("ForceExitConfirmation") == "FEC");
+
+			string s = GetSetting ("ForceUsingBackupDataFile");
+			forceUsingBackupDataFile = (s == "FUBDF");
+
+			if (s == "")	// Требуется дополнительная обработка, т.к. значение по умолчанию - true
+				{
+				forceUsingBackupDataFile = true;
+				SetSetting ("ForceUsingBackupDataFile", "FUBDF");
+				}
+
+			s = GetSetting ("ForceShowDiagram");
+			forceShowDiagram = (s == "FSD");
+
+			if (s == "")
+				{
+				forceShowDiagram = true;
+				SetSetting ("ForceShowDiagram", "FSD");
+				}
+
+			s = GetSetting ("ForceSavingColumnNames");
+			forceSavingColumnNames = (s == "FSCN");
+
+			if (s == "")
+				{
+				forceSavingColumnNames = true;
+				SetSetting ("ForceSavingColumnNames", "FSCN");
+				}
+
+			disableMousePlacing = (GetSetting ("DisableMousePlacing") == "DMP");
+
+			// Строки поиска заголовков
+			try
+				{
+				skippedLinesCount = uint.Parse (GetSetting ("SkippedLinesCount"));
+				}
+			catch
+				{
+				skippedLinesCount = 0;
+				SetSetting ("SkippedLinesCount", skippedLinesCount.ToString ());
+				}
+
+			// Ожидаемое число столбцов
+			try
+				{
+				expectedColumnsCount = uint.Parse (GetSetting ("ExpectedColumnsCount"));
+				}
+			catch
+				{
+				expectedColumnsCount = MinExpectedColumnsCount;
+				SetSetting ("ExpectedColumnsCount", expectedColumnsCount.ToString ());
+				}
+
+			// Завершено
 			}
 
 		// Метод получает значение настройки из реестра

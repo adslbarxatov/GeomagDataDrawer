@@ -922,30 +922,22 @@ namespace RD_AAOW
 			// Генерация данных по формуле
 			FormulaEvaluator fe = new FormulaEvaluator (ca.InterfaceLanguage);
 			if (fe.Cancelled)
-				{
 				return;
-				}
 
 			// Создание диаграммы
 			dd = new DiagramData (fe.X, fe.Y);
 			if (dd.InitResult != DiagramDataInitResults.Ok)
-				{
-				throw new Exception (ProgramDescription.AssemblyExceptionMessage);
-				}
+				throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (2)");
 
 			// Сброс списка кривых
 			LineNamesList.Items.Clear ();
-			/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-				MDeleteColumn.Enabled = MReplaceColumn.Enabled = false;*/
 
 			// Включение заблокированных контролов
 			ChangeControlsState (true);
 
 			// Загрузка
 			if (ca.ForceShowDiagram)
-				{
 				AddFirstColumns ();
-				}
 
 			// Перерисовка
 			Redraw ();
@@ -969,9 +961,7 @@ namespace RD_AAOW
 			{
 			// Обновление параметров загрузки файлов
 			if (!CheckFileLoadingParameters (DataInputTypes.Unknown))
-				{
 				return;
-				}
 
 			// Контрольное открытие
 			DiagramData ddt = new DiagramData (ca.ExpectedColumnsCount, ca.SkippedLinesCount);
@@ -988,17 +978,13 @@ namespace RD_AAOW
 
 			// Сброс списка кривых
 			LineNamesList.Items.Clear ();
-			/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-				MDeleteColumn.Enabled = MReplaceColumn.Enabled = false;*/
 
 			// Включение заблокированных контролов
 			ChangeControlsState (true);
 
 			// Загрузка
 			if (ca.ForceShowDiagram)
-				{
 				AddFirstColumns ();
-				}
 
 			// Перерисовка
 			Redraw ();
@@ -1102,10 +1088,6 @@ namespace RD_AAOW
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = (int)dd.LinesCount - 1;
 
-					// Включение возможности удаления
-					/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-						MDeleteColumn.Enabled = MReplaceColumn.Enabled = true;*/
-
 					break;
 
 				// Отмена
@@ -1176,7 +1158,7 @@ namespace RD_AAOW
 			switch (cad.SaveParametersFile (dd))
 				{
 				case -1:
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
+					throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (9)");
 
 				case -2:
 					MessageBox.Show (Localization.GetText ("TemplateSaveError", ca.InterfaceLanguage),
@@ -1281,9 +1263,10 @@ namespace RD_AAOW
 					{
 					res = dd.AddObject (cad.AdditionalObjectType);
 					}
+
 				if ((res < 0) && (res != -3))
 					{
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
+					throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (9)");
 					}
 				else if (res == -3)
 					{
@@ -1408,17 +1391,13 @@ namespace RD_AAOW
 
 			if (!cac.Cancelled)
 				{
-				// Включение возможности удаления
-				/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-					MDeleteColumn.Enabled = MReplaceColumn.Enabled = true;*/
-
 				// Добавление
 				for (int i = 0; i < cac.AutoNameOffset.Count; i++)
 					{
 					int res = dd.AddDiagram (cac.XColumnNumber[i], cac.YColumnNumber[i]);
 					if ((res < 0) && (res != -3))
 						{
-						throw new Exception (ProgramDescription.AssemblyExceptionMessage);
+						throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (10)");
 						}
 					else if (res == -3)
 						{
@@ -1538,7 +1517,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				throw new Exception (ProgramDescription.AssemblyExceptionMessage);
+				throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (12)");
 				}
 
 			// Обновление ограничений
@@ -1691,7 +1670,7 @@ namespace RD_AAOW
 				int res = dd.ReplaceDiagram ((uint)LineNamesList.SelectedIndex, cad.XColumnNumber, cad.YColumnNumber);
 				if (res < 0)
 					{
-					throw new Exception (ProgramDescription.AssemblyExceptionMessage);
+					throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (14)");
 					}
 
 				// Обновление списка названий кривых
@@ -1942,7 +1921,7 @@ namespace RD_AAOW
 
 						// Любое нештатное значение
 						default:
-							throw new Exception (ProgramDescription.AssemblyExceptionMessage);
+							throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (13)");
 						}
 					}
 				}
