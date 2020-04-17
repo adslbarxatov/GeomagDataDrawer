@@ -6,6 +6,9 @@ To do
 - Optimize mechanism of data transferring from main to editing window;
 - Develop a setting that allows specifying which tabs and in what order should be displayed on the settings panel
 
+Version 4.14.3L
+• Applied correct representation of supported languages list
+
 Version 4.14.2
 • Fixed multiple registry reading in ConfigAccessor: now settings will be filled once and called from local variables;
 • Some source code improvements applied

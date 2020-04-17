@@ -49,7 +49,15 @@ namespace RD_AAOW
 					}
 				}
 
-			MLanguage.SelectedIndex = (int)ca.InterfaceLanguage;	// Инициация локализации
+			MLanguage.Items.AddRange (Localization.LanguagesNames);
+			try
+				{
+				MLanguage.SelectedIndex = (int)ca.InterfaceLanguage;	// Инициация локализации
+				}
+			catch
+				{
+				MLanguage.SelectedIndex = 0;
+				}
 
 			// Установка заголовка программы и параметров окна
 			this.Text = ProgramDescription.AssemblyTitle;
@@ -171,8 +179,6 @@ namespace RD_AAOW
 					{
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = 0;
-					/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-						MDeleteColumn.Enabled = MReplaceColumn.Enabled = true;*/
 					}
 
 				ChangeControlsState (true);
