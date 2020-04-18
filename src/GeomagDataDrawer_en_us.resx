@@ -349,7 +349,7 @@
     <value>This will cancel all changes made. Are you sure?</value>
   </data>
   <data name="ApplicationExit" xml:space="preserve">
-    <value>Are you really want to exit the application?</value>
+    <value>Exit the application?</value>
   </data>
   <data name="ApplyButton" xml:space="preserve">
     <value>&amp;OK</value>
@@ -1038,5 +1038,76 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
   </data>
   <data name="ExceptionMessage" xml:space="preserve">
     <value>Internal error occurred in application. Debug is required</value>
+  </data>
+  <data name="FileAddCompleted" xml:space="preserve">
+    <value>File "{0:S}" has been added: columns – {1:D}, rows – {2:D}</value>
+  </data>
+  <data name="FileAddError" xml:space="preserve">
+    <value>File "{0:S}" haven't been added: {1:S}</value>
+  </data>
+  <data name="FilesListReset" xml:space="preserve">
+    <value>Files list has been reset</value>
+  </data>
+  <data name="NotEnoughFilesToMerge" xml:space="preserve">
+    <value>Not enough files to merge</value>
+  </data>
+  <data name="TablesAssembling" xml:space="preserve">
+    <value>Assembling: file #{0:D}, row #{1:D}</value>
+  </data>
+  <data name="TablesMergeCompleted" xml:space="preserve">
+    <value>Table has been merged: rows – {0:D}, columns – {1:D}</value>
+  </data>
+  <data name="TablesMergeError" xml:space="preserve">
+    <value>There are not enough rows in created table that match the selection criteria</value>
+  </data>
+  <data name="TablesMergerForm_AddFiles" xml:space="preserve">
+    <value>Add files to processing ...</value>
+  </data>
+  <data name="TablesMergerForm_BeginProcessing" xml:space="preserve">
+    <value>Begin processing</value>
+  </data>
+  <data name="TablesMergerForm_ClearFiles" xml:space="preserve">
+    <value>Reset list</value>
+  </data>
+  <data name="TablesMergerForm_FilesListLabel" xml:space="preserve">
+    <value>List of data files to merge:</value>
+  </data>
+  <data name="TablesMergerForm_MergeLabel" xml:space="preserve">
+    <value>Merge type:</value>
+  </data>
+  <data name="TablesMergerForm_MergeType0" xml:space="preserve">
+    <value>Use abscissas existent in all files</value>
+  </data>
+  <data name="TablesMergerForm_MergeType1" xml:space="preserve">
+    <value>Add missing abscissas, fill ordinates with zeros</value>
+  </data>
+  <data name="TablesMergerForm_MergeType2" xml:space="preserve">
+    <value>Add missing abscissas, interpolate ordinates</value>
+  </data>
+  <data name="TablesMergerForm_ProcessingLabel" xml:space="preserve">
+    <value>Processing results:</value>
+  </data>
+  <data name="TablesMergerForm_SaveResult" xml:space="preserve">
+    <value>Save result</value>
+  </data>
+  <data name="TablesMergerForm_SFDialog_F" xml:space="preserve">
+    <value>All data files|*.*</value>
+  </data>
+  <data name="TablesMerger_Exit" xml:space="preserve">
+    <value>Exit the application?
+
+All unsaved data will be lost!</value>
+  </data>
+  <data name="TablesMerger_FileSaved" xml:space="preserve">
+    <value>File with result table has been saved</value>
+  </data>
+  <data name="TablesMerger_LaunchedAt" xml:space="preserve">
+    <value> launched at </value>
+  </data>
+  <data name="TablesMerging" xml:space="preserve">
+    <value>Merging rows to table: row #{0:D}</value>
+  </data>
+  <data name="TablesSorting" xml:space="preserve">
+    <value>Rows sorting...</value>
   </data>
 </root>

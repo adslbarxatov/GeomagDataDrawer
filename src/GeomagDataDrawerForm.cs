@@ -257,10 +257,10 @@ namespace RD_AAOW
 		private bool CheckFileLoadingParameters (DataInputTypes InputType)
 			{
 			// Обработка случая извлечения данных
-			UnknownFileParSelector ufps = null;
+			UnknownFileParametersSelector ufps = null;
 			if (InputType == DataInputTypes.Unknown)
 				{
-				ufps = new UnknownFileParSelector (ca.ExpectedColumnsCount, ca.InterfaceLanguage, false);
+				ufps = new UnknownFileParametersSelector (ca.ExpectedColumnsCount, ca.InterfaceLanguage, false);
 
 				if (ufps.Cancelled)
 					{

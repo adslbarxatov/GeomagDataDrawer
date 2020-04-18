@@ -5,7 +5,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает форму выбора параметров извлечения данных из текстовых файлов
 	/// </summary>
-	public partial class UnknownFileParSelector:Form
+	public partial class UnknownFileParametersSelector:Form
 		{
 		/// <summary>
 		/// Конструктор. Запускает форму
@@ -13,7 +13,7 @@ namespace RD_AAOW
 		/// <param name="ExpectedColumnsCount">Ожидаемое количество столбцов, полученное из конфигурации программы</param>
 		/// <param name="Language">Язык локализации</param>
 		/// <param name="SelectAbscissas">Флаг, указывающий, следует ли запрашивать номер столбца абсцисс</param>
-		public UnknownFileParSelector (uint ExpectedColumnsCount, SupportedLanguages Language, bool SelectAbscissas)
+		public UnknownFileParametersSelector (uint ExpectedColumnsCount, SupportedLanguages Language, bool SelectAbscissas)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();

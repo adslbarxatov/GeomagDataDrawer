@@ -31,9 +31,16 @@ namespace RD_AAOW
 		public const string LanguageValueName = "Language";
 
 		/// <summary>
-		/// Количество доступных языков интерфейса
+		/// Возвращает список доступных языков интерфейса
 		/// </summary>
-		public const uint AvailableLanguages = 2;
+		public static string[] LanguagesNames
+			{
+			get
+				{
+				return languagesNames;
+				}
+			}
+		private static string[] languagesNames = new string[] { "Русский", "English (US)" };
 
 		/// <summary>
 		/// Возвращает или задаёт текущий язык интерфейса приложения

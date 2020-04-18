@@ -1040,4 +1040,75 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   <data name="ExceptionMessage" xml:space="preserve">
     <value>В приложении произошла внутренняя ошибка. Требуется отладка</value>
   </data>
+  <data name="FileAddCompleted" xml:space="preserve">
+    <value>Добавлен файл «{0:S}»: столбцов – {1:D}, строк – {2:D}</value>
+  </data>
+  <data name="FileAddError" xml:space="preserve">
+    <value>Файл «{0:S}» не был добавлен: {1:S}</value>
+  </data>
+  <data name="FilesListReset" xml:space="preserve">
+    <value>Список файлов сброшен</value>
+  </data>
+  <data name="NotEnoughFilesToMerge" xml:space="preserve">
+    <value>Недостаточно файлов для объединения</value>
+  </data>
+  <data name="TablesAssembling" xml:space="preserve">
+    <value>Сборка строк: файл №{0:D}, строка №{1:D}</value>
+  </data>
+  <data name="TablesMergeCompleted" xml:space="preserve">
+    <value>Сформирована таблица: строк – {0:D}, столбцов – {1:D}</value>
+  </data>
+  <data name="TablesMergeError" xml:space="preserve">
+    <value>В объединённой таблице недостаточно строк, соответствующих условиям отбора</value>
+  </data>
+  <data name="TablesMergerForm_AddFiles" xml:space="preserve">
+    <value>Добавить файлы в обработку...</value>
+  </data>
+  <data name="TablesMergerForm_BeginProcessing" xml:space="preserve">
+    <value>Начать обработку</value>
+  </data>
+  <data name="TablesMergerForm_ClearFiles" xml:space="preserve">
+    <value>Сбросить список</value>
+  </data>
+  <data name="TablesMergerForm_FilesListLabel" xml:space="preserve">
+    <value>Список файлов данных для объединения:</value>
+  </data>
+  <data name="TablesMergerForm_MergeLabel" xml:space="preserve">
+    <value>Вариант объединения:</value>
+  </data>
+  <data name="TablesMergerForm_MergeType0" xml:space="preserve">
+    <value>Использовать абсциссы, имеющиеся во всех файлах</value>
+  </data>
+  <data name="TablesMergerForm_MergeType1" xml:space="preserve">
+    <value>Добавлять недостающие абсциссы, заполнять ординаты нулями</value>
+  </data>
+  <data name="TablesMergerForm_MergeType2" xml:space="preserve">
+    <value>Добавлять недостающие абсциссы, интерполировать ординаты</value>
+  </data>
+  <data name="TablesMergerForm_ProcessingLabel" xml:space="preserve">
+    <value>Результаты обработки:</value>
+  </data>
+  <data name="TablesMergerForm_SaveResult" xml:space="preserve">
+    <value>Сохранить результат</value>
+  </data>
+  <data name="TablesMergerForm_SFDialog_F" xml:space="preserve">
+    <value>Все файлы данных|*.*</value>
+  </data>
+  <data name="TablesMerger_Exit" xml:space="preserve">
+    <value>Завершить работу с программой?
+
+Все несохранённые данные будут утеряны!</value>
+  </data>
+  <data name="TablesMerger_FileSaved" xml:space="preserve">
+    <value>Файл с конечной таблицей сохранён</value>
+  </data>
+  <data name="TablesMerger_LaunchedAt" xml:space="preserve">
+    <value> запущен в </value>
+  </data>
+  <data name="TablesMerging" xml:space="preserve">
+    <value>Объединение строк в таблицу: строка №{0:D}</value>
+  </data>
+  <data name="TablesSorting" xml:space="preserve">
+    <value>Сортировка строк...</value>
+  </data>
 </root>
