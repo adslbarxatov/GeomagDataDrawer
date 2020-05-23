@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -1003,20 +1005,23 @@ namespace RD_AAOW
 		// О программе
 		private void MAbout_Click (object sender, System.EventArgs e)
 			{
-			// Основная справка
-			ProgramDescription.ShowAbout ();
+			AboutForm af = new AboutForm (ca.InterfaceLanguage, "https://github.com/adslbarxatov/GeomagDataDrawer",
+				"https://github.com/adslbarxatov/GeomagDataDrawer/releases",
+				"https://www.youtube.com/watch?v=SUrFxUFGgTg&list=PLe7qKwHNkZTuAATdj1asHQ6nUxlR9qUZO",
 
-			// Видео
-			if (MessageBox.Show (Localization.GetText ("ShowVideo", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
-				MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-				ProgramDescription.ShowVideoManual ();
+				"Geomag data drawer – программное средство, предназначенное для построения диаграмм на " +
+				"основе табличных данных. Изначально создавался как средство визуализации результатов " +
+				"экспериментальных измерений; может и сейчас быть использован с этой целью. Но не только...\r\n\r\n" +
+				"Geomag data drawer is a software tool for creating diagrams based on tabular data. Originally " +
+				"created for visualizing the results of experimental measurements. Can now be used for this " +
+				"purpose. But not exclusively.");
 			}
 
 		// Справка
 		private void MHelp_Click (object sender, EventArgs e)
 			{
 			// Проверка существования файла
-			if (!System.IO.File.Exists (Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[0]))
+			if (!File.Exists (Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[0]))
 				{
 				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1024,7 +1029,7 @@ namespace RD_AAOW
 				}
 
 			// Запуск
-			System.Diagnostics.Process.Start ("hh.exe", Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[0]);
+			Process.Start ("hh.exe", Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[0]);
 			}
 
 		// Изменение языка интерфейса

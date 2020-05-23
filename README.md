@@ -1,8 +1,11 @@
-# GeomagDataDrawer v 4.14.4
+# GeomagDataDrawer v 4.15h
 
-Autonomous utility for plotting and preparing of data diagrams / Автономный инструмент построения и оформления диаграмм
+Autonomous utility for plotting and preparing of data diagrams
+
+Автономный инструмент построения и оформления диаграмм
 
 #
+
 Annotation (first page of helpfile):
 
 Geomag data drawer is a software tool for creating diagrams based on tabular data. Originally created for visualizing the results of experimental measurements. Can now be used for this purpose. But not exclusively.
