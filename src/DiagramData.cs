@@ -486,13 +486,14 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="X">Массив абсцисс кривых</param>
 		/// <param name="Y">Массив ординат кривых</param>
-		internal DiagramData (List<double> X, List<List<double>> Y)
+		/// <param name="ColumnsNames">Нащвания столбцов данных</param>
+		internal DiagramData (List<double> X, List<List<double>> Y, List<string> ColumnsNames)
 			{
 			// Контроль
 			if ((X == null) || (Y == null) || (X.Count == 0))
 				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (4)");
 
-			if (X.Count < 2)
+			if ((X.Count < 2) || (Y.Count != ColumnsNames.Count))
 				{
 				initResult = DiagramDataInitResults.NotEnoughData;
 				return;
@@ -512,15 +513,14 @@ namespace RD_AAOW
 					dataColumnNames.Add ("x");
 					}
 				dataValues.Add (new List<double> ());
-				dataColumnNames.Add ("y" + (c + 1).ToString ());
+				dataColumnNames.Add (ColumnsNames[c]);
 
 				// Интерпретация данных
 				for (int r = 0; r < X.Count; r++)
 					{
 					if (c == 0)
-						{
 						dataValues[c].Add (X[r]);
-						}
+
 					dataValues[c + 1].Add (Y[c][r]);
 					}
 				}
@@ -1828,8 +1828,8 @@ namespace RD_AAOW
 			// Отрисовка подписи с учётом масштабирования и размера шрифта
 			if (LineStyle.AutoTextOffset)
 				{
-				string str = dataColumnNames[(int)LineStyle.YColumnNumber] + " (" +
-					dataColumnNames[(int)LineStyle.XColumnNumber] + ")";
+				string str = dataColumnNames[(int)LineStyle.YColumnNumber] + " @ " +
+					dataColumnNames[(int)LineStyle.XColumnNumber];
 				sz = g.MeasureString (str, LineStyle.TextFont);
 
 				g.DrawString (str, LineStyle.TextFont, br,
@@ -2389,8 +2389,8 @@ namespace RD_AAOW
 			// Отрисовка подписи с учётом масштабирования и размера шрифта
 			if (lineStyles[LineNumber].AutoTextOffset)
 				{
-				string str = dataColumnNames[(int)lineStyles[LineNumber].YColumnNumber] + " (" +
-					dataColumnNames[(int)lineStyles[LineNumber].XColumnNumber] + ")";
+				string str = dataColumnNames[(int)lineStyles[LineNumber].YColumnNumber] + " @ " +
+					dataColumnNames[(int)lineStyles[LineNumber].XColumnNumber];
 				sz = g.MeasureString (str, lineStyles[LineNumber].TextFont);
 
 				VectorAdapter.DrawText (X + (uint)((float)lineStyles[LineNumber].DiagramImageWidth * LeftMargin) + (uint)(2 * LineNumber * sz.Width) %

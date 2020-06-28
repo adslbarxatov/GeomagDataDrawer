@@ -26,7 +26,7 @@ namespace RD_AAOW
 		private bool cancelled = true;
 
 		/// <summary>
-		/// Массив абсцисс сгенерированной кривой
+		/// Возвращает массив абсцисс сгенерированной кривой
 		/// </summary>
 		public List<double> X
 			{
@@ -38,7 +38,7 @@ namespace RD_AAOW
 		private List<double> x = new List<double> ();
 
 		/// <summary>
-		/// Массив ординат сгенерированной кривой
+		/// Возвращает массив ординат сгенерированной кривой
 		/// </summary>
 		public List<List<double>> Y
 			{
@@ -48,6 +48,18 @@ namespace RD_AAOW
 				}
 			}
 		private List<List<double>> y = new List<List<double>> ();
+
+		/// <summary>
+		/// Возвращает список названий столбцов данных
+		/// </summary>
+		public List<string> ColumnsNames
+			{
+			get
+				{
+				return columnsNames;
+				}
+			}
+		private List<string> columnsNames = new List<string> ();
 
 		/// <summary>
 		/// Конструктор. Запускает форму ввода формулы
@@ -75,13 +87,13 @@ namespace RD_AAOW
 			}
 
 		// Отмена
-		private void AbortButton_Click (object sender, System.EventArgs e)
+		private void AbortButton_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
 
 		// ОК
-		private void ApplyButton_Click (object sender, System.EventArgs e)
+		private void ApplyButton_Click (object sender, EventArgs e)
 			{
 			// Контроль диапазона
 			if ((StepValue.Value == 0) ||
@@ -126,6 +138,9 @@ namespace RD_AAOW
 					}
 				ee = new ExpressionEvaluator (eca, (double)Math.Max (StartValue.Value, EndValue.Value));
 				y[y.Count - 1].Add (ee.Result);
+
+				// Название столбца
+				columnsNames.Add (CurvesList.Items[c].ToString ());
 				}
 
 			// Завершение
@@ -134,7 +149,7 @@ namespace RD_AAOW
 			}
 
 		// Обновление статуса проверки формулы и добавление кривой
-		private void AddButton_Click (object sender, System.EventArgs e)
+		private void AddButton_Click (object sender, EventArgs e)
 			{
 			// Блокировка контролов
 			FormulaBox.ReadOnly = true;

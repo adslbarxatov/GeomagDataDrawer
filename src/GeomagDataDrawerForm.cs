@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -70,7 +71,7 @@ namespace RD_AAOW
 			this.Height = (int)ca.Height;
 
 			// Потеря фокуса полем настройки
-			MainTabControl_Leave (null, null);
+			MainTabControl_Leave (MainTabControl, null);
 
 			#region Настройка контролов
 			// Диалоги
@@ -170,8 +171,8 @@ namespace RD_AAOW
 				{
 				for (int i = 0; i < dd.LinesCount; i++)
 					{
-					LineNamesList.Items.Add (dd.GetDataColumnName (dd.GetStyle (i).YColumnNumber) + " (" +
-						dd.GetDataColumnName (dd.GetStyle (i).XColumnNumber) + ")");
+					LineNamesList.Items.Add (dd.GetDataColumnName (dd.GetStyle (i).YColumnNumber) + " @ " +
+						dd.GetDataColumnName (dd.GetStyle (i).XColumnNumber));
 					}
 				for (int i = 0; i < dd.AdditionalObjectsCount; i++)
 					{
@@ -292,7 +293,7 @@ namespace RD_AAOW
 			}
 
 		// Обработка изменения размера окна
-		private void MainForm_Resize (object sender, System.EventArgs e)
+		private void MainForm_Resize (object sender, EventArgs e)
 			{
 			// Изменение размера поля отрисовки
 			HorScroll.Width = DiagramBox.Width = this.Width - 55;
@@ -308,8 +309,8 @@ namespace RD_AAOW
 		// Сворачивание панелей
 		private void MainForm_Click (object sender, EventArgs e)
 			{
-			MainTabControl_Leave (null, null);
-			LineNamesList_Leave (null, null);
+			MainTabControl_Leave (MainTabControl, null);
+			LineNamesList_Leave (LineNamesList, null);
 			}
 
 		// Активация/деактивация контролов при старте программы/закрытии диаграммы
@@ -523,10 +524,10 @@ namespace RD_AAOW
 			{
 			if (SelectionMode.Checked)
 				{
-				MainSelector.Left = Math.Min (oldMouseX, e.X);//+DiagramBox.Left;
-				MainSelector.Top = Math.Min (oldMouseY, e.Y);//+ DiagramBox.Top;
-				MainSelector.Width = Math.Max (oldMouseX, e.X) - MainSelector.Left;// + DiagramBox.Left;
-				MainSelector.Height = Math.Max (oldMouseY, e.Y) - MainSelector.Top;// + DiagramBox.Top;
+				MainSelector.Left = Math.Min (oldMouseX, e.X);
+				MainSelector.Top = Math.Min (oldMouseY, e.Y);
+				MainSelector.Width = Math.Max (oldMouseX, e.X) - MainSelector.Left;
+				MainSelector.Height = Math.Max (oldMouseY, e.Y) - MainSelector.Top;
 				}
 			}
 
@@ -534,8 +535,8 @@ namespace RD_AAOW
 		private void DiagramBox_MouseDown (object sender, MouseEventArgs e)
 			{
 			// Потеря фокуса
-			MainTabControl_Leave (null, null);
-			LineNamesList_Leave (null, null);
+			MainTabControl_Leave (MainTabControl, null);
+			LineNamesList_Leave (LineNamesList, null);
 
 			// Обработка движения по полю диаграммы или выделения кривых
 			if (e.Clicks == 1)
@@ -719,14 +720,14 @@ namespace RD_AAOW
 		#region Меню программы «Файл»
 
 		// Выбор файла данных
-		private void MOpenDataFile_Click (object sender, System.EventArgs e)
+		private void MOpenDataFile_Click (object sender, EventArgs e)
 			{
 			OFDialog.FileName = "";
 			OFDialog.ShowDialog ();
 			}
 
 		// Файл выбран
-		private void OFDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void OFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Тестовое открытие файла данных
 			DiagramData ddt = null;
@@ -793,8 +794,8 @@ namespace RD_AAOW
 					{
 					for (int i = 0; i < dd.LinesCount; i++)
 						{
-						LineNamesList.Items.Add (dd.GetDataColumnName (dd.GetStyle (i).YColumnNumber) + " (" +
-							dd.GetDataColumnName (dd.GetStyle (i).XColumnNumber) + ")");
+						LineNamesList.Items.Add (dd.GetDataColumnName (dd.GetStyle (i).YColumnNumber) + " @ " +
+							dd.GetDataColumnName (dd.GetStyle (i).XColumnNumber));
 						}
 					for (int i = 0; i < dd.AdditionalObjectsCount; i++)
 						{
@@ -804,8 +805,6 @@ namespace RD_AAOW
 						{
 						LineNamesList.SelectedItems.Clear ();
 						LineNamesList.SelectedIndex = 0;
-						/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-							MDeleteColumn.Enabled = MReplaceColumn.Enabled = true;*/
 						}
 					}
 
@@ -865,8 +864,8 @@ namespace RD_AAOW
 					}
 
 				// Обновление списка названий кривых
-				LineNamesList.Items.Add (dd.GetDataColumnName (cad.YColumnNumber[i]) + " (" +
-					dd.GetDataColumnName (cad.XColumnNumber[i]) + ")");
+				LineNamesList.Items.Add (dd.GetDataColumnName (cad.YColumnNumber[i]) + " @ " +
+					dd.GetDataColumnName (cad.XColumnNumber[i]));
 				LineNamesList.SelectedItems.Clear ();
 				LineNamesList.SelectedIndex = LineNamesList.Items.Count - 1;
 
@@ -892,7 +891,7 @@ namespace RD_AAOW
 			SFDialog.ShowDialog ();
 			}
 
-		private void SFDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void SFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Сохранение
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)SFDialog.FilterIndex, ca.ForceSavingColumnNames) < 0)
@@ -903,7 +902,7 @@ namespace RD_AAOW
 			}
 
 		// Сохранение изображения
-		private void MSaveDiagramImage_Click (object sender, System.EventArgs e)
+		private void MSaveDiagramImage_Click (object sender, EventArgs e)
 			{
 			SavePicture sp = new SavePicture (dd, ca.InterfaceLanguage, false);
 			}
@@ -919,7 +918,7 @@ namespace RD_AAOW
 			}
 
 		// Выход из программы
-		private void MExit_Click (object sender, System.EventArgs e)
+		private void MExit_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
@@ -933,7 +932,7 @@ namespace RD_AAOW
 				return;
 
 			// Создание диаграммы
-			dd = new DiagramData (fe.X, fe.Y);
+			dd = new DiagramData (fe.X, fe.Y, fe.ColumnsNames);
 			if (dd.InitResult != DiagramDataInitResults.Ok)
 				throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (2)");
 
@@ -1003,7 +1002,7 @@ namespace RD_AAOW
 		#region Меню программы «Справка»
 
 		// О программе
-		private void MAbout_Click (object sender, System.EventArgs e)
+		private void MAbout_Click (object sender, EventArgs e)
 			{
 			AboutForm af = new AboutForm (ca.InterfaceLanguage, "https://github.com/adslbarxatov/GeomagDataDrawer",
 				"https://github.com/adslbarxatov/GeomagDataDrawer/releases",
@@ -1014,7 +1013,7 @@ namespace RD_AAOW
 				"экспериментальных измерений; может и сейчас быть использован с этой целью. Но не только...\r\n\r\n" +
 				"Geomag data drawer is a software tool for creating diagrams based on tabular data. Originally " +
 				"created for visualizing the results of experimental measurements. Can now be used for this " +
-				"purpose. But not exclusively.");
+				"purpose. But not exclusively...");
 			}
 
 		// Справка
@@ -1054,14 +1053,14 @@ namespace RD_AAOW
 			LoadStyleDialog.ShowDialog ();
 			}
 
-		private void LoadStyleDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void LoadStyleDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Выбор варианта использования стилей
 			switch (MessageBox.Show (Localization.GetText ("StyleLoadingType", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle,
 				 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
 				// Применение к выделенным кривым
-				case System.Windows.Forms.DialogResult.Yes:
+				case DialogResult.Yes:
 					// Контроль
 					if (LineNamesList.SelectedIndices.Count == 0)
 						{
@@ -1080,7 +1079,7 @@ namespace RD_AAOW
 					break;
 
 				// Добавление кривых
-				case System.Windows.Forms.DialogResult.No:
+				case DialogResult.No:
 					// Загрузка
 					int oldLinesCount = LineNamesList.Items.Count;
 
@@ -1093,8 +1092,8 @@ namespace RD_AAOW
 					// Обновление списка названий кривых (файл стиля заведомо непустой)
 					for (int i = oldLinesCount; i < dd.LinesCount; i++)
 						{
-						LineNamesList.Items.Insert (i, dd.GetDataColumnName (dd.GetStyle (i).YColumnNumber) + " (" +
-							dd.GetDataColumnName (dd.GetStyle (i).XColumnNumber) + ")");
+						LineNamesList.Items.Insert (i, dd.GetDataColumnName (dd.GetStyle (i).YColumnNumber) + " @ " +
+							dd.GetDataColumnName (dd.GetStyle (i).XColumnNumber));
 						}
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = (int)dd.LinesCount - 1;
@@ -1102,12 +1101,12 @@ namespace RD_AAOW
 					break;
 
 				// Отмена
-				case System.Windows.Forms.DialogResult.Cancel:
+				case DialogResult.Cancel:
 					return;
 				}
 
 			// Перерисовка
-			LineNames_SelectedIndexChanged (null, null);
+			LineNames_SelectedIndexChanged (LineNamesList, null);
 			}
 
 		// Сохранение стиля в файл
@@ -1126,7 +1125,7 @@ namespace RD_AAOW
 			SaveStyleDialog.ShowDialog ();
 			}
 
-		private void SaveStyleDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void SaveStyleDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			if (dd.SaveStyle (SaveStyleDialog.FileName, LineNamesList.SelectedIndices) < 0)
 				{
@@ -1157,7 +1156,7 @@ namespace RD_AAOW
 					}
 
 				// Перерисовка
-				LineNames_SelectedIndexChanged (null, null);
+				LineNames_SelectedIndexChanged (LineNamesList, null);
 				}
 			}
 
@@ -1209,8 +1208,6 @@ namespace RD_AAOW
 				{
 				// Сброс списка кривых
 				LineNamesList.Items.Clear ();
-				/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-					MDeleteColumn.Enabled = MReplaceColumn.Enabled = false;*/
 
 				// Загрузка данных
 				dd = new DiagramData (dde.ResultTable);
@@ -1222,8 +1219,8 @@ namespace RD_AAOW
 
 					dd.LoadStyle (i, linesStyles[i]);
 
-					LineNamesList.Items.Add (dd.GetDataColumnName (linesStyles[i].YColumnNumber) + " (" +
-						dd.GetDataColumnName (linesStyles[i].XColumnNumber) + ")");
+					LineNamesList.Items.Add (dd.GetDataColumnName (linesStyles[i].YColumnNumber) + " @ " +
+						dd.GetDataColumnName (linesStyles[i].XColumnNumber));
 					}
 				for (int i = 0; i < objectsStyles.Count; i++)
 					{
@@ -1297,8 +1294,8 @@ namespace RD_AAOW
 				// Обновление списка названий кривых
 				if (cad.IsNewObjectADiagram)
 					{
-					LineNamesList.Items.Insert ((int)dd.LinesCount - 1, dd.GetDataColumnName (cad.YColumnNumber) + " (" +
-						dd.GetDataColumnName (cad.XColumnNumber) + ")");
+					LineNamesList.Items.Insert ((int)dd.LinesCount - 1, dd.GetDataColumnName (cad.YColumnNumber) + " @ " +
+						dd.GetDataColumnName (cad.XColumnNumber));
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = (int)dd.LinesCount - 1;
 					}
@@ -1418,8 +1415,8 @@ namespace RD_AAOW
 						}
 
 					// Обновление списка названий кривых
-					LineNamesList.Items.Insert ((int)dd.LinesCount - 1, dd.GetDataColumnName (cac.YColumnNumber[i]) + " (" +
-						dd.GetDataColumnName (cac.XColumnNumber[i]) + ")");
+					LineNamesList.Items.Insert ((int)dd.LinesCount - 1, dd.GetDataColumnName (cac.YColumnNumber[i]) + " @ " +
+						dd.GetDataColumnName (cac.XColumnNumber[i]));
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = (int)dd.LinesCount - 1;
 
@@ -1532,8 +1529,8 @@ namespace RD_AAOW
 				}
 
 			// Обновление ограничений
-			ImageWidth_ValueChanged (null, null);
-			ImageHeight_ValueChanged (null, null);
+			ImageWidth_ValueChanged (ImageWidth, null);
+			ImageHeight_ValueChanged (ImageHeight, null);
 
 			// Обновление состояния контролов
 			ChangeControlsState (true);
@@ -1658,7 +1655,7 @@ namespace RD_AAOW
 				}
 
 			// Перерисовка
-			LineNames_SelectedIndexChanged (null, null);
+			LineNames_SelectedIndexChanged (LineNamesList, null);
 			}
 
 		// Замена данных кривой
@@ -1685,8 +1682,8 @@ namespace RD_AAOW
 					}
 
 				// Обновление списка названий кривых
-				LineNamesList.Items[LineNamesList.SelectedIndex] = dd.GetDataColumnName (cad.YColumnNumber) + " (" +
-					dd.GetDataColumnName (cad.XColumnNumber) + ")";
+				LineNamesList.Items[LineNamesList.SelectedIndex] = dd.GetDataColumnName (cad.YColumnNumber) + " @ " +
+					dd.GetDataColumnName (cad.XColumnNumber);
 
 				// Перерисовка
 				Redraw ();
@@ -1698,7 +1695,7 @@ namespace RD_AAOW
 		#region Настройка диаграммы
 
 		// Виды настраиваемых параметров
-		private enum CurrentParameter
+		/*private enum CurrentParameter
 			{
 			// Основные
 			DrawLine,
@@ -1747,16 +1744,14 @@ namespace RD_AAOW
 			LineColor,
 			LineStyle,
 			LineMarker
-			}
+			}*/
 
 		// Общий метод передачи изменённых параметров в стили диаграммы
-		private void UpdateDiagramParameters (CurrentParameter CParameter)
+		/*private void UpdateDiagramParameters (CurrentParameter CParameter, Control Sender)
 			{
 			// Блокировка обработки в случае, если программа находится в состоянии выбора кривой для настройки
 			if (loading)
-				{
 				return;
-				}
 
 			// Обновление значений
 			try
@@ -1945,43 +1940,243 @@ namespace RD_AAOW
 
 			// Перерисовка
 			Redraw ();
+			}*/
+
+		private void UpdateDiagramParameters (Control Sender)
+			{
+			// Блокировка обработки в случае, если программа находится в состоянии выбора кривой для настройки
+			if (loading)
+				return;
+
+			// Обновление значений
+			try
+				{
+				for (int i = 0; i < LineNamesList.SelectedIndices.Count; i++)
+					{
+					// Объединяемые параметры
+					switch (Sender.Name)
+						{
+						// Общие параметры
+						case "MinX":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).MinX = (double)MinX.Value;
+							break;
+
+						case "MaxX":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).MaxX = (double)MaxX.Value;
+							break;
+
+						case "MinY":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).MinY = (double)MinY.Value;
+							break;
+
+						case "MaxY":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).MaxY = (double)MaxY.Value;
+							break;
+
+						case "LeftOffset":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).DiagramImageLeftOffset = (uint)LeftOffset.Value;
+							break;
+
+						case "TopOffset":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).DiagramImageTopOffset = (uint)TopOffset.Value;
+							break;
+
+						case "ImageWidth":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).DiagramImageWidth = (uint)ImageWidth.Value;
+							break;
+
+						case "ImageHeight":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).DiagramImageHeight = (uint)ImageHeight.Value;
+							break;
+
+						case "SwitchXY":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).SwitchXY = SwitchXY.Checked;
+							break;
+
+						case "DrawLine":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).AllowDrawing = DrawLine.Checked;
+							break;
+
+						// Оси
+						case "AutoDivisions":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).AutoPrimaryDivisions = AutoDivisions.Checked;
+							break;
+
+						case "OxPrimaryDiv":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).XPrimaryDivisions = (uint)OxPrimaryDiv.Value;
+							break;
+
+						case "OyPrimaryDiv":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).YPrimaryDivisions = (uint)OyPrimaryDiv.Value;
+							break;
+
+						case "OxSecondaryDiv":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).XSecondaryDivisions = (uint)OxSecondaryDiv.Value;
+							break;
+
+						case "OySecondaryDiv":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).YSecondaryDivisions = (uint)OySecondaryDiv.Value;
+							break;
+
+						case "AxesWidth":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).AxesLinesWidth = (uint)AxesWidth.Value;
+							break;
+
+						case "AxesColor":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).AxesColor = AxesColor.BackColor;
+							break;
+
+						case "OxPlacementCombo":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).OxPlacement =
+								(AxesPlacements)OxPlacementCombo.SelectedIndex;
+							break;
+
+						case "OyPlacementCombo":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).OyPlacement =
+								(AxesPlacements)OyPlacementCombo.SelectedIndex;
+							break;
+
+						case "OxFormatCombo":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).OxFormat =
+								(NumbersFormat)OxFormatCombo.SelectedIndex;
+							break;
+
+						case "OyFormatCombo":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).OyFormat =
+								(NumbersFormat)OyFormatCombo.SelectedIndex;
+							break;
+
+						// Шрифты
+						case "AxesFont":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).AxesFont = AxesFont.Font;
+							break;
+
+						case "AxesFontColor":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).AxesFontColor = AxesFontColor.BackColor;
+							break;
+
+						case "TextFont":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).TextFont = TextFont.Font;
+							break;
+
+						case "TextFontColor":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).TextFontColor = TextFontColor.BackColor;
+							break;
+
+						// Сетка
+						case "GridWidth":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).GridLinesWidth = (uint)GridWidth.Value;
+							break;
+
+						case "GridPrimaryColor":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).PrimaryGridColor = GridPrimaryColor.BackColor;
+							break;
+
+						case "GridSecondaryColor":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).SecondaryGridColor = GridSecondaryColor.BackColor;
+							break;
+
+						// Линия
+						case "LineWidth":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineWidth = (uint)LineWidth.Value;
+							break;
+
+						case "LineColor":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineColor = LineColor.BackColor;
+							break;
+
+						case "LineStyleCombo":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineDrawingFormat =
+								(DrawingLinesFormats)LineStyleCombo.SelectedIndex;
+							break;
+
+						case "LineMarker":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineMarkerNumber = (uint)LineMarker.Value;
+							break;
+
+						// Параметры, перенесённые из необъединяемых
+						case "AutoTextOffset":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).AutoTextOffset = AutoTextOffset.Checked;
+							break;
+
+						case "OxTextOffset":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).OxTextOffset = (uint)OxTextOffset.Value;
+							break;
+
+						case "OyTextOffset":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).OyTextOffset = (uint)OyTextOffset.Value;
+							break;
+
+						case "LineNameLeftOffset":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineNameLeftOffset = (uint)LineNameLeftOffset.Value;
+							break;
+
+						case "LineNameTopOffset":
+							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineNameTopOffset = (uint)LineNameTopOffset.Value;
+							break;
+
+						// Необъединяемые параметры
+						case "LineName":
+							dd.GetStyle (LineNamesList.SelectedIndex).LineName = LineName.Text;
+							break;
+
+						// Любое нештатное значение
+						default:
+							throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (13)");
+						}
+					}
+				}
+			// Вряд ли, но на всякий случай
+			catch
+				{
+				MessageBox.Show (Localization.GetText ("LinesForSettingNSError", ca.InterfaceLanguage),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				}
+
+			// Перерисовка
+			Redraw ();
 			}
 
 		// Изменение основных настроек диаграммы
-		private void DrawLine_CheckedChanged (object sender, EventArgs e)
+		private void UniSettings_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.DrawLine);
+			UpdateDiagramParameters ((Control)sender);
+			}
+
+		/*private void DrawLine_CheckedChanged (object sender, EventArgs e)
+			{
+			UpdateDiagramParameters (CurrentParameter.DrawLine, (Control)sender);
 			}
 
 		private void MaxY_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.MaxY);
+			UpdateDiagramParameters (CurrentParameter.MaxY, (Control)sender);
 			}
 
 		private void MinX_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.MinX);
+			UpdateDiagramParameters (CurrentParameter.MinX, (Control)sender);
 			}
 
 		private void MaxX_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.MaxX);
+			UpdateDiagramParameters (CurrentParameter.MaxX, (Control)sender);
 			}
 
 		private void MinY_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.MinY);
+			UpdateDiagramParameters (CurrentParameter.MinY, (Control)sender);
 			}
 
 		private void LeftOffset_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.LeftOffset);
+			UpdateDiagramParameters (CurrentParameter.LeftOffset, (Control)sender);
 			}
 
 		private void TopOffset_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.TopOffset);
-			}
+			UpdateDiagramParameters (CurrentParameter.TopOffset, (Control)sender);
+			}*/
 
 		private void ImageWidth_ValueChanged (object sender, EventArgs e)
 			{
@@ -1989,7 +2184,7 @@ namespace RD_AAOW
 			OyTextOffset.Maximum = ImageWidth.Value * (decimal)(DiagramStyle.MaxOyTextMargin);
 			LineNameLeftOffset.Maximum = ImageWidth.Value * (decimal)(DiagramStyle.MaxLineNameLeftMargin);
 
-			UpdateDiagramParameters (CurrentParameter.ImageWidth);
+			UpdateDiagramParameters ((Control)sender);
 			}
 
 		private void ImageHeight_ValueChanged (object sender, EventArgs e)
@@ -1998,7 +2193,7 @@ namespace RD_AAOW
 			OxTextOffset.Maximum = ImageHeight.Value * (decimal)(DiagramStyle.MaxOxTextMargin);
 			LineNameTopOffset.Maximum = ImageHeight.Value * (decimal)(DiagramStyle.MaxLineNameTopMargin);
 
-			UpdateDiagramParameters (CurrentParameter.ImageHeight);
+			UpdateDiagramParameters ((Control)sender);
 			}
 
 		private void AlignAsRow_Click (object sender, EventArgs e)
@@ -2044,43 +2239,44 @@ namespace RD_AAOW
 			indices.Clear ();
 			}
 
-		private void SwitchXY_CheckedChanged (object sender, EventArgs e)
+		/*private void SwitchXY_CheckedChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.SwitchXY);
-			}
+			UpdateDiagramParameters (CurrentParameter.SwitchXY, (Control)sender);
+			}*/
 
 		private void AutoTextOffset_CheckedChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.AutoTextOffset);
+			UpdateDiagramParameters ((Control)sender);
+
 			Label07.Enabled = Label08.Enabled = Label09.Enabled = Label10.Enabled =
 			OxTextOffset.Enabled = OyTextOffset.Enabled = LineName.Enabled =
 			LineNameLeftOffset.Enabled = LineNameTopOffset.Enabled = !AutoTextOffset.Checked;
 			}
 
-		private void LineName_TextChanged (object sender, EventArgs e)
+		/*private void LineName_TextChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.LineName);
+			UpdateDiagramParameters (CurrentParameter.LineName, (Control)sender);
 			}
 
 		private void OxTextOffset_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OxTextOffset);
+			UpdateDiagramParameters (CurrentParameter.OxTextOffset, (Control)sender);
 			}
 
 		private void OyTextOffset_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OyTextOffset);
+			UpdateDiagramParameters (CurrentParameter.OyTextOffset, (Control)sender);
 			}
 
 		private void LineNameLeftOffset_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.LineNameLeftOffset);
+			UpdateDiagramParameters (CurrentParameter.LineNameLeftOffset, (Control)sender);
 			}
 
 		private void LineNameTopOffset_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.LineNameTopOffset);
-			}
+			UpdateDiagramParameters (CurrentParameter.LineNameTopOffset, (Control)sender);
+			}*/
 
 		// Моментальный разворот диапазонов
 		private void SwapX_Click (object sender, EventArgs e)
@@ -2100,42 +2296,44 @@ namespace RD_AAOW
 		// Настройки осей
 		private void AutoDivisions_CheckedChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.AutoDivisions);
+			UpdateDiagramParameters ((Control)sender);
 			OxPrimaryDiv.Enabled = OyPrimaryDiv.Enabled = !AutoDivisions.Checked;
+			UniSettings_ValueChanged (OxPrimaryDiv, null);
+			UniSettings_ValueChanged (OyPrimaryDiv, null);
 			}
 
 		// Изменение числа делений
-		private void OxPrimaryDiv_ValueChanged (object sender, EventArgs e)
+		/*private void OxPrimaryDiv_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OxPrimaryDiv);
+			UpdateDiagramParameters (CurrentParameter.OxPrimaryDiv, (Control)sender);
 			}
 
 		private void OyPrimaryDiv_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OyPrimaryDiv);
+			UpdateDiagramParameters (CurrentParameter.OyPrimaryDiv, (Control)sender);
 			}
 
 		private void OxSecondaryDiv_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OxSecondaryDiv);
+			UpdateDiagramParameters (CurrentParameter.OxSecondaryDiv, (Control)sender);
 			}
 
 		private void OySecondaryDiv_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OySecondaryDiv);
+			UpdateDiagramParameters (CurrentParameter.OySecondaryDiv, (Control)sender);
 			}
 
 		// Изменение толщины оси
 		private void AxesWidth_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.AxesWidth);
+			UpdateDiagramParameters (CurrentParameter.AxesWidth, (Control)sender);
 			}
 
 		// Изменение цвета оси
 		private void AxesColor_BackColorChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.AxesColor);
-			}
+			UpdateDiagramParameters (CurrentParameter.AxesColor, (Control)sender);
+			}*/
 
 		private void AxesColorTurnOff_Click (object sender, EventArgs e)
 			{
@@ -2150,26 +2348,26 @@ namespace RD_AAOW
 			}
 
 		// Изменение положения оси
-		private void OxPlacementCombo_SelectedIndexChanged (object sender, EventArgs e)
+		/*private void OxPlacementCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OxPlacement);
+			UpdateDiagramParameters (CurrentParameter.OxPlacement, (Control)sender);
 			}
 
 		private void OyPlacementCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OyPlacement);
+			UpdateDiagramParameters (CurrentParameter.OyPlacement, (Control)sender);
 			}
 
 		// Изменение формата подписей осей
 		private void OxFormatCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OxFormat);
+			UpdateDiagramParameters (CurrentParameter.OxFormat, (Control)sender);
 			}
 
 		private void OyFormatCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.OyFormat);
-			}
+			UpdateDiagramParameters (CurrentParameter.OyFormat, (Control)sender);
+			}*/
 
 		// Изменение шрифтов подписей
 		private void RunFontSelectCycle ()
@@ -2210,15 +2408,15 @@ namespace RD_AAOW
 			AxesFont.Font = StyleFontDialog.Font;
 			}
 
-		private void AxesFont_FontChanged (object sender, EventArgs e)
+		/*private void AxesFont_FontChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.AxesFont);
+			UpdateDiagramParameters (CurrentParameter.AxesFont, (Control)sender);
 			}
 
 		private void TextFont_FontChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.TextFont);
-			}
+			UpdateDiagramParameters (CurrentParameter.TextFont, (Control)sender);
+			}*/
 
 		// Изменение цветов подписей
 		private void TextFontColor_Click (object sender, EventArgs e)
@@ -2235,21 +2433,21 @@ namespace RD_AAOW
 			AxesFontColor.BackColor = ColorSelectDialog.Color;
 			}
 
-		private void TextFontColor_BackColorChanged (object sender, EventArgs e)
+		/*private void TextFontColor_BackColorChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.TextFontColor);
+			UpdateDiagramParameters (CurrentParameter.TextFontColor, (Control)sender);
 			}
 
 		private void AxesFontColor_BackColorChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.AxesFontColor);
+			UpdateDiagramParameters (CurrentParameter.AxesFontColor, (Control)sender);
 			}
 
 		// Изменение толщины линий сетки
 		private void GridWidth_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.GridWidth);
-			}
+			UpdateDiagramParameters (CurrentParameter.GridWidth, (Control)sender);
+			}*/
 
 		// Изменение цветов линий сетки
 		private void GridPrimaryColor_Click (object sender, EventArgs e)
@@ -2266,15 +2464,15 @@ namespace RD_AAOW
 			GridSecondaryColor.BackColor = ColorSelectDialog.Color;
 			}
 
-		private void GridPrimaryColor_BackColorChanged (object sender, EventArgs e)
+		/*private void GridPrimaryColor_BackColorChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.GridPrimaryColor);
+			UpdateDiagramParameters (CurrentParameter.GridPrimaryColor, (Control)sender);
 			}
 
 		private void GridSecondaryColor_BackColorChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.GridSecondaryColor);
-			}
+			UpdateDiagramParameters (CurrentParameter.GridSecondaryColor, (Control)sender);
+			}*/
 
 		private void GridColorTurnOff_Click (object sender, EventArgs e)
 			{
@@ -2283,10 +2481,10 @@ namespace RD_AAOW
 			}
 
 		// Изменение толщины линии
-		private void LineWidth_ValueChanged (object sender, EventArgs e)
+		/*private void LineWidth_ValueChanged (object sender, EventArgs e)
 			{
-			UpdateDiagramParameters (CurrentParameter.LineWidth);
-			}
+			UpdateDiagramParameters (CurrentParameter.LineWidth, (Control)sender);
+			}*/
 
 		// Изменение цвета линии
 		private void LineColor_Click (object sender, EventArgs e)
@@ -2299,29 +2497,27 @@ namespace RD_AAOW
 		private void LineColor_BackColorChanged (object sender, EventArgs e)
 			{
 			if (LineMarkerImage.BackgroundImage != null)
-				{
 				LineMarkerImage.BackgroundImage.Dispose ();
-				}
+
 			LineMarkerImage.BackgroundImage = ml.GetMarker ((uint)LineMarker.Value - 1, LineColor.BackColor);
-			UpdateDiagramParameters (CurrentParameter.LineColor);
+			UpdateDiagramParameters ((Control)sender);
 			}
 
 		// Изменение формата линии
 		private void LineStyleCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
 			LineMarker.Enabled = (LineStyleCombo.SelectedIndex > 0);
-			UpdateDiagramParameters (CurrentParameter.LineStyle);
+			UpdateDiagramParameters ((Control)sender);
 			}
 
 		// Изменение маркера
 		private void LineMarker_ValueChanged (object sender, EventArgs e)
 			{
 			if (LineMarkerImage.BackgroundImage != null)
-				{
 				LineMarkerImage.BackgroundImage.Dispose ();
-				}
+
 			LineMarkerImage.BackgroundImage = ml.GetMarker ((uint)LineMarker.Value - 1, LineColor.BackColor);
-			UpdateDiagramParameters (CurrentParameter.LineMarker);
+			UpdateDiagramParameters ((Control)sender);
 			}
 		#endregion
 
