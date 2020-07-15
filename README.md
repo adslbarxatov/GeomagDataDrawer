@@ -4,9 +4,9 @@ Autonomous utility for plotting and preparing of data diagrams
 
 Автономный инструмент построения и оформления диаграмм
 
-#
 
-Annotation (first page of helpfile):
+
+## Annotation (first page of helpfile)
 
 Geomag data drawer is a software tool for creating diagrams based on tabular data. Originally created for visualizing the results of experimental measurements. Can now be used for this purpose. But not exclusively.
 
@@ -48,7 +48,9 @@ In aims of visualization and data processing Geomag data drawer provides followi
 
 Implementation as a stand-alone application, support for all the basic features for editing, building and designing diagrams, flexible control system, bilingual interface, and the ability to store data in own format eliminates the need to install additional software. Therefore, Geomag data drawer can be considered a very useful tool for processing and visualizing tabular data.
 
-#
+
+
+## Краткое описание (первая страница файла справки)
 
 Geomag data drawer – программное средство, предназначенное для построения диаграмм на основе табличных данных. Изначально создавался как средство визуализации результатов экспериментальных измерений; может и сейчас быть использован с этой целью.
 
@@ -88,16 +90,26 @@ Geomag data drawer поддерживает следующие форматы п
 
 Реализация в качестве отдельного приложения, поддержка всех основных возможностей по редактированию, построению и оформлению диаграмм, гибкая система управления, двуязычный интерфейс, а также возможность хранения данных в собственном формате снимает необходимость установки дополнительных программных комплексов. Поэтому Geomag data drawer можно считать весьма полезным инструментом обработки и визуализации табличных данных.
 
-#
 
-We've formalized our [Applications development policy (ADP)](https://vk.com/@rdaaow_fupl-adp).
-We're strongly recommend reading it before using our products.
 
-Мы формализовали нашу [Политику разработки приложений (ADP)](https://vk.com/@rdaaow_fupl-adp).
-Настоятельно рекомендуем ознакомиться с ней перед использованием наших продуктов.
-
-#
+## Requirements / Требования
 
 Needs Windows XP and newer, Framework 4.0 and newer. Interface languages: ru_ru, en_us. Help languages: ru_ru (chm), en_us (YouTube)
 
 Требуется ОС Windows XP и новее, Framework 4.0 и новее. Языки интерфейса: ru_ru, en_us. Языки документации: ru_ru (chm), en_us (YouTube)
+
+
+
+## Development policy and EULA / Политика разработки и EULA
+
+This [Policy (ADP)](https://vk.com/@rdaaow_fupl-adp), its positions, conclusion, EULA and application methods
+describes general rules that we follow in all of our development processes, released applications and implemented
+ideas.
+**It must be acquainted by participants and users before using any of laboratory's products.
+By downloading them, you agree to this Policy**
+
+Данная [Политика (ADP)](https://vk.com/@rdaaow_fupl-adp), её положения, заключение, EULA и способы применения
+описывают общие правила, которым мы следуем во всех наших процессах разработки, вышедших в релиз приложениях
+и реализованных идеях.
+**Обязательна к ознакомлению всем участникам и пользователям перед использованием любого из продуктов лаборатории.
+Загружая их, вы соглашаетесь с этой Политикой**
