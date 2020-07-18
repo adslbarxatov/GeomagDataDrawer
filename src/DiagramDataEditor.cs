@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using System;
 
 namespace RD_AAOW
 	{
@@ -70,7 +71,7 @@ namespace RD_AAOW
 			}
 
 		// Отмена
-		private void AbortButton_Click (object sender, System.EventArgs e)
+		private void AbortButton_Click (object sender, EventArgs e)
 			{
 			cancelled = true;
 
@@ -78,7 +79,7 @@ namespace RD_AAOW
 			}
 
 		// ОК
-		private void ApplyButton_Click (object sender, System.EventArgs e)
+		private void ApplyButton_Click (object sender, EventArgs e)
 			{
 			cancelled = false;
 
@@ -93,7 +94,7 @@ namespace RD_AAOW
 			}
 
 		// Добавление строки
-		private void AddRowBefore_Click (object sender, System.EventArgs e)
+		private void AddRowBefore_Click (object sender, EventArgs e)
 			{
 			DataTable table = (DataTable)MainDataGrid.DataSource;
 
@@ -107,7 +108,7 @@ namespace RD_AAOW
 				}
 			}
 
-		private void AddRowAfter_Click (object sender, System.EventArgs e)
+		private void AddRowAfter_Click (object sender, EventArgs e)
 			{
 			DataTable table = (DataTable)MainDataGrid.DataSource;
 
@@ -122,7 +123,7 @@ namespace RD_AAOW
 			}
 
 		// Удаление строк
-		private void DeleteRow_Click (object sender, System.EventArgs e)
+		private void DeleteRow_Click (object sender, EventArgs e)
 			{
 			// Контроль количества строк
 			if (MainDataGrid.Rows.Count <= 2)
@@ -167,7 +168,7 @@ namespace RD_AAOW
 			}
 
 		// Подъём строки
-		private void MoveRowUp_Click (object sender, System.EventArgs e)
+		private void MoveRowUp_Click (object sender, EventArgs e)
 			{
 			// Контроль
 			if ((MainDataGrid.Rows.Count < 2) || (MainDataGrid.SelectedCells[0].RowIndex == 0))
@@ -194,7 +195,7 @@ namespace RD_AAOW
 			}
 
 		// Спуск строки
-		private void MoveRowDown_Click (object sender, System.EventArgs e)
+		private void MoveRowDown_Click (object sender, EventArgs e)
 			{
 			// Контроль
 			if ((MainDataGrid.Rows.Count < 2) || (MainDataGrid.SelectedCells[0].RowIndex == MainDataGrid.Rows.Count - 1))
@@ -221,7 +222,7 @@ namespace RD_AAOW
 			}
 
 		// Изменение размера окна
-		private void DiagramDataEditor_Resize (object sender, System.EventArgs e)
+		private void DiagramDataEditor_Resize (object sender, EventArgs e)
 			{
 			MainDataGrid.Width = this.Width - 35;
 			ColumnNameInput.Width = this.Width - 39;
@@ -295,7 +296,7 @@ namespace RD_AAOW
 			}
 
 		// Применение названия
-		private void ApplyName_Click (object sender, System.EventArgs e)
+		private void ApplyName_Click (object sender, EventArgs e)
 			{
 			((DataTable)MainDataGrid.DataSource).Columns[columnWithNewName].Caption = NewColumnName.Text;
 			MainDataGrid.Columns[columnWithNewName].HeaderText = NewColumnName.Text;
@@ -304,7 +305,7 @@ namespace RD_AAOW
 			}
 
 		// Сохранение исходного названия
-		private void AbortName_Click (object sender, System.EventArgs e)
+		private void AbortName_Click (object sender, EventArgs e)
 			{
 			ColumnNameInput.Visible = NewColumnName.Enabled = ApplyName.Enabled = AbortName.Enabled = false;
 			MainDataGrid.Enabled = MoveRowDown.Enabled = MoveRowUp.Enabled =

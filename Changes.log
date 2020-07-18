@@ -6,43 +6,48 @@ To do
 - Optimize mechanism of data transferring from main to editing window;
 - Develop a setting that allows specifying which tabs and in what order should be displayed on the settings panel
 
-Version 4.16
+Version 4.16.1p:
+• Updated application info interface (more convenient font is used for now);
+• Added a button to access the Application development policy and EULA in the application info interface (due to ADP update);
+• Added automatic check for updates to the application info interface
+
+Version 4.16:
 • Names of generated functions now will be properly transferred to main window;
 • Automatic names of added relations are now better corresponding to all diagram types;
 • User interface code has been reviewed;
 • Some minor bugs have been fixed
 
-Version 4.15h
+Version 4.15h:
 • New application info interface implemented
 
-Version 4.14.4
+Version 4.14.4:
 • Fixed some interface bugs
 
-Version 4.14.3L
+Version 4.14.3L:
 • Applied correct representation of supported languages list
 
-Version 4.14.2
+Version 4.14.2:
 • Fixed multiple registry reading in ConfigAccessor: now settings will be filled once and called from local variables;
 • Some source code improvements applied
 
-Version 4.14u
+Version 4.14u:
 • Application namespace, icon and development environment have been unified;
 • Localization system has been unified;
 • Application setting moved to system registry; configuration file will not be created anymore;
 • Fixed saving of scaled raster image when captions and notches' texts are not auto-placed
 
-Version 4.13
+Version 4.13:
 • Fixed drawing of vector images in 'markers only' mode (lines will not draw anymore);
 • Fixed color setting for filled shapes;
 • Added ability to save an image from command line (PNG or SVG; uses default preview template)
 
-Version 4.12
+Version 4.12:
 • Abscissa processing variables extended to 'double';
 • Some improvements added to parsing functions;
 • Fixed some minor bugs.
 New *.gdd and *.gddstyle files ARE NOT compatible with previous version of application due to extension of styles' data fields
 
-Version 4.11
+Version 4.11:
 • Formula evaluation interface updated: more freedom in formula input – all letter cases allowed, using and missing spaces allowed; exponential number format support removed;
 • Data rows count limit adjusted for best fitness with curves generation ranges;
 • Incorrect middle/center axes placement fixed;
@@ -50,43 +55,43 @@ Version 4.11
 • Application interface reviewed: only adding, deleting, hiding and selection tools are now at the main window. Adding and deleting tools have been duplicated by hotkeys and now available from the keyboard.
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.10
+Version 4.10:
 • ExcelDataReader was updated to actual version. Accidentally, it fixed some bugs in XLS files loading process;
 • QuickSheet has been rewritten and now available in user manual (part 6).
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.9
+Version 4.9:
 • .any input file format has been removed; replaced with extracting option;
 • .csv and .xls[x] formats parsing now more 'tolerant': invalid and text values will be replaced with zeros;
 • Application can be used from command line for data file formats conversion; use /? key or user manual (part 4.5) for more information;
 • QuickSheet has been removed from user manual; it will be rewritten soon.
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.8
+Version 4.8:
 • Loading diagram data from the clipboard is now available (use Ctrl + V);
 • Keys for data editor changed to Ctrl + E (it is more suitable);
 • Added missing tool tips for main menu.
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.7
+Version 4.7:
 • Curves generation interface upgraded: fixed potential 'division by zero' exception;
 • Drawing interruption curves points and NaN values now works correctly.
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.6
+Version 4.6:
 • Microsoft Excel format support added (file opening). Based on MIT license. Read user manual for more information.
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.5c
+Version 4.5c:
 • Some raster images drawing bugs fixed (invalid rectangles cropping, line's first marker absence);
 • 'Usage tips' section added to help file.
 New *.gdd and *.gddstyle files are compatible with previous version of application, but you may need to re-add 'line' objects to your diagram
 
-Version 4.5
+Version 4.5:
 • Upgraded additional object 'line': endpoints coordinates setting has been simplified;
 • Some minor defects have been fixed
 
-Version 4.4
+Version 4.4:
 • Graphical shapes added; now user can seriously increase informativity of his diagrams by using free text labels, pointing lines, rectangles and ellipses (up to 50 in this version);
 • Some picture saving bugs fixed;
 • Axes notches count auto-evaluation has been revised;
@@ -94,25 +99,25 @@ Version 4.4
 • Configuration panels' behavior has been revised.
 *.gdd and *.gddstyle files from old and new versions of application are compatible in both directions
 
-Version 4.3
+Version 4.3:
 • Improved data table generation function. Now user can enter a SET of analytical representations of functions and set plotting range for them. And get a diagram with SET of curves as a result;
 • Some artifacts in formula evaluation class fixed: speed of lexemes extraction seriously increased;
 • Some other interface bugs fixed;
 • Count of curves in diagram decreased from 100 to 20: don't think that it is necessary to have too many curves on a diagram.
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.2 (11.02.17)
+Version 4.2 (11.02.17):
 • Added data table generation function. Now user can enter analytical representation of function and set plotting range for it. And get a diagram as a result;
 • Added 'Close diagram' function. Sometimes it is necessary;
 • Some artifacts fixed.
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.1 (26.11.16)
+Version 4.1 (26.11.16):
 • EMF (Windows metafile) support added (saving diagrams) (compatible with Office applications);
 • Curve drawing bug (incorrect displaying of curve's break) in vector image formats fixed (but it causes increasing of them sizes; EMZ and SVGZ will solve this problem).
 New *.gdd and *.gddstyle files are compatible with previous version of application
 
-Version 4.0
+Version 4.0:
 • English (USA) variant of interface added; help file not translated yet;
 • Internal dialogs have been updated and unified;
 • Mouse placement of curve images bug fixed;
@@ -121,7 +126,7 @@ Version 4.0
 • Data redundancy in DiagramData class fixed.
 *.gdd and *.gddstyle from 3.8 are compatible with 4.0
 
-Version 3.8
+Version 3.8:
 • Publishing on GitHub
 
 Older versions have no version specifications and can only be separated by release date
