@@ -1004,8 +1004,7 @@ namespace RD_AAOW
 		// О программе
 		private void MAbout_Click (object sender, EventArgs e)
 			{
-			AboutForm af = new AboutForm (ca.InterfaceLanguage, "https://github.com/adslbarxatov/GeomagDataDrawer",
-				"https://github.com/adslbarxatov/GeomagDataDrawer/releases",
+			AboutForm af = new AboutForm (ca.InterfaceLanguage, "*", "*",
 				"https://www.youtube.com/watch?v=SUrFxUFGgTg&list=PLe7qKwHNkZTuAATdj1asHQ6nUxlR9qUZO",
 
 				"Geomag data drawer – программное средство, предназначенное для построения диаграмм на " +
@@ -1694,254 +1693,7 @@ namespace RD_AAOW
 
 		#region Настройка диаграммы
 
-		// Виды настраиваемых параметров
-		/*private enum CurrentParameter
-			{
-			// Основные
-			DrawLine,
-			MaxY,
-			MinX,
-			MaxX,
-			MinY,
-			LeftOffset,
-			TopOffset,
-			ImageWidth,
-			ImageHeight,
-			SwitchXY,
-			AutoTextOffset,
-			LineName,
-			OxTextOffset,
-			OyTextOffset,
-			LineNameLeftOffset,
-			LineNameTopOffset,
-
-			// Оси
-			OxPrimaryDiv,
-			OyPrimaryDiv,
-			OxSecondaryDiv,
-			OySecondaryDiv,
-			AutoDivisions,
-			AxesWidth,
-			AxesColor,
-			OxPlacement,
-			OyPlacement,
-			OxFormat,
-			OyFormat,
-
-			// Шрифты
-			AxesFont,
-			AxesFontColor,
-			TextFont,
-			TextFontColor,
-
-			// Сетка
-			GridWidth,
-			GridPrimaryColor,
-			GridSecondaryColor,
-
-			// Линия
-			LineWidth,
-			LineColor,
-			LineStyle,
-			LineMarker
-			}*/
-
-		// Общий метод передачи изменённых параметров в стили диаграммы
-		/*private void UpdateDiagramParameters (CurrentParameter CParameter, Control Sender)
-			{
-			// Блокировка обработки в случае, если программа находится в состоянии выбора кривой для настройки
-			if (loading)
-				return;
-
-			// Обновление значений
-			try
-				{
-				for (int i = 0; i < LineNamesList.SelectedIndices.Count; i++)
-					{
-					// Объединяемые параметры
-					switch (CParameter)
-						{
-						// Общие параметры
-						case CurrentParameter.MinX:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).MinX = (double)MinX.Value;
-							break;
-
-						case CurrentParameter.MaxX:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).MaxX = (double)MaxX.Value;
-							break;
-
-						case CurrentParameter.MinY:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).MinY = (double)MinY.Value;
-							break;
-
-						case CurrentParameter.MaxY:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).MaxY = (double)MaxY.Value;
-							break;
-
-						case CurrentParameter.LeftOffset:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).DiagramImageLeftOffset = (uint)LeftOffset.Value;
-							break;
-
-						case CurrentParameter.TopOffset:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).DiagramImageTopOffset = (uint)TopOffset.Value;
-							break;
-
-						case CurrentParameter.ImageWidth:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).DiagramImageWidth = (uint)ImageWidth.Value;
-							break;
-
-						case CurrentParameter.ImageHeight:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).DiagramImageHeight = (uint)ImageHeight.Value;
-							break;
-
-						case CurrentParameter.SwitchXY:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).SwitchXY = SwitchXY.Checked;
-							break;
-
-						case CurrentParameter.DrawLine:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).AllowDrawing = DrawLine.Checked;
-							break;
-
-						// Оси
-						case CurrentParameter.AutoDivisions:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).AutoPrimaryDivisions = AutoDivisions.Checked;
-							break;
-
-						case CurrentParameter.OxPrimaryDiv:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).XPrimaryDivisions = (uint)OxPrimaryDiv.Value;
-							break;
-
-						case CurrentParameter.OyPrimaryDiv:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).YPrimaryDivisions = (uint)OyPrimaryDiv.Value;
-							break;
-
-						case CurrentParameter.OxSecondaryDiv:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).XSecondaryDivisions = (uint)OxSecondaryDiv.Value;
-							break;
-
-						case CurrentParameter.OySecondaryDiv:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).YSecondaryDivisions = (uint)OySecondaryDiv.Value;
-							break;
-
-						case CurrentParameter.AxesWidth:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).AxesLinesWidth = (uint)AxesWidth.Value;
-							break;
-
-						case CurrentParameter.AxesColor:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).AxesColor = AxesColor.BackColor;
-							break;
-
-						case CurrentParameter.OxPlacement:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).OxPlacement =
-								(AxesPlacements)OxPlacementCombo.SelectedIndex;
-							break;
-
-						case CurrentParameter.OyPlacement:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).OyPlacement =
-								(AxesPlacements)OyPlacementCombo.SelectedIndex;
-							break;
-
-						case CurrentParameter.OxFormat:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).OxFormat =
-								(NumbersFormat)OxFormatCombo.SelectedIndex;
-							break;
-
-						case CurrentParameter.OyFormat:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).OyFormat =
-								(NumbersFormat)OyFormatCombo.SelectedIndex;
-							break;
-
-						// Шрифты
-						case CurrentParameter.AxesFont:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).AxesFont = AxesFont.Font;
-							break;
-
-						case CurrentParameter.AxesFontColor:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).AxesFontColor = AxesFontColor.BackColor;
-							break;
-
-						case CurrentParameter.TextFont:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).TextFont = TextFont.Font;
-							break;
-
-						case CurrentParameter.TextFontColor:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).TextFontColor = TextFontColor.BackColor;
-							break;
-
-						// Сетка
-						case CurrentParameter.GridWidth:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).GridLinesWidth = (uint)GridWidth.Value;
-							break;
-
-						case CurrentParameter.GridPrimaryColor:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).PrimaryGridColor = GridPrimaryColor.BackColor;
-							break;
-
-						case CurrentParameter.GridSecondaryColor:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).SecondaryGridColor = GridSecondaryColor.BackColor;
-							break;
-
-						// Линия
-						case CurrentParameter.LineWidth:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineWidth = (uint)LineWidth.Value;
-							break;
-
-						case CurrentParameter.LineColor:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineColor = LineColor.BackColor;
-							break;
-
-						case CurrentParameter.LineStyle:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineDrawingFormat =
-								(DrawingLinesFormats)LineStyleCombo.SelectedIndex;
-							break;
-
-						case CurrentParameter.LineMarker:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineMarkerNumber = (uint)LineMarker.Value;
-							break;
-
-						// Параметры, перенесённые из необъединяемых
-						case CurrentParameter.AutoTextOffset:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).AutoTextOffset = AutoTextOffset.Checked;
-							break;
-
-						case CurrentParameter.OxTextOffset:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).OxTextOffset = (uint)OxTextOffset.Value;
-							break;
-
-						case CurrentParameter.OyTextOffset:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).OyTextOffset = (uint)OyTextOffset.Value;
-							break;
-
-						case CurrentParameter.LineNameLeftOffset:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineNameLeftOffset = (uint)LineNameLeftOffset.Value;
-							break;
-
-						case CurrentParameter.LineNameTopOffset:
-							dd.GetStyle (LineNamesList.SelectedIndices[i]).LineNameTopOffset = (uint)LineNameTopOffset.Value;
-							break;
-
-						// Необъединяемые параметры
-						case CurrentParameter.LineName:
-							dd.GetStyle (LineNamesList.SelectedIndex).LineName = LineName.Text;
-							break;
-
-						// Любое нештатное значение
-						default:
-							throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (13)");
-						}
-					}
-				}
-			// Вряд ли, но на всякий случай
-			catch
-				{
-				MessageBox.Show (Localization.GetText ("LinesForSettingNSError", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				}
-
-			// Перерисовка
-			Redraw ();
-			}*/
-
+		// Общий метод обновления значений параметров
 		private void UpdateDiagramParameters (Control Sender)
 			{
 			// Блокировка обработки в случае, если программа находится в состоянии выбора кривой для настройки
@@ -2143,41 +1895,6 @@ namespace RD_AAOW
 			UpdateDiagramParameters ((Control)sender);
 			}
 
-		/*private void DrawLine_CheckedChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.DrawLine, (Control)sender);
-			}
-
-		private void MaxY_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.MaxY, (Control)sender);
-			}
-
-		private void MinX_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.MinX, (Control)sender);
-			}
-
-		private void MaxX_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.MaxX, (Control)sender);
-			}
-
-		private void MinY_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.MinY, (Control)sender);
-			}
-
-		private void LeftOffset_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.LeftOffset, (Control)sender);
-			}
-
-		private void TopOffset_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.TopOffset, (Control)sender);
-			}*/
-
 		private void ImageWidth_ValueChanged (object sender, EventArgs e)
 			{
 			// Установка новых ограничений
@@ -2239,11 +1956,6 @@ namespace RD_AAOW
 			indices.Clear ();
 			}
 
-		/*private void SwitchXY_CheckedChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.SwitchXY, (Control)sender);
-			}*/
-
 		private void AutoTextOffset_CheckedChanged (object sender, EventArgs e)
 			{
 			UpdateDiagramParameters ((Control)sender);
@@ -2252,31 +1964,6 @@ namespace RD_AAOW
 			OxTextOffset.Enabled = OyTextOffset.Enabled = LineName.Enabled =
 			LineNameLeftOffset.Enabled = LineNameTopOffset.Enabled = !AutoTextOffset.Checked;
 			}
-
-		/*private void LineName_TextChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.LineName, (Control)sender);
-			}
-
-		private void OxTextOffset_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OxTextOffset, (Control)sender);
-			}
-
-		private void OyTextOffset_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OyTextOffset, (Control)sender);
-			}
-
-		private void LineNameLeftOffset_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.LineNameLeftOffset, (Control)sender);
-			}
-
-		private void LineNameTopOffset_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.LineNameTopOffset, (Control)sender);
-			}*/
 
 		// Моментальный разворот диапазонов
 		private void SwapX_Click (object sender, EventArgs e)
@@ -2303,38 +1990,6 @@ namespace RD_AAOW
 			}
 
 		// Изменение числа делений
-		/*private void OxPrimaryDiv_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OxPrimaryDiv, (Control)sender);
-			}
-
-		private void OyPrimaryDiv_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OyPrimaryDiv, (Control)sender);
-			}
-
-		private void OxSecondaryDiv_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OxSecondaryDiv, (Control)sender);
-			}
-
-		private void OySecondaryDiv_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OySecondaryDiv, (Control)sender);
-			}
-
-		// Изменение толщины оси
-		private void AxesWidth_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.AxesWidth, (Control)sender);
-			}
-
-		// Изменение цвета оси
-		private void AxesColor_BackColorChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.AxesColor, (Control)sender);
-			}*/
-
 		private void AxesColorTurnOff_Click (object sender, EventArgs e)
 			{
 			AxesColor.BackColor = DiagramStyle.ImageBackColor;
@@ -2346,28 +2001,6 @@ namespace RD_AAOW
 			ColorSelectDialog.ShowDialog ();
 			AxesColor.BackColor = ColorSelectDialog.Color;
 			}
-
-		// Изменение положения оси
-		/*private void OxPlacementCombo_SelectedIndexChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OxPlacement, (Control)sender);
-			}
-
-		private void OyPlacementCombo_SelectedIndexChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OyPlacement, (Control)sender);
-			}
-
-		// Изменение формата подписей осей
-		private void OxFormatCombo_SelectedIndexChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OxFormat, (Control)sender);
-			}
-
-		private void OyFormatCombo_SelectedIndexChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.OyFormat, (Control)sender);
-			}*/
 
 		// Изменение шрифтов подписей
 		private void RunFontSelectCycle ()
@@ -2408,16 +2041,6 @@ namespace RD_AAOW
 			AxesFont.Font = StyleFontDialog.Font;
 			}
 
-		/*private void AxesFont_FontChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.AxesFont, (Control)sender);
-			}
-
-		private void TextFont_FontChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.TextFont, (Control)sender);
-			}*/
-
 		// Изменение цветов подписей
 		private void TextFontColor_Click (object sender, EventArgs e)
 			{
@@ -2432,22 +2055,6 @@ namespace RD_AAOW
 			ColorSelectDialog.ShowDialog ();
 			AxesFontColor.BackColor = ColorSelectDialog.Color;
 			}
-
-		/*private void TextFontColor_BackColorChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.TextFontColor, (Control)sender);
-			}
-
-		private void AxesFontColor_BackColorChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.AxesFontColor, (Control)sender);
-			}
-
-		// Изменение толщины линий сетки
-		private void GridWidth_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.GridWidth, (Control)sender);
-			}*/
 
 		// Изменение цветов линий сетки
 		private void GridPrimaryColor_Click (object sender, EventArgs e)
@@ -2464,27 +2071,11 @@ namespace RD_AAOW
 			GridSecondaryColor.BackColor = ColorSelectDialog.Color;
 			}
 
-		/*private void GridPrimaryColor_BackColorChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.GridPrimaryColor, (Control)sender);
-			}
-
-		private void GridSecondaryColor_BackColorChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.GridSecondaryColor, (Control)sender);
-			}*/
-
 		private void GridColorTurnOff_Click (object sender, EventArgs e)
 			{
 			GridPrimaryColor.BackColor = DiagramStyle.ImageBackColor;
 			GridSecondaryColor.BackColor = DiagramStyle.ImageBackColor;
 			}
-
-		// Изменение толщины линии
-		/*private void LineWidth_ValueChanged (object sender, EventArgs e)
-			{
-			UpdateDiagramParameters (CurrentParameter.LineWidth, (Control)sender);
-			}*/
 
 		// Изменение цвета линии
 		private void LineColor_Click (object sender, EventArgs e)
