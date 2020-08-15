@@ -1004,15 +1004,7 @@ namespace RD_AAOW
 		// О программе
 		private void MAbout_Click (object sender, EventArgs e)
 			{
-			AboutForm af = new AboutForm (ca.InterfaceLanguage, "*", "*",
-				"https://www.youtube.com/watch?v=SUrFxUFGgTg&list=PLe7qKwHNkZTuAATdj1asHQ6nUxlR9qUZO",
-
-				"Geomag data drawer – программное средство, предназначенное для построения диаграмм на " +
-				"основе табличных данных. Изначально создавался как средство визуализации результатов " +
-				"экспериментальных измерений; может и сейчас быть использован с этой целью. Но не только...\r\n\r\n" +
-				"Geomag data drawer is a software tool for creating diagrams based on tabular data. Originally " +
-				"created for visualizing the results of experimental measurements. Can now be used for this " +
-				"purpose. But not exclusively...");
+			ProgramDescription.ShowAbout (false);
 			}
 
 		// Справка

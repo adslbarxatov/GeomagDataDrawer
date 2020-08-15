@@ -1110,4 +1110,7 @@ All unsaved data will be lost!</value>
   <data name="TablesSorting" xml:space="preserve">
     <value>Rows sorting...</value>
   </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Geomag data drawer is a software tool for creating diagrams based on tabular data. Originally created for visualizing the results of experimental measurements. Can now be used for this purpose. But not exclusively...</value>
+  </data>
 </root>

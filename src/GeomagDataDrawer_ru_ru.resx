@@ -1111,4 +1111,7 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   <data name="TablesSorting" xml:space="preserve">
     <value>Сортировка строк...</value>
   </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Geomag data drawer – программное средство, предназначенное для построения диаграмм на основе табличных данных. Изначально создавался как средство визуализации результатов экспериментальных измерений; может и сейчас быть использован с этой целью. Но не только...</value>
+  </data>
 </root>

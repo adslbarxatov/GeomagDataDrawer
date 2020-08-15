@@ -6,6 +6,9 @@ To do
 - Optimize mechanism of data transferring from main to editing window;
 - Develop a setting that allows specifying which tabs and in what order should be displayed on the settings panel
 
+Version 4.16.2p:
+• Added ability to accept/decline ADP at first start to the application info interface
+
 Version 4.16.1p:
 • Updated application info interface (more convenient font is used for now);
 • Added a button to access the Application development policy and EULA in the application info interface (due to ADP update);

@@ -32,6 +32,11 @@ namespace RD_AAOW
 			Application.EnableVisualStyles ();
 			Application.SetCompatibleTextRenderingDefault (false);
 
+			// Отображение справки и запроса на принятие Политики
+			if (!ProgramDescription.AcceptEULA ())
+				return;
+			ProgramDescription.ShowAbout (true);
+
 			// Передача параметра и предполагаемого типа файла
 			if (args.Length > 0)
 				{
