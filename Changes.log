@@ -6,6 +6,10 @@ To do
 - Optimize mechanism of data transferring from main to editing window;
 - Develop a setting that allows specifying which tabs and in what order should be displayed on the settings panel
 
+Version 4.16.3i:
+• Windows: found and fixed hidden bug that caused an error when starting the application from local network;
+• Windows: fixed bug that caused the web page request method to fail if server disconnected
+
 Version 4.16.2p:
 • Added ability to accept/decline ADP at first start to the application info interface
 
