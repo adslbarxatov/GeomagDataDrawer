@@ -6,6 +6,10 @@ To do
 - Optimize mechanism of data transferring from main to editing window;
 - Develop a setting that allows specifying which tabs and in what order should be displayed on the settings panel
 
+Version 4.17:
+• Application info interface now able to get last release's changes log;
+• Fixed bug that disallowed to use columns headers with spaces
+
 Version 4.16.3i:
 • Found and fixed hidden bug that caused an error when starting the application from local network;
 • Fixed bug that caused the web page request method to fail if server disconnected

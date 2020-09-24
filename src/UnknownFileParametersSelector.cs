@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace RD_AAOW
 	{
@@ -41,7 +42,7 @@ namespace RD_AAOW
 			}
 
 		// Отмена
-		private void BAbort_Click (object sender, System.EventArgs e)
+		private void BAbort_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
@@ -83,7 +84,7 @@ namespace RD_AAOW
 		private uint abscissasColumn;
 
 		// Извлечение
-		private void GetData_Click (object sender, System.EventArgs e)
+		private void GetData_Click (object sender, EventArgs e)
 			{
 			// Сохранение параметров
 			dataColumnsCount = (uint)ColumnsCount.Value;
@@ -95,7 +96,7 @@ namespace RD_AAOW
 			}
 
 		// Изменение количества столбцов
-		private void ColumnsCount_ValueChanged (object sender, System.EventArgs e)
+		private void ColumnsCount_ValueChanged (object sender, EventArgs e)
 			{
 			Abscissas.Maximum = ColumnsCount.Value;
 			}

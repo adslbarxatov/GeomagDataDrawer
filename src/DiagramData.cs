@@ -15,7 +15,8 @@ namespace RD_AAOW
 	public class DiagramData
 		{
 		// ПЕРЕМЕННЫЕ
-		private char[] anySplitters = new char[] { ' ', '\t', ';' };	// Массивы сплиттеров
+		private char[] anyDataSplitters = new char[] { ' ', '\t', ';' };	// Массивы сплиттеров
+		private char[] anyHeadersSplitters = new char[] { '\t', ';' };
 		private char[] csvSplitters = new char[] { ';' };
 		private char[] dateSplitters = new char[] { '.', '/', '-' };
 		private CultureInfo cie = new CultureInfo ("en-us");			// Десятичная точка
@@ -387,7 +388,7 @@ namespace RD_AAOW
 
 				// Определение сплиттера и разделение
 				// (при извлечении имён используется простая техника с известными разделителями)
-				values = s.Split (anySplitters, StringSplitOptions.RemoveEmptyEntries);
+				values = s.Split (anyHeadersSplitters, StringSplitOptions.RemoveEmptyEntries);
 
 				// Сохранение имён строк
 				if (values.Length == ColumnsCount)
@@ -416,7 +417,7 @@ namespace RD_AAOW
 			while (SR.Peek () > -1)
 				{
 				// Разделение и контроль длины
-				values = PrepareDataLine (SR.ReadLine (), false).Split (anySplitters, StringSplitOptions.RemoveEmptyEntries);
+				values = PrepareDataLine (SR.ReadLine (), false).Split (anyDataSplitters, StringSplitOptions.RemoveEmptyEntries);
 				if (values.Length == 0)
 					{
 					continue;
@@ -602,7 +603,7 @@ namespace RD_AAOW
 				return;
 				}
 
-			#region Чтение блока данных
+		#region Чтение блока данных
 			// Получение размерности файла
 			uint rows = 0;
 			uint dataColumnsCount = 0;
@@ -659,7 +660,7 @@ namespace RD_AAOW
 			initResult = DiagramDataInitResults.Ok;
 			#endregion
 
-			#region Чтение данных о кривых
+		#region Чтение данных о кривых
 			// Получение числа кривых
 			uint linesCount = 0;
 			try
@@ -676,7 +677,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Чтение стилей
+		#region Чтение стилей
 			for (int i = 0; i < linesCount; i++)
 				{
 				DiagramStyle style = null;
@@ -691,7 +692,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Чтение данных о дополнительных объектах
+		#region Чтение данных о дополнительных объектах
 			// Получение числа объектов
 			uint additionalObjectsCount = 0;
 			try
@@ -708,7 +709,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Чтение стилей дополнительных объектов
+		#region Чтение стилей дополнительных объектов
 			// Количество объектов останется равным нулю для старой версии файла
 			for (int i = 0; i < additionalObjectsCount; i++)
 				{
@@ -1415,7 +1416,7 @@ namespace RD_AAOW
 				br.Dispose ();
 				}
 
-			#region Транспонирование диапазонов при необходимости
+		#region Транспонирование диапазонов при необходимости
 			if (!LineStyle.SwitchXY)
 				{
 				styleMaxX = LineStyle.MaxX;
@@ -1440,7 +1441,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Определение положения оси Ox
+		#region Определение положения оси Ox
 			switch (LineStyle.OxPlacement)
 				{
 				case AxesPlacements.Auto:
@@ -1474,7 +1475,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Определение положения оси Oy
+		#region Определение положения оси Oy
 			switch (LineStyle.OyPlacement)
 				{
 				case AxesPlacements.Auto:
@@ -1509,7 +1510,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Засечки на оси Ox
+		#region Засечки на оси Ox
 			// Определение размера засечек
 			NotchSize = 2.0f * LineStyle.AxesLinesWidth;
 
@@ -1629,7 +1630,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Засечки на оси Oy
+		#region Засечки на оси Oy
 			// Большие засечки
 			x1 = ox - NotchSize;
 			x2 = ox + NotchSize;
@@ -1749,7 +1750,7 @@ namespace RD_AAOW
 			// Без этого ограничения можно натолкнуться на деление на ноль
 			if ((LineStyle.MinX != LineStyle.MaxX) && (LineStyle.MinY != LineStyle.MaxY))
 				{
-				#region Отрисовка кривых
+		#region Отрисовка кривых
 				p = new Pen (LineStyle.LineColor, LineStyle.LineWidth);
 				br = new SolidBrush (LineStyle.LineColor);
 
@@ -1807,7 +1808,7 @@ namespace RD_AAOW
 				#endregion
 				}
 
-			#region Отрисовка осей
+		#region Отрисовка осей
 			if (p != null)
 				{
 				p.Dispose ();
@@ -1817,7 +1818,7 @@ namespace RD_AAOW
 			g.DrawLine (p, (float)LineStyle.DiagramImageWidth * LeftMargin, oy, (float)LineStyle.DiagramImageWidth * RightMargin, oy);
 			#endregion
 
-			#region Легенда
+		#region Легенда
 			// Расчёт положения
 			if (br != null)
 				{
@@ -2045,7 +2046,7 @@ namespace RD_AAOW
 			Bitmap currentMarker = ml.GetMarker (lineStyles[LineNumber].LineMarkerNumber - 1, lineStyles[LineNumber].LineColor);
 			ml.Dispose ();
 
-			#region Транспонирование диапазонов при необходимости
+		#region Транспонирование диапазонов при необходимости
 			if (!lineStyles[LineNumber].SwitchXY)
 				{
 				styleMaxX = lineStyles[LineNumber].MaxX;
@@ -2070,7 +2071,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Определение положения оси Ox
+		#region Определение положения оси Ox
 			switch (lineStyles[LineNumber].OxPlacement)
 				{
 				case AxesPlacements.Auto:
@@ -2104,7 +2105,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Определение положения оси Oy
+		#region Определение положения оси Oy
 			switch (lineStyles[LineNumber].OyPlacement)
 				{
 				case AxesPlacements.Auto:
@@ -2139,7 +2140,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-			#region Ось Ox
+		#region Ось Ox
 			// Определение размера засечек
 			NotchSize = 2.0f * lineStyles[LineNumber].AxesLinesWidth;
 
@@ -2264,7 +2265,7 @@ namespace RD_AAOW
 			VectorAdapter.CloseGroup ();
 			#endregion
 
-			#region Ось Oy
+		#region Ось Oy
 			x1 = (float)X + ox - NotchSize;
 			x2 = (float)X + ox + NotchSize;
 
@@ -2385,7 +2386,7 @@ namespace RD_AAOW
 			VectorAdapter.CloseGroup ();
 			#endregion
 
-			#region Легенда
+		#region Легенда
 			// Отрисовка подписи с учётом масштабирования и размера шрифта
 			if (lineStyles[LineNumber].AutoTextOffset)
 				{
@@ -2416,7 +2417,7 @@ namespace RD_AAOW
 			// Без этого ограничения можно натолкнуться на деление на ноль
 			if ((lineStyles[LineNumber].MinX != lineStyles[LineNumber].MaxX) && (lineStyles[LineNumber].MinY != lineStyles[LineNumber].MaxY))
 				{
-				#region Отрисовка кривых
+		#region Отрисовка кривых
 				// Открытие группы для кривой
 				VectorAdapter.OpenGroup ();
 
@@ -2734,7 +2735,7 @@ namespace RD_AAOW
 					switch (DataFileType)
 						{
 						case DataOutputTypes.ANY:
-							SW.Write (dataColumnNames[i] + anySplitters[1].ToString ());
+							SW.Write (dataColumnNames[i] + anyDataSplitters[1].ToString ());
 							break;
 
 						case DataOutputTypes.CSV:
@@ -2753,7 +2754,7 @@ namespace RD_AAOW
 					switch (DataFileType)
 						{
 						case DataOutputTypes.ANY:
-							SW.Write (dataValues[col][row].ToString (cie.NumberFormat) + anySplitters[1].ToString ());
+							SW.Write (dataValues[col][row].ToString (cie.NumberFormat) + anyDataSplitters[1].ToString ());
 							break;
 
 						case DataOutputTypes.CSV:
@@ -3257,7 +3258,7 @@ namespace RD_AAOW
 					}
 				else
 					{
-					result += (RemoveSplitters ? "" : anySplitters[0].ToString ());
+					result += (RemoveSplitters ? "" : anyDataSplitters[0].ToString ());
 					}
 				}
 
