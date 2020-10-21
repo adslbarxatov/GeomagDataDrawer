@@ -27,21 +27,13 @@ Since version 4.9, conversion of data file formats from the command line is avai
 In aims of visualization and data processing Geomag data drawer provides following features:
 
 - Building diagrams for presented data;
-
 - Data generation for building curves for analytically given functions;
-
 - Editing chart data in the built-in editor;
-
 - Saving data files in Windows CSV format and format of free-tabulated data;
-
 - Customize most of graphic characteristics of diagrams: sizes, placements, colors, fonts, lines, markers, etc.;
-
 - Setting your own coordinate plane and independent use of data columns as abscissas and ordinates for each dependency;
-
 - Adding additional graphic objects: text labels, rectangles, ellipses and lines (available since 4.4);
-
 - Saving diagrams in PNG graphic format with the ability to set large output size. This allows you to overcome the limitations of raster graphics with further use of the image;
-
 - Saving diagrams in SVG (version 1.1) and EMF vector formats allows you to avoid losses when inserting an image into a document, or additional editing of generated diagram in graphic editor.
 
 Implementation as a stand-alone application, support for all the basic features for editing, building and designing diagrams, flexible control system, bilingual interface, and the ability to store data in own format eliminates the need to install additional software. Therefore, Geomag data drawer can be considered a very useful tool for processing and visualizing tabular data.
@@ -57,11 +49,8 @@ Geomag data drawer – программное средство, предназн
 Geomag data drawer поддерживает следующие форматы представления данных:
 
 - Таблицы Microsoft Office Excel '97 и '07 (.xls, .xlsx); поддержка осуществляется с помощью дополнительного программного обеспечения (см. раздел «Аппаратно-программные требования и комплектация программы» данного руководства); наличие установленного пакета программ Microsoft Office не требуется;
-
 - Табличные данные в формате Windows CSV (.csv; разделители – точки с запятой);
-
 - В целях расширения возможностей программы добавлена также возможность извлечения данных из файлов текстовых форматов;
-
 - Кроме того, программа имеет свой собственный формат хранения данных, включающий как сами данные диаграммы, так и её стиль и настройки отображения (файлы данных Geomag data drawer, .gdd).
 
 Доступна также генерация табличных данных путём прогона заданного числового диапазона через аналитически заданную функцию. Функция и диапазон построения могут быть указаны пользователем вручную. Кроме того, возможно использование текстовых данных из буфера обмена для построения диаграмм.
@@ -71,24 +60,18 @@ Geomag data drawer поддерживает следующие форматы п
 В части визуализации и обработки данных Geomag data drawer обеспечивает следующие основные возможности:
 
 - Построение диаграмм по представленным данным;
-
 - Генерация данных для построения кривых по аналитически заданной функции;
-
 - Редактирование данных диаграммы во встроенном редакторе;
-
 - Сохранение файлов данных в формате Windows CSV и формате произвольных табличных данных;
-
 - Настройка большинства графических характеристик диаграмм: размеров, размещения, цветов, шрифтов, линий, маркеров и т.д.;
-
 - Задание собственной координатной плоскости и независимое использование столбцов данных в качестве абсцисс и ординат для каждой исследуемой зависимости;
-
 - Добавление дополнительных графических объектов: текстовых подписей, прямоугольников, эллипсов и линий (доступно с версии 4.4);
-
 - Сохранение диаграмм в графическом формате PNG с возможностью задания достаточно большого выходного размера. Это позволяет преодолеть ограничения растровой графики при дальнейшем использовании изображения;
-
 - Сохранение диаграмм в векторных форматах SVG версии 1.1 и EMF, если необходимо избежать потерь при вставке изображения в печатный документ, или требуется дополнительное редактирование сформированной диаграммы в редакторе векторной графики.
 
 Реализация в качестве отдельного приложения, поддержка всех основных возможностей по редактированию, построению и оформлению диаграмм, гибкая система управления, двуязычный интерфейс, а также возможность хранения данных в собственном формате снимает необходимость установки дополнительных программных комплексов. Поэтому Geomag data drawer можно считать весьма полезным инструментом обработки и визуализации табличных данных.
+
+&nbsp;
 
 
 
@@ -97,6 +80,8 @@ Geomag data drawer поддерживает следующие форматы п
 Needs Windows XP and newer, Framework 4.0 and newer. Interface languages: ru_ru, en_us. Help languages: ru_ru (chm), en_us (YouTube)
 
 Требуется ОС Windows XP и новее, Framework 4.0 и новее. Языки интерфейса: ru_ru, en_us. Языки документации: ru_ru (chm), en_us (YouTube)
+
+&nbsp;
 
 
 
@@ -107,6 +92,8 @@ describes general rules that we follow in all of our development processes, rele
 ideas.
 **It must be acquainted by participants and users before using any of laboratory's products.
 By downloading them, you agree to this Policy**
+
+#
 
 Данная [Политика (ADP)](https://vk.com/@rdaaow_fupl-adp), её положения, заключение, EULA и способы применения
 описывают общие правила, которым мы следуем во всех наших процессах разработки, вышедших в релиз приложениях
