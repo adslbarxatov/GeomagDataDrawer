@@ -199,7 +199,7 @@
     <value>Выберите файл данных</value>
   </data>
   <data name="GeomagDataDrawerForm_OFDialog_F" xml:space="preserve">
-    <value>Файлы данных {0:S} (*.gdd)|*.gdd|Файлы Microsoft Excel '97 и '07|*.xls;*.xlsx|Файлы табличных данных Windows CSV|*.csv|Извлечение данных из текстовых файлов|*.*</value>
+    <value>Файлы данных {0:S} (*.{1:S})|*.{1:S}|Файлы Microsoft Excel '97 и '07|*.xls;*.xlsx|Файлы табличных данных Windows CSV|*.csv|Извлечение данных из текстовых файлов|*.*</value>
   </data>
   <data name="GeomagDataDrawerForm_OxFormat_0" xml:space="preserve">
     <value>Простой</value>
@@ -238,10 +238,10 @@
     <value>Укажите расположение для сохранения файла данных</value>
   </data>
   <data name="GeomagDataDrawerForm_SFDialog_F" xml:space="preserve">
-    <value>Файлы данных {0:S} (*.gdd)|*.gdd|Диаграммы с произвольным набором данных (*.dat)|*.dat|Файлы табличных данных Windows CSV|*.csv</value>
+    <value>Файлы данных {0:S} (*.{1:S})|*.{1:S}|Диаграммы с произвольным набором данных (*.dat)|*.dat|Файлы табличных данных Windows CSV|*.csv</value>
   </data>
   <data name="GeomagDataDrawerForm_StyleDialog_F" xml:space="preserve">
-    <value>Файлы стилей диаграмм (*.gddstyle)|*.gddstyle</value>
+    <value>Файлы стилей диаграмм (*.{0:S})|*.{0:S}</value>
   </data>
   <data name="MainTabControl_AxesTab_TT" xml:space="preserve">
     <value>Панель настройки координатных осей</value>
@@ -1116,5 +1116,11 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   </data>
   <data name="HelpText_TM" xml:space="preserve">
     <value>Этот инструмент позволяет объединять таблицы данных различных типов в единый файл (добавлением столбцов)</value>
+  </data>
+  <data name="MUpperHelp_MRegister" xml:space="preserve">
+    <value>&amp;Ассоциировать файлы</value>
+  </data>
+  <data name="MUpperHelp_MRegister_TT" xml:space="preserve">
+    <value>Добавить типы файлов в реестр Windows и сделать их открываемыми по двойному клику</value>
   </data>
 </root>

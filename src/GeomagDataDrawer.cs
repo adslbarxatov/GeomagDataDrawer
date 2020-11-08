@@ -55,7 +55,7 @@ namespace RD_AAOW
 					{
 					switch (args[0].Substring (args[0].Length - 4).ToLower ())
 						{
-						case ".gdd":
+						case "." + ProgramDescription.AppDataExtension:
 							inputType = DataInputTypes.GDD;
 							break;
 
@@ -111,7 +111,7 @@ namespace RD_AAOW
 					switch (args[1].Substring (args[1].Length - 4).ToLower ())
 						{
 						// Файлы данных
-						case ".gdd":
+						case "." + ProgramDescription.AppDataExtension:
 							outputType = (int)DataOutputTypes.GDD;
 							break;
 

@@ -4,7 +4,10 @@ To do
 - Add the ability to use dates as abscissas;
 - Add standard charting templates to distribution package;
 - Optimize mechanism of data transferring from main to editing window;
-- Develop a setting that allows specifying which tabs and in what order should be displayed on the settings panel
+
+Version 4.17.2:
+• Added ability to register file associations;
+• Some code improvements applied
 
 Version 4.17:
 • Application info interface now able to get last release's changes log;

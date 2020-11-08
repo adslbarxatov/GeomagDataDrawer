@@ -116,7 +116,7 @@ namespace RD_AAOW
 		/// <summary>
 		/// Возвращает имя автоматически сохраняемого файла данных
 		/// </summary>
-		public const string BackupDataFileName = "Backup.gdd";
+		public const string BackupDataFileName = "Backup." + ProgramDescription.AppDataExtension;
 
 		/// <summary>
 		/// Возвращает имя стандартного файла параметров предпросмотра диаграммы
@@ -348,7 +348,7 @@ namespace RD_AAOW
 			string s = GetSetting ("ForceUsingBackupDataFile");
 			forceUsingBackupDataFile = (s == "FUBDF");
 
-			if (s == "")	// Требуется дополнительная обработка, т.к. значение по умолчанию - true
+			if (s == "")    // Требуется дополнительная обработка, т.к. значение по умолчанию - true
 				{
 				forceUsingBackupDataFile = true;
 				SetSetting ("ForceUsingBackupDataFile", "FUBDF");

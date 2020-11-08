@@ -11,18 +11,18 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает главную форму программы
 	/// </summary>
-	public partial class GeomagDataDrawerForm:Form
+	public partial class GeomagDataDrawerForm: Form
 		{
 		// Переменные
 		private DiagramData dd =
-			new DiagramData ("", DataInputTypes.Unknown, 0);	// Создание класса-представителя данных диаграммы (фиктивная инициализация)
-		private bool loading = false;							// Состояние загрузки значений параметров в контролы
-		private ConfigAccessor ca = new ConfigAccessor ();		// Аксессор конфигурации программы (загрузка или инициализация)
-		private MarkersLoader ml = new MarkersLoader ();		// Загрузчик маркеров
-		private Graphics drawField;								// Основное поле отрисовки программы
-		private List<int> selectedInidces = new List<int> ();	// Текущий список выбранных кривых
-		private bool selecting = false;							// Состояние загрузки списка выбранных кривых
-		private int oldMouseX, oldMouseY;						// Промежуточные координаты указателя мыши
+			new DiagramData ("", DataInputTypes.Unknown, 0);    // Создание класса-представителя данных диаграммы (фиктивная инициализация)
+		private bool loading = false;                           // Состояние загрузки значений параметров в контролы
+		private ConfigAccessor ca = new ConfigAccessor ();      // Аксессор конфигурации программы (загрузка или инициализация)
+		private MarkersLoader ml = new MarkersLoader ();        // Загрузчик маркеров
+		private Graphics drawField;                             // Основное поле отрисовки программы
+		private List<int> selectedInidces = new List<int> ();   // Текущий список выбранных кривых
+		private bool selecting = false;                         // Состояние загрузки списка выбранных кривых
+		private int oldMouseX, oldMouseY;                       // Промежуточные координаты указателя мыши
 
 		#region Настройка и функционирование главной формы
 
@@ -36,7 +36,7 @@ namespace RD_AAOW
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			for (int i = 0; i < 4; i++)		// Заглушки
+			for (int i = 0; i < 4; i++)     // Заглушки
 				{
 				OxPlacementCombo.Items.Add (i.ToString ());
 				OyPlacementCombo.Items.Add (i.ToString ());
@@ -55,7 +55,7 @@ namespace RD_AAOW
 			MLanguage.Items.AddRange (Localization.LanguagesNames);
 			try
 				{
-				MLanguage.SelectedIndex = (int)ca.InterfaceLanguage;	// Инициация локализации
+				MLanguage.SelectedIndex = (int)ca.InterfaceLanguage;    // Инициация локализации
 				}
 			catch
 				{
@@ -226,13 +226,14 @@ namespace RD_AAOW
 
 			// Контролы и диалоги
 			OFDialog.Filter = string.Format (Localization.GetControlText (this.Name, "OFDialog_F", ca.InterfaceLanguage),
-				ProgramDescription.AssemblyTitle);
+				ProgramDescription.AssemblyTitle, ProgramDescription.AppDataExtension);
 			OFDialog.Title = Localization.GetControlText (this.Name, "OFDialog", ca.InterfaceLanguage);
 			SFDialog.Filter = string.Format (Localization.GetControlText (this.Name, "SFDialog_F", ca.InterfaceLanguage),
-				ProgramDescription.AssemblyTitle);
+				ProgramDescription.AssemblyTitle, ProgramDescription.AppDataExtension);
 			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog", ca.InterfaceLanguage);
 
-			LoadStyleDialog.Filter = SaveStyleDialog.Filter = Localization.GetControlText (this.Name, "StyleDialog_F", ca.InterfaceLanguage);
+			LoadStyleDialog.Filter = SaveStyleDialog.Filter = string.Format (Localization.GetControlText (this.Name,
+				"StyleDialog_F", ca.InterfaceLanguage), ProgramDescription.AppStyleExtension);
 			LoadStyleDialog.Title = Localization.GetControlText (this.Name, "LoadStyleDialog", ca.InterfaceLanguage);
 			SaveStyleDialog.Title = Localization.GetControlText (this.Name, "SaveStyleDialog", ca.InterfaceLanguage);
 
@@ -423,7 +424,7 @@ namespace RD_AAOW
 			VertScroll.Maximum = ((dd.DiagramHeight - DiagramBox.Height < 0) ? 0 : (int)(dd.DiagramHeight - DiagramBox.Height));
 
 			// Перерисовка
-			if (dd != null)		// Предотвращение перерисовки при запуске программы
+			if (dd != null)     // Предотвращение перерисовки при запуске программы
 				{
 				dd.DrawAllDiagrams (drawField, LineNamesList.SelectedIndices);
 				Image im = (Image)DiagramBox.BackgroundImage.Clone ();
@@ -704,7 +705,7 @@ namespace RD_AAOW
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo,
 					 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
 					{
-					e.Cancel = true;	// Отмена закрытия окна
+					e.Cancel = true;    // Отмена закрытия окна
 					}
 				}
 
@@ -1020,6 +1021,12 @@ namespace RD_AAOW
 
 			// Запуск
 			Process.Start ("hh.exe", Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[0]);
+			}
+
+		// Справка
+		private void MRegister_Click (object sender, EventArgs e)
+			{
+			ProgramDescription.RegisterAppExtensions ();
 			}
 
 		// Изменение языка интерфейса
@@ -2128,8 +2135,8 @@ namespace RD_AAOW
 				// щелчке мышью
 				selecting = true;
 
-				if (LineNamesList.Items.Count >= selectedInidces.Count)	// По неизвестной причине последний элемент в selectedIndices
-				// не удаляется при опустошении LineNamesList.Items
+				if (LineNamesList.Items.Count >= selectedInidces.Count) // По неизвестной причине последний элемент в selectedIndices
+																		// не удаляется при опустошении LineNamesList.Items
 					{
 					LineNamesList.SelectedIndices.Clear ();
 					for (int i = 0; i < selectedInidces.Count; i++)

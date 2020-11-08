@@ -199,7 +199,7 @@
     <value>Choose data file</value>
   </data>
   <data name="GeomagDataDrawerForm_OFDialog_F" xml:space="preserve">
-    <value>{0:S} data files (*.gdd)|*.gdd|Microsoft Excel format '97 и '07|*.xls;*.xlsx|Windows CSV tables|*.csv|Extracting data from text files|*.*</value>
+    <value>{0:S} data files (*.{1:S})|*.{1:S}|Microsoft Excel format '97 и '07|*.xls;*.xlsx|Windows CSV tables|*.csv|Extracting data from text files|*.*</value>
   </data>
   <data name="GeomagDataDrawerForm_OxFormat_0" xml:space="preserve">
     <value>Simple</value>
@@ -238,10 +238,10 @@
     <value>Specify the location of new data file</value>
   </data>
   <data name="GeomagDataDrawerForm_SFDialog_F" xml:space="preserve">
-    <value>{0:S} data files (*.gdd)|*.gdd|Random data set diagrams (*.dat)|*.dat|Windows CSV tables|*.csv</value>
+    <value>{0:S} data files (*.{1:S})|*.{1:S}|Random data set diagrams (*.dat)|*.dat|Windows CSV tables|*.csv</value>
   </data>
   <data name="GeomagDataDrawerForm_StyleDialog_F" xml:space="preserve">
-    <value>Diagram style files (*.gddstyle)|*.gddstyle</value>
+    <value>Diagram style files (*.{0:S})|*.{0:S}</value>
   </data>
   <data name="MainTabControl_AxesTab_TT" xml:space="preserve">
     <value>Axes panel</value>
@@ -490,7 +490,7 @@
     <value>Missing required component of the program: {0:S}. Probably, you need to reinstall it</value>
   </data>
   <data name="DataFileLoadError" xml:space="preserve">
-    <value>File «{0:S}» loading error: {1:S}</value>
+    <value>File “{0:S}” loading error: {1:S}</value>
   </data>
   <data name="DataFileSaveError" xml:space="preserve">
     <value>Failed to write data file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
@@ -791,9 +791,9 @@
   </data>
   <data name="StyleLoadingType" xml:space="preserve">
     <value>Select variant of using of style file:
-• Click «Yes» if you want to apply style(s) to selected diagram element(s);
-• Click «No» if you want to add new curve(s) with this style(s) to existing curve(s);
-• Click «Cancel» if you don't need to apply styles</value>
+• Click “Yes” if you want to apply style(s) to selected diagram element(s);
+• Click “No” if you want to add new curve(s) with this style(s) to existing curve(s);
+• Click “Cancel” if you don't need to apply styles</value>
   </data>
   <data name="StyleSaveError" xml:space="preserve">
     <value>Failed to write diagram style file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
@@ -829,7 +829,7 @@
     <value>Expected data columns count:</value>
   </data>
   <data name="UnknownFileParametersSelector_Label02" xml:space="preserve">
-    <value>This value can be specified «with reserve». Missing data columns will be filled with null values</value>
+    <value>This value can be specified “with reserve”. Missing data columns will be filled with null values</value>
   </data>
   <data name="UnknownFileParametersSelector_T" xml:space="preserve">
     <value>Extracting data settings</value>
@@ -865,16 +865,16 @@ Allowed:
     <value>Expression is empty</value>
   </data>
   <data name="IncorrectExpressionEndError" xml:space="preserve">
-    <value>Expression is not completed. Lexem «{0:S}» cannot finish an expression</value>
+    <value>Expression is not completed. Lexem “{0:S}” cannot finish an expression</value>
   </data>
   <data name="IncorrectExpressionStartError" xml:space="preserve">
-    <value>Expression cannot starts with lexem «{0:S}»</value>
+    <value>Expression cannot starts with lexem “{0:S}”</value>
   </data>
   <data name="LeftParenthesisWasNotClosedError" xml:space="preserve">
     <value>Some opening parenthesis was not closed</value>
   </data>
   <data name="MisplacedConstantError" xml:space="preserve">
-    <value>Misplaced constant «{0:S}»</value>
+    <value>Misplaced constant “{0:S}”</value>
   </data>
   <data name="MisplacedDivisionOperatorError" xml:space="preserve">
     <value>Misplaced division operator</value>
@@ -883,7 +883,7 @@ Allowed:
     <value>Misplaced exponentiation operator</value>
   </data>
   <data name="MisplacedFunctionCallError" xml:space="preserve">
-    <value>Misplaced function call «{0:S}»</value>
+    <value>Misplaced function call “{0:S}”</value>
   </data>
   <data name="MisplacedLeftParenthesisError" xml:space="preserve">
     <value>Misplaced opening parenthesis</value>
@@ -895,7 +895,7 @@ Allowed:
     <value>Misplaced multiplication operator</value>
   </data>
   <data name="MisplacedNumberError" xml:space="preserve">
-    <value>Misplaced number «{0:S}»</value>
+    <value>Misplaced number “{0:S}”</value>
   </data>
   <data name="MisplacedPlusOperatorError" xml:space="preserve">
     <value>Misplaced addition operator</value>
@@ -913,7 +913,7 @@ Allowed:
     <value>Unexpected closing parenthesis</value>
   </data>
   <data name="UnknownLexemeError" xml:space="preserve">
-    <value>Unknown lexem: «{0:S}»</value>
+    <value>Unknown lexem: “{0:S}”</value>
   </data>
   <data name="IncorrectRangeError" xml:space="preserve">
     <value>Count of curve's points is too big for specified range and step, or range is empty</value>
@@ -1040,10 +1040,10 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
     <value>Internal error occurred in application. Debug is required</value>
   </data>
   <data name="FileAddCompleted" xml:space="preserve">
-    <value>File "{0:S}" has been added: columns – {1:D}, rows – {2:D}</value>
+    <value>File “{0:S}” has been added: columns – {1:D}, rows – {2:D}</value>
   </data>
   <data name="FileAddError" xml:space="preserve">
-    <value>File "{0:S}" haven't been added: {1:S}</value>
+    <value>File “{0:S}” haven't been added: {1:S}</value>
   </data>
   <data name="FilesListReset" xml:space="preserve">
     <value>Files list has been reset</value>
@@ -1115,5 +1115,11 @@ All unsaved data will be lost!</value>
   </data>
   <data name="HelpText_TM" xml:space="preserve">
     <value>This tool allows you to merge data tables of different types into single file (by columns adding)</value>
+  </data>
+  <data name="MUpperHelp_MRegister" xml:space="preserve">
+    <value>Register file associatio&amp;ns</value>
+  </data>
+  <data name="MUpperHelp_MRegister_TT" xml:space="preserve">
+    <value>Add file types to Windows registry and make them openable by double-click</value>
   </data>
 </root>
