@@ -7,7 +7,8 @@ To do
 
 Version 4.17.2:
 • Added ability to register file associations;
-• Some code improvements applied
+• Some code improvements applied;
+• .gddstyle extenstion replaced with .gds
 
 Version 4.17:
 • Application info interface now able to get last release's changes log;

@@ -1123,4 +1123,10 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   <data name="MUpperHelp_MRegister_TT" xml:space="preserve">
     <value>Добавить типы файлов в реестр Windows и сделать их открываемыми по двойному клику</value>
   </data>
+  <data name="gddfile" xml:space="preserve">
+    <value>Файл диаграммы Geomag data drawer</value>
+  </data>
+  <data name="gdsfile" xml:space="preserve">
+    <value>Файл стиля Geomag data drawer</value>
+  </data>
 </root>

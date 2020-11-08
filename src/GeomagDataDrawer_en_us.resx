@@ -1122,4 +1122,10 @@ All unsaved data will be lost!</value>
   <data name="MUpperHelp_MRegister_TT" xml:space="preserve">
     <value>Add file types to Windows registry and make them openable by double-click</value>
   </data>
+  <data name="gddfile" xml:space="preserve">
+    <value>Geomag data drawer diagram file</value>
+  </data>
+  <data name="gdsfile" xml:space="preserve">
+    <value>Geomag data drawer style file</value>
+  </data>
 </root>
