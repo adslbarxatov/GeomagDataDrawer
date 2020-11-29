@@ -5,6 +5,9 @@ To do
 - Add standard charting templates to distribution package;
 - Optimize mechanism of data transferring from main to editing window;
 
+Version 4.17.3:
+• Fixed bug in Policy acception interface that disallowed to accept it in offline mode at first start
+
 Version 4.17.2:
 • Added ability to register file associations;
 • Some code improvements applied;
