@@ -49,9 +49,9 @@ namespace RD_AAOW
 					}
 
 				// Входной файл
-				DataInputTypes inputType = DataInputTypes.Unknown;	// Извлечение по умолчанию
+				DataInputTypes inputType = DataInputTypes.Unknown;  // Извлечение по умолчанию
 
-				if (args[0].Length >= 5)		// Расширение (не менее 3-х символов) + '.' + имя (не менее одного символа)
+				if (args[0].Length >= 5)        // Расширение (не менее 3-х символов) + '.' + имя (не менее одного символа)
 					{
 					switch (args[0].Substring (args[0].Length - 4).ToLower ())
 						{
@@ -104,7 +104,7 @@ namespace RD_AAOW
 					}
 
 				// Выходной файл
-				int outputType = (int)DataOutputTypes.ANY;	// По умолчанию - файл свободной топологии
+				int outputType = (int)DataOutputTypes.ANY;  // По умолчанию - файл свободной топологии
 
 				if (args[1].Length >= 5)
 					{
@@ -133,9 +133,9 @@ namespace RD_AAOW
 							outputType = (int)ImageOutputTypes.SVG;
 							break;
 
-						/*case ".emf":
-							outputType = (int)ImageOutputTypes.EMF;
-							break;*/
+							/*case ".emf":
+								outputType = (int)ImageOutputTypes.EMF;
+								break;*/
 						}
 					}
 
@@ -174,14 +174,14 @@ namespace RD_AAOW
 					{
 					// Применение шаблона отображения
 					ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true, ca.InterfaceLanguage);
-					if (!cad.LoadParametersFile (Application.StartupPath + "\\" + ConfigAccessor.LineParametersFileName))
+					if (!cad.LoadParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName))
 						{
-						if (!cad.CreateParametersFile (Application.StartupPath + "\\" + ConfigAccessor.LineParametersFileName))
+						if (!cad.CreateParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName))
 							{
 							return;
 							}
 
-						cad.LoadParametersFile (Application.StartupPath + "\\" + ConfigAccessor.LineParametersFileName);
+						cad.LoadParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName);
 						}
 
 					// Добавление кривых

@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 
 namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс обеспечивает загрузку стандартных и дополнительных маркеров для построения диаграмм
 	/// </summary>
-	public class MarkersLoader:IDisposable
+	public class MarkersLoader: IDisposable
 		{
 		// Переменные и константы
-		private List<Bitmap> markers = new List<Bitmap> ();	// Массив маркеров
-		private const int standartMarkersSize = 7;			// Размеры стандартных маркеров
-		private const string markersDirectory = "Markers";	// Директория с маркерами
+		private List<Bitmap> markers = new List<Bitmap> (); // Массив маркеров
+		private const int standartMarkersSize = 7;          // Размеры стандартных маркеров
+		private const string markersDirectory = "Markers";  // Директория с маркерами
 
 		/// <summary>
 		/// Максимальное количество доступных маркеров
@@ -78,7 +77,7 @@ namespace RD_AAOW
 			Graphics g = Graphics.FromImage (b);
 			g.FillRectangle (backBrush, 0, 0, b.Width, b.Height);
 			g.FillRectangle (foreBrush, 1, 1, b.Width - 2, b.Height - 2);
-			markers.Add ((Bitmap)b.Clone ());	// Нужно отвязать картинку от объекта b, иначе правка сохранится в ней
+			markers.Add ((Bitmap)b.Clone ());   // Нужно отвязать картинку от объекта b, иначе правка сохранится в ней
 			b.Dispose ();
 			g.Dispose ();
 
@@ -138,11 +137,11 @@ namespace RD_AAOW
 
 			#region Загрузка дополнительных маркеров из файлов
 			// Проверка наличия папки
-			if (!Directory.Exists (Application.StartupPath + "\\" + markersDirectory))
+			if (!Directory.Exists (AboutForm.AppStartupPath + markersDirectory))
 				{
 				try
 					{
-					Directory.CreateDirectory (Application.StartupPath + "\\" + markersDirectory);
+					Directory.CreateDirectory (AboutForm.AppStartupPath + markersDirectory);
 					}
 				catch
 					{
@@ -154,7 +153,7 @@ namespace RD_AAOW
 			string[] markersImages;
 			try
 				{
-				markersImages = Directory.GetFiles (Application.StartupPath + "\\" + markersDirectory, "*.png");
+				markersImages = Directory.GetFiles (AboutForm.AppStartupPath + markersDirectory, "*.png");
 				}
 			catch
 				{

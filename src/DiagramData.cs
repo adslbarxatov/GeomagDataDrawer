@@ -15,29 +15,29 @@ namespace RD_AAOW
 	public class DiagramData
 		{
 		// ПЕРЕМЕННЫЕ
-		private char[] anyDataSplitters = new char[] { ' ', '\t', ';' };	// Массивы сплиттеров
+		private char[] anyDataSplitters = new char[] { ' ', '\t', ';' };    // Массивы сплиттеров
 		private char[] anyHeadersSplitters = new char[] { '\t', ';' };
 		private char[] csvSplitters = new char[] { ';' };
 		private char[] dateSplitters = new char[] { '.', '/', '-' };
-		private CultureInfo cie = new CultureInfo ("en-us");			// Десятичная точка
-		private CultureInfo cir = new CultureInfo ("ru-ru");			// Десятичная запятая
+		private CultureInfo cie = new CultureInfo ("en-us");            // Десятичная точка
+		private CultureInfo cir = new CultureInfo ("ru-ru");            // Десятичная запятая
 
-		private List<List<double>> dataValues = new List<List<double>> ();		// Исходный массив данных
-		private List<string> dataColumnNames = new List<string> ();				// Имена столбцов исходного массива данных
+		private List<List<double>> dataValues = new List<List<double>> ();      // Исходный массив данных
+		private List<string> dataColumnNames = new List<string> ();             // Имена столбцов исходного массива данных
 
 #if !DataProcessingOnly
-		private List<DiagramCurve> curves = new List<DiagramCurve> ();			// Массив кривых диаграммы
-		private List<DiagramStyle> lineStyles = new List<DiagramStyle> ();		// Массив сопоставленных стилей отображения
-		private List<DiagramAdditionalObjects> additionalObjects = new List<DiagramAdditionalObjects> ();	// Массив дополнительных объектов
-		private List<DiagramStyle> additionalObjectsStyles = new List<DiagramStyle> ();						// Стили дополнительных объектов
+		private List<DiagramCurve> curves = new List<DiagramCurve> ();          // Массив кривых диаграммы
+		private List<DiagramStyle> lineStyles = new List<DiagramStyle> ();      // Массив сопоставленных стилей отображения
+		private List<DiagramAdditionalObjects> additionalObjects = new List<DiagramAdditionalObjects> ();   // Массив дополнительных объектов
+		private List<DiagramStyle> additionalObjectsStyles = new List<DiagramStyle> ();                     // Стили дополнительных объектов
 #endif
 
 		// КОНСТАНТЫ
-		private const float LeftMargin = 0.05f;		// Левый отступ от края изображения до диаграммы (в долях)
-		private const float TopMargin = 0.01f;		// Верхний отступ от края изображения до диаграммы (в долях)
-		private const float DiagramFieldPart = 0.9f;		// Доля поля диаграммы
-		private const float RightMargin = LeftMargin + DiagramFieldPart;	// Правый отступ от края изображения до диаграммы (в долях)
-		private const float BottomMargin = TopMargin + DiagramFieldPart;	// Нижний отступ от края изображения до диаграммы (в долях)
+		private const float LeftMargin = 0.05f;     // Левый отступ от края изображения до диаграммы (в долях)
+		private const float TopMargin = 0.01f;      // Верхний отступ от края изображения до диаграммы (в долях)
+		private const float DiagramFieldPart = 0.9f;        // Доля поля диаграммы
+		private const float RightMargin = LeftMargin + DiagramFieldPart;    // Правый отступ от края изображения до диаграммы (в долях)
+		private const float BottomMargin = TopMargin + DiagramFieldPart;    // Нижний отступ от края изображения до диаграммы (в долях)
 
 		/// <summary>
 		/// Максимально допустимое количество кривых на диаграмме
@@ -134,9 +134,9 @@ namespace RD_AAOW
 				// Следующие обработки выполняются в дополнительных методах
 				case DataInputTypes.XLS:
 					// Контроль доступа к компонентам
-					if (!File.Exists (Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[1]) ||
-						!File.Exists (Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[2]) ||
-						!File.Exists (Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[3]))
+					if (!File.Exists (AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[1]) ||
+						!File.Exists (AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[2]) ||
+						!File.Exists (AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[3]))
 						{
 						initResult = DiagramDataInitResults.ExcelNotAvailable;
 						return;
@@ -372,8 +372,8 @@ namespace RD_AAOW
 				}
 
 			// Создание вспомогательных переменных
-			string s;					// Промежуточные строки
-			string[] values = null;		// Извлечённые значения
+			string s;                   // Промежуточные строки
+			string[] values = null;     // Извлечённые значения
 
 			#region Извлечение имён столбцов (по возможности)
 			bool namesFound = false;
@@ -593,7 +593,7 @@ namespace RD_AAOW
 
 			try
 				{
-				BR.ReadString ();	// Версия файла
+				BR.ReadString ();   // Версия файла
 				}
 			catch
 				{
@@ -603,20 +603,20 @@ namespace RD_AAOW
 				return;
 				}
 
-		#region Чтение блока данных
+			#region Чтение блока данных
 			// Получение размерности файла
 			uint rows = 0;
 			uint dataColumnsCount = 0;
 			try
 				{
 				if ((rows = BR.ReadUInt16 ()) > MaxDataRows)
-					throw new Exception ();	// Значит, файл повреждён (не NotEnoughData)
+					throw new Exception (); // Значит, файл повреждён (не NotEnoughData)
 				if ((dataColumnsCount = BR.ReadUInt16 ()) > MaxDataColumns)
 					throw new Exception ();
 
 
 				// Контроль
-				if ((rows < 2) || (dataColumnsCount < 2))	// Программа так делать не умеет
+				if ((rows < 2) || (dataColumnsCount < 2))   // Программа так делать не умеет
 					throw new Exception ();
 
 				// Разметка массива и чтение имён столбцов
@@ -660,7 +660,7 @@ namespace RD_AAOW
 			initResult = DiagramDataInitResults.Ok;
 			#endregion
 
-		#region Чтение данных о кривых
+			#region Чтение данных о кривых
 			// Получение числа кривых
 			uint linesCount = 0;
 			try
@@ -677,7 +677,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Чтение стилей
+			#region Чтение стилей
 			for (int i = 0; i < linesCount; i++)
 				{
 				DiagramStyle style = null;
@@ -692,7 +692,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Чтение данных о дополнительных объектах
+			#region Чтение данных о дополнительных объектах
 			// Получение числа объектов
 			uint additionalObjectsCount = 0;
 			try
@@ -709,7 +709,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Чтение стилей дополнительных объектов
+			#region Чтение стилей дополнительных объектов
 			// Количество объектов останется равным нулю для старой версии файла
 			for (int i = 0; i < additionalObjectsCount; i++)
 				{
@@ -717,7 +717,7 @@ namespace RD_AAOW
 				try
 					{
 					DiagramAdditionalObjects dao = (DiagramAdditionalObjects)BR.ReadUInt16 ();
-					if (dao == DiagramAdditionalObjects.OldLine)	// Старая линия заменяется на ближайшую по смыслу
+					if (dao == DiagramAdditionalObjects.OldLine)    // Старая линия заменяется на ближайшую по смыслу
 						{
 						dao = DiagramAdditionalObjects.LineNWtoSE;
 						}
@@ -955,7 +955,7 @@ namespace RD_AAOW
 				case DiagramAdditionalObjects.LineV:
 				case DiagramAdditionalObjects.LineNWtoSE:
 				case DiagramAdditionalObjects.LineSWtoNE:
-				case DiagramAdditionalObjects.OldLine:		// Изоляция исключений
+				case DiagramAdditionalObjects.OldLine:      // Изоляция исключений
 					type = "L. ";
 					break;
 
@@ -967,7 +967,7 @@ namespace RD_AAOW
 
 			if (ObjectType == DiagramAdditionalObjects.OldLine)
 				{
-				additionalObjects.Add (DiagramAdditionalObjects.LineNWtoSE);	// Защита от возможных дефектов интерфейса
+				additionalObjects.Add (DiagramAdditionalObjects.LineNWtoSE);    // Защита от возможных дефектов интерфейса
 				}
 			else
 				{
@@ -1035,8 +1035,8 @@ namespace RD_AAOW
 			for (int row = 0; row < dataValues[0].Count; row++)
 				{
 				// Поиск максимумов и минимумов по оси Oy
-				if (!double.IsNaN (dataValues[(int)YColumnNumber][row]))	// Создаёт потенциальную опасность выхода на max|min = Infinity
-					{														// Но пока что хрен с ним
+				if (!double.IsNaN (dataValues[(int)YColumnNumber][row]))    // Создаёт потенциальную опасность выхода на max|min = Infinity
+					{                                                       // Но пока что хрен с ним
 					if (minY == double.NegativeInfinity)
 						{
 						minY = maxY = dataValues[(int)YColumnNumber][row];
@@ -1249,7 +1249,7 @@ namespace RD_AAOW
 				}
 			else
 				{
-				return 3;	// Чтобы интерфейс не добавлял знаки после запятой, нужные диаграммам
+				return 3;   // Чтобы интерфейс не добавлял знаки после запятой, нужные диаграммам
 				}
 			}
 
@@ -1267,7 +1267,7 @@ namespace RD_AAOW
 				}
 			else
 				{
-				return 3;	// Чтобы интерфейс не добавлял знаки после запятой, нужные диаграммам
+				return 3;   // Чтобы интерфейс не добавлял знаки после запятой, нужные диаграммам
 				}
 			}
 
@@ -1374,8 +1374,8 @@ namespace RD_AAOW
 		private void DrawDiagram (int LineNumber, DiagramStyle LineStyle, Graphics DrawField, bool IsSelected)
 			{
 			// Создание пустого изображения заданного размера с белым фоном
-			Bitmap lineImage = new Bitmap ((int)LineStyle.DiagramImageWidth, (int)LineStyle.DiagramImageHeight);	// Будущее изображение
-			Graphics g = Graphics.FromImage (lineImage);	// Графический дескриптор
+			Bitmap lineImage = new Bitmap ((int)LineStyle.DiagramImageWidth, (int)LineStyle.DiagramImageHeight);    // Будущее изображение
+			Graphics g = Graphics.FromImage (lineImage);    // Графический дескриптор
 			g.Clear (DiagramStyle.ImageBackColor);
 
 			// Установка отрисовки подписей без сглаживания (устраняет чёрную ауру при отрисовке подписей в Win8)
@@ -1388,16 +1388,16 @@ namespace RD_AAOW
 				(int)((float)(LineStyle.DiagramImageHeight + 2) * DiagramFieldPart)));
 
 			// Создание переменных
-			float x1, x2;	// Вспомогательные переменные для отрисовки линий
+			float x1, x2;   // Вспомогательные переменные для отрисовки линий
 			float y1, y2;
 			double ptx1 = 0.0, ptx2 = 0.0;
 			double pty1 = 0.0, pty2 = 0.0;
-			float ox = 0.0f, oy = 0.0f;	// Точки фиксации осей
-			Brush br = null;		// Кисть для заливок
-			Pen p = null;			// Карандаш для линий
-			SizeF sz;		// Переменная для расчёта центральных позиций для подписей
-			float NotchSize;	// Вычисляемый размер засечек
-			double styleMinX, styleMaxX;			// Вспомогательные переменные для транспонирования диаграмм
+			float ox = 0.0f, oy = 0.0f; // Точки фиксации осей
+			Brush br = null;        // Кисть для заливок
+			Pen p = null;           // Карандаш для линий
+			SizeF sz;       // Переменная для расчёта центральных позиций для подписей
+			float NotchSize;    // Вычисляемый размер засечек
+			double styleMinX, styleMaxX;            // Вспомогательные переменные для транспонирования диаграмм
 			double styleMinY, styleMaxY;
 			uint styleXPrimaryDiv, styleYPrimaryDiv,
 				styleXSecondaryDiv, styleYSecondaryDiv;
@@ -1416,7 +1416,7 @@ namespace RD_AAOW
 				br.Dispose ();
 				}
 
-		#region Транспонирование диапазонов при необходимости
+			#region Транспонирование диапазонов при необходимости
 			if (!LineStyle.SwitchXY)
 				{
 				styleMaxX = LineStyle.MaxX;
@@ -1441,7 +1441,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Определение положения оси Ox
+			#region Определение положения оси Ox
 			switch (LineStyle.OxPlacement)
 				{
 				case AxesPlacements.Auto:
@@ -1475,7 +1475,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Определение положения оси Oy
+			#region Определение положения оси Oy
 			switch (LineStyle.OyPlacement)
 				{
 				case AxesPlacements.Auto:
@@ -1510,7 +1510,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Засечки на оси Ox
+			#region Засечки на оси Ox
 			// Определение размера засечек
 			NotchSize = 2.0f * LineStyle.AxesLinesWidth;
 
@@ -1630,7 +1630,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Засечки на оси Oy
+			#region Засечки на оси Oy
 			// Большие засечки
 			x1 = ox - NotchSize;
 			x2 = ox + NotchSize;
@@ -1750,7 +1750,7 @@ namespace RD_AAOW
 			// Без этого ограничения можно натолкнуться на деление на ноль
 			if ((LineStyle.MinX != LineStyle.MaxX) && (LineStyle.MinY != LineStyle.MaxY))
 				{
-		#region Отрисовка кривых
+				#region Отрисовка кривых
 				p = new Pen (LineStyle.LineColor, LineStyle.LineWidth);
 				br = new SolidBrush (LineStyle.LineColor);
 
@@ -1808,7 +1808,7 @@ namespace RD_AAOW
 				#endregion
 				}
 
-		#region Отрисовка осей
+			#region Отрисовка осей
 			if (p != null)
 				{
 				p.Dispose ();
@@ -1818,7 +1818,7 @@ namespace RD_AAOW
 			g.DrawLine (p, (float)LineStyle.DiagramImageWidth * LeftMargin, oy, (float)LineStyle.DiagramImageWidth * RightMargin, oy);
 			#endregion
 
-		#region Легенда
+			#region Легенда
 			// Расчёт положения
 			if (br != null)
 				{
@@ -1866,8 +1866,8 @@ namespace RD_AAOW
 		private void DrawObject (int ObjectNumber, DiagramStyle ObjectStyle, Graphics DrawField, bool IsSelected)
 			{
 			// Создание пустого изображения заданного размера с белым фоном
-			Bitmap objectImage = new Bitmap ((int)ObjectStyle.DiagramImageWidth, (int)ObjectStyle.DiagramImageHeight);	// Будущее изображение
-			Graphics g = Graphics.FromImage (objectImage);	// Графический дескриптор
+			Bitmap objectImage = new Bitmap ((int)ObjectStyle.DiagramImageWidth, (int)ObjectStyle.DiagramImageHeight);  // Будущее изображение
+			Graphics g = Graphics.FromImage (objectImage);  // Графический дескриптор
 			g.Clear (DiagramStyle.ImageBackColor);
 
 			// Установка отрисовки подписей без сглаживания (устраняет чёрную ауру при отрисовке подписей в Win8)
@@ -1887,7 +1887,7 @@ namespace RD_AAOW
 				}
 
 			// Расчёт корректировочного коэффициента (для коррекции размера под толщину линий)
-			float correction = (float)(ObjectStyle.LineWidth >> 1);	// Устанавливает новое смещение только на чётных значениях
+			float correction = (float)(ObjectStyle.LineWidth >> 1); // Устанавливает новое смещение только на чётных значениях
 
 			// Отрисовка объекта
 			p = new Pen (ObjectStyle.LineColor, ObjectStyle.LineWidth);
@@ -1914,7 +1914,7 @@ namespace RD_AAOW
 					g.FillRectangle (br, 0, 0, ObjectStyle.DiagramImageWidth - 1, ObjectStyle.DiagramImageHeight - 1);
 					break;
 
-				case DiagramAdditionalObjects.OldLine:		// Изоляция исключений
+				case DiagramAdditionalObjects.OldLine:      // Изоляция исключений
 				case DiagramAdditionalObjects.LineNWtoSE:
 					g.DrawLine (p, 0 + correction, 0 + correction,
 						ObjectStyle.DiagramImageWidth - ObjectStyle.LineWidth, ObjectStyle.DiagramImageHeight - ObjectStyle.LineWidth);
@@ -2026,16 +2026,16 @@ namespace RD_AAOW
 				(double)Y + (double)lineStyles[LineNumber].DiagramImageHeight);
 
 			// Создание переменных
-			Bitmap b = new Bitmap (50, 50);		// Вспомогательные переменные для расчёта позиций подписей
+			Bitmap b = new Bitmap (50, 50);     // Вспомогательные переменные для расчёта позиций подписей
 			Graphics g = Graphics.FromImage (b);
 			SizeF sz;
-			double x1, x2;	// Вспомогательные переменные для отрисовки линий
+			double x1, x2;  // Вспомогательные переменные для отрисовки линий
 			double y1, y2;
 			double ptx1 = 0.0;
 			double pty1 = 0.0;
-			float ox = 0.0f, oy = 0.0f;	// Точки фиксации осей
-			float NotchSize;	// Вычисляемый размер засечек
-			double styleMinX, styleMaxX;			// Вспомогательные переменные для транспонирования диаграмм
+			float ox = 0.0f, oy = 0.0f; // Точки фиксации осей
+			float NotchSize;    // Вычисляемый размер засечек
+			double styleMinX, styleMaxX;            // Вспомогательные переменные для транспонирования диаграмм
 			double styleMinY, styleMaxY;
 			uint styleXPrimaryDiv, styleYPrimaryDiv,
 				styleXSecondaryDiv, styleYSecondaryDiv;
@@ -2046,7 +2046,7 @@ namespace RD_AAOW
 			Bitmap currentMarker = ml.GetMarker (lineStyles[LineNumber].LineMarkerNumber - 1, lineStyles[LineNumber].LineColor);
 			ml.Dispose ();
 
-		#region Транспонирование диапазонов при необходимости
+			#region Транспонирование диапазонов при необходимости
 			if (!lineStyles[LineNumber].SwitchXY)
 				{
 				styleMaxX = lineStyles[LineNumber].MaxX;
@@ -2071,7 +2071,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Определение положения оси Ox
+			#region Определение положения оси Ox
 			switch (lineStyles[LineNumber].OxPlacement)
 				{
 				case AxesPlacements.Auto:
@@ -2105,7 +2105,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Определение положения оси Oy
+			#region Определение положения оси Oy
 			switch (lineStyles[LineNumber].OyPlacement)
 				{
 				case AxesPlacements.Auto:
@@ -2140,7 +2140,7 @@ namespace RD_AAOW
 				}
 			#endregion
 
-		#region Ось Ox
+			#region Ось Ox
 			// Определение размера засечек
 			NotchSize = 2.0f * lineStyles[LineNumber].AxesLinesWidth;
 
@@ -2164,7 +2164,7 @@ namespace RD_AAOW
 						lineStyles[LineNumber].GridLinesWidth, lineStyles[LineNumber].PrimaryGridColor);
 					}
 
-				if (i < styleXPrimaryDiv)	// Больших засечек больше на одну, чем фаз с малыми засечками между ними
+				if (i < styleXPrimaryDiv)   // Больших засечек больше на одну, чем фаз с малыми засечками между ними
 					{
 					for (uint j = 1; j < styleXSecondaryDiv; j++)
 						{
@@ -2265,7 +2265,7 @@ namespace RD_AAOW
 			VectorAdapter.CloseGroup ();
 			#endregion
 
-		#region Ось Oy
+			#region Ось Oy
 			x1 = (float)X + ox - NotchSize;
 			x2 = (float)X + ox + NotchSize;
 
@@ -2386,7 +2386,7 @@ namespace RD_AAOW
 			VectorAdapter.CloseGroup ();
 			#endregion
 
-		#region Легенда
+			#region Легенда
 			// Отрисовка подписи с учётом масштабирования и размера шрифта
 			if (lineStyles[LineNumber].AutoTextOffset)
 				{
@@ -2417,7 +2417,7 @@ namespace RD_AAOW
 			// Без этого ограничения можно натолкнуться на деление на ноль
 			if ((lineStyles[LineNumber].MinX != lineStyles[LineNumber].MaxX) && (lineStyles[LineNumber].MinY != lineStyles[LineNumber].MaxY))
 				{
-		#region Отрисовка кривых
+				#region Отрисовка кривых
 				// Открытие группы для кривой
 				VectorAdapter.OpenGroup ();
 
@@ -2518,7 +2518,7 @@ namespace RD_AAOW
 						additionalObjectsStyles[ObjectNumber].LineColor);
 					break;
 
-				case DiagramAdditionalObjects.OldLine:	// Изоляция исключений
+				case DiagramAdditionalObjects.OldLine:  // Изоляция исключений
 				case DiagramAdditionalObjects.LineNWtoSE:
 					VectorAdapter.DrawLine ((double)X + 0, (double)Y + 0, (double)X + (double)additionalObjectsStyles[ObjectNumber].DiagramImageWidth - 1,
 							(double)Y + (double)additionalObjectsStyles[ObjectNumber].DiagramImageHeight - 1,
@@ -2619,7 +2619,7 @@ namespace RD_AAOW
 			// Начало записи
 			BinaryWriter BW = new BinaryWriter (FS, Encoding.GetEncoding (1251));
 			BW.Write ("Geomag data drawer file format. File version: " + ProgramDescription.AssemblyVersion +
-				". Creation date: " + DateTime.Now.ToString ("dd.MM.yyyy, HH:mm:ss"));	// Запись версии и даты
+				". Creation date: " + DateTime.Now.ToString ("dd.MM.yyyy, HH:mm:ss"));  // Запись версии и даты
 
 			// ЗАПИСЬ БЛОКА ДАННЫХ
 			// Запись размерности
@@ -2868,9 +2868,9 @@ namespace RD_AAOW
 			uint stylesCount = 0;
 			try
 				{
-				BR.ReadString ();		// Версия файла
+				BR.ReadString ();       // Версия файла
 				stylesCount = BR.ReadUInt16 ();
-				uint i = 1 / stylesCount;	// В случае нулевого значения вызовет исключение
+				uint i = 1 / stylesCount;   // В случае нулевого значения вызовет исключение
 				}
 			catch
 				{
@@ -3044,7 +3044,7 @@ namespace RD_AAOW
 			// Файл открыт
 			BinaryWriter BW = new BinaryWriter (FS, Encoding.GetEncoding (1251));
 			BW.Write ("Geomag data drawer style file. File version: " + ProgramDescription.AssemblyVersion +
-				". Creation date: " + DateTime.Now.ToString ("dd.MM.yyyy, HH:mm:ss"));	// Запись версии и даты
+				". Creation date: " + DateTime.Now.ToString ("dd.MM.yyyy, HH:mm:ss"));  // Запись версии и даты
 
 			// Запись числа стилей
 			BW.Write ((UInt16)LineNumbers.Count);
@@ -3056,7 +3056,7 @@ namespace RD_AAOW
 					{
 					if (!FlushStyle (BW, lineStyles[LineNumbers[i]]))
 						{
-						BW.Close ();	// Функция FlushStyle всегда возвращает true. Этот фрагмент оставлен до лучших времён
+						BW.Close ();    // Функция FlushStyle всегда возвращает true. Этот фрагмент оставлен до лучших времён
 						FS.Close ();
 						return -4;
 						}
@@ -3272,7 +3272,7 @@ namespace RD_AAOW
 			string result = (UseFilter ? PrepareDataLine (SourceValue, true) : SourceValue);
 
 			// Обработка случая с датой (отсечка неподходящих по длине или составу строк)
-			if ((result.Length > 10) || (result.Length < 7))	// Длина поля даты
+			if ((result.Length > 10) || (result.Length < 7))    // Длина поля даты
 				return result;
 
 			if (result.Contains ("E") || result.Contains ("e"))
@@ -3284,10 +3284,10 @@ namespace RD_AAOW
 				return result;
 
 			// Сборка даты в число в формате ISO8601
-			if (result.Contains (dateSplitters[0].ToString ()))	// Дата в формате ДД.ММ.ГГ[ГГ]
+			if (result.Contains (dateSplitters[0].ToString ())) // Дата в формате ДД.ММ.ГГ[ГГ]
 				return values[2] + values[1] + values[0];
 
-			if (result.Contains (dateSplitters[1].ToString ()))	// Дата в формате ММ/ДД/ГГ[ГГ]
+			if (result.Contains (dateSplitters[1].ToString ())) // Дата в формате ММ/ДД/ГГ[ГГ]
 				return values[2] + values[0] + values[1];
 
 			return values[0] + values[1] + values[2];

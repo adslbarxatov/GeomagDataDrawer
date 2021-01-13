@@ -64,7 +64,7 @@ namespace RD_AAOW
 
 			// Установка заголовка программы и параметров окна
 			this.Text = ProgramDescription.AssemblyTitle;
-			this.MinimumSize = new System.Drawing.Size ((int)ConfigAccessor.MinWidth, (int)ConfigAccessor.MinHeight);
+			this.MinimumSize = new Size ((int)ConfigAccessor.MinWidth, (int)ConfigAccessor.MinHeight);
 			this.Left = (int)ca.Left;
 			this.Top = (int)ca.Top;
 			this.Width = (int)ca.Width;
@@ -124,7 +124,7 @@ namespace RD_AAOW
 				// Загрузка стандартного файла данных при старте
 				if (ca.ForceUsingBackupDataFile)
 					{
-					dd = new DiagramData (Application.StartupPath + "\\" + ConfigAccessor.BackupDataFileName, DataInputTypes.GDD, 0);
+					dd = new DiagramData (AboutForm.AppStartupPath + ConfigAccessor.BackupDataFileName, DataInputTypes.GDD, 0);
 					}
 				}
 			else
@@ -695,7 +695,7 @@ namespace RD_AAOW
 			if (ca.ForceUsingBackupDataFile && (dd != null) && (dd.InitResult == DiagramDataInitResults.Ok))
 				{
 				// Возвращаемый результат не имеет значения
-				dd.SaveDataFile (Application.StartupPath + "\\" + ConfigAccessor.BackupDataFileName, DataOutputTypes.GDD, true);
+				dd.SaveDataFile (AboutForm.AppStartupPath + ConfigAccessor.BackupDataFileName, DataOutputTypes.GDD, true);
 				}
 
 			// Подтверждение
@@ -831,14 +831,14 @@ namespace RD_AAOW
 			{
 			// Получение параметров
 			ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true, ca.InterfaceLanguage);
-			if (!cad.LoadParametersFile (Application.StartupPath + "\\" + ConfigAccessor.LineParametersFileName))
+			if (!cad.LoadParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName))
 				{
-				if (!cad.CreateParametersFile (Application.StartupPath + "\\" + ConfigAccessor.LineParametersFileName))
+				if (!cad.CreateParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName))
 					{
 					return;
 					}
 
-				cad.LoadParametersFile (Application.StartupPath + "\\" + ConfigAccessor.LineParametersFileName);
+				cad.LoadParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName);
 				}
 
 			// Контроль
@@ -1012,7 +1012,7 @@ namespace RD_AAOW
 		private void MHelp_Click (object sender, EventArgs e)
 			{
 			// Проверка существования файла
-			if (!File.Exists (Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[0]))
+			if (!File.Exists (AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[0]))
 				{
 				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1020,7 +1020,7 @@ namespace RD_AAOW
 				}
 
 			// Запуск
-			Process.Start ("hh.exe", Application.StartupPath + "\\" + ProgramDescription.CriticalComponents[0]);
+			Process.Start ("hh.exe", AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[0]);
 			}
 
 		// Справка
