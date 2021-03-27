@@ -3,7 +3,12 @@
 To do
 - Add the ability to use dates as abscissas;
 - Add standard charting templates to distribution package;
-- Optimize mechanism of data transferring from main to editing window;
+- Optimize mechanism of data transferring from main to editing window
+
+Version 4.18:
+• New identity applied;
+• New links to RD AAOW FDL added;
+• Added direct lab link
 
 Version 4.17.4:
 • Added ability to 'ask developer' via E-mail for help, or send wish, advice or bug report;
