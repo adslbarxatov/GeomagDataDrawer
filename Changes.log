@@ -2,9 +2,11 @@
 
 To do
 - Add the ability to use dates as abscissas;
-- Add standard charting templates to distribution package;
 - Optimize mechanism of data transferring from main to editing window;
-- Apply fixed icons
+
+Version 4.18.1:
+• Updated link and text presenter for ADP;
+• Applied fixed icons
 
 Version 4.18:
 • New identity applied;

@@ -1,5 +1,5 @@
-# GeomagDataDrawer v 4.18
-> PCC: 0017128FBC946703
+# GeomagDataDrawer v 4.18.1
+> PCC: 00171291F102D0BA
 
 
 Autonomous utility for plotting and preparing of data diagrams
@@ -13,7 +13,7 @@ Geomag data drawer is a software tool for creating diagrams based on tabular dat
 
 Geomag data drawer supports following data formats:
 
-- Microsoft Office Excel spreadsheets '97 and '07 (.xls, .xlsx); support is provided with the help of additional software (see the section “Hardware and software requirements and program configuration”); installed Microsoft Office software package is not needed;
+- Microsoft Office Excel spreadsheets ’97 and ’07 (.xls, .xlsx); support is provided with the help of additional software (see the section “Hardware and software requirements and program configuration”); installed Microsoft Office software package is not needed;
 - Tabular data in Windows CSV format (.csv; delimiters - semicolons);
 - In order to expand capabilities of the application, the ability to extract data from text file formats has been added;
 - In addition, application has its own data format, which includes both the data of the diagram itself, as well as its style and display settings (Geomag data drawer, .gdd).
@@ -85,18 +85,17 @@ Needs Windows XP and newer, Framework 4.0 and newer. Interface languages: ru_ru,
 
 
 
-## Development policy and EULA / Политика разработки и EULA
+## [Development policy and EULA / Политика разработки и EULA](https://github.com/adslbarxatov/adp)
 
-This [Policy (ADP)](https://vk.com/@rd_aaow_fdl-adp), its positions, conclusion, EULA and application methods
-describes general rules that we follow in all of our development processes, released applications and implemented
-ideas.
-**It must be acquainted by participants and users before using any of laboratory's products.
-By downloading them, you agree to this Policy**
+This Policy (ADP), its positions, conclusion, EULA and application methods
+describes general rules that we follow in all of our development processes, released applications and implemented ideas.
+**It must be acquainted by participants and users before using any of laboratory’s products.
+By downloading them, you agree and accept this Policy!**
 
-#
+&nbsp;
 
-Данная [Политика (ADP)](https://vk.com/@rd_aaow_fdl-adp), её положения, заключение, EULA и способы применения
+Данная Политика (ADP), её положения, заключение, EULA и способы применения
 описывают общие правила, которым мы следуем во всех наших процессах разработки, вышедших в релиз приложениях
 и реализованных идеях.
-**Обязательна к ознакомлению всем участникам и пользователям перед использованием любого из продуктов лаборатории.
-Загружая их, вы соглашаетесь с этой Политикой**
+**Обязательна к ознакомлению для всех участников и пользователей перед использованием любого из продуктов лаборатории.
+Загружая их, вы соглашаетесь и принимаете эту Политику!**

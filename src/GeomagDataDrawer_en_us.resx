@@ -1114,7 +1114,7 @@ All unsaved data will be lost!</value>
     <value>Geomag data drawer is a software tool for creating diagrams based on tabular data. Originally created for visualizing the results of experimental measurements. Can now be used for this purpose. But not exclusively...</value>
   </data>
   <data name="HelpText_TM" xml:space="preserve">
-    <value>This tool allows you to merge data tables of different types into single file using columns adding</value>
+    <value>This tool allows you to merge data tables of different types into single file using columns addition</value>
   </data>
   <data name="MUpperHelp_MRegister" xml:space="preserve">
     <value>Register file associatio&amp;ns</value>
