@@ -1,8 +1,9 @@
 ﻿Geomag data drawer changes log
 
-To do
+ToDo:
+- Update link for ADP;
 - Add the ability to use dates as abscissas;
-- Optimize mechanism of data transferring from main to editing window;
+- Optimize mechanism of data transferring from main to editing window
 
 Version 4.18.1:
 • Updated link and text presenter for ADP;
