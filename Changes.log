@@ -1,13 +1,16 @@
 ﻿Geomag data drawer changes log
 
 ToDo:
-- Added the registry access checker: it will show recommended actions for the executable file
+- Add the ability to use dates as abscissas
+
+Version 4.18.15:
+• Added the registry access checker: it will show recommended actions for the executable file
   when Windows doesn’t allow saving settings;
-- Applied new elements in user interface;
-- AboutForm and HardWorkExecutor universal classes have been upgraded and improved;
-- Update link for ADP;
-- Add the ability to use dates as abscissas;
-- Optimize mechanism of data transferring from main to editing window
+• Applied new elements in user interface;
+• AboutForm and HardWorkExecutor universal classes have been upgraded and improved;
+• Update link for ADP;
+• Optimized (as possible) mechanism of data transferring from main to editing window;
+• Fixed possible bug in data transferring to the editor
 
 Version 4.18.1:
 • Updated link and text presenter for ADP;

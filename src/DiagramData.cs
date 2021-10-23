@@ -910,7 +910,8 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="XColumnNumber">Номер столбца в списке исходных данных, интерпретируемый как столбец абсцисс</param>
 		/// <param name="YColumnNumber">Номер столбца в списке исходных данных, интерпретируемый как столбец ординат</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны;
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если входные параметры некорректны;
 		/// -3, если на диаграмме присутствует максимально допустимое количество кривых</returns>
 		public int AddDiagram (uint XColumnNumber, uint YColumnNumber)
 			{
@@ -986,7 +987,8 @@ namespace RD_AAOW
 		/// <param name="LineToReplace">Кривая, данные которой следует заменить</param>
 		/// <param name="XColumnNumber">Номер столбца в списке исходных данных, интерпретируемый как столбец абсцисс</param>
 		/// <param name="YColumnNumber">Номер столбца в списке исходных данных, интерпретируемый как столбец ординат</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны</returns>
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если входные параметры некорректны</returns>
 		public int ReplaceDiagram (uint LineToReplace, uint XColumnNumber, uint YColumnNumber)
 			{
 			return AddLineData (XColumnNumber, YColumnNumber, (int)LineToReplace);
@@ -1957,7 +1959,8 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="DrawField">Поле отрисовки диаграммы</param>
 		/// <param name="CurrentLines">Список кривых, выделяемых на диаграмме; может быть null</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны</returns>
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если входные параметры некорректны</returns>
 		public int DrawAllDiagrams (Graphics DrawField, ListBox.SelectedIndexCollection CurrentLines)
 			{
 			return DrawAllDiagrams (DiagramWidth, DiagramHeight, lineStyles, additionalObjectsStyles, DrawField, CurrentLines);
@@ -1972,9 +1975,10 @@ namespace RD_AAOW
 		/// <param name="NewLinesStyles">Набор стилей кривых, применяемый к диаграмме</param>
 		/// <param name="NewObjectsStyles">Набор стилей объектов, применяемый к диаграмме</param>
 		/// <param name="CurrentLines">Список кривых, выделяемых на диаграмме; может быть null</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны</returns>
-		public int DrawAllDiagrams (uint WidthValue, uint HeightValue, List<DiagramStyle> NewLinesStyles, List<DiagramStyle> NewObjectsStyles,
-			Graphics DrawField, ListBox.SelectedIndexCollection CurrentLines)
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если входные параметры некорректны</returns>
+		public int DrawAllDiagrams (uint WidthValue, uint HeightValue, List<DiagramStyle> NewLinesStyles, 
+			List<DiagramStyle> NewObjectsStyles, Graphics DrawField, ListBox.SelectedIndexCollection CurrentLines)
 			{
 			// Контроль значений
 			if ((WidthValue < DiagramStyle.MinImageWidth) || (HeightValue < DiagramStyle.MinImageHeight) ||
@@ -2685,7 +2689,8 @@ namespace RD_AAOW
 		/// <param name="DataFileName">Путь для сохраняемого файла</param>
 		/// <param name="DataFileType">Тип файла данных</param>
 		/// <param name="SaveColumnNames">Флаг, требующий сохранения имён столбцов данных</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если не удалось записать файл</returns>
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если не удалось записать файл</returns>
 		public int SaveDataFile (string DataFileName, DataOutputTypes DataFileType, bool SaveColumnNames)
 			{
 			// Контроль состояния
@@ -2789,7 +2794,8 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="LineNumbers">Номера кривых для применения стилей</param>
 		/// <param name="StyleFileName">Путь к файлу стиля</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны;
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если входные параметры некорректны;
 		/// -3, если файл стиля недоступен; -4, если файл стиля повреждён</returns>
 		public int LoadStyle (string StyleFileName, ListBox.SelectedIndexCollection LineNumbers)
 			{
@@ -2802,7 +2808,8 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="SourceStyle">Присваиваемый стиль</param>
 		/// <param name="LineOrObjectNumber">Номер кривой, стиль которой требуется заменить</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны</returns>
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если входные параметры некорректны</returns>
 		internal int LoadStyle (int LineOrObjectNumber, DiagramStyle SourceStyle)
 			{
 			// Контроль состояния
@@ -3015,20 +3022,17 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="LineNumbers">Номера кривых, стили которых требуется сохранить</param>
 		/// <param name="StyleFileName">Путь для сохраняемого файла стиля</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны;
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если входные параметры некорректны;
 		/// -3, если не удалось записать файл стиля</returns>
 		public int SaveStyle (string StyleFileName, ListBox.SelectedIndexCollection LineNumbers)
 			{
 			// Контроль состояния
 			if (initResult != DiagramDataInitResults.Ok)
-				{
 				return -1;
-				}
 
 			if ((LineNumbers == null) || (LineNumbers.Count == 0))
-				{
 				return -2;
-				}
 
 			// Попытка открытия файла
 			FileStream FS = null;
@@ -3138,7 +3142,8 @@ namespace RD_AAOW
 		/// Метод сбрасывает стиль указанной кривой или указанного объекта к начальным установкам
 		/// </summary>
 		/// <param name="LineOrObjectNumber">Номер кривой и ил объекта, стиль которых требуется сбросить</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны</returns>
+		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// -2, если входные параметры некорректны</returns>
 		public int ResetStyle (uint LineOrObjectNumber)
 			{
 			// Контроль состояния
@@ -3182,14 +3187,19 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != DiagramDataInitResults.Ok)
-				{
 				return null;
-				}
 
 			DataTable table = new DataTable ();
 			for (int col = 0; col < dataValues.Count; col++)
 				{
-				table.Columns.Add (new DataColumn (dataColumnNames[col], typeof (double)));
+				try
+					{
+					table.Columns.Add (new DataColumn (dataColumnNames[col], typeof (double)));
+					}
+				catch
+					{
+					table.Columns.Add (new DataColumn ("C" + col.ToString ("D02"), typeof (double)));
+					}
 				}
 
 			// Исходный массив данных

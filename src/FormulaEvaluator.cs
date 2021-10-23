@@ -120,22 +120,20 @@ namespace RD_AAOW
 				y.Add (new List<double> ());
 
 				// Генерация
-				for (double i = (double)Math.Min (StartValue.Value, EndValue.Value); i < (double)Math.Max (StartValue.Value, EndValue.Value);
-					i += (double)StepValue.Value)
+				for (double i = (double)Math.Min (StartValue.Value, EndValue.Value); i <
+					(double)Math.Max (StartValue.Value, EndValue.Value); i += (double)StepValue.Value)
 					{
 					if (c == 0)
-						{
 						x.Add (i);
-						}
+
 					ee = new ExpressionEvaluator (eca, i);
 					y[y.Count - 1].Add (ee.Result);
 					}
 
 				// Последнее значение
 				if (c == 0)
-					{
 					x.Add ((double)Math.Max (StartValue.Value, EndValue.Value));
-					}
+
 				ee = new ExpressionEvaluator (eca, (double)Math.Max (StartValue.Value, EndValue.Value));
 				y[y.Count - 1].Add (ee.Result);
 
@@ -280,9 +278,7 @@ namespace RD_AAOW
 		private void FormulaBox_KeyDown (object sender, KeyEventArgs e)
 			{
 			if (e.KeyCode == Keys.Return)
-				{
 				AddButton_Click (sender, null);
-				}
 			}
 
 		// Удаление выбранной кривой из списка
@@ -300,13 +296,10 @@ namespace RD_AAOW
 			{
 			Label05.Text = Localization.GetControlText ("FormulaEvaluator", "Label05W", language);
 			if (StepValue.Value == 0)
-				{
 				Label05.Text += " ∞";
-				}
 			else
-				{
 				Label05.Text += (" " + ((uint)(Math.Abs (EndValue.Value - StartValue.Value) / StepValue.Value) + 1).ToString ());
-				}
+
 			Label05.Text += (" / " + DiagramData.MaxDataRows.ToString ());
 			}
 		}

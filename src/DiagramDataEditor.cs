@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using System;
 
 namespace RD_AAOW
 	{
@@ -11,7 +11,8 @@ namespace RD_AAOW
 	public partial class DiagramDataEditor:Form
 		{
 		// Переменные
-		private SupportedLanguages language;	// Язык локализации
+		private SupportedLanguages language;    // Язык локализации
+		private DiagramData sourceData;
 
 		/// <summary>
 		/// Возвращает флаг, указывающий, были ли применены изменения
@@ -47,10 +48,11 @@ namespace RD_AAOW
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
+			sourceData = SourceData;
 
-			Localization.SetControlsText (this, Language);	// Кнопки
-			Localization.SetControlsText (ColumnNameInput, MainToolTip, Language);	// Панель имени столбца
-			Localization.SetControlsText (this, MainToolTip, Language);	// Подсказки
+			Localization.SetControlsText (this, Language);  // Кнопки
+			Localization.SetControlsText (ColumnNameInput, MainToolTip, Language);  // Панель имени столбца
+			Localization.SetControlsText (this, MainToolTip, Language); // Подсказки
 
 			SaveButton.Text = Localization.GetText ("SaveButton", Language);
 			AbortButton.Text = Localization.GetText ("AbortButton", Language);
@@ -59,15 +61,16 @@ namespace RD_AAOW
 			// Сохранение параметров
 			language = Language;
 
-			// Загрузка данных
-			MainDataGrid.DataSource = SourceData.GetDataTable ();
-			for (int i = 0; i < MainDataGrid.Columns.Count; i++)
-				{
-				MainDataGrid.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-				}
-
 			// Запуск
 			this.ShowDialog ();
+			}
+
+		private void DiagramDataEditor_Shown (object sender, EventArgs e)
+			{
+			// Загрузка данных
+			MainDataGrid.DataSource = sourceData.GetDataTable ();
+			for (int i = 0; i < MainDataGrid.Columns.Count; i++)
+				MainDataGrid.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
 			}
 
 		// Отмена
@@ -99,13 +102,9 @@ namespace RD_AAOW
 			DataTable table = (DataTable)MainDataGrid.DataSource;
 
 			if (MainDataGrid.SelectedCells.Count != 0)
-				{
 				table.Rows.InsertAt (table.NewRow (), MainDataGrid.SelectedCells[0].RowIndex);
-				}
 			else
-				{
 				table.Rows.InsertAt (table.NewRow (), 0);
-				}
 			}
 
 		private void AddRowAfter_Click (object sender, EventArgs e)
@@ -113,13 +112,9 @@ namespace RD_AAOW
 			DataTable table = (DataTable)MainDataGrid.DataSource;
 
 			if (MainDataGrid.SelectedCells.Count != 0)
-				{
 				table.Rows.InsertAt (table.NewRow (), MainDataGrid.SelectedCells[0].RowIndex + 1);
-				}
 			else
-				{
 				table.Rows.InsertAt (table.NewRow (), 0);
-				}
 			}
 
 		// Удаление строк
@@ -148,9 +143,7 @@ namespace RD_AAOW
 
 			// Удаление
 			for (int i = 0; i < indices.Count; i++)
-				{
 				table.Rows.RemoveAt (indices[i] - i);
-				}
 
 			// Переход на заведомо оставшуюся строку 
 			if ((indices.Count != 0) && (MainDataGrid.Rows.Count != 0))
@@ -172,9 +165,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if ((MainDataGrid.Rows.Count < 2) || (MainDataGrid.SelectedCells[0].RowIndex == 0))
-				{
 				return;
-				}
 
 			DataTable table = (DataTable)MainDataGrid.DataSource;
 
@@ -199,9 +190,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if ((MainDataGrid.Rows.Count < 2) || (MainDataGrid.SelectedCells[0].RowIndex == MainDataGrid.Rows.Count - 1))
-				{
 				return;
-				}
 
 			DataTable table = (DataTable)MainDataGrid.DataSource;
 
