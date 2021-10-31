@@ -3,6 +3,9 @@
 ToDo:
 - Add the ability to use dates as abscissas
 
+Version 4.18.17:
+• Updated internal mechanism of checking for updates (applied compatibility with new GitHub theme)
+
 Version 4.18.15:
 • Added the registry access checker: it will show recommended actions for the executable file
   when Windows doesn’t allow saving settings;
