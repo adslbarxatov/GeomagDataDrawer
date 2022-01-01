@@ -294,9 +294,7 @@ namespace RD_AAOW
 				screenWidth = Screen.PrimaryScreen.Bounds.Width;
 				screenHeight = Screen.PrimaryScreen.Bounds.Height;
 				}
-			catch
-				{
-				}
+			catch { }
 
 			// Язык интерфейса
 			interfaceLanguage = Localization.CurrentLanguage;
@@ -405,11 +403,9 @@ namespace RD_AAOW
 			string res = "";
 			try
 				{
-				res = Registry.GetValue (ProgramDescription.AssemblySettingsKey, ValueName, "").ToString ();
+				res = Registry.GetValue (RDGenerics.AssemblySettingsKey, ValueName, "").ToString ();
 				}
-			catch
-				{
-				}
+			catch { }
 
 			return res;
 			}
@@ -419,11 +415,9 @@ namespace RD_AAOW
 			{
 			try
 				{
-				Registry.SetValue (ProgramDescription.AssemblySettingsKey, ValueName, Value);
+				Registry.SetValue (RDGenerics.AssemblySettingsKey, ValueName, Value);
 				}
-			catch
-				{
-				}
+			catch { }
 			}
 		}
 	}

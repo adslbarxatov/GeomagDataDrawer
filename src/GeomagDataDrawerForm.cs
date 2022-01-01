@@ -11,7 +11,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает главную форму программы
 	/// </summary>
-	public partial class GeomagDataDrawerForm: Form
+	public partial class GeomagDataDrawerForm:Form
 		{
 		// Переменные
 		private DiagramData dd =
@@ -124,7 +124,7 @@ namespace RD_AAOW
 				// Загрузка стандартного файла данных при старте
 				if (ca.ForceUsingBackupDataFile)
 					{
-					dd = new DiagramData (AboutForm.AppStartupPath + ConfigAccessor.BackupDataFileName, DataInputTypes.GDD, 0);
+					dd = new DiagramData (RDGenerics.AppStartupPath + ConfigAccessor.BackupDataFileName, DataInputTypes.GDD, 0);
 					}
 				}
 			else
@@ -695,7 +695,7 @@ namespace RD_AAOW
 			if (ca.ForceUsingBackupDataFile && (dd != null) && (dd.InitResult == DiagramDataInitResults.Ok))
 				{
 				// Возвращаемый результат не имеет значения
-				dd.SaveDataFile (AboutForm.AppStartupPath + ConfigAccessor.BackupDataFileName, DataOutputTypes.GDD, true);
+				dd.SaveDataFile (RDGenerics.AppStartupPath + ConfigAccessor.BackupDataFileName, DataOutputTypes.GDD, true);
 				}
 
 			// Подтверждение
@@ -831,14 +831,14 @@ namespace RD_AAOW
 			{
 			// Получение параметров
 			ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true, ca.InterfaceLanguage);
-			if (!cad.LoadParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName))
+			if (!cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
 				{
-				if (!cad.CreateParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName))
+				if (!cad.CreateParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
 					{
 					return;
 					}
 
-				cad.LoadParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName);
+				cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName);
 				}
 
 			// Контроль
@@ -1012,7 +1012,7 @@ namespace RD_AAOW
 		private void MHelp_Click (object sender, EventArgs e)
 			{
 			// Проверка существования файла
-			if (!File.Exists (AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[0]))
+			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[0]))
 				{
 				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1020,7 +1020,7 @@ namespace RD_AAOW
 				}
 
 			// Запуск
-			Process.Start ("hh.exe", AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[0]);
+			Process.Start ("hh.exe", RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[0]);
 			}
 
 		// Справка

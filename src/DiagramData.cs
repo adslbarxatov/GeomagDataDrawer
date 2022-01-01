@@ -125,6 +125,7 @@ namespace RD_AAOW
 		public DiagramData (string DataFileName, DataInputTypes DataFileType, uint SkippedLinesCount)
 			{
 			#region Выбор варианта загрузки
+
 			switch (DataFileType)
 				{
 				// Следующие обработки выполняются в данном методе
@@ -134,9 +135,9 @@ namespace RD_AAOW
 				// Следующие обработки выполняются в дополнительных методах
 				case DataInputTypes.XLS:
 					// Контроль доступа к компонентам
-					if (!File.Exists (AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[1]) ||
-						!File.Exists (AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[2]) ||
-						!File.Exists (AboutForm.AppStartupPath + ProgramDescription.CriticalComponents[3]))
+					if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[1]) ||
+						!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[2]) ||
+						!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[3]))
 						{
 						initResult = DiagramDataInitResults.ExcelNotAvailable;
 						return;
@@ -1977,7 +1978,7 @@ namespace RD_AAOW
 		/// <param name="CurrentLines">Список кривых, выделяемых на диаграмме; может быть null</param>
 		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
 		/// -2, если входные параметры некорректны</returns>
-		public int DrawAllDiagrams (uint WidthValue, uint HeightValue, List<DiagramStyle> NewLinesStyles, 
+		public int DrawAllDiagrams (uint WidthValue, uint HeightValue, List<DiagramStyle> NewLinesStyles,
 			List<DiagramStyle> NewObjectsStyles, Graphics DrawField, ListBox.SelectedIndexCollection CurrentLines)
 			{
 			// Контроль значений

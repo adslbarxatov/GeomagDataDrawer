@@ -174,14 +174,14 @@ namespace RD_AAOW
 					{
 					// Применение шаблона отображения
 					ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true, ca.InterfaceLanguage);
-					if (!cad.LoadParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName))
+					if (!cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
 						{
-						if (!cad.CreateParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName))
+						if (!cad.CreateParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
 							{
 							return;
 							}
 
-						cad.LoadParametersFile (AboutForm.AppStartupPath + ConfigAccessor.LineParametersFileName);
+						cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName);
 						}
 
 					// Добавление кривых
