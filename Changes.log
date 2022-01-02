@@ -6,7 +6,8 @@ ToDo:
 Version 4.19.1:
 • User manual has been rewritten and now available online;
 • Settings fields now react on mouse hover;
-• Some menu hotkeys have been restored
+• Some menu hotkeys have been restored;
+• Added some extra warnings for preventing data losses
 
 Version 4.19:
 • App got the scalable icons and the digital signature (only self-signed for now);
