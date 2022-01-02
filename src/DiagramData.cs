@@ -135,9 +135,9 @@ namespace RD_AAOW
 				// Следующие обработки выполняются в дополнительных методах
 				case DataInputTypes.XLS:
 					// Контроль доступа к компонентам
-					if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[1]) ||
-						!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[2]) ||
-						!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[3]))
+					if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents_New[0]) ||
+						!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents_New[1]) ||
+						!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents_New[2]))
 						{
 						initResult = DiagramDataInitResults.ExcelNotAvailable;
 						return;

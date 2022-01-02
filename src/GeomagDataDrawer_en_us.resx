@@ -346,7 +346,7 @@
     <value>&amp;Cancel</value>
   </data>
   <data name="AbortChanges" xml:space="preserve">
-    <value>This will cancel all changes made. Are you sure?</value>
+    <value>All unsaved changes will be lost. Continue?</value>
   </data>
   <data name="ApplicationExit" xml:space="preserve">
     <value>Exit the application?</value>
@@ -562,7 +562,7 @@
     <value>Field defines grid lines thickness</value>
   </data>
   <data name="HelpFileError" xml:space="preserve">
-    <value>Help file not found or not available. Make sure the file exists and is available, or reinstall the application</value>
+    <value>Failed to open user guide. Check your internet connection</value>
   </data>
   <data name="ImageSaveError" xml:space="preserve">
     <value>Failed to write diagram image file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
@@ -995,10 +995,10 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
     <value>O&amp;perations</value>
   </data>
   <data name="MOperations_MAddColumn" xml:space="preserve">
-    <value>Add curve or object</value>
+    <value>A&amp;dd curve or object</value>
   </data>
   <data name="MOperations_MAddColumnCmd" xml:space="preserve">
-    <value>Parametric curve(s) adding</value>
+    <value>Parametric cur&amp;ve(s) adding</value>
   </data>
   <data name="MOperations_MAddColumnCmd_TT" xml:space="preserve">
     <value>Adding new curve(s) using parameters line</value>
@@ -1007,19 +1007,19 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
     <value>Adding new curve or object</value>
   </data>
   <data name="MOperations_MDeleteColumn" xml:space="preserve">
-    <value>Delete curve(s) and/or object(s)</value>
+    <value>Delete curve(s) and/or ob&amp;ject(s)</value>
   </data>
   <data name="MOperations_MDeleteColumn_TT" xml:space="preserve">
     <value>Deleting selected curve(s) and/or object(s)</value>
   </data>
   <data name="MOperations_MMergeLines" xml:space="preserve">
-    <value>Merge curve(s) and/or object(s)</value>
+    <value>Merge curve(s) and&amp;/or object(s)</value>
   </data>
   <data name="MOperations_MMergeLines_TT" xml:space="preserve">
     <value>Merging (overlaying) selected curve(s) and/or object(s)</value>
   </data>
   <data name="MOperations_MReplaceColumn" xml:space="preserve">
-    <value>Change curve's data columns</value>
+    <value>Change curve&amp;'s data columns</value>
   </data>
   <data name="MOperations_MReplaceColumn_TT" xml:space="preserve">
     <value>Changing data columns of selected (single) curve</value>
@@ -1127,5 +1127,8 @@ All unsaved data will be lost!</value>
   </data>
   <data name="gdsfile" xml:space="preserve">
     <value>Geomag data drawer style file</value>
+  </data>
+  <data name="ApplicationExitNoBackup" xml:space="preserve">
+    <value>All unsaved changes will be lost. Exit the application?</value>
   </data>
 </root>

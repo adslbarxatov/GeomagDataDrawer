@@ -699,11 +699,13 @@ namespace RD_AAOW
 				}
 
 			// Подтверждение
-			if (ca.ForceExitConfirmation)
+			if (ca.ForceExitConfirmation || 
+				!ca.ForceUsingBackupDataFile && (dd != null) && (dd.InitResult == DiagramDataInitResults.Ok))
 				{
-				if (MessageBox.Show (Localization.GetText ("ApplicationExit", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo,
-					 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+				if (MessageBox.Show (Localization.GetText (ca.ForceUsingBackupDataFile ? "ApplicationExit" :
+					"ApplicationExitNoBackup", ca.InterfaceLanguage), ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo,
+					ca.ForceUsingBackupDataFile ? MessageBoxIcon.Question : MessageBoxIcon.Exclamation,
+					MessageBoxDefaultButton.Button2) == DialogResult.No)
 					{
 					e.Cancel = true;    // Отмена закрытия окна
 					}
@@ -723,6 +725,13 @@ namespace RD_AAOW
 		// Выбор файла данных
 		private void MOpenDataFile_Click (object sender, EventArgs e)
 			{
+			// Защита
+			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
+				(MessageBox.Show (Localization.GetText ("AbortChanges", ca.InterfaceLanguage),
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
+				MessageBoxDefaultButton.Button2) != DialogResult.Yes))
+				return;
+
 			OFDialog.FileName = "";
 			OFDialog.ShowDialog ();
 			}
@@ -927,6 +936,13 @@ namespace RD_AAOW
 		// Генерация кривой
 		private void MGenerate_Click (object sender, EventArgs e)
 			{
+			// Защита
+			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
+				(MessageBox.Show (Localization.GetText ("AbortChanges", ca.InterfaceLanguage),
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
+				MessageBoxDefaultButton.Button2) != DialogResult.Yes))
+				return;
+
 			// Генерация данных по формуле
 			FormulaEvaluator fe = new FormulaEvaluator (ca.InterfaceLanguage);
 			if (fe.Cancelled)
@@ -954,19 +970,33 @@ namespace RD_AAOW
 		// Закрытие диаграммы
 		private void MClose_Click (object sender, EventArgs e)
 			{
+			// Защита
+			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
+				(MessageBox.Show (Localization.GetText ("AbortChanges", ca.InterfaceLanguage),
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
+				MessageBoxDefaultButton.Button2) != DialogResult.Yes))
+				return;
+
 			// Снятие инициализации и блокировка контролов
-			if (dd.InitResult == DiagramDataInitResults.Ok)
-				{
-				dd = new DiagramData ("", DataInputTypes.Unknown, 0);
-				LineNamesList.Items.Clear ();
-				ChangeControlsState (false);
-				Redraw ();
-				}
+			if (dd.InitResult != DiagramDataInitResults.Ok)
+				return;
+
+			dd = new DiagramData ("", DataInputTypes.Unknown, 0);
+			LineNamesList.Items.Clear ();
+			ChangeControlsState (false);
+			Redraw ();
 			}
 
 		// Загрузка из буфера обмена
 		private void MLoadFromClipboard_Click (object sender, EventArgs e)
 			{
+			// Защита
+			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
+				(MessageBox.Show (Localization.GetText ("AbortChanges", ca.InterfaceLanguage),
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
+				MessageBoxDefaultButton.Button2) != DialogResult.Yes))
+				return;
+
 			// Обновление параметров загрузки файлов
 			if (!CheckFileLoadingParameters (DataInputTypes.Unknown))
 				return;
@@ -1011,16 +1041,24 @@ namespace RD_AAOW
 		// Справка
 		private void MHelp_Click (object sender, EventArgs e)
 			{
-			// Проверка существования файла
+			/*// Проверка существования файла
 			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[0]))
 				{
 				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
-				}
+				}*/
 
 			// Запуск
-			Process.Start ("hh.exe", RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[0]);
+			try
+				{
+				Process.Start ("https://github.com/adslbarxatov/GeomagDataDrawer/blob/master/UserGuide.md");
+				}
+			catch 
+				{
+				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				}
 			}
 
 		// Справка
@@ -2109,11 +2147,17 @@ namespace RD_AAOW
 			LineMarkerImage.BackgroundImage = ml.GetMarker ((uint)LineMarker.Value - 1, LineColor.BackColor);
 			UpdateDiagramParameters ((Control)sender);
 			}
+
 		#endregion
 
 		#region Обработка эффектов панели настроек и списка кривых
 
 		// Панели настроек
+		private void MainTabControl_MouseHover (object sender, EventArgs e)
+			{
+			MainTabControl_MouseClick (null, null);
+			}
+
 		private void MainTabControl_MouseClick (object sender, MouseEventArgs e)
 			{
 			MainTabControl.Height = (int)ConfigAccessor.MinHeight - 375;
@@ -2125,6 +2169,11 @@ namespace RD_AAOW
 			}
 
 		// Список кривых
+		private void LineNamesList_MouseHover (object sender, EventArgs e)
+			{
+			LineNamesList_MouseClick (null, null);
+			}
+
 		private void LineNamesList_MouseClick (object sender, MouseEventArgs e)
 			{
 			if (LineNamesList.Height != LineNamesList.ItemHeight * 10 + 4)

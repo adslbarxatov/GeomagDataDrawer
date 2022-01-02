@@ -346,7 +346,7 @@
     <value>От&amp;мена</value>
   </data>
   <data name="AbortChanges" xml:space="preserve">
-    <value>Вы действительно хотите отменить все внесённые изменения?</value>
+    <value>Все несохранённые изменения будут утеряны. Продолжить?</value>
   </data>
   <data name="ApplicationExit" xml:space="preserve">
     <value>Завершить работу с программой?</value>
@@ -562,7 +562,7 @@
     <value>Поле задаёт толщину линий сетки</value>
   </data>
   <data name="HelpFileError" xml:space="preserve">
-    <value>Файл справки не найден или недоступен. Убедитесь, что файл существует и доступен, или переустановите программу</value>
+    <value>Не удалось открыть руководство пользователя. Проверьте ваше интернет-соединение</value>
   </data>
   <data name="ImageSaveError" xml:space="preserve">
     <value>Не удалось сохранить изображение диаграммы. Возможно, выбранное расположение недоступно для записи, или файл с данным именем уже существует и занят другой программой</value>
@@ -996,10 +996,10 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
     <value>Оп&amp;ерации</value>
   </data>
   <data name="MOperations_MAddColumn" xml:space="preserve">
-    <value>Добавить кривую или объект</value>
+    <value>Добавить кр&amp;ивую или объект</value>
   </data>
   <data name="MOperations_MAddColumnCmd" xml:space="preserve">
-    <value>Параметрическое добавление кривых</value>
+    <value>Параметри&amp;ческое добавление кривых</value>
   </data>
   <data name="MOperations_MAddColumnCmd_TT" xml:space="preserve">
     <value>Добавление кривых на диаграмму с помощью строки параметров</value>
@@ -1008,19 +1008,19 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
     <value>Добавление кривой или графического объекта на диаграмму</value>
   </data>
   <data name="MOperations_MDeleteColumn" xml:space="preserve">
-    <value>Удалить кривые и объекты</value>
+    <value>Удали&amp;ть кривые и объекты</value>
   </data>
   <data name="MOperations_MDeleteColumn_TT" xml:space="preserve">
     <value>Удаление выбранных кривых и объектов с диаграммы</value>
   </data>
   <data name="MOperations_MMergeLines" xml:space="preserve">
-    <value>Совместить кривые или объекты</value>
+    <value>Со&amp;вместить кривые или объекты</value>
   </data>
   <data name="MOperations_MMergeLines_TT" xml:space="preserve">
     <value>Совмещение (наложение) кривых и/или объектов</value>
   </data>
   <data name="MOperations_MReplaceColumn" xml:space="preserve">
-    <value>Выбор столбцов данных кривой</value>
+    <value>Выбор столб&amp;цов данных кривой</value>
   </data>
   <data name="MOperations_MReplaceColumn_TT" xml:space="preserve">
     <value>Изменение столбцов данных, использованных для построения выбранной (одной) кривой</value>
@@ -1128,5 +1128,8 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   </data>
   <data name="gdsfile" xml:space="preserve">
     <value>Файл стиля Geomag data drawer</value>
+  </data>
+  <data name="ApplicationExitNoBackup" xml:space="preserve">
+    <value>Все несохранённые изменения будут утеряны. Завершить работу с программой?</value>
   </data>
 </root>
