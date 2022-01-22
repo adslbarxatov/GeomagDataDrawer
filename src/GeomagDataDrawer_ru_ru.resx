@@ -1091,7 +1091,7 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   <data name="TablesMergerForm_SaveResult" xml:space="preserve">
     <value>Сохранить результат</value>
   </data>
-  <data name="TablesMergerForm_SFDialog_F" xml:space="preserve">
+  <data name="TablesMergerForm_OFDialog_F" xml:space="preserve">
     <value>Все файлы данных|*.*</value>
   </data>
   <data name="TablesMerger_Exit" xml:space="preserve">
@@ -1131,5 +1131,8 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   </data>
   <data name="ApplicationExitNoBackup" xml:space="preserve">
     <value>Все несохранённые изменения будут утеряны. Завершить работу с программой?</value>
+  </data>
+  <data name="TablesMergerForm_SFDialog_F" xml:space="preserve">
+    <value>Диаграммы с произвольным набором данных (*.dat)|*.dat|Файлы табличных данных Windows CSV|*.csv</value>
   </data>
 </root>

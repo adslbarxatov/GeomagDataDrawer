@@ -113,10 +113,14 @@ namespace RD_AAOW
 		/// </summary>
 		public const uint MinHeight = 660;
 
+#if !DataProcessingOnly
+
 		/// <summary>
 		/// Возвращает имя автоматически сохраняемого файла данных
 		/// </summary>
 		public const string BackupDataFileName = "Backup." + ProgramDescription.AppDataExtension;
+
+#endif
 
 		/// <summary>
 		/// Возвращает имя стандартного файла параметров предпросмотра диаграммы

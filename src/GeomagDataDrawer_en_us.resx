@@ -1061,7 +1061,7 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
     <value>There are not enough rows in created table that match the selection criteria</value>
   </data>
   <data name="TablesMergerForm_AddFiles" xml:space="preserve">
-    <value>Add files to processing ...</value>
+    <value>Add files for processing ...</value>
   </data>
   <data name="TablesMergerForm_BeginProcessing" xml:space="preserve">
     <value>Begin processing</value>
@@ -1090,7 +1090,7 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
   <data name="TablesMergerForm_SaveResult" xml:space="preserve">
     <value>Save result</value>
   </data>
-  <data name="TablesMergerForm_SFDialog_F" xml:space="preserve">
+  <data name="TablesMergerForm_OFDialog_F" xml:space="preserve">
     <value>All data files|*.*</value>
   </data>
   <data name="TablesMerger_Exit" xml:space="preserve">
@@ -1130,5 +1130,8 @@ All unsaved data will be lost!</value>
   </data>
   <data name="ApplicationExitNoBackup" xml:space="preserve">
     <value>All unsaved changes will be lost. Exit the application?</value>
+  </data>
+  <data name="TablesMergerForm_SFDialog_F" xml:space="preserve">
+    <value>Random data set diagrams (*.dat)|*.dat|Windows CSV tables|*.csv</value>
   </data>
 </root>
