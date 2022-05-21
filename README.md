@@ -1,5 +1,5 @@
-# GeomagDataDrawer v 4.19.37
-> PCC: 0012B6A903478525
+# GeomagDataDrawer v 4.20
+> PCC: 0012C6DED8FF8F29
 
 
 Autonomous utility for plotting and preparing of data diagrams
@@ -88,7 +88,7 @@ Geomag data drawer поддерживает следующие форматы п
 ## Requirements / Требования
 
 - Windows XP or newer / или новее;
-- [Microsoft .NET Framework 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=17718);
+- [Microsoft .NET Framework 4.0](https://microsoft.com/en-us/download/details.aspx?id=17718);
 - [Excel data reader libraries](https://github.com/ExcelDataReader/ExcelDataReader) *(optional)*.
 
 Interface languages / языки интерфейса: ru_ru, en_us.
