@@ -3,6 +3,9 @@
 ToDo:
 - Add the ability to use dates as abscissas
 
+Version 4.20.2:
+• Fixed the bug that affected the file association method
+
 Version 4.20:
 • Parsing methods for ADP and projects descriptions have been upgraded;
 • Current updates and improvements applied
