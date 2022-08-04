@@ -1,7 +1,7 @@
 ﻿Geomag data drawer changes log
 
 ToDo:
-- Add the ability to use dates as abscissas
+- Add the ability to use dates as abscissas: convert them to YYYY,r and show as normal
 
 Version 4.20.2:
 • Fixed the bug that affected the file association method
