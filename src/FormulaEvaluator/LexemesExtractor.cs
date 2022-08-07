@@ -39,7 +39,7 @@ namespace RD_AAOW
 			expression = expression.Replace ("*", " * ");
 			expression = expression.Replace ("/", " / ");
 			expression = expression.Replace ("^", " ^ ");
-			expression = expression.Replace ("-", " -");	// Для минуса правый пробел запрещён, т.к. его наличие меняет смысл выражения
+			expression = expression.Replace ("-", " -");    // Для минуса правый пробел запрещён, т.к. его наличие меняет смысл выражения
 
 
 			// Извлечение строковых представлений лексем. Требует разделения отдельных
@@ -198,6 +198,7 @@ namespace RD_AAOW
 				return followingStatus;
 				}
 			}
-		private LexemesFollowingMatrix.LexemesFollowingStatuses followingStatus = LexemesFollowingMatrix.LexemesFollowingStatuses.Ok;
+		private LexemesFollowingMatrix.LexemesFollowingStatuses followingStatus =
+			LexemesFollowingMatrix.LexemesFollowingStatuses.Ok;
 		}
 	}

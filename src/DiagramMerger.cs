@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace RD_AAOW
 	{
@@ -103,8 +104,8 @@ namespace RD_AAOW
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			Localization.SetControlsText (this, Language);			// Кнопки
-			Localization.SetControlsText (MergingAxes, Language);	// Панели
+			Localization.SetControlsText (this, Language);          // Кнопки
+			Localization.SetControlsText (MergingAxes, Language);   // Панели
 			Localization.SetControlsText (MergingVariant, Language);
 
 			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
@@ -120,13 +121,13 @@ namespace RD_AAOW
 			}
 
 		// Отмена
-		private void SaveAbort_Click (object sender, System.EventArgs e)
+		private void SaveAbort_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
 
 		// Сохранение
-		private void SaveSettings_Click (object sender, System.EventArgs e)
+		private void SaveSettings_Click (object sender, EventArgs e)
 			{
 			// Возврат параметров
 			if (Ox.Checked)

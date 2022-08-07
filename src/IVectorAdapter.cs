@@ -35,7 +35,8 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината конца линии</param>
 		/// <param name="LineWidth">Толщина линии</param>
 		/// <param name="LineColor">Цвет линии</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		bool DrawLine (double X1, double Y1, double X2, double Y2, uint LineWidth, Color LineColor);
 
 		/// <summary>
@@ -47,7 +48,8 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината нижнего правого угла прямоугольника</param>
 		/// <param name="RectangleColor">Цвет прямоугольника</param>
 		/// <param name="LineWidth">Толщина линии</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		bool DrawRectangle (double X1, double Y1, double X2, double Y2, uint LineWidth, Color RectangleColor);
 
 		/// <summary>
@@ -58,7 +60,8 @@ namespace RD_AAOW
 		/// <param name="X2">Абсцисса нижнего правого угла прямоугольника</param>
 		/// <param name="Y2">Ордината нижнего правого угла прямоугольника</param>
 		/// <param name="RectangleColor">Цвет прямоугольника</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		bool FillRectangle (double X1, double Y1, double X2, double Y2, Color RectangleColor);
 
 		/// <summary>
@@ -70,7 +73,8 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината нижнего правого угла эллипса</param>
 		/// <param name="EllipseColor">Цвет эллипса</param>
 		/// <param name="LineWidth">Толщина линии</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		bool DrawEllipse (double X1, double Y1, double X2, double Y2, uint LineWidth, Color EllipseColor);
 
 		/// <summary>
@@ -81,7 +85,8 @@ namespace RD_AAOW
 		/// <param name="X2">Абсцисса нижнего правого угла эллипса</param>
 		/// <param name="Y2">Ордината нижнего правого угла эллипса</param>
 		/// <param name="EllipseColor">Цвет эллипса</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		bool FillEllipse (double X1, double Y1, double X2, double Y2, Color EllipseColor);
 
 		/// <summary>
@@ -136,37 +141,6 @@ namespace RD_AAOW
 		}
 
 	/// <summary>
-	/// Возможные результаты инициализации класса
-	/// </summary>
-	public enum VectorAdapterInitResults
-		{
-		/// <summary>
-		/// Класс не инициализирован
-		/// </summary>
-		NotInited = 1,
-
-		/// <summary>
-		/// Не удалось создать файл
-		/// </summary>
-		CannotCreateFile = -1,
-
-		/// <summary>
-		/// Некорректный размер изображения
-		/// </summary>
-		IncorrectImageSize = -2,
-
-		/// <summary>
-		/// Файл успешно открыт. Редактирование доступно
-		/// </summary>
-		Opened = 0,
-
-		/// <summary>
-		/// Запись файла завершена. Редактирование недоступно
-		/// </summary>
-		Closed = 2
-		}
-
-	/// <summary>
 	/// Класс предоставляет вспомогательные функции для представителей интерфейса IVectorAdapter
 	/// </summary>
 	public static class VectorAdapterSupport
@@ -186,7 +160,8 @@ namespace RD_AAOW
 		/// <param name="NewX2">Полученная координата</param>
 		/// <param name="NewY1">Полученная координата</param>
 		/// <param name="NewY2">Полученная координата</param>
-		/// <returns>Возвращает бинарный статус, указывающий, какие границы были пересчитаны (0 - никакие, 1 или 2 - первая или вторая, 3 - обе)</returns>
+		/// <returns>Возвращает бинарный статус, указывающий, какие границы были пересчитаны (0 - никакие, 
+		/// 1 или 2 - первая или вторая, 3 - обе)</returns>
 		public static uint InboundCoords (double ClipBoxX1, double ClipBoxX2, double ClipBoxY1, double ClipBoxY2,
 			double OldX1, double OldX2, double OldY1, double OldY2,
 			out double NewX1, out double NewX2, out double NewY1, out double NewY2)

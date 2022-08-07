@@ -25,7 +25,6 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="Chain">Цепочка шагов вычисления</param>
 		/// <param name="VariableValue">Значение переменной</param>
-		// /// <param name="VariableValue">Массив значений переменных. Если не содержит нужного значения, оно замещается нулём</param>
 		public ExpressionEvaluator (EvaluationChainAssembler Chain, double VariableValue /*List<double> VariableValue*/)
 			{
 			// Контроль

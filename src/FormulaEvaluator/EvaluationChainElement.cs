@@ -46,7 +46,7 @@ namespace RD_AAOW
 			/// <summary>
 			/// Сложение
 			/// </summary>
-			Addition = 1,		// Аналогично LexemeTypes
+			Addition = 1,       // Аналогично LexemeTypes
 
 			/// <summary>
 			/// Вычитание
@@ -204,7 +204,8 @@ namespace RD_AAOW
 		private OperationTypes operationType = OperationTypes.Nothing;
 
 		// Функция обработки нессылочных операндов
-		private bool LoadRealOperand (Lexeme Operand, out OperandTypes OperandType, out double OperandValue/*, out uint OperandIndex*/)
+		private bool LoadRealOperand (Lexeme Operand, out OperandTypes OperandType, out double OperandValue
+			/*, out uint OperandIndex*/)
 			{
 			// Контроль операнда 1
 			switch (Operand.LexemeType)

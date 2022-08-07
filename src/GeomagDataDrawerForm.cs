@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -41,7 +40,7 @@ namespace RD_AAOW
 				OxPlacementCombo.Items.Add (i.ToString ());
 				OyPlacementCombo.Items.Add (i.ToString ());
 
-				if (i < 2)
+				if (i < 3)
 					{
 					OxFormatCombo.Items.Add (i.ToString ());
 					OyFormatCombo.Items.Add (i.ToString ());
@@ -241,17 +240,22 @@ namespace RD_AAOW
 
 			for (int i = 0; i < 4; i++)
 				{
-				OxPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OxPlacement_" + i.ToString (), ca.InterfaceLanguage);
-				OyPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OyPlacement_" + i.ToString (), ca.InterfaceLanguage);
+				OxPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OxPlacement_" + i.ToString (),
+					ca.InterfaceLanguage);
+				OyPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OyPlacement_" + i.ToString (),
+					ca.InterfaceLanguage);
 
-				if (i < 2)
+				if (i < 3)
 					{
-					OxFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString (), ca.InterfaceLanguage);
-					OyFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString (), ca.InterfaceLanguage);
+					OxFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString (),
+						ca.InterfaceLanguage);
+					OyFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString (),
+						ca.InterfaceLanguage);
 					}
 				if (i < 3)
 					{
-					LineStyleCombo.Items[i] = Localization.GetControlText (this.Name, "LineStyle_" + i.ToString (), ca.InterfaceLanguage);
+					LineStyleCombo.Items[i] = Localization.GetControlText (this.Name, "LineStyle_" + i.ToString (),
+						ca.InterfaceLanguage);
 					}
 				}
 			}
@@ -699,7 +703,7 @@ namespace RD_AAOW
 				}
 
 			// Подтверждение
-			if (ca.ForceExitConfirmation || 
+			if (ca.ForceExitConfirmation ||
 				!ca.ForceUsingBackupDataFile && (dd != null) && (dd.InitResult == DiagramDataInitResults.Ok))
 				{
 				if (MessageBox.Show (Localization.GetText (ca.ForceUsingBackupDataFile ? "ApplicationExit" :
@@ -1054,7 +1058,7 @@ namespace RD_AAOW
 				{
 				Process.Start ("https://github.com/adslbarxatov/GeomagDataDrawer/blob/master/UserGuide.md");
 				}
-			catch 
+			catch
 				{
 				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

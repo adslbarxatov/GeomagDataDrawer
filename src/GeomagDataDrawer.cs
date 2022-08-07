@@ -24,7 +24,8 @@ namespace RD_AAOW
 			if (!result)
 				{
 				MessageBox.Show (string.Format (Localization.GetText ("ProgramLaunchedError", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					ProgramDescription.AssemblyTitle), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
+					MessageBoxIcon.Exclamation);
 				return;
 				}
 
