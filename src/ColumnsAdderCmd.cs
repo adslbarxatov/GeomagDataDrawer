@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -9,10 +11,10 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает форму ввода параметрической строки для построения новой кривой
 	/// </summary>
-	public partial class ColumnsAdderCmd:Form
+	public partial class ColumnsAdderCmd: Form
 		{
 		// Переменные
-		private uint dataColumnsCount = 0;	// Число столбцов в исходном массиве данных
+		private uint dataColumnsCount = 0;  // Число столбцов в исходном массиве данных
 		private SupportedLanguages language;
 
 		/// <summary>
@@ -179,13 +181,13 @@ namespace RD_AAOW
 			}
 
 		// Отмена
-		private void AbortButton_Click (object sender, System.EventArgs e)
+		private void AbortButton_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
 
 		// ОК
-		private void ApplyButton_Click (object sender, System.EventArgs e)
+		private void ApplyButton_Click (object sender, EventArgs e)
 			{
 			cancelled = false;
 
@@ -193,7 +195,7 @@ namespace RD_AAOW
 			}
 
 		// Обработка строки параметров
-		private void CommandLine_TextChanged (object sender, System.EventArgs e)
+		private void CommandLine_TextChanged (object sender, EventArgs e)
 			{
 			// Блокировка кнопки ОК
 			ApplyButton.Enabled = false;
@@ -225,8 +227,8 @@ namespace RD_AAOW
 		private string ProcessCommandLine (string Line)
 			{
 			// Разделение параметров
-			char[] splitters = new char[] { ';' };	// Массив сплиттеров
-			string[] values = Line.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
+			char[] splitters = new char[] { ';' };  // Массив сплиттеров
+			string[] values = Line.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 
 			// Предварительные значения
 			bool autoNameOffsetT = true;
@@ -308,7 +310,8 @@ namespace RD_AAOW
 				(imageHeightT > DiagramStyle.MaxImageHeight) || (imageHeightT < DiagramStyle.MinImageHeight))
 				{
 				return string.Format (Localization.GetControlText (this.Name, "ODSError", language),
-					DiagramStyle.MinImageWidth, DiagramStyle.MaxImageWidth, DiagramStyle.MinImageHeight, DiagramStyle.MaxImageHeight);
+					DiagramStyle.MinImageWidth, DiagramStyle.MaxImageWidth, DiagramStyle.MinImageHeight,
+					DiagramStyle.MaxImageHeight);
 				}
 
 			if ((imageLeftT > DiagramStyle.MaxImageWidth) || (imageTopT > DiagramStyle.MaxImageHeight))
@@ -339,7 +342,7 @@ namespace RD_AAOW
 			}
 
 		// Выбор варианта загрузки
-		private void MultiCmd_CheckedChanged (object sender, System.EventArgs e)
+		private void MultiCmd_CheckedChanged (object sender, EventArgs e)
 			{
 			if (MultiCmd.Checked)
 				{
@@ -350,7 +353,7 @@ namespace RD_AAOW
 				}
 			}
 
-		private void SingleCmd_CheckedChanged (object sender, System.EventArgs e)
+		private void SingleCmd_CheckedChanged (object sender, EventArgs e)
 			{
 			if (SingleCmd.Checked)
 				{
@@ -365,12 +368,12 @@ namespace RD_AAOW
 			}
 
 		// Выбор файла
-		private void SelectFile_Click (object sender, System.EventArgs e)
+		private void SelectFile_Click (object sender, EventArgs e)
 			{
 			OFDialog.ShowDialog ();
 			}
 
-		private void OFDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void OFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Блокировка кнопки ОК
 			ApplyButton.Enabled = false;
@@ -484,28 +487,24 @@ namespace RD_AAOW
 		/// <summary>
 		/// Метод сохраняет параметры стиля указанного объекта DiagramData в файл, запрашивая его имя
 		/// </summary>
-		/// <param name="Data">Объект DiagramData, стиль которого следует использовать для создания файла параметров</param>
-		/// <returns>Возвращает 0 в случае успеха, -1, если входные параметры некорректны, -2, если не удаётся создать файл,
+		/// <param name="Data">Объект DiagramData, стиль которого следует использовать для создания 
+		/// файла параметров</param>
+		/// <returns>Возвращает 0 в случае успеха, -1, если входные параметры некорректны, -2, 
+		/// если не удаётся создать файл,
 		/// 1, если файл не был выбран</returns>
 		public int SaveParametersFile (DiagramData Data)
 			{
 			// Контроль параметров
 			if ((Data == null) || (Data.InitResult != DiagramDataInitResults.Ok))
-				{
 				return -1;
-				}
 
 			// Запрос имени файла
-			if (SFDialog.ShowDialog () != System.Windows.Forms.DialogResult.OK)
-				{
+			if (SFDialog.ShowDialog () != DialogResult.OK)
 				return 1;
-				}
 
 			// Запись
 			if (!WriteParametersFile (Data, SFDialog.FileName))
-				{
 				return -2;
-				}
 
 			// Успешно
 			return 0;

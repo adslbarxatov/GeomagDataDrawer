@@ -10,7 +10,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс обеспечивает поддержку формата SVG
 	/// </summary>
-	public class SVGAdapter:RD_AAOW.IVectorAdapter
+	public class SVGAdapter: RD_AAOW.IVectorAdapter
 		{
 		// Общие переменные
 		private FileStream FS = null;
@@ -94,28 +94,22 @@ namespace RD_AAOW
 		/// <param name="Y1">Ордината верхнего левого угла области</param>
 		/// <param name="X2">Абсцисса нижнего правого угла области</param>
 		/// <param name="Y2">Ордината нижнего правого угла области</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания диапазонов</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного 
+		/// задания диапазонов</returns>
 		public bool SetClipBox (double X1, double Y1, double X2, double Y2)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			if (((int)X1 < 0) || ((uint)X1 > width) ||
 				((int)Y1 < 0) || ((uint)Y1 > height) ||
-				((int)X2 < 0) || ((uint)X2 > width) ||
-				((int)Y2 < 0) || ((uint)Y2 > height))
-				{
+				((int)X2 < 0) || ((uint)X2 > width) || ((int)Y2 < 0) || ((uint)Y2 > height))
 				return false;
-				}
 
 			if ((X1 >= X2) || (Y1 >= Y2))
-				{
 				return false;
-				}
 
 			// Установка значений
 			clipBoxX1 = X1;
@@ -134,25 +128,21 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината конца линии</param>
 		/// <param name="LineWidth">Толщина линии</param>
 		/// <param name="LineColor">Цвет линии</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		public bool DrawLine (double X1, double Y1, double X2, double Y2, uint LineWidth, Color LineColor)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			// Если вся линия выходит за границу отрисовки
 			if ((X1 < clipBoxX1) && (X2 < clipBoxX1) ||
 				(X1 > clipBoxX2) && (X2 > clipBoxX2) ||
 				(Y1 < clipBoxY1) && (Y2 < clipBoxY1) ||
-				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) ||
-				(LineWidth == 0))
-				{
+				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) || (LineWidth == 0))
 				return false;
-				}
 
 			// Пересчёт координат
 			double x1 = 0.0, x2 = 0.0, y1 = 0.0, y2 = 0.0;
@@ -166,6 +156,7 @@ namespace RD_AAOW
 				"\" y1=\"" + y1.ToString (cie.NumberFormat) +
 				"\" x2=\"" + x2.ToString (cie.NumberFormat) +
 				"\" y2=\"" + y2.ToString (cie.NumberFormat) + "\"/>");
+
 			return true;
 			}
 
@@ -178,7 +169,8 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината нижнего правого угла прямоугольника</param>
 		/// <param name="RectangleColor">Цвет прямоугольника</param>
 		/// <param name="LineWidth">Толщина линии</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров
+		/// (выход за область отрисовки)</returns>
 		public bool DrawRectangle (double X1, double Y1, double X2, double Y2, uint LineWidth, Color RectangleColor)
 			{
 			return CreateRectangle (X1, Y1, X2, Y2, LineWidth, RectangleColor, false);
@@ -192,30 +184,27 @@ namespace RD_AAOW
 		/// <param name="X2">Абсцисса нижнего правого угла прямоугольника</param>
 		/// <param name="Y2">Ордината нижнего правого угла прямоугольника</param>
 		/// <param name="RectangleColor">Цвет прямоугольника</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров
+		/// (выход за область отрисовки)</returns>
 		public bool FillRectangle (double X1, double Y1, double X2, double Y2, Color RectangleColor)
 			{
 			return CreateRectangle (X1, Y1, X2, Y2, 1, RectangleColor, true);
 			}
 
-		private bool CreateRectangle (double X1, double Y1, double X2, double Y2, uint LineWidth, Color RectangleColor, bool Fill)
+		private bool CreateRectangle (double X1, double Y1, double X2, double Y2, uint LineWidth,
+			Color RectangleColor, bool Fill)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			// Если вся линия выходит за границу отрисовки
 			if ((X1 < clipBoxX1) && (X2 < clipBoxX1) ||
 				(X1 > clipBoxX2) && (X2 > clipBoxX2) ||
 				(Y1 < clipBoxY1) && (Y2 < clipBoxY1) ||
-				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) ||
-				(LineWidth == 0))
-				{
+				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) || (LineWidth == 0))
 				return false;
-				}
 
 			// Пересчёт координат
 			double x1 = 0.0, x2 = 0.0, y1 = 0.0, y2 = 0.0;
@@ -241,6 +230,7 @@ namespace RD_AAOW
 					"\" width=\"" + (x2 - x1).ToString (cie.NumberFormat) +
 					"\" height=\"" + (y2 - y1).ToString (cie.NumberFormat) + "\"/>");
 				}
+
 			return true;
 			}
 
@@ -253,7 +243,8 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината нижнего правого угла эллипса</param>
 		/// <param name="LineWidth">Толщина линии</param>
 		/// <param name="EllipseColor">Цвет эллипса</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		public bool DrawEllipse (double X1, double Y1, double X2, double Y2, uint LineWidth, Color EllipseColor)
 			{
 			return CreateEllipse (X1, Y1, X2, Y2, LineWidth, EllipseColor, false);
@@ -267,30 +258,27 @@ namespace RD_AAOW
 		/// <param name="X2">Абсцисса нижнего правого угла эллипса</param>
 		/// <param name="Y2">Ордината нижнего правого угла эллипса</param>
 		/// <param name="EllipseColor">Цвет эллипса</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		public bool FillEllipse (double X1, double Y1, double X2, double Y2, Color EllipseColor)
 			{
 			return CreateEllipse (X1, Y1, X2, Y2, 1, EllipseColor, true);
 			}
 
-		private bool CreateEllipse (double X1, double Y1, double X2, double Y2, uint LineWidth, Color RectangleColor, bool Fill)
+		private bool CreateEllipse (double X1, double Y1, double X2, double Y2, uint LineWidth,
+			Color RectangleColor, bool Fill)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			// Если вся линия выходит за границу отрисовки
 			if ((X1 < clipBoxX1) && (X2 < clipBoxX1) ||
 				(X1 > clipBoxX2) && (X2 > clipBoxX2) ||
 				(Y1 < clipBoxY1) && (Y2 < clipBoxY1) ||
-				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) ||
-				(LineWidth == 0))
-				{
+				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) || (LineWidth == 0))
 				return false;
-				}
 
 			// Пересчёт координат
 			double x1 = 0.0, x2 = 0.0, y1 = 0.0, y2 = 0.0;
@@ -316,6 +304,7 @@ namespace RD_AAOW
 					"\" rx=\"" + ((x2 - x1) / 2).ToString (cie.NumberFormat) +
 					"\" ry=\"" + ((y2 - y1) / 2).ToString (cie.NumberFormat) + "\"/>");
 				}
+
 			return true;
 			}
 
@@ -326,27 +315,27 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
+
 			if (groupLevel != 0)
-				{
 				return false;
-				}
 
 			// Закрытие
 			SW.WriteLine ("</svg>");
 			SW.Close ();
 			FS.Close ();
 			initResult = VectorAdapterInitResults.Closed;
+
 			return true;
 			}
 
 		// Переменная включает таблицу преобразования Base64
-		private string[] base64EncodingTable = new string[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
-													"Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f",
-													"g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
-													"w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "/"};
+		private string[] base64EncodingTable = new string[] {
+			"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
+			"Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f",
+			"g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+			"w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "/"
+			};
 
 		// Метод кодирует файл согласно стандарту Base64
 		private string Base64FileEncode (string FileName)
@@ -429,29 +418,24 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			if ((X < clipBoxX1) || (X > clipBoxX2) ||
 				(Y < clipBoxY1) || (Y > clipBoxY2) ||
 				(ImageWidth * ImageHeight == 0))
-				{
 				return false;
-				}
 
 			// Кодирование изображения
 			string codeString = Base64FileEncode (ImageFileName);
 			if (codeString.Length == 0)
-				{
 				return false;
-				}
 
 			// Отрисовка
 			SW.WriteLine ("<image overflow=\"visible\" x=\"" + X.ToString (cie.NumberFormat) +
 				"\" y=\"" + Y.ToString (cie.NumberFormat) + "\" width=\"" + ImageWidth.ToString () +
 				"\" height=\"" + ImageHeight + "\" xlink:href=\"data:image/png;base64," + codeString + "\"></image>");
+
 			return true;
 			}
 
@@ -468,17 +452,12 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			// Отключено ограничение по полю отрисовки
-			if ((TextToDraw == null) || (TextToDraw == "") ||
-				(TextFont == null))
-				{
+			if ((TextToDraw == null) || (TextToDraw == "") || (TextFont == null))
 				return false;
-				}
 
 			// Отрисовка (перечёркивание не выполняется)
 			SW.WriteLine ("<text x=\"" + X.ToString (cie.NumberFormat) + "\" y=\"" +
@@ -494,6 +473,7 @@ namespace RD_AAOW
 				(TextFont.Italic ? "</tspan>" : "") +
 				(TextFont.Bold ? "</tspan>" : "") +
 				"</text>");
+
 			return true;
 			}
 
@@ -506,22 +486,17 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			if (CommentText == null)
-				{
 				return false;
-				}
 
 			// Запись
 			SW.WriteLine ("<!--");
 			for (int i = 0; i < CommentText.Count; i++)
-				{
 				SW.WriteLine (CommentText[i]);
-				}
+
 			SW.WriteLine ("-->");
 			return true;
 			}
@@ -533,18 +508,16 @@ namespace RD_AAOW
 		/// <summary>
 		/// Метод открывает группу объектов
 		/// </summary>
-		/// <returns>Возвращает true в случае успеха или false, если превышено число допустимых уровней вложения групп</returns>
+		/// <returns>Возвращает true в случае успеха или false, если превышено число допустимых уровней 
+		/// вложения групп</returns>
 		public bool OpenGroup ()
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
-			if (groupLevel == MaxGroupLevel)	// Ограничение - до трёх уровней
-				{
+
+			if (groupLevel == MaxGroupLevel)    // Ограничение - до трёх уровней
 				return false;
-				}
 
 			// Открытие группы
 			SW.WriteLine ("<g>");
@@ -560,13 +533,10 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
+
 			if (groupLevel == 0)
-				{
 				return false;
-				}
 
 			// Закрытие группы
 			SW.WriteLine ("</g>");
@@ -579,24 +549,22 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="CenterX">Абсцисса центра изображения маркера</param>
 		/// <param name="CenterY">Ордината центра изображения маркера</param>
-		/// <param name="LineNumber">Номер кривой. Используется для задания имени маркера и его привязки к кривой</param>
+		/// <param name="LineNumber">Номер кривой. Используется для задания имени маркера 
+		/// и его привязки к кривой</param>
 		/// <param name="MarkerImage">Изображение маркера</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания параметров</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного 
+		/// задания параметров</returns>
 		public bool DrawMarker (Bitmap MarkerImage, double CenterX, double CenterY, uint LineNumber)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль параметров
 			if ((MarkerImage == null) ||
 				(CenterX < clipBoxX1) || (CenterX > clipBoxX2) ||
 				(CenterY < clipBoxY1) || (CenterY > clipBoxY2))
-				{
 				return false;
-				}
 
 			// Контроль наличия директории с маркерами
 			if (!Directory.Exists (fileName + ".img"))
@@ -626,7 +594,8 @@ namespace RD_AAOW
 
 			// Запись маркера в файл
 
-			SW.WriteLine ("<image overflow=\"visible\" x=\"" + (CenterX - (double)MarkerImage.Width / 2.0).ToString (cie.NumberFormat) +
+			SW.WriteLine ("<image overflow=\"visible\" x=\"" + (CenterX - (double)MarkerImage.Width /
+				2.0).ToString (cie.NumberFormat) +
 				"\" y=\"" + (CenterY - (double)MarkerImage.Height / 2.0).ToString (cie.NumberFormat) + "\" width=\"" +
 				MarkerImage.Width.ToString () + "\" height=\"" + MarkerImage.Height.ToString () + "\" xlink:href=\"" +
 				Path.GetFileName (fileName) + ".img/" + LineNumber.ToString () + ".png\"></image>");

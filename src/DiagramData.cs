@@ -22,19 +22,32 @@ namespace RD_AAOW
 		private CultureInfo cie = new CultureInfo ("en-us");            // Десятичная точка
 		private CultureInfo cir = new CultureInfo ("ru-ru");            // Десятичная запятая
 
-		private List<List<double>> dataValues = new List<List<double>> ();      // Исходный массив данных
-		private List<string> dataColumnNames = new List<string> ();             // Имена столбцов исходного массива данных
+		// Исходный массив данных
+		private List<List<double>> dataValues = new List<List<double>> ();      
+		
+		// Имена столбцов исходного массива данных
+		private List<string> dataColumnNames = new List<string> ();
 
 #if !DataProcessingOnly
 
-		private List<DiagramCurve> curves = new List<DiagramCurve> ();          // Массив кривых диаграммы
-		private List<DiagramStyle> lineStyles = new List<DiagramStyle> ();      // Массив сопоставленных стилей отображения
-		private List<DiagramAdditionalObjects> additionalObjects = new List<DiagramAdditionalObjects> ();   // Массив дополнительных объектов
-		private List<DiagramStyle> additionalObjectsStyles = new List<DiagramStyle> ();                     // Стили дополнительных объектов
+		// Массив кривых диаграммы
+		private List<DiagramCurve> curves = new List<DiagramCurve> ();          
 
-		private const float RightMargin = LeftMargin + DiagramFieldPart;    // Правый отступ от края изображения до диаграммы (в долях)
-		private const float BottomMargin = TopMargin + DiagramFieldPart;    // Нижний отступ от края изображения до диаграммы (в долях)
+		// Массив сопоставленных стилей отображения
+		private List<DiagramStyle> lineStyles = new List<DiagramStyle> ();
 
+		// Массив дополнительных объектов
+		private List<DiagramAdditionalObjects> additionalObjects = new List<DiagramAdditionalObjects> ();
+
+		// Стили дополнительных объектов
+		private List<DiagramStyle> additionalObjectsStyles = new List<DiagramStyle> ();
+
+		// Правый отступ от края изображения до диаграммы (в долях)
+		private const float RightMargin = LeftMargin + DiagramFieldPart;
+
+		// Нижний отступ от края изображения до диаграммы (в долях)
+		private const float BottomMargin = TopMargin + DiagramFieldPart;    
+		
 #endif
 
 		// КОНСТАНТЫ
@@ -91,7 +104,8 @@ namespace RD_AAOW
 		/// Метод возвращает имя столбца исходных данных
 		/// </summary>
 		/// <param name="ColumnNumber">Номер столбца, имя которого требуется вернуть</param>
-		/// <returns>Имя указанного столбца или NULL, если номер кривой указан некорректно или список кривых пуст</returns>
+		/// <returns>Имя указанного столбца или NULL, если номер кривой указан некорректно, 
+		/// или список кривых пуст</returns>
 		public string GetDataColumnName (uint ColumnNumber)
 			{
 			if (ColumnNumber >= dataValues.Count)
@@ -335,7 +349,8 @@ namespace RD_AAOW
 			}
 
 		// Метод загружает данные диаграммы из любого текста, передаваемого из файла или буфера обмена
-		private void LoadRawText (bool FromClipboard, string DataFileName, uint ColumnsCount, uint SkippedLinesCount)
+		private void LoadRawText (bool FromClipboard, string DataFileName, uint ColumnsCount, 
+			uint SkippedLinesCount)
 			{
 			// Контроль значений
 			if ((ColumnsCount < 2) || (ColumnsCount > MaxDataColumns) || !FromClipboard && (DataFileName == null))
@@ -910,8 +925,10 @@ namespace RD_AAOW
 		/// <summary>
 		/// Метод добавляет новую кривую в список сформированных кривых, используя загруженные данные
 		/// </summary>
-		/// <param name="XColumnNumber">Номер столбца в списке исходных данных, интерпретируемый как столбец абсцисс</param>
-		/// <param name="YColumnNumber">Номер столбца в списке исходных данных, интерпретируемый как столбец ординат</param>
+		/// <param name="XColumnNumber">Номер столбца в списке исходных данных, интерпретируемый 
+		/// как столбец абсцисс</param>
+		/// <param name="YColumnNumber">Номер столбца в списке исходных данных, интерпретируемый 
+		/// как столбец ординат</param>
 		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
 		/// -2, если входные параметры некорректны;
 		/// -3, если на диаграмме присутствует максимально допустимое количество кривых</returns>
@@ -987,8 +1004,10 @@ namespace RD_AAOW
 		/// Метод заменяет данные имеющейся кривой, сохраняя настройки стиля
 		/// </summary>
 		/// <param name="LineToReplace">Кривая, данные которой следует заменить</param>
-		/// <param name="XColumnNumber">Номер столбца в списке исходных данных, интерпретируемый как столбец абсцисс</param>
-		/// <param name="YColumnNumber">Номер столбца в списке исходных данных, интерпретируемый как столбец ординат</param>
+		/// <param name="XColumnNumber">Номер столбца в списке исходных данных, интерпретируемый
+		/// как столбец абсцисс</param>
+		/// <param name="YColumnNumber">Номер столбца в списке исходных данных, интерпретируемый 
+		/// как столбец ординат</param>
 		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
 		/// -2, если входные параметры некорректны</returns>
 		public int ReplaceDiagram (uint LineToReplace, uint XColumnNumber, uint YColumnNumber)
@@ -1224,7 +1243,8 @@ namespace RD_AAOW
 		/// Метод возвращает строковое представление указанного столбца данных
 		/// </summary>
 		/// <param name="ColumnNumber">Номер столбца в массиве данных</param>
-		/// <returns>Строковое представление столбца (или пустая строка при некорректно заданных параметрах)</returns>
+		/// <returns>Строковое представление столбца (или пустая строка при некорректно заданных 
+		/// параметрах)</returns>
 		public string ColumnPresentation (uint ColumnNumber)
 			{
 			if (ColumnNumber < dataValues.Count)
@@ -1379,7 +1399,8 @@ namespace RD_AAOW
 #if !DataProcessingOnly
 
 		// Метод формирует изображение одной кривой
-		private void DrawDiagram (int LineNumber, DiagramStyle LineStyle, Graphics DrawField, bool IsSelected)
+		private void DrawDiagram (int LineNumber, DiagramStyle LineStyle, Graphics DrawField, 
+			bool IsSelected)
 			{
 			// Создание пустого изображения заданного размера с белым фоном
 			Bitmap lineImage = new Bitmap ((int)LineStyle.DiagramImageWidth, (int)LineStyle.DiagramImageHeight);    // Будущее изображение
@@ -1880,7 +1901,8 @@ namespace RD_AAOW
 			}
 
 		// Метод формирует изображение одного дополнительного объекта
-		private void DrawObject (int ObjectNumber, DiagramStyle ObjectStyle, Graphics DrawField, bool IsSelected)
+		private void DrawObject (int ObjectNumber, DiagramStyle ObjectStyle, Graphics DrawField, 
+			bool IsSelected)
 			{
 			// Создание пустого изображения заданного размера с белым фоном
 			Bitmap objectImage = new Bitmap ((int)ObjectStyle.DiagramImageWidth, (int)ObjectStyle.DiagramImageHeight);  // Будущее изображение
@@ -1970,7 +1992,8 @@ namespace RD_AAOW
 			}
 
 		/// <summary>
-		/// Метод формирует полное изображение диаграммы, используя стандартные стили и собственный размер диаграммы
+		/// Метод формирует полное изображение диаграммы, используя стандартные стили и собственный 
+		/// размер диаграммы
 		/// </summary>
 		/// <param name="DrawField">Поле отрисовки диаграммы</param>
 		/// <param name="CurrentLines">Список кривых, выделяемых на диаграмме; может быть null</param>
@@ -1982,7 +2005,8 @@ namespace RD_AAOW
 			}
 
 		/// <summary>
-		/// Метод формирует полное изображение диаграммы, применяя к нему нестандартный набор стилей и новые размеры
+		/// Метод формирует полное изображение диаграммы, применяя к нему нестандартный набор стилей 
+		/// и новые размеры
 		/// </summary>
 		/// <param name="WidthValue">Ширина конечного изображения</param>
 		/// <param name="HeightValue">Высота конечного изображения</param>
@@ -1993,7 +2017,8 @@ namespace RD_AAOW
 		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
 		/// -2, если входные параметры некорректны</returns>
 		public int DrawAllDiagrams (uint WidthValue, uint HeightValue, List<DiagramStyle> NewLinesStyles,
-			List<DiagramStyle> NewObjectsStyles, Graphics DrawField, ListBox.SelectedIndexCollection CurrentLines)
+			List<DiagramStyle> NewObjectsStyles, Graphics DrawField, ListBox.SelectedIndexCollection 
+			CurrentLines)
 			{
 			// Контроль значений
 			if ((WidthValue < DiagramStyle.MinImageWidth) || (HeightValue < DiagramStyle.MinImageHeight) ||
@@ -3265,7 +3290,8 @@ namespace RD_AAOW
 			return new List<List<double>> (dataValues);
 			}
 
-		// Метод подготавливает строку данных к обработке (замещает все недопустимые символы штатными разделителями)
+		// Метод подготавливает строку данных к обработке (замещает все недопустимые символы
+		// штатными разделителями)
 		private string PrepareDataLine (string SourceValue, bool RemoveSplitters)
 			{
 			string result = "";

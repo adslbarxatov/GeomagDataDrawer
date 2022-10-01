@@ -8,7 +8,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс обеспечивает поддержку формата EMF
 	/// </summary>
-	public class EMFAdapter:IVectorAdapter
+	public class EMFAdapter: IVectorAdapter
 		{
 		// Переменные
 		private uint width, height;
@@ -39,8 +39,8 @@ namespace RD_AAOW
 			// Попытка создания файла
 			try
 				{
-				Graphics g0 = Application.OpenForms[0].CreateGraphics ();	// Похоже, больше неоткуда
-				mf = new Metafile (FileName, g0.GetHdc ());					// и иначе никак
+				Graphics g0 = Application.OpenForms[0].CreateGraphics ();   // Похоже, больше неоткуда
+				mf = new Metafile (FileName, g0.GetHdc ());                 // и иначе никак
 				g = Graphics.FromImage (mf);
 				g0.Dispose ();
 				}
@@ -64,9 +64,7 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Закрытие
 			g.Dispose ();
@@ -94,25 +92,21 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината конца линии</param>
 		/// <param name="LineWidth">Толщина линии</param>
 		/// <param name="LineColor">Цвет линии</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров
+		/// (выход за область отрисовки)</returns>
 		public bool DrawLine (double X1, double Y1, double X2, double Y2, uint LineWidth, Color LineColor)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			// Если вся линия выходит за границу отрисовки
 			if ((X1 < clipBoxX1) && (X2 < clipBoxX1) ||
 				(X1 > clipBoxX2) && (X2 > clipBoxX2) ||
 				(Y1 < clipBoxY1) && (Y2 < clipBoxY1) ||
-				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) ||
-				(LineWidth == 0))
-				{
+				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) || (LineWidth == 0))
 				return false;
-				}
 
 			// Пересчёт координат
 			double x1 = 0.0, x2 = 0.0, y1 = 0.0, y2 = 0.0;
@@ -137,7 +131,8 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината нижнего правого угла прямоугольника</param>
 		/// <param name="LineWidth">Толщина линии</param>
 		/// <param name="RectangleColor">Цвет прямоугольника</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров
+		/// (выход за область отрисовки)</returns>
 		public bool DrawRectangle (double X1, double Y1, double X2, double Y2, uint LineWidth, Color RectangleColor)
 			{
 			return CreateRectangle (X1, Y1, X2, Y2, LineWidth, RectangleColor, false);
@@ -151,30 +146,27 @@ namespace RD_AAOW
 		/// <param name="X2">Абсцисса нижнего правого угла прямоугольника</param>
 		/// <param name="Y2">Ордината нижнего правого угла прямоугольника</param>
 		/// <param name="RectangleColor">Цвет прямоугольника</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров
+		/// (выход за область отрисовки)</returns>
 		public bool FillRectangle (double X1, double Y1, double X2, double Y2, Color RectangleColor)
 			{
 			return CreateRectangle (X1, Y1, X2, Y2, 1, RectangleColor, true);
 			}
 
-		private bool CreateRectangle (double X1, double Y1, double X2, double Y2, uint LineWidth, Color RectangleColor, bool Fill)
+		private bool CreateRectangle (double X1, double Y1, double X2, double Y2, uint LineWidth,
+			Color RectangleColor, bool Fill)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			// Если вся линия выходит за границу отрисовки
 			if ((X1 < clipBoxX1) && (X2 < clipBoxX1) ||
 				(X1 > clipBoxX2) && (X2 > clipBoxX2) ||
 				(Y1 < clipBoxY1) && (Y2 < clipBoxY1) ||
-				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) ||
-				(LineWidth == 0))
-				{
+				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) || (LineWidth == 0))
 				return false;
-				}
 
 			// Пересчёт координат
 			double x1 = 0.0, x2 = 0.0, y1 = 0.0, y2 = 0.0;
@@ -184,12 +176,15 @@ namespace RD_AAOW
 			// Отрисовка
 			if (Fill)
 				{
-				g.FillRectangle (new SolidBrush (RectangleColor), (float)x1, (float)y1, (float)(x2 - x1), (float)(y2 - y1));
+				g.FillRectangle (new SolidBrush (RectangleColor), (float)x1, (float)y1, (float)(x2 - x1),
+					(float)(y2 - y1));
 				}
 			else
 				{
-				g.DrawRectangle (new Pen (RectangleColor, LineWidth), (float)x1, (float)y1, (float)(x2 - x1), (float)(y2 - y1));
+				g.DrawRectangle (new Pen (RectangleColor, LineWidth), (float)x1, (float)y1, (float)(x2 - x1),
+					(float)(y2 - y1));
 				}
+
 			return true;
 			}
 
@@ -202,7 +197,8 @@ namespace RD_AAOW
 		/// <param name="Y2">Ордината нижнего правого угла эллипса</param>
 		/// <param name="LineWidth">Толщина линии</param>
 		/// <param name="EllipseColor">Цвет эллипса</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров 
+		/// (выход за область отрисовки)</returns>
 		public bool DrawEllipse (double X1, double Y1, double X2, double Y2, uint LineWidth, Color EllipseColor)
 			{
 			return CreateEllipse (X1, Y1, X2, Y2, LineWidth, EllipseColor, false);
@@ -216,30 +212,27 @@ namespace RD_AAOW
 		/// <param name="X2">Абсцисса нижнего правого угла эллипса</param>
 		/// <param name="Y2">Ордината нижнего правого угла эллипса</param>
 		/// <param name="EllipseColor">Цвет эллипса</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров (выход за область отрисовки)</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания размеров
+		/// (выход за область отрисовки)</returns>
 		public bool FillEllipse (double X1, double Y1, double X2, double Y2, Color EllipseColor)
 			{
 			return CreateEllipse (X1, Y1, X2, Y2, 1, EllipseColor, true);
 			}
 
-		private bool CreateEllipse (double X1, double Y1, double X2, double Y2, uint LineWidth, Color RectangleColor, bool Fill)
+		private bool CreateEllipse (double X1, double Y1, double X2, double Y2, uint LineWidth,
+			Color RectangleColor, bool Fill)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			// Если вся линия выходит за границу отрисовки
 			if ((X1 < clipBoxX1) && (X2 < clipBoxX1) ||
 				(X1 > clipBoxX2) && (X2 > clipBoxX2) ||
 				(Y1 < clipBoxY1) && (Y2 < clipBoxY1) ||
-				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) ||
-				(LineWidth == 0))
-				{
+				(Y1 > clipBoxY2) && (Y2 > clipBoxY2) || (LineWidth == 0))
 				return false;
-				}
 
 			// Пересчёт координат
 			double x1 = 0.0f, x2 = 0.0f, y1 = 0.0, y2 = 0.0;
@@ -249,12 +242,15 @@ namespace RD_AAOW
 			// Отрисовка
 			if (Fill)
 				{
-				g.FillEllipse (new SolidBrush (RectangleColor), (float)x1, (float)y1, (float)(x2 - x1), (float)(y2 - y1));
+				g.FillEllipse (new SolidBrush (RectangleColor), (float)x1, (float)y1, (float)(x2 - x1),
+					(float)(y2 - y1));
 				}
 			else
 				{
-				g.DrawEllipse (new Pen (RectangleColor, LineWidth), (float)x1, (float)y1, (float)(x2 - x1), (float)(y2 - y1));
+				g.DrawEllipse (new Pen (RectangleColor, LineWidth), (float)x1, (float)y1, (float)(x2 - x1),
+					(float)(y2 - y1));
 				}
+
 			return true;
 			}
 
@@ -263,27 +259,25 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="CenterX">Абсцисса центра изображения маркера</param>
 		/// <param name="CenterY">Ордината центра изображения маркера</param>
-		/// <param name="LineNumber">Номер кривой. Используется для задания имени маркера и его привязки к кривой</param>
+		/// <param name="LineNumber">Номер кривой. Используется для задания имени маркера и его привязки 
+		/// к кривой</param>
 		/// <param name="MarkerImage">Изображение маркера</param>
 		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания параметров</returns>
 		public bool DrawMarker (Bitmap MarkerImage, double CenterX, double CenterY, uint LineNumber)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль параметров
 			if ((MarkerImage == null) ||
 				(CenterX < clipBoxX1) || (CenterX > clipBoxX2) ||
 				(CenterY < clipBoxY1) || (CenterY > clipBoxY2))
-				{
 				return false;
-				}
 
 			// Отрисовка
-			g.DrawImage (MarkerImage, (float)CenterX - (float)MarkerImage.Width / 2.0f, (float)CenterY - (float)MarkerImage.Height / 2.0f);
+			g.DrawImage (MarkerImage, (float)CenterX - (float)MarkerImage.Width / 2.0f,
+				(float)CenterY - (float)MarkerImage.Height / 2.0f);
 			return true;
 			}
 
@@ -300,16 +294,12 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			// Отключено ограничение по полю отрисовки
 			if ((TextToDraw == null) || (TextToDraw == "") || (TextFont == null))
-				{
 				return false;
-				}
 
 			// Стабилизация положения
 			SizeF sz = g.MeasureString (TextToDraw, TextFont);
@@ -365,28 +355,22 @@ namespace RD_AAOW
 		/// <param name="Y1">Ордината верхнего левого угла области</param>
 		/// <param name="X2">Абсцисса нижнего правого угла области</param>
 		/// <param name="Y2">Ордината нижнего правого угла области</param>
-		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания диапазонов</returns>
+		/// <returns>Возвращает true в случае успеха или false в случае некорректного 
+		/// задания диапазонов</returns>
 		public bool SetClipBox (double X1, double Y1, double X2, double Y2)
 			{
 			// Контроль состояния
 			if (initResult != VectorAdapterInitResults.Opened)
-				{
 				return false;
-				}
 
 			// Контроль значений
 			if (((int)X1 < 0) || ((uint)X1 > width) ||
 				((int)Y1 < 0) || ((uint)Y1 > height) ||
-				((int)X2 < 0) || ((uint)X2 > width) ||
-				((int)Y2 < 0) || ((uint)Y2 > height))
-				{
+				((int)X2 < 0) || ((uint)X2 > width) || ((int)Y2 < 0) || ((uint)Y2 > height))
 				return false;
-				}
 
 			if ((X1 >= X2) || (Y1 >= Y2))
-				{
 				return false;
-				}
 
 			// Установка значений
 			clipBoxX1 = X1;

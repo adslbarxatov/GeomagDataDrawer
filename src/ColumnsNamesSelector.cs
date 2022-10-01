@@ -1,16 +1,18 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму выбора параметров извлечения имён столбцов из файлов данных
 	/// </summary>
-	public partial class ColumnsNamesSelector:Form
+	public partial class ColumnsNamesSelector: Form
 		{
 		/// <summary>
 		/// Конструктор. Запускает форму
 		/// </summary>
-		/// <param name="SkippedRowsCount">Количество строк, используемое для поиска имён столбцов данных, полученное из конфигурации программы</param>
+		/// <param name="SkippedRowsCount">Количество строк, используемое для поиска имён столбцов данных, 
+		/// полученное из конфигурации программы</param>
 		/// <param name="Language">Язык локализации</param>
 		public ColumnsNamesSelector (uint SkippedRowsCount, SupportedLanguages Language)
 			{
@@ -27,16 +29,14 @@ namespace RD_AAOW
 				{
 				ColumnsCount.Value = skippedRowsCount = SkippedRowsCount;
 				}
-			catch
-				{
-				}
+			catch { }
 
 			// Запуск
 			this.ShowDialog ();
 			}
 
 		// Отмена
-		private void BAbort_Click (object sender, System.EventArgs e)
+		private void BAbort_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
@@ -66,7 +66,7 @@ namespace RD_AAOW
 		private uint skippedRowsCount;
 
 		// Извлечение
-		private void GetData_Click (object sender, System.EventArgs e)
+		private void GetData_Click (object sender, EventArgs e)
 			{
 			// Сохранение параметров
 			skippedRowsCount = (uint)ColumnsCount.Value;

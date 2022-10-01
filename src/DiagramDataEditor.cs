@@ -8,7 +8,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает форму редактирования данных диаграммы
 	/// </summary>
-	public partial class DiagramDataEditor:Form
+	public partial class DiagramDataEditor: Form
 		{
 		// Переменные
 		private SupportedLanguages language;    // Язык локализации

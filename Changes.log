@@ -1,4 +1,9 @@
-﻿Geomag data drawer changes log
+﻿Geomag data drawer: changes log
+
+Version 5.0:
+• Implemented the ability to open localized ADP, SCP and Welcome pages;
+• Required framework version updated from 4.0 to 4.8;
+• Removed obsolete code
 
 Version 4.21:
 • Added the ability to use dates as abscissas: app will convert them to YYYY.r format and display

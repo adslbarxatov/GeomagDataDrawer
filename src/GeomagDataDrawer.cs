@@ -52,7 +52,8 @@ namespace RD_AAOW
 				// Входной файл
 				DataInputTypes inputType = DataInputTypes.Unknown;  // Извлечение по умолчанию
 
-				if (args[0].Length >= 5)        // Расширение (не менее 3-х символов) + '.' + имя (не менее одного символа)
+				// Расширение (не менее 3-х символов) + '.' + имя (не менее одного символа)
+				if (args[0].Length >= 5)
 					{
 					switch (args[0].Substring (args[0].Length - 4).ToLower ())
 						{
@@ -94,13 +95,10 @@ namespace RD_AAOW
 						{
 						uint.TryParse (args[3], out expectedColumnsCount);
 						if (expectedColumnsCount > ConfigAccessor.MaxExpectedColumnsCount)
-							{
 							expectedColumnsCount = ConfigAccessor.MaxExpectedColumnsCount;
-							}
+
 						if (expectedColumnsCount < 2)
-							{
 							expectedColumnsCount = 2;
-							}
 						}
 					}
 
@@ -143,18 +141,15 @@ namespace RD_AAOW
 				// Запуск интерпретации
 				DiagramData dd;
 				if (inputType == DataInputTypes.Unknown)
-					{
 					dd = new DiagramData (args[0], expectedColumnsCount, skippedLinesCount);
-					}
 				else
-					{
 					dd = new DiagramData (args[0], inputType, skippedLinesCount);
-					}
 
 				// Контроль результата
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage), args[0],
+					MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError",
+						ca.InterfaceLanguage), args[0],
 						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					return;
@@ -177,7 +172,8 @@ namespace RD_AAOW
 					ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true, ca.InterfaceLanguage);
 					if (!cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
 						{
-						if (!cad.CreateParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
+						if (!cad.CreateParametersFile (RDGenerics.AppStartupPath +
+							ConfigAccessor.LineParametersFileName))
 							{
 							return;
 							}

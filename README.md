@@ -1,5 +1,5 @@
-# GeomagDataDrawer v 4.21
-> PCC: 0012CC6E02D98BB2
+# GeomagDataDrawer v 5.0
+> PCC: 0012CEB4F6197325
 
 
 Autonomous utility for plotting and preparing of data diagrams
@@ -7,7 +7,7 @@ Autonomous utility for plotting and preparing of data diagrams
 Автономный инструмент построения и оформления диаграмм
 
 
-## Annotation (first page of helpfile)
+## Annotation (the first page of the user guide)
 
 ***Geomag data drawer*** is a software tool for creating diagrams based on tabular data.
 Originally created for visualizing the results of experimental measurements. Can now be used for this purpose. But not exclusively.
@@ -46,7 +46,7 @@ software. Therefore, ***Geomag data drawer*** can be considered a very useful to
 
 
 
-## Краткое описание (первая страница файла справки)
+## Краткое описание (первая страница руководства пользователя)
 
 ***Geomag data drawer*** – программное средство, предназначенное для построения диаграмм на основе табличных данных.
 Изначально создавался как средство визуализации результатов экспериментальных измерений; может и сейчас быть использован с этой целью.
@@ -87,8 +87,8 @@ Geomag data drawer поддерживает следующие форматы п
 
 ## Requirements / Требования
 
-- Windows XP or newer / или новее;
-- [Microsoft .NET Framework 4.0](https://microsoft.com/en-us/download/details.aspx?id=17718);
+- Windows 7 or newer / или новее;
+- [Microsoft .NET Framework 4.8](https://go.microsoft.com/fwlink/?linkid=2088631).
 - [Excel data reader libraries](https://github.com/ExcelDataReader/ExcelDataReader) *(optional)*.
 
 Interface languages / языки интерфейса: ru_ru, en_us.

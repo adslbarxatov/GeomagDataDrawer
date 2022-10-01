@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace RD_AAOW
 	{
@@ -29,7 +28,7 @@ namespace RD_AAOW
 				else
 					top = value;
 
-				SetSetting ("Top", top.ToString ());
+				RDGenerics.SetAppSettingsValue ("Top", top.ToString ());
 				}
 			}
 		private int top;
@@ -52,7 +51,7 @@ namespace RD_AAOW
 				else
 					left = value;
 
-				SetSetting ("Left", left.ToString ());
+				RDGenerics.SetAppSettingsValue ("Left", left.ToString ());
 				}
 			}
 		private int left;
@@ -75,7 +74,7 @@ namespace RD_AAOW
 				else
 					width = value;
 
-				SetSetting ("Width", width.ToString ());
+				RDGenerics.SetAppSettingsValue ("Width", width.ToString ());
 				}
 			}
 		private uint width;
@@ -98,7 +97,7 @@ namespace RD_AAOW
 				else
 					height = value;
 
-				SetSetting ("Height", height.ToString ());
+				RDGenerics.SetAppSettingsValue ("Height", height.ToString ());
 				}
 			}
 		private uint height;
@@ -139,7 +138,7 @@ namespace RD_AAOW
 			set
 				{
 				forceExitConfirmation = value;
-				SetSetting ("ForceExitConfirmation", forceExitConfirmation ? "FEC" : "0");
+				RDGenerics.SetAppSettingsValue ("ForceExitConfirmation", forceExitConfirmation ? "FEC" : "0");
 				}
 			}
 		private bool forceExitConfirmation;
@@ -156,7 +155,8 @@ namespace RD_AAOW
 			set
 				{
 				forceUsingBackupDataFile = value;
-				SetSetting ("ForceUsingBackupDataFile", forceUsingBackupDataFile ? "FUBDF" : "0");
+				RDGenerics.SetAppSettingsValue ("ForceUsingBackupDataFile", forceUsingBackupDataFile ?
+					"FUBDF" : "0");
 				}
 			}
 		private bool forceUsingBackupDataFile;
@@ -173,7 +173,7 @@ namespace RD_AAOW
 			set
 				{
 				forceShowDiagram = value;
-				SetSetting ("ForceShowDiagram", forceShowDiagram ? "FSD" : "0");
+				RDGenerics.SetAppSettingsValue ("ForceShowDiagram", forceShowDiagram ? "FSD" : "0");
 				}
 			}
 		private bool forceShowDiagram;
@@ -190,12 +190,12 @@ namespace RD_AAOW
 			set
 				{
 				forceSavingColumnNames = value;
-				SetSetting ("ForceSavingColumnNames", forceSavingColumnNames ? "FSCN" : "0");
+				RDGenerics.SetAppSettingsValue ("ForceSavingColumnNames", forceSavingColumnNames ? "FSCN" : "0");
 				}
 			}
 		private bool forceSavingColumnNames;
 
-		/// <summary>
+		/*/// <summary>
 		/// Возвращает или задаёт необходимость отключения дополнительных функций мыши
 		/// </summary>
 		public bool DisableMousePlacing
@@ -207,10 +207,10 @@ namespace RD_AAOW
 			set
 				{
 				disableMousePlacing = value;
-				SetSetting ("DisableMousePlacing", disableMousePlacing ? "DMP" : "0");
+				RDGenerics.SetAppSettingsValue ("DisableMousePlacing", disableMousePlacing ? "DMP" : "0");
 				}
 			}
-		private bool disableMousePlacing;
+		private bool disableMousePlacing;*/
 
 		/// <summary>
 		/// Возвращает или задаёт количество первых строк файла, используемых для поиска подписей
@@ -228,7 +228,7 @@ namespace RD_AAOW
 				else
 					skippedLinesCount = value;
 
-				SetSetting ("SkippedLinesCount", skippedLinesCount.ToString ());
+				RDGenerics.SetAppSettingsValue ("SkippedLinesCount", skippedLinesCount.ToString ());
 				}
 			}
 		private uint skippedLinesCount;
@@ -256,7 +256,7 @@ namespace RD_AAOW
 				else
 					expectedColumnsCount = value;
 
-				SetSetting ("ExpectedColumnsCount", expectedColumnsCount.ToString ());
+				RDGenerics.SetAppSettingsValue ("ExpectedColumnsCount", expectedColumnsCount.ToString ());
 				}
 			}
 		private uint expectedColumnsCount;
@@ -306,102 +306,102 @@ namespace RD_AAOW
 			// Размеры и смещение окна
 			try
 				{
-				top = int.Parse (GetSetting ("Top"));
+				top = int.Parse (RDGenerics.GetAppSettingsValue ("Top"));
 				}
 			catch
 				{
 				top = (screenHeight - (int)MinHeight) / 2;
-				SetSetting ("Top", top.ToString ());
+				RDGenerics.SetAppSettingsValue ("Top", top.ToString ());
 				}
 
 			try
 				{
-				left = int.Parse (GetSetting ("Left"));
+				left = int.Parse (RDGenerics.GetAppSettingsValue ("Left"));
 				}
 			catch
 				{
 				left = (screenWidth - (int)MinWidth) / 2;
-				SetSetting ("Left", left.ToString ());
+				RDGenerics.SetAppSettingsValue ("Left", left.ToString ());
 				}
 
 			try
 				{
-				width = uint.Parse (GetSetting ("Width"));
+				width = uint.Parse (RDGenerics.GetAppSettingsValue ("Width"));
 				}
 			catch
 				{
 				width = MinWidth;
-				SetSetting ("Width", width.ToString ());
+				RDGenerics.SetAppSettingsValue ("Width", width.ToString ());
 				}
 
 			try
 				{
-				height = uint.Parse (GetSetting ("Height"));
+				height = uint.Parse (RDGenerics.GetAppSettingsValue ("Height"));
 				}
 			catch
 				{
 				height = MinHeight;
-				SetSetting ("Height", height.ToString ());
+				RDGenerics.SetAppSettingsValue ("Height", height.ToString ());
 				}
 
 			// Флаги
-			forceExitConfirmation = (GetSetting ("ForceExitConfirmation") == "FEC");
+			forceExitConfirmation = (RDGenerics.GetAppSettingsValue ("ForceExitConfirmation") == "FEC");
 
-			string s = GetSetting ("ForceUsingBackupDataFile");
+			string s = RDGenerics.GetAppSettingsValue ("ForceUsingBackupDataFile");
 			forceUsingBackupDataFile = (s == "FUBDF");
 
 			if (s == "")    // Требуется дополнительная обработка, т.к. значение по умолчанию - true
 				{
 				forceUsingBackupDataFile = true;
-				SetSetting ("ForceUsingBackupDataFile", "FUBDF");
+				RDGenerics.SetAppSettingsValue ("ForceUsingBackupDataFile", "FUBDF");
 				}
 
-			s = GetSetting ("ForceShowDiagram");
+			s = RDGenerics.GetAppSettingsValue ("ForceShowDiagram");
 			forceShowDiagram = (s == "FSD");
 
 			if (s == "")
 				{
 				forceShowDiagram = true;
-				SetSetting ("ForceShowDiagram", "FSD");
+				RDGenerics.SetAppSettingsValue ("ForceShowDiagram", "FSD");
 				}
 
-			s = GetSetting ("ForceSavingColumnNames");
+			s = RDGenerics.GetAppSettingsValue ("ForceSavingColumnNames");
 			forceSavingColumnNames = (s == "FSCN");
 
 			if (s == "")
 				{
 				forceSavingColumnNames = true;
-				SetSetting ("ForceSavingColumnNames", "FSCN");
+				RDGenerics.SetAppSettingsValue ("ForceSavingColumnNames", "FSCN");
 				}
 
-			disableMousePlacing = (GetSetting ("DisableMousePlacing") == "DMP");
+			/*disableMousePlacing = (GetSetting ("DisableMousePlacing") == "DMP");*/
 
 			// Строки поиска заголовков
 			try
 				{
-				skippedLinesCount = uint.Parse (GetSetting ("SkippedLinesCount"));
+				skippedLinesCount = uint.Parse (RDGenerics.GetAppSettingsValue ("SkippedLinesCount"));
 				}
 			catch
 				{
 				skippedLinesCount = 0;
-				SetSetting ("SkippedLinesCount", skippedLinesCount.ToString ());
+				RDGenerics.SetAppSettingsValue ("SkippedLinesCount", skippedLinesCount.ToString ());
 				}
 
 			// Ожидаемое число столбцов
 			try
 				{
-				expectedColumnsCount = uint.Parse (GetSetting ("ExpectedColumnsCount"));
+				expectedColumnsCount = uint.Parse (RDGenerics.GetAppSettingsValue ("ExpectedColumnsCount"));
 				}
 			catch
 				{
 				expectedColumnsCount = MinExpectedColumnsCount;
-				SetSetting ("ExpectedColumnsCount", expectedColumnsCount.ToString ());
+				RDGenerics.SetAppSettingsValue ("ExpectedColumnsCount", expectedColumnsCount.ToString ());
 				}
 
 			// Завершено
 			}
 
-		// Метод получает значение настройки из реестра
+		/*// Метод получает значение настройки из реестра
 		private string GetSetting (string ValueName)
 			{
 			string res = "";
@@ -422,6 +422,6 @@ namespace RD_AAOW
 				Registry.SetValue (RDGenerics.AssemblySettingsKey, ValueName, Value);
 				}
 			catch { }
-			}
+			}*/
 		}
 	}

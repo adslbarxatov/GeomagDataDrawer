@@ -94,7 +94,8 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="CenterX">Абсцисса центра изображения маркера</param>
 		/// <param name="CenterY">Ордината центра изображения маркера</param>
-		/// <param name="LineNumber">Номер кривой. Используется для задания имени маркера и его привязки к кривой</param>
+		/// <param name="LineNumber">Номер кривой. Используется для задания имени маркера 
+		/// и его привязки к кривой</param>
 		/// <param name="MarkerImage">Изображение маркера</param>
 		/// <returns>Возвращает true в случае успеха или false в случае некорректного задания параметров</returns>
 		bool DrawMarker (Bitmap MarkerImage, double CenterX, double CenterY, uint LineNumber);
@@ -121,7 +122,8 @@ namespace RD_AAOW
 		/// <summary>
 		/// Метод открывает группу объектов
 		/// </summary>
-		/// <returns>Возвращает true в случае успеха или false, если превышено число допустимых уровней вложения групп</returns>
+		/// <returns>Возвращает true в случае успеха или false, если превышено число допустимых 
+		/// уровней вложения групп</returns>
 		bool OpenGroup ();
 
 		/// <summary>

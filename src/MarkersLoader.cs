@@ -8,7 +8,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс обеспечивает загрузку стандартных и дополнительных маркеров для построения диаграмм
 	/// </summary>
-	public class MarkersLoader:IDisposable
+	public class MarkersLoader: IDisposable
 		{
 		// Переменные и константы
 		private List<Bitmap> markers = new List<Bitmap> (); // Массив маркеров
@@ -25,7 +25,8 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="MarkerColor">Требуемый цвет маркера</param>
 		/// <param name="MarkerNumber">Номер требуемого маркера, начиная с нуля</param>
-		/// <returns>Изображение маркера или изображение первого стандартного маркера, если номер маркера указан некорректно
+		/// <returns>Изображение маркера или изображение первого стандартного маркера, 
+		/// если номер маркера указан некорректно
 		/// </returns>
 		public Bitmap GetMarker (uint MarkerNumber, Color MarkerColor)
 			{

@@ -12,11 +12,16 @@ namespace RD_AAOW
 	/// </summary>
 	public partial class GeomagDataDrawerForm:Form
 		{
-		// Переменные
+		// Создание класса-представителя данных диаграммы (фиктивная инициализация)
 		private DiagramData dd =
-			new DiagramData ("", DataInputTypes.Unknown, 0);    // Создание класса-представителя данных диаграммы (фиктивная инициализация)
-		private bool loading = false;                           // Состояние загрузки значений параметров в контролы
-		private ConfigAccessor ca = new ConfigAccessor ();      // Аксессор конфигурации программы (загрузка или инициализация)
+			new DiagramData ("", DataInputTypes.Unknown, 0);
+
+		// Состояние загрузки значений параметров в контролы
+		private bool loading = false;                           
+
+		// Аксессор конфигурации программы (загрузка или инициализация)
+		private ConfigAccessor ca = new ConfigAccessor ();      
+
 		private MarkersLoader ml = new MarkersLoader ();        // Загрузчик маркеров
 		private Graphics drawField;                             // Основное поле отрисовки программы
 		private List<int> selectedInidces = new List<int> ();   // Текущий список выбранных кривых
@@ -560,7 +565,7 @@ namespace RD_AAOW
 				}
 
 			// Обработка позиционирования диаграмм
-			if ((e.Clicks == 2) && !ca.DisableMousePlacing)
+			if ((e.Clicks == 2) /*&& !ca.DisableMousePlacing*/)
 				{
 				// Смещение подписей осей и диаграммы
 				if (Control.ModifierKeys == Keys.Control)
@@ -569,60 +574,36 @@ namespace RD_AAOW
 					if (e.Button == MouseButtons.Left)
 						{
 						if (e.X + HorScroll.Value - LeftOffset.Value > LineNameLeftOffset.Maximum)
-							{
 							LineNameLeftOffset.Value = LineNameLeftOffset.Maximum;
-							}
 						else if (e.X + HorScroll.Value - LeftOffset.Value < LineNameLeftOffset.Minimum)
-							{
 							LineNameLeftOffset.Value = LineNameLeftOffset.Minimum;
-							}
 						else
-							{
 							LineNameLeftOffset.Value = e.X + HorScroll.Value - LeftOffset.Value;
-							}
 
 						if (e.Y + VertScroll.Value - TopOffset.Value > LineNameTopOffset.Maximum)
-							{
 							LineNameTopOffset.Value = LineNameTopOffset.Maximum;
-							}
 						else if (e.Y + VertScroll.Value - TopOffset.Value < LineNameTopOffset.Minimum)
-							{
 							LineNameTopOffset.Value = LineNameTopOffset.Minimum;
-							}
 						else
-							{
 							LineNameTopOffset.Value = e.Y + VertScroll.Value - TopOffset.Value;
-							}
 						}
 
 					// Смещение подписей осей
 					if (e.Button == MouseButtons.Right)
 						{
 						if (e.X + HorScroll.Value - LeftOffset.Value > OyTextOffset.Maximum)
-							{
 							OyTextOffset.Value = OyTextOffset.Maximum;
-							}
 						else if (e.X + HorScroll.Value - LeftOffset.Value < OyTextOffset.Minimum)
-							{
 							OyTextOffset.Value = OyTextOffset.Minimum;
-							}
 						else
-							{
 							OyTextOffset.Value = e.X + HorScroll.Value - LeftOffset.Value;
-							}
 
 						if (e.Y + VertScroll.Value - TopOffset.Value > OxTextOffset.Maximum)
-							{
 							OxTextOffset.Value = OxTextOffset.Maximum;
-							}
 						else if (e.Y + VertScroll.Value - TopOffset.Value < OxTextOffset.Minimum)
-							{
 							OxTextOffset.Value = OxTextOffset.Minimum;
-							}
 						else
-							{
 							OxTextOffset.Value = e.Y + VertScroll.Value - TopOffset.Value;
-							}
 						}
 					}
 
@@ -633,60 +614,36 @@ namespace RD_AAOW
 					if (e.Button == MouseButtons.Left)
 						{
 						if (e.X + HorScroll.Value > LeftOffset.Maximum)
-							{
 							LeftOffset.Value = LeftOffset.Maximum;
-							}
 						else if (e.X + HorScroll.Value < LeftOffset.Minimum)
-							{
 							LeftOffset.Value = LeftOffset.Minimum;
-							}
 						else
-							{
 							LeftOffset.Value = e.X + HorScroll.Value;
-							}
 
 						if (e.Y + VertScroll.Value > TopOffset.Maximum)
-							{
 							TopOffset.Value = TopOffset.Maximum;
-							}
 						else if (e.Y + VertScroll.Value < TopOffset.Minimum)
-							{
 							TopOffset.Value = TopOffset.Minimum;
-							}
 						else
-							{
 							TopOffset.Value = e.Y + VertScroll.Value;
-							}
 						}
 
 					// Размер
 					if (e.Button == MouseButtons.Right)
 						{
 						if (e.X + HorScroll.Value - LeftOffset.Value > ImageWidth.Maximum)
-							{
 							ImageWidth.Value = ImageWidth.Maximum;
-							}
 						else if (e.X + HorScroll.Value - LeftOffset.Value < ImageWidth.Minimum)
-							{
 							ImageWidth.Value = ImageWidth.Minimum;
-							}
 						else
-							{
 							ImageWidth.Value = e.X + HorScroll.Value - LeftOffset.Value;
-							}
 
 						if (e.Y + VertScroll.Value - TopOffset.Value > ImageHeight.Maximum)
-							{
 							ImageHeight.Value = ImageHeight.Maximum;
-							}
 						else if (e.Y + VertScroll.Value - TopOffset.Value < ImageHeight.Minimum)
-							{
 							ImageHeight.Value = ImageHeight.Minimum;
-							}
 						else
-							{
 							ImageHeight.Value = e.Y + VertScroll.Value - TopOffset.Value;
-							}
 						}
 					}
 				}

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
@@ -8,14 +10,15 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает форму выбора размера и сохранения конечного изображения
 	/// </summary>
-	public partial class SavePicture:Form
+	public partial class SavePicture: Form
 		{
-		// Переменные
-		private List<DiagramStyle> lineStyles = new List<DiagramStyle> ();	// Специальные стили, используемые для сохранения изображения
+		// Специальные стили, используемые для сохранения изображения
+		private List<DiagramStyle> lineStyles = new List<DiagramStyle> ();
+
 		private List<DiagramStyle> objectStyles = new List<DiagramStyle> ();
-		private uint imageWidth, imageHeight;	// Новый размер диаграммы
-		private DiagramData diagramData;		// Данные диаграммы
-		private SupportedLanguages language;	// Язык локализации
+		private uint imageWidth, imageHeight;   // Новый размер диаграммы
+		private DiagramData diagramData;        // Данные диаграммы
+		private SupportedLanguages language;    // Язык локализации
 
 		/// <summary>
 		/// Конструктор. Принимает отрисовываемые данные и стиль отрисовки
@@ -34,13 +37,10 @@ namespace RD_AAOW
 
 			// Передача значений
 			for (int i = 0; i < DiagramData.LinesCount; i++)
-				{
 				lineStyles.Add (new DiagramStyle (DiagramData.GetStyle (i)));
-				}
+
 			for (int i = 0; i < DiagramData.AdditionalObjectsCount; i++)
-				{
 				objectStyles.Add (new DiagramStyle (DiagramData.GetStyle (i + (int)DiagramData.LinesCount)));
-				}
 
 			diagramData = DiagramData;
 			imageWidth = DiagramData.DiagramWidth;
@@ -61,13 +61,13 @@ namespace RD_AAOW
 			}
 
 		// Отмена
-		private void SaveAbort_Click (object sender, System.EventArgs e)
+		private void SaveAbort_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
 
 		// Сохранить
-		private void ImageSave_Click (object sender, System.EventArgs e)
+		private void ImageSave_Click (object sender, EventArgs e)
 			{
 			SFDialog.ShowDialog ();
 			}
@@ -92,10 +92,10 @@ namespace RD_AAOW
 					VectorImage.Checked = true;
 					break;
 
-				/*case ImageOutputTypes.EMF:
-					VectorImage.Checked = true;
-					SFDialog.FilterIndex = 2;
-					break;*/
+					/*case ImageOutputTypes.EMF:
+						VectorImage.Checked = true;
+						SFDialog.FilterIndex = 2;
+						break;*/
 				}
 
 			// Сохранение
@@ -103,11 +103,11 @@ namespace RD_AAOW
 			}
 
 		// Файл выбран
-		private void SFDialog_FileOk (object sender, System.ComponentModel.CancelEventArgs e)
+		private void SFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Переменные
-			double scale = (1.0 / 2.54) * 300.0;	// Множитель для пересчёта сантиметров в пиксели
-			// 100/254 дюймов на сантиметр, 300 пикселей на дюйм
+			double scale = (1.0 / 2.54) * 300.0;    // Множитель для пересчёта сантиметров в пиксели
+													// 100/254 дюймов на сантиметр, 300 пикселей на дюйм
 			double horizScale, vertScale, endScale = 1.0;
 
 			#region Сохранение растрового изображения
@@ -168,13 +168,10 @@ namespace RD_AAOW
 
 				// Масштабирование изображения
 				for (int i = 0; i < lineStyles.Count; i++)
-					{
 					lineStyles[i].ApplyLineScale ((float)endScale);
-					}
+
 				for (int i = 0; i < objectStyles.Count; i++)
-					{
 					objectStyles[i].ApplyObjectScale ((float)endScale);
-					}
 
 				// Формирование изображения
 				Bitmap b = new Bitmap ((int)imageWidth, (int)imageHeight);
@@ -203,8 +200,8 @@ namespace RD_AAOW
 					{
 					// EMF
 					case 2:
-						EMFAdapter emfa = new EMFAdapter (SFDialog.FileName, (uint)((decimal)imageWidth * ImageScale.Value),
-							(uint)((decimal)imageHeight * ImageScale.Value));
+						EMFAdapter emfa = new EMFAdapter (SFDialog.FileName, (uint)((decimal)imageWidth *
+							ImageScale.Value), (uint)((decimal)imageHeight * ImageScale.Value));
 
 						if ((emfa.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (emfa) < 0))
@@ -216,8 +213,8 @@ namespace RD_AAOW
 
 					// SVG
 					default:
-						SVGAdapter svga = new SVGAdapter (SFDialog.FileName, (uint)((decimal)imageWidth * ImageScale.Value),
-							(uint)((decimal)imageHeight * ImageScale.Value));
+						SVGAdapter svga = new SVGAdapter (SFDialog.FileName, (uint)((decimal)imageWidth *
+							ImageScale.Value), (uint)((decimal)imageHeight * ImageScale.Value));
 
 						if ((svga.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (svga) < 0))
@@ -235,34 +232,34 @@ namespace RD_AAOW
 			}
 
 		// Выбор варианта
-		private void CustomSize_CheckedChanged (object sender, System.EventArgs e)
+		private void CustomSize_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = true;
 			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FR", language);
 			}
 
-		private void A4Horiz_CheckedChanged (object sender, System.EventArgs e)
+		private void A4Horiz_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = false;
 			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FR", language);
 			}
 
-		private void A4Vert_CheckedChanged (object sender, System.EventArgs e)
+		private void A4Vert_CheckedChanged (object sender, EventArgs e)
 			{
 			A4Horiz_CheckedChanged (sender, e);
 			}
 
-		private void A3Horiz_CheckedChanged (object sender, System.EventArgs e)
+		private void A3Horiz_CheckedChanged (object sender, EventArgs e)
 			{
 			A4Horiz_CheckedChanged (sender, e);
 			}
 
-		private void A3Vert_CheckedChanged (object sender, System.EventArgs e)
+		private void A3Vert_CheckedChanged (object sender, EventArgs e)
 			{
 			A4Horiz_CheckedChanged (sender, e);
 			}
 
-		private void VectorImage_CheckedChanged (object sender, System.EventArgs e)
+		private void VectorImage_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = false;
 			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FV", language);

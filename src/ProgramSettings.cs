@@ -1,11 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму настроек программы
 	/// </summary>
-	public partial class ProgramSettings:Form
+	public partial class ProgramSettings: Form
 		{
 		// Переменные
 		private ConfigAccessor ca = new ConfigAccessor ();
@@ -28,26 +29,26 @@ namespace RD_AAOW
 			ForceUsingBackupFile.Checked = ca.ForceUsingBackupDataFile;
 			ForceShowDiagram.Checked = ca.ForceShowDiagram;
 			ForceSavingColumnNames.Checked = ca.ForceSavingColumnNames;
-			DisableMousePlacing.Checked = ca.DisableMousePlacing;
+			/*DisableMousePlacing.Checked = ca.DisableMousePlacing;*/
 
 			// Запуск
 			this.ShowDialog ();
 			}
 
 		// Отмена
-		private void SaveAbort_Click (object sender, System.EventArgs e)
+		private void SaveAbort_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
 
 		// Сохранение
-		private void SaveSettings_Click (object sender, System.EventArgs e)
+		private void SaveSettings_Click (object sender, EventArgs e)
 			{
 			ca.ForceExitConfirmation = ConfirmExit.Checked;
 			ca.ForceUsingBackupDataFile = ForceUsingBackupFile.Checked;
 			ca.ForceShowDiagram = ForceShowDiagram.Checked;
 			ca.ForceSavingColumnNames = ForceSavingColumnNames.Checked;
-			ca.DisableMousePlacing = DisableMousePlacing.Checked;
+			/*ca.DisableMousePlacing = DisableMousePlacing.Checked;*/
 
 			this.Close ();
 			}

@@ -8,7 +8,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает форму генерации диаграммы на основе введённой формулы
 	/// </summary>
-	public partial class FormulaEvaluator:Form
+	public partial class FormulaEvaluator: Form
 		{
 		// Переменные
 		private SupportedLanguages language;

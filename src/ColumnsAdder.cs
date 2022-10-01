@@ -1,11 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает форму выбора данных для построения новой кривой
 	/// </summary>
-	public partial class ColumnsAdder:Form
+	public partial class ColumnsAdder: Form
 		{
 		/// <summary>
 		/// Возвращает номер столбца данных, интерпретируемого как столбец абсцисс
@@ -81,7 +82,8 @@ namespace RD_AAOW
 			// Заполнение списка типов объектов
 			for (int i = 1; i <= 9; i++)
 				{
-				ObjectCombo.Items.Add (Localization.GetControlText ("ColumnsAdder", "ObjectType_" + i.ToString (), Language));
+				ObjectCombo.Items.Add (Localization.GetControlText ("ColumnsAdder", "ObjectType_" +
+					i.ToString (), Language));
 				}
 			ObjectCombo.Text = ObjectCombo.Items[0].ToString ();
 
@@ -93,10 +95,13 @@ namespace RD_AAOW
 		/// Конструктор. Запускает форму выбора данных, используя сведения о ранее выбранных столбцах
 		/// </summary>
 		/// <param name="SourceData">Исходные данные диаграммы</param>
-		/// <param name="OldXColumnNumber">Номер ранее выбранного столбца данных, интерпретируемых как столбец абсцисс</param>
-		/// <param name="OldYColumnNumber">Номер ранее выбранного столбца данных, интерпретируемых как столбец ординат</param>
+		/// <param name="OldXColumnNumber">Номер ранее выбранного столбца данных, интерпретируемых 
+		/// как столбец абсцисс</param>
+		/// <param name="OldYColumnNumber">Номер ранее выбранного столбца данных, интерпретируемых 
+		/// как столбец ординат</param>
 		/// <param name="Language">Язык локализации</param>
-		public ColumnsAdder (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber, SupportedLanguages Language)
+		public ColumnsAdder (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber,
+			SupportedLanguages Language)
 			{
 			// Инициализация
 			InitializeComponent ();
@@ -110,7 +115,8 @@ namespace RD_AAOW
 			}
 
 		// Конструктор
-		private void ColumnsAdderConstructor (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber, SupportedLanguages Language)
+		private void ColumnsAdderConstructor (DiagramData SourceData, int OldXColumnNumber,
+			int OldYColumnNumber, SupportedLanguages Language)
 			{
 			// Локазизация формы
 			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
@@ -142,13 +148,13 @@ namespace RD_AAOW
 			}
 
 		// Отмена
-		private void AbortButton_Click (object sender, System.EventArgs e)
+		private void AbortButton_Click (object sender, EventArgs e)
 			{
 			this.Close ();
 			}
 
 		// ОК
-		private void ApplyButton_Click (object sender, System.EventArgs e)
+		private void ApplyButton_Click (object sender, EventArgs e)
 			{
 			xColumnNumber = (uint)XCombo.SelectedIndex;
 			yColumnNumber = (uint)YCombo.SelectedIndex;
@@ -160,7 +166,7 @@ namespace RD_AAOW
 			}
 
 		// Выбор варианта добавления
-		private void Radio01_CheckedChanged (object sender, System.EventArgs e)
+		private void Radio01_CheckedChanged (object sender, EventArgs e)
 			{
 			XCombo.Enabled = YCombo.Enabled = Radio01.Checked;
 			ObjectCombo.Enabled = Radio02.Checked;

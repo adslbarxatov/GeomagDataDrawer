@@ -6,7 +6,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает форму настроек программы
 	/// </summary>
-	public partial class DiagramMerger:Form
+	public partial class DiagramMerger: Form
 		{
 		/// <summary>
 		/// Оси совмещения

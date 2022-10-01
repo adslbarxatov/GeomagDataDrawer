@@ -6,15 +6,17 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает форму выбора параметров извлечения данных из текстовых файлов
 	/// </summary>
-	public partial class UnknownFileParametersSelector:Form
+	public partial class UnknownFileParametersSelector: Form
 		{
 		/// <summary>
 		/// Конструктор. Запускает форму
 		/// </summary>
-		/// <param name="ExpectedColumnsCount">Ожидаемое количество столбцов, полученное из конфигурации программы</param>
+		/// <param name="ExpectedColumnsCount">Ожидаемое количество столбцов, полученное из конфигурации 
+		/// программы</param>
 		/// <param name="Language">Язык локализации</param>
 		/// <param name="SelectAbscissas">Флаг, указывающий, следует ли запрашивать номер столбца абсцисс</param>
-		public UnknownFileParametersSelector (uint ExpectedColumnsCount, SupportedLanguages Language, bool SelectAbscissas)
+		public UnknownFileParametersSelector (uint ExpectedColumnsCount, SupportedLanguages Language,
+			bool SelectAbscissas)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
@@ -31,9 +33,7 @@ namespace RD_AAOW
 				Abscissas.Maximum = ColumnsCount.Value + 1;
 				Abscissas.Value = abscissasColumn = 1;
 				}
-			catch
-				{
-				}
+			catch { }
 
 			Label03.Visible = Abscissas.Visible = SelectAbscissas;
 
