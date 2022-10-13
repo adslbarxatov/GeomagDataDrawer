@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -18,20 +17,18 @@ namespace RD_AAOW
 			// Загрузка конфигурации
 			ConfigAccessor ca = new ConfigAccessor ();
 
-			// Проверка запуска единственной копии
-			bool result;
-			Mutex instance = new Mutex (true, ProgramDescription.AssemblyTitle, out result);
-			if (!result)
-				{
-				MessageBox.Show (string.Format (Localization.GetText ("ProgramLaunchedError", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-					MessageBoxIcon.Exclamation);
-				return;
-				}
-
 			// Запуск программы в случае уникальности
 			Application.EnableVisualStyles ();
 			Application.SetCompatibleTextRenderingDefault (false);
+
+			// Язык интерфейса и контроль XPR
+			SupportedLanguages al = Localization.CurrentLanguage;
+			if (!Localization.IsXPRClassAcceptable)
+				return;
+
+			// Проверка запуска единственной копии
+			if (!RDGenerics.IsThisInstanceUnique (al == SupportedLanguages.ru_ru))
+				return;
 
 			// Отображение справки и запроса на принятие Политики
 			if (!ProgramDescription.AcceptEULA ())

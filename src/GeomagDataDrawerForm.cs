@@ -221,6 +221,7 @@ namespace RD_AAOW
 			Localization.SetControlsText (MFile, ca.InterfaceLanguage);
 			Localization.SetControlsText (MOperations, ca.InterfaceLanguage);
 			Localization.SetControlsText (MUpperHelp, ca.InterfaceLanguage);
+			Localization.SetControlsText (MAdditional, ca.InterfaceLanguage);
 
 			// Кнопки управления
 			Localization.SetControlsText (this, MainToolTip, ca.InterfaceLanguage);
@@ -1245,6 +1246,26 @@ namespace RD_AAOW
 			linesStyles.Clear ();
 			objectsTypes.Clear ();
 			objectsStyles.Clear ();
+			}
+
+		#endregion
+
+		#region Меню программы «Дополнительно»
+
+		// Склеивание таблиц данных
+		private void MMergeTables_Click (object sender, EventArgs e)
+			{
+			// Вызов диалога
+			TablesMergerForm tmf = new TablesMergerForm (ca.InterfaceLanguage);
+			tmf.Dispose ();
+			}
+
+		// Генерация векторного изображения
+		private void MGenerateVI_Click (object sender, EventArgs e)
+			{
+			// Вызов диалога
+			SVGGeneratorForm svggf = new SVGGeneratorForm (ca.InterfaceLanguage);
+			svggf.Dispose ();
 			}
 
 		#endregion

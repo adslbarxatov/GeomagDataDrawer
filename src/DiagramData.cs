@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -1403,18 +1404,20 @@ namespace RD_AAOW
 			bool IsSelected)
 			{
 			// Создание пустого изображения заданного размера с белым фоном
-			Bitmap lineImage = new Bitmap ((int)LineStyle.DiagramImageWidth, (int)LineStyle.DiagramImageHeight);    // Будущее изображение
+			Bitmap lineImage = new Bitmap ((int)LineStyle.DiagramImageWidth, (int)LineStyle.DiagramImageHeight);    
+			// Будущее изображение
+
 			Graphics g = Graphics.FromImage (lineImage);    // Графический дескриптор
 			g.Clear (DiagramStyle.ImageBackColor);
 
 			// Установка отрисовки подписей без сглаживания (устраняет чёрную ауру при отрисовке подписей в Win8)
-			g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
+			g.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
 
 			// Получение графического дескриптора фрагмента изображения для отрисовки кривых (автообрезка)
 			Graphics g2 = Graphics.FromImage (lineImage);
 			g2.Clip = new Region (new Rectangle ((int)((float)LineStyle.DiagramImageWidth * LeftMargin),
-				(int)((float)LineStyle.DiagramImageHeight * TopMargin), (int)((float)(LineStyle.DiagramImageWidth + 2) * DiagramFieldPart),
-				(int)((float)(LineStyle.DiagramImageHeight + 2) * DiagramFieldPart)));
+				(int)((float)LineStyle.DiagramImageHeight * TopMargin), (int)((float)(LineStyle.DiagramImageWidth + 2) *
+				DiagramFieldPart), (int)((float)(LineStyle.DiagramImageHeight + 2) * DiagramFieldPart)));
 
 			// Создание переменных
 			float x1, x2;   // Вспомогательные переменные для отрисовки линий

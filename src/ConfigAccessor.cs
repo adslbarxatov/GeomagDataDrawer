@@ -195,23 +195,6 @@ namespace RD_AAOW
 			}
 		private bool forceSavingColumnNames;
 
-		/*/// <summary>
-		/// Возвращает или задаёт необходимость отключения дополнительных функций мыши
-		/// </summary>
-		public bool DisableMousePlacing
-			{
-			get
-				{
-				return disableMousePlacing;
-				}
-			set
-				{
-				disableMousePlacing = value;
-				RDGenerics.SetAppSettingsValue ("DisableMousePlacing", disableMousePlacing ? "DMP" : "0");
-				}
-			}
-		private bool disableMousePlacing;*/
-
 		/// <summary>
 		/// Возвращает или задаёт количество первых строк файла, используемых для поиска подписей
 		/// </summary>
@@ -400,28 +383,5 @@ namespace RD_AAOW
 
 			// Завершено
 			}
-
-		/*// Метод получает значение настройки из реестра
-		private string GetSetting (string ValueName)
-			{
-			string res = "";
-			try
-				{
-				res = Registry.GetValue (RDGenerics.AssemblySettingsKey, ValueName, "").ToString ();
-				}
-			catch { }
-
-			return res;
-			}
-
-		// Метод задаёт значение настройки в реестре
-		private void SetSetting (string ValueName, string Value)
-			{
-			try
-				{
-				Registry.SetValue (RDGenerics.AssemblySettingsKey, ValueName, Value);
-				}
-			catch { }
-			}*/
 		}
 	}

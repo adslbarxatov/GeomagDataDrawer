@@ -1,5 +1,11 @@
 ﻿Geomag data drawer: changes log
 
+Version 5.1:
+• Tables merger and vector images generator have been integrated into GDD;
+• Font size of interface elements is correct now;
+• XPR control has been implemented;
+• Adjusted the control of single active copy
+
 Version 5.0:
 • Implemented the ability to open localized ADP, SCP and Welcome pages;
 • Required framework version updated from 4.0 to 4.8;

@@ -1135,4 +1135,112 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   <data name="TablesMergerForm_SFDialog_F" xml:space="preserve">
     <value>Диаграммы с произвольным набором данных (*.dat)|*.dat|Файлы табличных данных Windows CSV|*.csv</value>
   </data>
+  <data name="GeomagDataDrawerFormMenuStrip_MAdditional" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="MAdditional_MGenerateVI" xml:space="preserve">
+    <value>Создать векторный рисунок...</value>
+  </data>
+  <data name="MAdditional_MGenerateVI_TT" xml:space="preserve">
+    <value>Генерация векторного изображения с использованием командного сценария</value>
+  </data>
+  <data name="MAdditional_MMergeTables" xml:space="preserve">
+    <value>Соединить таблицы...</value>
+  </data>
+  <data name="MAdditional_MMergeTables_TT" xml:space="preserve">
+    <value>Объединение двух или более таблиц данных в один файл</value>
+  </data>
+  <data name="CannotCreateSample" xml:space="preserve">
+    <value>Не удалось создать файл образца. Возможно, указанное расположение недоступно для записи</value>
+  </data>
+  <data name="FileCreated" xml:space="preserve">
+    <value>Файл изображения успешно сформирован</value>
+  </data>
+  <data name="FileWritingError" xml:space="preserve">
+    <value>Ошибка записи файла изображения: </value>
+  </data>
+  <data name="InputFileNotSpecified" xml:space="preserve">
+    <value>Не задан файл скрипта для формирования изображения</value>
+  </data>
+  <data name="OutputFileNotSpecified" xml:space="preserve">
+    <value>Не задано расположение создаваемого изображения</value>
+  </data>
+  <data name="VIG_BrokenLineColor" xml:space="preserve">
+    <value>ошибка описания цвета кривой в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenLinePoint" xml:space="preserve">
+    <value>ошибка описания точки кривой в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenLineWidth" xml:space="preserve">
+    <value>ошибка описания толщины кривой в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOxColor" xml:space="preserve">
+    <value>ошибка описания цвета оси Ox в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOxNotch" xml:space="preserve">
+    <value>ошибка описания засечки на оси Ox в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOxOffset" xml:space="preserve">
+    <value>ошибка описания смещения оси Ox в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOxWidth" xml:space="preserve">
+    <value>ошибка описания толщины оси Ox в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOyColor" xml:space="preserve">
+    <value>ошибка описания цвета оси Oy в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOyNotch" xml:space="preserve">
+    <value>ошибка описания засечки на оси Oy в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOyOffset" xml:space="preserve">
+    <value>ошибка описания смещения оси Oy в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOyWidth" xml:space="preserve">
+    <value>ошибка описания толщины оси Oy в строке {0:D}</value>
+  </data>
+  <data name="VIG_BrokenText" xml:space="preserve">
+    <value>ошибка описания текстовой подписи в строке {0:D}</value>
+  </data>
+  <data name="VIG_CannotCreateFile" xml:space="preserve">
+    <value>не удалось создать файл в указанном расположении</value>
+  </data>
+  <data name="VIG_CannotCreateTMP" xml:space="preserve">
+    <value>не удаётся создать вспомогательный файл. Возможно, расположение файла скрипта недоступно для записи</value>
+  </data>
+  <data name="VIG_CannotIncludeFile" xml:space="preserve">
+    <value>файл «{0:S}» не найден, недоступен, или параметры его включения некорректны</value>
+  </data>
+  <data name="VIG_FileNotAvailable" xml:space="preserve">
+    <value>файл скрипта не найден или недоступен</value>
+  </data>
+  <data name="VIG_GenerateImageText" xml:space="preserve">
+    <value>&amp;Сформировать</value>
+  </data>
+  <data name="VIG_IncludeDeepOverflow" xml:space="preserve">
+    <value>превышено максимально допустимое количество включений. Возможно, присутствует циклическая ссылка</value>
+  </data>
+  <data name="VIG_IncorrectImageSize" xml:space="preserve">
+    <value>данные в файле скрипта не позволяют сформировать двумерное изображение</value>
+  </data>
+  <data name="VIG_OFDialogFilter" xml:space="preserve">
+    <value>Файлы скриптов (*.sc)|*.sc</value>
+  </data>
+  <data name="VIG_OFDialogTitle" xml:space="preserve">
+    <value>Выберите скрипт для формирования изображения</value>
+  </data>
+  <data name="VIG_SaveSampleText" xml:space="preserve">
+    <value>&amp;Образец...</value>
+  </data>
+  <data name="VIG_ScriptReadingError" xml:space="preserve">
+    <value>Ошибка чтения скрипта: </value>
+  </data>
+  <data name="VIG_SFDialogFilter" xml:space="preserve">
+    <value>Файлы векторных изображений SVG|*.svg|Файлы векторных изображений EMF|*.emf</value>
+  </data>
+  <data name="VIG_SFDialogTitle" xml:space="preserve">
+    <value>Укажите место для сохранения изображения</value>
+  </data>
+  <data name="VIG_SSDialogTitle" xml:space="preserve">
+    <value>Укажите место для сохранения образца скрипта</value>
+  </data>
 </root>

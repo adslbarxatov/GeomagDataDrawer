@@ -33,7 +33,7 @@
     Each data row contains a name, and value. The row also contains a 
     type or mimetype. Type corresponds to a .NET class that support 
     text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+    Classes that don’t support this are serialized and stored with the 
     mimetype set.
     
     The mimetype is used for serialized objects, and tells the 
@@ -199,7 +199,7 @@
     <value>Choose data file</value>
   </data>
   <data name="GeomagDataDrawerForm_OFDialog_F" xml:space="preserve">
-    <value>{0:S} data files (*.{1:S})|*.{1:S}|Microsoft Excel format '97 и '07|*.xls;*.xlsx|Windows CSV tables|*.csv|Extracting data from text files|*.*</value>
+    <value>{0:S} data files (*.{1:S})|*.{1:S}|Microsoft Excel format ’97 и ’07|*.xls;*.xlsx|Windows CSV tables|*.csv|Extracting data from text files|*.*</value>
   </data>
   <data name="GeomagDataDrawerForm_OxFormat_0" xml:space="preserve">
     <value>Simple</value>
@@ -395,7 +395,7 @@
   </data>
   <data name="BrokenFileError" xml:space="preserve">
     <value>file cannot be loaded because of one of following reasons:
-• file is corrupted, is empty, or it's data were not arranged in a single table (for Microsoft Excel files);
+• file is corrupted, is empty, or it’s data were not arranged in a single table (for Microsoft Excel files);
 • the file contains non-numeric value, or has an unequal number of columns in rows (for all files); probably, you have specified too low count of lines that are used to search data columns names
 • broken structure of file, or file version is not supported (for program files)</value>
   </data>
@@ -532,7 +532,7 @@
     <value>Microsoft Excel format support components are missing</value>
   </data>
   <data name="FileNotAvailableError" xml:space="preserve">
-    <value>specified file not found or not available</value>
+    <value>specified file not found or unavailable</value>
   </data>
   <data name="FontSelectError" xml:space="preserve">
     <value>Unable to use selected font for plotting. Select another font or cancel the action</value>
@@ -560,9 +560,6 @@
   </data>
   <data name="GridTab_GridWidth_TT" xml:space="preserve">
     <value>Field defines grid lines thickness</value>
-  </data>
-  <data name="HelpFileError" xml:space="preserve">
-    <value>Failed to open user guide. Check your internet connection</value>
   </data>
   <data name="ImageSaveError" xml:space="preserve">
     <value>Failed to write diagram image file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
@@ -793,7 +790,7 @@
     <value>Select variant of using of style file:
 • Click “Yes” if you want to apply style(s) to selected diagram element(s);
 • Click “No” if you want to add new curve(s) with this style(s) to existing curve(s);
-• Click “Cancel” if you don't need to apply styles</value>
+• Click “Cancel” if you don’t need to apply styles</value>
   </data>
   <data name="StyleSaveError" xml:space="preserve">
     <value>Failed to write diagram style file. Selected location may be not writable, or file with the same name already exists and is in use by another program</value>
@@ -916,7 +913,7 @@ Allowed:
     <value>Unknown lexem: “{0:S}”</value>
   </data>
   <data name="IncorrectRangeError" xml:space="preserve">
-    <value>Count of curve's points is too big for specified range and step, or range is empty</value>
+    <value>Quantity of curve’s points is too big for specified range and step, or range is empty</value>
   </data>
   <data name="FormulaEvaluator_Label02" xml:space="preserve">
     <value>Range:</value>
@@ -967,7 +964,7 @@ Allowed:
     <value>Load from clip&amp;board</value>
   </data>
   <data name="ClipboardLoadError" xml:space="preserve">
-    <value>Clipboard doesn't contain suitable data for diagram</value>
+    <value>Clipboard doesn’t contain suitable data for diagram</value>
   </data>
   <data name="MFile_MGenerate_TT" xml:space="preserve">
     <value>Generate curve(s) from analytically defined function(s)</value>
@@ -1019,7 +1016,7 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
     <value>Merging (overlaying) selected curve(s) and/or object(s)</value>
   </data>
   <data name="MOperations_MReplaceColumn" xml:space="preserve">
-    <value>Change curve&amp;'s data columns</value>
+    <value>Change curve&amp;’s data columns</value>
   </data>
   <data name="MOperations_MReplaceColumn_TT" xml:space="preserve">
     <value>Changing data columns of selected (single) curve</value>
@@ -1034,7 +1031,7 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
     <value>Specified file is unavailable</value>
   </data>
   <data name="ShowVideo" xml:space="preserve">
-    <value>Do you want to view user videoguide on our YouTube channel?</value>
+    <value>Do you want to view the user videoguide on our YouTube channel?</value>
   </data>
   <data name="ExceptionMessage" xml:space="preserve">
     <value>Internal error occurred in application. Debug is required</value>
@@ -1043,7 +1040,7 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
     <value>File “{0:S}” has been added: columns – {1:D}, rows – {2:D}</value>
   </data>
   <data name="FileAddError" xml:space="preserve">
-    <value>File “{0:S}” haven't been added: {1:S}</value>
+    <value>File “{0:S}” hasn’t been added: {1:S}</value>
   </data>
   <data name="FilesListReset" xml:space="preserve">
     <value>Files list has been reset</value>
@@ -1113,9 +1110,6 @@ All unsaved data will be lost!</value>
   <data name="HelpText" xml:space="preserve">
     <value>Geomag data drawer is a software tool for creating diagrams based on tabular data. Originally created for visualizing the results of experimental measurements. Can now be used for this purpose. But not exclusively...</value>
   </data>
-  <data name="HelpText_TM" xml:space="preserve">
-    <value>This tool allows you to merge data tables of different types into the single file using columns addition</value>
-  </data>
   <data name="MUpperHelp_MRegister" xml:space="preserve">
     <value>Register file associatio&amp;ns</value>
   </data>
@@ -1133,5 +1127,113 @@ All unsaved data will be lost!</value>
   </data>
   <data name="TablesMergerForm_SFDialog_F" xml:space="preserve">
     <value>Random data set diagrams (*.dat)|*.dat|Windows CSV tables|*.csv</value>
+  </data>
+  <data name="CannotCreateSample" xml:space="preserve">
+    <value>Cannot create an example file. Probably, specified directory is not writable</value>
+  </data>
+  <data name="FileCreated" xml:space="preserve">
+    <value>Image file has been successfully created</value>
+  </data>
+  <data name="FileWritingError" xml:space="preserve">
+    <value>Failed to create the image file: </value>
+  </data>
+  <data name="GeomagDataDrawerFormMenuStrip_MAdditional" xml:space="preserve">
+    <value>Additional</value>
+  </data>
+  <data name="InputFileNotSpecified" xml:space="preserve">
+    <value>The script file hasn’t been specified</value>
+  </data>
+  <data name="MAdditional_MGenerateVI" xml:space="preserve">
+    <value>Generate vector image...</value>
+  </data>
+  <data name="MAdditional_MGenerateVI_TT" xml:space="preserve">
+    <value>Generate a vector image using the command script</value>
+  </data>
+  <data name="MAdditional_MMergeTables" xml:space="preserve">
+    <value>Merge tables...</value>
+  </data>
+  <data name="MAdditional_MMergeTables_TT" xml:space="preserve">
+    <value>Merge two or more data tables into the single file</value>
+  </data>
+  <data name="OutputFileNotSpecified" xml:space="preserve">
+    <value>The location of image file hasn’t been specified</value>
+  </data>
+  <data name="VIG_BrokenLineColor" xml:space="preserve">
+    <value>wrong curve color declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenLinePoint" xml:space="preserve">
+    <value>wrong curve point declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenLineWidth" xml:space="preserve">
+    <value>wrong curve width declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOxColor" xml:space="preserve">
+    <value>wrong Ox axe color declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOxNotch" xml:space="preserve">
+    <value>wrong Ox axe notch declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOxOffset" xml:space="preserve">
+    <value>wrong Ox axe offset declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOxWidth" xml:space="preserve">
+    <value>wrong Ox axe width declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOyColor" xml:space="preserve">
+    <value>wrong Oy axe color declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOyNotch" xml:space="preserve">
+    <value>wrong Oy axe notch declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOyOffset" xml:space="preserve">
+    <value>wrong Oy axe offset declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenOyWidth" xml:space="preserve">
+    <value>wrong Oy axe width declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_BrokenText" xml:space="preserve">
+    <value>wrong text subscription declaration at line {0:D}</value>
+  </data>
+  <data name="VIG_CannotCreateFile" xml:space="preserve">
+    <value>cannot create file in the specified directory</value>
+  </data>
+  <data name="VIG_CannotCreateTMP" xml:space="preserve">
+    <value>cannot create temporary file. Probably, placement of the script file is not writable</value>
+  </data>
+  <data name="VIG_CannotIncludeFile" xml:space="preserve">
+    <value>file “{0:S}” not found, unavailable or declared with wrong parameters</value>
+  </data>
+  <data name="VIG_FileNotAvailable" xml:space="preserve">
+    <value>script file not found or unavailable</value>
+  </data>
+  <data name="VIG_GenerateImageText" xml:space="preserve">
+    <value>&amp;Generate</value>
+  </data>
+  <data name="VIG_IncludeDeepOverflow" xml:space="preserve">
+    <value>maximum number of includings has been exceeded. There may be a circular reference</value>
+  </data>
+  <data name="VIG_IncorrectImageSize" xml:space="preserve">
+    <value>data in the script file doesn’t allow generation of 2D-image</value>
+  </data>
+  <data name="VIG_OFDialogFilter" xml:space="preserve">
+    <value>Script files (*.sc)|*.sc</value>
+  </data>
+  <data name="VIG_OFDialogTitle" xml:space="preserve">
+    <value>Specify the script file for image generation</value>
+  </data>
+  <data name="VIG_SaveSampleText" xml:space="preserve">
+    <value>&amp;Example...</value>
+  </data>
+  <data name="VIG_ScriptReadingError" xml:space="preserve">
+    <value>Failed to read the script: </value>
+  </data>
+  <data name="VIG_SFDialogFilter" xml:space="preserve">
+    <value>SVG vector image files|*.svg|EMF vector image files|*.emf</value>
+  </data>
+  <data name="VIG_SFDialogTitle" xml:space="preserve">
+    <value>Specify the placement for the new image</value>
+  </data>
+  <data name="VIG_SSDialogTitle" xml:space="preserve">
+    <value>Specify the placement for the example script</value>
   </data>
 </root>
