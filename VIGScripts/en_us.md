@@ -135,12 +135,4 @@ to contents of the included file:
 ```
 
 This expression can also be used in the source script to combine and offset
-group of objects.
-
-#
-
-Starting with version 1.3, the application can be used from the command line.
-To view call description, run ```SVGGenerator /?``` command. If generation from
-the command line passes without errors, application does not return any messages
-so as not to delay the batch processing of many files. If there are errors,
-they are displayed as regular messages
+group of objects
