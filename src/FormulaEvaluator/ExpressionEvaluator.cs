@@ -21,17 +21,20 @@ namespace RD_AAOW
 		private double result;
 
 		/// <summary>
+		/// Ограничение ординат при вычислении
+		/// </summary>
+		public const double EvaluationLimit = 1.0e+6;
+
+		/// <summary>
 		/// Конструктор. Вычисляет значение выражения, представленного в форме цепочки шагов
 		/// </summary>
 		/// <param name="Chain">Цепочка шагов вычисления</param>
 		/// <param name="VariableValue">Значение переменной</param>
-		public ExpressionEvaluator (EvaluationChainAssembler Chain, double VariableValue /*List<double> VariableValue*/)
+		public ExpressionEvaluator (EvaluationChainAssembler Chain, double VariableValue)
 			{
 			// Контроль
 			if (!Chain.IsInited)
-				{
 				return;
-				}
 
 			// Массив промежуточных результатов
 			List<double> semiresults = new List<double> ();
@@ -47,21 +50,12 @@ namespace RD_AAOW
 						operand1 = semiresults[(int)Chain.EvaluationChain[i].Operand1Value];
 						break;
 
-					//case EvaluationChainElement.OperandTypes.Nothing :
-
 					case EvaluationChainElement.OperandTypes.Number:
 						operand1 = Chain.EvaluationChain[i].Operand1Value;
 						break;
 
 					case EvaluationChainElement.OperandTypes.Variable:
-						/*if (VariableValue.Count > Chain.EvaluationChain[i].Operand1Index)
-							{*/
-						operand1 = VariableValue;//[(int)Chain.EvaluationChain[i].Operand1Index];
-						/*}
-					else
-						{
-						operand1 = 0.0;
-						}*/
+						operand1 = VariableValue;
 						break;
 					}
 
@@ -71,21 +65,12 @@ namespace RD_AAOW
 						operand2 = semiresults[(int)Chain.EvaluationChain[i].Operand2Value];
 						break;
 
-					//case EvaluationChainElement.OperandTypes.Nothing:
-
 					case EvaluationChainElement.OperandTypes.Number:
 						operand2 = Chain.EvaluationChain[i].Operand2Value;
 						break;
 
 					case EvaluationChainElement.OperandTypes.Variable:
-						/*if (VariableValue.Count > Chain.EvaluationChain[i].Operand2Index)
-							{*/
-						operand2 = VariableValue;//[(int)Chain.EvaluationChain[i].Operand2Index];
-						/*}
-					else
-						{
-						operand2 = 0.0;
-						}*/
+						operand2 = VariableValue;
 						break;
 					}
 
@@ -159,13 +144,13 @@ namespace RD_AAOW
 				}
 
 			// Завершено. Возврат результата со стандартным усечением
-			if (semiresults[semiresults.Count - 1] > 1.0e+6)
+			if (semiresults[semiresults.Count - 1] > EvaluationLimit)
 				{
-				result = 1.0e+6;
+				result = EvaluationLimit;
 				}
-			else if (semiresults[semiresults.Count - 1] < -1.0e+6)
+			else if (semiresults[semiresults.Count - 1] < -EvaluationLimit)
 				{
-				result = -1.0e+6;
+				result = -EvaluationLimit;
 				}
 			else
 				{

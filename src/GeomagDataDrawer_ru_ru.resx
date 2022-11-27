@@ -178,10 +178,10 @@
     <value>Маркер:</value>
   </data>
   <data name="GeomagDataDrawerFormMenuStrip_MFile" xml:space="preserve">
-    <value>&amp;Файл</value>
+    <value>Файл</value>
   </data>
   <data name="GeomagDataDrawerFormMenuStrip_MUpperHelp" xml:space="preserve">
-    <value>&amp;Помощь</value>
+    <value>Помощь</value>
   </data>
   <data name="GeomagDataDrawerForm_LineStyle_0" xml:space="preserve">
     <value>Только линия</value>
@@ -265,40 +265,37 @@
     <value>Панель настройки подписей</value>
   </data>
   <data name="MFile_MExit" xml:space="preserve">
-    <value>В&amp;ыход</value>
+    <value>Выход</value>
   </data>
   <data name="MOperations_MLoadStyle" xml:space="preserve">
-    <value>&amp;Загрузить стиль...</value>
+    <value>Загрузить стиль...</value>
   </data>
   <data name="MFile_MOpenDataFile" xml:space="preserve">
-    <value>&amp;Открыть файл данных...</value>
+    <value>Открыть файл данных...</value>
   </data>
   <data name="MFile_MProgramSettings" xml:space="preserve">
-    <value>Настро&amp;йки программы</value>
+    <value>Настройки программы</value>
   </data>
   <data name="MOperations_MRedactData" xml:space="preserve">
-    <value>Реда&amp;ктировать данные диаграммы...</value>
+    <value>Редактировать данные диаграммы...</value>
   </data>
   <data name="MOperations_MResetStyle" xml:space="preserve">
-    <value>С&amp;бросить стиль</value>
+    <value>Сбросить стиль</value>
   </data>
   <data name="MFile_MSaveDataFile" xml:space="preserve">
-    <value>&amp;Сохранить файл данных...</value>
+    <value>Сохранить файл данных...</value>
   </data>
   <data name="MFile_MSaveDiagramImage" xml:space="preserve">
-    <value>Сохранить &amp;диаграмму...</value>
+    <value>Сохранить диаграмму...</value>
   </data>
   <data name="MOperations_MSaveStyle" xml:space="preserve">
-    <value>Сохранить сти&amp;ль...</value>
+    <value>Сохранить стиль...</value>
   </data>
   <data name="MOperations_MSaveTemplate" xml:space="preserve">
-    <value>Сохранить &amp;шаблон добавления кривых...</value>
-  </data>
-  <data name="MUpperHelp_MAbout" xml:space="preserve">
-    <value>О програ&amp;мме</value>
+    <value>Сохранить шаблон добавления кривых...</value>
   </data>
   <data name="MUpperHelp_MHelp" xml:space="preserve">
-    <value>Сп&amp;равка</value>
+    <value>О программе / справка</value>
   </data>
   <data name="RangeTab_Label01" xml:space="preserve">
     <value>Диапазоны построения:</value>
@@ -343,7 +340,7 @@
     <value>Выполнить транспонирование кривой</value>
   </data>
   <data name="AbortButton" xml:space="preserve">
-    <value>От&amp;мена</value>
+    <value>Отмена</value>
   </data>
   <data name="AbortChanges" xml:space="preserve">
     <value>Все несохранённые изменения будут утеряны. Продолжить?</value>
@@ -352,7 +349,7 @@
     <value>Завершить работу с программой?</value>
   </data>
   <data name="ApplyButton" xml:space="preserve">
-    <value>&amp;ОК</value>
+    <value>ОК</value>
   </data>
   <data name="ApplyChanges" xml:space="preserve">
     <value>Сохранить внесённые изменения?</value>
@@ -466,7 +463,7 @@
     <value>(выберите файл шаблона)</value>
   </data>
   <data name="ColumnsAdderCmd_SelectFile" xml:space="preserve">
-    <value>&amp;Файл</value>
+    <value>Файл</value>
   </data>
   <data name="ColumnsAdderCmd_SFDialog" xml:space="preserve">
     <value>Укажите расположение нового файла шаблона</value>
@@ -676,11 +673,8 @@
   <data name="MOperations_MSaveTemplate_TT" xml:space="preserve">
     <value>Сохранение шаблона добавления кривых в файл</value>
   </data>
-  <data name="MUpperHelp_MAbout_TT" xml:space="preserve">
-    <value>Отображение сведений о программе</value>
-  </data>
   <data name="MUpperHelp_MHelp_TT" xml:space="preserve">
-    <value>Отображение файла справки</value>
+    <value>Отобразить краткие сведения о приложении и руководство пользователя</value>
   </data>
   <data name="NotEnoughDataError" xml:space="preserve">
     <value>указанный файл содержит недостаточное количество строк и/или столбцов данных. Возможно, указано слишком большое количество строк, используемых для поиска названий столбцов данных</value>
@@ -734,7 +728,7 @@
     <value>Кнопка позволяет обменять местами минимальную и максимальную ординаты диапазона построения (отразить ось Oy)</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
-    <value>&amp;Сохранить</value>
+    <value>Сохранить</value>
   </data>
   <data name="SaveCfgFileError" xml:space="preserve">
     <value>Не удалось сохранить конфигурацию программы. Возможно, место установки программы защищено от записи, или файл занят другой программой</value>
@@ -857,10 +851,10 @@
     <value>Ввод формулы для генерации кривых</value>
   </data>
   <data name="MFile_MClose" xml:space="preserve">
-    <value>Закрыт&amp;ь диаграмму</value>
+    <value>Закрыть диаграмму</value>
   </data>
   <data name="MFile_MGenerate" xml:space="preserve">
-    <value>С&amp;генерировать кривые...</value>
+    <value>Сгенерировать кривые...</value>
   </data>
   <data name="ExpressionIsEmptyError" xml:space="preserve">
     <value>Введённое выражение пусто</value>
@@ -965,7 +959,7 @@
     <value>Всего точек:</value>
   </data>
   <data name="MFile_MLoadFromClipboard" xml:space="preserve">
-    <value>Загрузить из б&amp;уфера обмена</value>
+    <value>Загрузить из буфера обмена</value>
   </data>
   <data name="ClipboardLoadError" xml:space="preserve">
     <value>Буфер обмена не содержит данных, подходящих для построения диаграмм</value>
@@ -993,13 +987,13 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   [ECC] – ожидаемое количество столбцов данных (для извлечения); если не указан, считывается из конфигурации</value>
   </data>
   <data name="GeomagDataDrawerFormMenuStrip_MOperations" xml:space="preserve">
-    <value>Оп&amp;ерации</value>
+    <value>Операции</value>
   </data>
   <data name="MOperations_MAddColumn" xml:space="preserve">
-    <value>Добавить кр&amp;ивую или объект</value>
+    <value>Добавить кривую или объект</value>
   </data>
   <data name="MOperations_MAddColumnCmd" xml:space="preserve">
-    <value>Параметри&amp;ческое добавление кривых</value>
+    <value>Параметрическое добавление кривых</value>
   </data>
   <data name="MOperations_MAddColumnCmd_TT" xml:space="preserve">
     <value>Добавление кривых на диаграмму с помощью строки параметров</value>
@@ -1008,19 +1002,19 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
     <value>Добавление кривой или графического объекта на диаграмму</value>
   </data>
   <data name="MOperations_MDeleteColumn" xml:space="preserve">
-    <value>Удали&amp;ть кривые и объекты</value>
+    <value>Удалить кривые и объекты</value>
   </data>
   <data name="MOperations_MDeleteColumn_TT" xml:space="preserve">
     <value>Удаление выбранных кривых и объектов с диаграммы</value>
   </data>
   <data name="MOperations_MMergeLines" xml:space="preserve">
-    <value>Со&amp;вместить кривые или объекты</value>
+    <value>Совместить кривые или объекты</value>
   </data>
   <data name="MOperations_MMergeLines_TT" xml:space="preserve">
     <value>Совмещение (наложение) кривых и/или объектов</value>
   </data>
   <data name="MOperations_MReplaceColumn" xml:space="preserve">
-    <value>Выбор столб&amp;цов данных кривой</value>
+    <value>Выбор столбцов данных кривой</value>
   </data>
   <data name="MOperations_MReplaceColumn_TT" xml:space="preserve">
     <value>Изменение столбцов данных, использованных для построения выбранной (одной) кривой</value>
@@ -1118,7 +1112,7 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
     <value>Этот инструмент позволяет объединять таблицы данных различных типов в единый файл путём добавления столбцов</value>
   </data>
   <data name="MUpperHelp_MRegister" xml:space="preserve">
-    <value>&amp;Ассоциировать файлы</value>
+    <value>Ассоциировать файлы</value>
   </data>
   <data name="MUpperHelp_MRegister_TT" xml:space="preserve">
     <value>Добавить типы файлов в реестр Windows и сделать их открываемыми по двойному клику</value>
@@ -1214,13 +1208,13 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
     <value>файл скрипта не найден или недоступен</value>
   </data>
   <data name="VIG_GenerateImageText" xml:space="preserve">
-    <value>&amp;Сформировать</value>
+    <value>Сформировать</value>
   </data>
   <data name="VIG_IncludeDeepOverflow" xml:space="preserve">
     <value>превышено максимально допустимое количество включений. Возможно, присутствует циклическая ссылка</value>
   </data>
   <data name="VIG_IncorrectImageSize" xml:space="preserve">
-    <value>данные в файле скрипта не позволяют сформировать двумерное изображение</value>
+    <value>данные в файле скрипта недостаточны для формирования двумерного изображения</value>
   </data>
   <data name="VIG_OFDialogFilter" xml:space="preserve">
     <value>Файлы скриптов (*.sc)|*.sc</value>
@@ -1229,7 +1223,7 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
     <value>Выберите скрипт для формирования изображения</value>
   </data>
   <data name="VIG_SaveSampleText" xml:space="preserve">
-    <value>&amp;Образец...</value>
+    <value>Образец...</value>
   </data>
   <data name="VIG_ScriptReadingError" xml:space="preserve">
     <value>Ошибка чтения скрипта: </value>
@@ -1242,5 +1236,23 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   </data>
   <data name="VIG_SSDialogTitle" xml:space="preserve">
     <value>Укажите место для сохранения образца скрипта</value>
+  </data>
+  <data name="TemplateReset" xml:space="preserve">
+    <value>Сбросить стандартный шаблон предпросмотра к начальным установкам?</value>
+  </data>
+  <data name="MOperations_MReplaceTemplate" xml:space="preserve">
+    <value>Заменить шаблон предпросмотра</value>
+  </data>
+  <data name="MOperations_MReplaceTemplate_TT" xml:space="preserve">
+    <value>Замена шаблона предпросмотра текущими настройками</value>
+  </data>
+  <data name="MOperations_MRestoreTemplate" xml:space="preserve">
+    <value>Сбросить шаблон предпросмотра</value>
+  </data>
+  <data name="MOperations_MRestoreTemplate_TT" xml:space="preserve">
+    <value>Сброс шаблона предпросмотра до начальных настроек</value>
+  </data>
+  <data name="TemplateReplace" xml:space="preserve">
+    <value>Заменить стандартный шаблон предпросмотра?</value>
   </data>
 </root>

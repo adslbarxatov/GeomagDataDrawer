@@ -75,6 +75,10 @@ namespace RD_AAOW
 			AbortButton.Text = Localization.GetText ("AbortButton", Language);
 			Localization.SetControlsText (this, Language);
 
+			StartValue.Maximum = EndValue.Maximum = (decimal)ExpressionEvaluator.EvaluationLimit;
+			StartValue.Minimum = EndValue.Minimum = (decimal)-ExpressionEvaluator.EvaluationLimit;
+			StepValue.Maximum = (decimal)ExpressionEvaluator.EvaluationLimit;
+
 			// Сохранение параметров
 			language = Language;
 
@@ -97,11 +101,11 @@ namespace RD_AAOW
 			{
 			// Контроль диапазона
 			if ((StepValue.Value == 0) ||
-				((uint)(Math.Abs (EndValue.Value - StartValue.Value) / StepValue.Value) + 1 > DiagramData.MaxDataRows) ||
-				(EndValue.Value == StartValue.Value))
+				((uint)(Math.Abs (EndValue.Value - StartValue.Value) / StepValue.Value) + 1 >
+				DiagramData.MaxDataRows) || (EndValue.Value == StartValue.Value))
 				{
-				MessageBox.Show (Localization.GetText ("IncorrectRangeError", language), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				MessageBox.Show (Localization.GetText ("IncorrectRangeError", language),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 				}
 
@@ -139,6 +143,15 @@ namespace RD_AAOW
 
 				// Название столбца
 				columnsNames.Add (CurvesList.Items[c].ToString ());
+
+				// Прогон на точки разрыва
+				for (int i = 2; i < y[y.Count - 1].Count; i++)
+					{
+					// Если два соседних значения отличаются по знаку и отстоят друг от друга
+					// (по модулю) более чем на 10⁶, скорее всего, это – точка разрыва
+					if (y[y.Count - 1][i - 2] * y[y.Count - 1][i] < -ExpressionEvaluator.EvaluationLimit)
+						y[y.Count - 1][i - 1] = double.NaN;
+					}
 				}
 
 			// Завершение

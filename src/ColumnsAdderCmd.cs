@@ -466,7 +466,15 @@ namespace RD_AAOW
 		/// <returns>Возвращает true в случае успеха</returns>
 		public bool CreateParametersFile (string FileName)
 			{
-			// Попытка открытия файла
+			if (!CreateDefaultParametersFile (FileName))
+				{
+				ProcessingResults.Text = Localization.GetText ("TemplateSaveError", language);
+				return false;
+				}
+
+			return true;
+
+			/*// Попытка открытия файла
 			FileStream FS = null;
 			try
 				{
@@ -479,7 +487,33 @@ namespace RD_AAOW
 				}
 
 			// Запись и завершение
-			FS.Write (RD_AAOW.Properties.GeomagDataDrawer.LineParameters, 0, RD_AAOW.Properties.GeomagDataDrawer.LineParameters.Length);
+			FS.Write (RD_AAOW.Properties.GeomagDataDrawer.LineParameters, 0,
+				RD_AAOW.Properties.GeomagDataDrawer.LineParameters.Length);
+			FS.Close ();
+			return true;*/
+			}
+
+		/// <summary>
+		/// Метод создаёт образец файла параметров добавляемых кривых
+		/// </summary>
+		/// <param name="FileName">Имя создаваемого файла</param>
+		/// <returns>Возвращает true в случае успеха</returns>
+		public static bool CreateDefaultParametersFile (string FileName)
+			{
+			// Попытка открытия файла
+			FileStream FS = null;
+			try
+				{
+				FS = new FileStream (FileName, FileMode.Create);
+				}
+			catch
+				{
+				return false;
+				}
+
+			// Запись и завершение
+			FS.Write (RD_AAOW.Properties.GeomagDataDrawer.LineParameters, 0,
+				RD_AAOW.Properties.GeomagDataDrawer.LineParameters.Length);
 			FS.Close ();
 			return true;
 			}
@@ -510,8 +544,13 @@ namespace RD_AAOW
 			return 0;
 			}
 
-		// Метод сохраняет параметры стилей в файл шаблона
-		private bool WriteParametersFile (DiagramData Data, string FileName)
+		/// <summary>
+		/// Метод сохраняет параметры стилей в файл шаблона
+		/// </summary>
+		/// <param name="Data">Данные диаграммы для извлечения шаблона</param>
+		/// <param name="FileName">Файл шаблона</param>
+		/// <returns>Возвращает true в случае успеха</returns>
+		public static bool WriteParametersFile (DiagramData Data, string FileName)
 			{
 			// Попытка создания файла файла
 			FileStream FS = null;
@@ -523,7 +562,7 @@ namespace RD_AAOW
 				{
 				return false;
 				}
-			StreamWriter SW = new StreamWriter (FS, Encoding.GetEncoding (1251));
+			StreamWriter SW = new StreamWriter (FS, Encoding.UTF8);
 
 			// Запись
 			for (int i = 0; i < Data.LinesCount; i++)

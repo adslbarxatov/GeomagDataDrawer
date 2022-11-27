@@ -1,5 +1,18 @@
 ﻿Geomag data drawer: changes log
 
+ToDo:
+- Add the runtime image movement;
+- Limit for the data editor, maybe?
+
+Version 5.2:
+• Added the ability to restore the default preview template;
+• Selection tool has been replaced with the middle mouse button. It allows to select
+  diagrams and object with drag’n’drop movement or with one click;
+• Implemented the ability to properly parse line interruptions in the data generator
+  (for tg, ctg and other similar functions);
+• Updated the user guide;
+• Removed alphabet hotkeys for the main menu
+
 Version 5.1:
 • Tables merger and vector images generator have been integrated into GDD;
 • Font size of interface elements is correct now;

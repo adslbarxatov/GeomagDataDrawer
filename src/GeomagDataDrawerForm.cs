@@ -17,7 +17,7 @@ namespace RD_AAOW
 			new DiagramData ("", DataInputTypes.Unknown, 0);
 
 		// Состояние загрузки значений параметров в контролы
-		private bool loading = false;                           
+		private bool loading = false, selectionMode = false;
 
 		// Аксессор конфигурации программы (загрузка или инициализация)
 		private ConfigAccessor ca = new ConfigAccessor ();      
@@ -78,6 +78,7 @@ namespace RD_AAOW
 			MainTabControl_Leave (MainTabControl, null);
 
 			#region Настройка контролов
+
 			// Диалоги
 			StyleFontDialog.MaxSize = (int)DiagramStyle.MaxFontSize;
 			StyleFontDialog.MinSize = (int)DiagramStyle.MinFontSize;
@@ -120,9 +121,11 @@ namespace RD_AAOW
 
 			// Настройка эффекта выделения
 			MainSelector.Parent = DiagramBox;
+
 			#endregion
 
 			#region Загрузка диаграммы
+
 			if (SentFileType == DataInputTypes.Unspecified)
 				{
 				// Загрузка стандартного файла данных при старте
@@ -145,10 +148,11 @@ namespace RD_AAOW
 					}
 
 				// Контроль результата (до настоящей загрузки результат BrokenFile допустим по признаку имён столбцов)
-				if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult != DiagramDataInitResults.BrokenFile))
+				if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult !=
+					DiagramDataInitResults.BrokenFile))
 					{
-					MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage), SentFileName,
-						DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult, ca.InterfaceLanguage)),
+					MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
+						SentFileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult, ca.InterfaceLanguage)),
 						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					return;
 					}
@@ -190,7 +194,8 @@ namespace RD_AAOW
 
 				ChangeControlsState (true);
 
-				if (ca.ForceShowDiagram && (SentFileType != DataInputTypes.GDD) && (SentFileType != DataInputTypes.Unspecified))
+				if (ca.ForceShowDiagram && (SentFileType != DataInputTypes.GDD) && 
+					(SentFileType != DataInputTypes.Unspecified))
 					{
 					AddFirstColumns ();
 					}
@@ -330,21 +335,20 @@ namespace RD_AAOW
 			// Окно программы и меню
 			if (DiagramBox.Enabled != NewState)
 				{
-				AddColumn.Enabled = //AddColumnCmd.Enabled = MergeLines.Enabled =
-				MAddColumn.Enabled = MAddColumnCmd.Enabled = MMergeLines.Enabled =
+				AddColumn.Enabled = MAddColumn.Enabled = MAddColumnCmd.Enabled = MMergeLines.Enabled =
 
-				/*ReplaceColumn.Enabled = */DeleteColumn.Enabled =
-				MReplaceColumn.Enabled = MDeleteColumn.Enabled =
+				DeleteColumn.Enabled = MReplaceColumn.Enabled = MDeleteColumn.Enabled =
 
-				LineNamesList.Enabled = DrawLine.Enabled = SelectionMode.Enabled =
+				LineNamesList.Enabled = DrawLine.Enabled = /*SelectionMode.Enabled =*/
 				DiagramBox.Enabled = HorScroll.Enabled = VertScroll.Enabled =
 				MLoadStyle.Enabled = MSaveStyle.Enabled = MResetStyle.Enabled = MSaveTemplate.Enabled =
-				MSaveDataFile.Enabled = MSaveDiagramImage.Enabled = MRedactData.Enabled = NewState;
+				MSaveDataFile.Enabled = MSaveDiagramImage.Enabled = MRedactData.Enabled =
+				MRestoreTemplate.Enabled = MReplaceTemplate.Enabled = NewState;
 				}
 
 			bool isAnObject = LineNamesList.SelectedIndex >= dd.LinesCount;
-			DiagramAdditionalObjects objectType = (isAnObject ? dd.GetObjectType ((uint)LineNamesList.SelectedIndex - dd.LinesCount)
-				: DiagramAdditionalObjects.Text);
+			DiagramAdditionalObjects objectType = (isAnObject ? dd.GetObjectType ((uint)LineNamesList.SelectedIndex -
+				dd.LinesCount) : DiagramAdditionalObjects.Text);
 			bool hasItems = (LineNamesList.Items.Count != 0);
 
 			// Основные
@@ -389,16 +393,23 @@ namespace RD_AAOW
 
 			LineStyleCombo.Enabled = (NewState && !isAnObject && hasItems);
 
-			Label28.Enabled = Label29.Enabled = LineWidth.Enabled = (NewState && hasItems &&
-				(!isAnObject || isAnObject && ((objectType == DiagramAdditionalObjects.LineH) ||
-				(objectType == DiagramAdditionalObjects.LineV) || (objectType == DiagramAdditionalObjects.LineNWtoSE) ||
-				(objectType == DiagramAdditionalObjects.LineSWtoNE) || (objectType == DiagramAdditionalObjects.Rectangle) ||
+			Label28.Enabled = Label29.Enabled = LineWidth.Enabled = (NewState && hasItems && 
+				(!isAnObject || isAnObject &&
+				((objectType == DiagramAdditionalObjects.LineH) ||
+				(objectType == DiagramAdditionalObjects.LineV) ||
+				(objectType == DiagramAdditionalObjects.LineNWtoSE) ||
+				(objectType == DiagramAdditionalObjects.LineSWtoNE) ||
+				(objectType == DiagramAdditionalObjects.Rectangle) ||
 				(objectType == DiagramAdditionalObjects.Ellipse))));
 
-			LineColor.Enabled = (NewState && hasItems && (!isAnObject || isAnObject && ((objectType == DiagramAdditionalObjects.LineH) ||
-				(objectType == DiagramAdditionalObjects.LineV) || (objectType == DiagramAdditionalObjects.LineNWtoSE) ||
-				(objectType == DiagramAdditionalObjects.LineSWtoNE) || (objectType == DiagramAdditionalObjects.Rectangle) ||
-				(objectType == DiagramAdditionalObjects.Ellipse) || (objectType == DiagramAdditionalObjects.FilledRectangle) ||
+			LineColor.Enabled = (NewState && hasItems && (!isAnObject || isAnObject &&
+				((objectType == DiagramAdditionalObjects.LineH) ||
+				(objectType == DiagramAdditionalObjects.LineV) ||
+				(objectType == DiagramAdditionalObjects.LineNWtoSE) ||
+				(objectType == DiagramAdditionalObjects.LineSWtoNE) ||
+				(objectType == DiagramAdditionalObjects.Rectangle) ||
+				(objectType == DiagramAdditionalObjects.Ellipse) ||
+				(objectType == DiagramAdditionalObjects.FilledRectangle) ||
 				(objectType == DiagramAdditionalObjects.FilledEllipse))));
 
 			// Лейблы
@@ -464,32 +475,55 @@ namespace RD_AAOW
 		// Смещение кривой "перетаскиванием" или выделение группы кривых
 		private void DiagramBox_MouseUp (object sender, MouseEventArgs e)
 			{
-			// Выделение диаграмм
-			if (SelectionMode.Checked)
+			/*// Выбор одной диаграммы нажатием мыши
+			if (e.Button == MouseButtons.Middle)
 				{
-				SelectionMode.Checked = false;
+				// Сброс списка
+				LineNamesList.SelectedItems.Clear ();
+
+				// Поиск пересечений
+				for (int i = 0; i < LineNamesList.Items.Count; i++)
+					{
+					Rectangle r2 = new Rectangle ((int)dd.GetStyle (i).DiagramImageLeftOffset,
+						(int)dd.GetStyle (i).DiagramImageTopOffset,
+						(int)dd.GetStyle (i).DiagramImageWidth, (int)dd.GetStyle (i).DiagramImageHeight);
+
+					if (r2.Contains (e.X, e.Y))
+						LineNamesList.SelectedIndices.Add (i);
+					}
+
+				// Отдельная обработка, отмена остальных операций
+				return;
+				}*/
+
+			// Выделение диаграмм
+			if (selectionMode)
+				{
+				selectionMode = false;
 				MainSelector.Visible = false;
 
 				// Сброс списка
 				LineNamesList.SelectedItems.Clear ();
 
 				// Поиск подходящих кривых
-				Rectangle r1 = new Rectangle (Math.Min (e.X, oldMouseX) + HorScroll.Value, Math.Min (e.Y, oldMouseY) + VertScroll.Value,
-					Math.Max (e.X, oldMouseX) - Math.Min (e.X, oldMouseX), Math.Max (e.Y, oldMouseY) - Math.Min (e.Y, oldMouseY));
+				Rectangle r1 = new Rectangle (Math.Min (e.X, oldMouseX) + HorScroll.Value, Math.Min (e.Y, oldMouseY) +
+					VertScroll.Value, Math.Max (e.X, oldMouseX) - Math.Min (e.X, oldMouseX),
+					Math.Max (e.Y, oldMouseY) - Math.Min (e.Y, oldMouseY));
 				for (int i = 0; i < LineNamesList.Items.Count; i++)
 					{
-					Rectangle r2 = new Rectangle ((int)dd.GetStyle (i).DiagramImageLeftOffset, (int)dd.GetStyle (i).DiagramImageTopOffset,
+					Rectangle r2 = new Rectangle ((int)dd.GetStyle (i).DiagramImageLeftOffset,
+						(int)dd.GetStyle (i).DiagramImageTopOffset,
 						(int)dd.GetStyle (i).DiagramImageWidth, (int)dd.GetStyle (i).DiagramImageHeight);
+
 					if (r1.IntersectsWith (r2))
-						{
 						LineNamesList.SelectedIndices.Add (i);
-						}
 					}
 
 				// Отображение списка
 				LineNamesList_MouseClick (sender, e);
 				LineNamesList.Select ();
 				}
+
 			// Смещение по полю
 			else
 				{
@@ -533,7 +567,7 @@ namespace RD_AAOW
 		// Изменение эффекта выделения
 		private void DiagramBox_MouseMove (object sender, MouseEventArgs e)
 			{
-			if (SelectionMode.Checked)
+			if (selectionMode)
 				{
 				MainSelector.Left = Math.Min (oldMouseX, e.X);
 				MainSelector.Top = Math.Min (oldMouseY, e.Y);
@@ -549,6 +583,9 @@ namespace RD_AAOW
 			MainTabControl_Leave (MainTabControl, null);
 			LineNamesList_Leave (LineNamesList, null);
 
+			if (e.Button == MouseButtons.Middle)
+				selectionMode = true;
+
 			// Обработка движения по полю диаграммы или выделения кривых
 			if (e.Clicks == 1)
 				{
@@ -557,7 +594,7 @@ namespace RD_AAOW
 				}
 
 			// Эффект выделения, если требуется
-			if (SelectionMode.Checked)
+			if (selectionMode)
 				{
 				MainSelector.Visible = true;
 				MainSelector.Left = oldMouseX;
@@ -566,7 +603,7 @@ namespace RD_AAOW
 				}
 
 			// Обработка позиционирования диаграмм
-			if ((e.Clicks == 2) /*&& !ca.DisableMousePlacing*/)
+			if (e.Clicks == 2)
 				{
 				// Смещение подписей осей и диаграммы
 				if (Control.ModifierKeys == Keys.Control)
@@ -805,20 +842,14 @@ namespace RD_AAOW
 			if (!cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
 				{
 				if (!cad.CreateParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
-					{
 					return;
-					}
 
 				cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName);
 				}
 
 			// Контроль
 			if (cad.XColumnNumber.Count == 0)
-				{
 				return;
-				}
-			/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-				MDeleteColumn.Enabled = MReplaceColumn.Enabled = true;*/
 
 			// Добавление
 			for (int i = 0; i < cad.XColumnNumber.Count; i++)
@@ -831,7 +862,8 @@ namespace RD_AAOW
 				else if (res == -3)
 					{
 					MessageBox.Show (string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
-						DiagramData.MaxLines), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+						DiagramData.MaxLines), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, 
+						MessageBoxIcon.Exclamation);
 					break;
 					}
 
@@ -1000,16 +1032,16 @@ namespace RD_AAOW
 			ProgramDescription.ShowAbout (false);
 			}
 
-		// Справка
+		/* // Справка
 		private void MHelp_Click (object sender, EventArgs e)
 			{
-			/*// Проверка существования файла
+			// Проверка существования файла
 			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.CriticalComponents[0]))
 				{
 				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
-				}*/
+				}
 
 			// Запуск
 			try
@@ -1021,7 +1053,7 @@ namespace RD_AAOW
 				MessageBox.Show (Localization.GetText ("HelpFileError", ca.InterfaceLanguage),
 					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				}
-			}
+			}*/
 
 		// Справка
 		private void MRegister_Click (object sender, EventArgs e)
@@ -1144,14 +1176,12 @@ namespace RD_AAOW
 				}
 
 			if (MessageBox.Show (Localization.GetText ("StylesReset", ca.InterfaceLanguage),
-				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
-				== DialogResult.Yes)
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button2) == DialogResult.Yes)
 				{
 				// Сброс
 				for (int i = 0; i < LineNamesList.SelectedIndices.Count; i++)
-					{
 					dd.ResetStyle ((uint)LineNamesList.SelectedIndices[i]);
-					}
 
 				// Перерисовка
 				LineNames_SelectedIndexChanged (LineNamesList, null);
@@ -1178,6 +1208,34 @@ namespace RD_AAOW
 					// Сохранение отменено
 					break;
 				}
+			}
+
+		// Восстановление шаблона добавления кривых
+		private void MReplaceTemplate_Click (object sender, EventArgs e)
+			{
+			if (MessageBox.Show (Localization.GetText ("TemplateReplace", ca.InterfaceLanguage),
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+				return;
+
+			if (!ColumnsAdderCmd.WriteParametersFile (dd, RDGenerics.AppStartupPath +
+				ConfigAccessor.LineParametersFileName))
+				MessageBox.Show (Localization.GetText ("TemplateSaveError", ca.InterfaceLanguage),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
+
+		// Восстановление шаблона добавления кривых
+		private void MRestoreTemplate_Click (object sender, EventArgs e)
+			{
+			if (MessageBox.Show (Localization.GetText ("TemplateReset", ca.InterfaceLanguage),
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+				MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+				return;
+
+			if (!ColumnsAdderCmd.CreateDefaultParametersFile (RDGenerics.AppStartupPath +
+				ConfigAccessor.LineParametersFileName))
+				MessageBox.Show (Localization.GetText ("TemplateSaveError", ca.InterfaceLanguage),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			}
 
 		// Редактирование данных диаграммы
