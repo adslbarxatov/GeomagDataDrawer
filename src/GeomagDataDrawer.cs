@@ -31,9 +31,9 @@ namespace RD_AAOW
 				return;
 
 			// Отображение справки и запроса на принятие Политики
-			if (!ProgramDescription.AcceptEULA ())
+			if (!RDGenerics.AcceptEULA ())
 				return;
-			ProgramDescription.ShowAbout (true);
+			RDGenerics.ShowAbout (true);
 
 			// Передача параметра и предполагаемого типа файла
 			if (args.Length > 0)
@@ -41,8 +41,9 @@ namespace RD_AAOW
 				// Справка по командной строке
 				if (args[0].Contains ("?"))
 					{
-					MessageBox.Show (Localization.GetText ("CommandLineHelp", ca.InterfaceLanguage),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+					/*MessageBox.Shw (Localization.GetText ("CommandLineHelp", ca.InterfaceLanguage),
+						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);*/
+					RDGenerics.LocalizedMessageBox (RDMessageTypes.Information, "CommandLineHelp");
 					return;
 					}
 
@@ -145,10 +146,14 @@ namespace RD_AAOW
 				// Контроль результата
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					MessageBox.Show (string.Format (Localization.GetText ("DataFileLoadError",
+					/*MessageBox.Shw (string.Format (Localization.GetText ("DataFileLoadError",
 						ca.InterfaceLanguage), args[0],
 						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+					RDGenerics.MessageBox (RDMessageTypes.Warning,
+						string.Format (Localization.GetText ("DataFileLoadError",
+						ca.InterfaceLanguage), args[0],
+						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)));
 					return;
 					}
 
@@ -157,8 +162,9 @@ namespace RD_AAOW
 					{
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
-						MessageBox.Show (Localization.GetText ("DataFileSaveError", ca.InterfaceLanguage),
-							ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+						/*MessageBox.Shw (Localization.GetText ("DataFileSaveError", ca.InterfaceLanguage),
+							ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "DataFileSaveError");
 						return;
 						}
 					}

@@ -1089,7 +1089,7 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
     <value>Все файлы данных|*.*</value>
   </data>
   <data name="TablesMerger_Exit" xml:space="preserve">
-    <value>Завершить работу с программой?
+    <value>Завершить работу в режиме объединения таблиц?
 
 Все несохранённые данные будут утеряны!</value>
   </data>

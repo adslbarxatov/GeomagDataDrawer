@@ -116,15 +116,17 @@ namespace RD_AAOW
 			// Контроль параметров
 			if (OFName.Text == "")
 				{
-				MessageBox.Show (Localization.GetText ("InputFileNotSpecified", al), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (Localization.GetText ("InputFileNotSpecified", al), ProgramDescription.AssemblyTitle,
+					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "InputFileNotSpecified");
 				return;
 				}
 
 			if (SFName.Text == "")
 				{
-				MessageBox.Show (Localization.GetText ("OutputFileNotSpecified", al), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (Localization.GetText ("OutputFileNotSpecified", al), ProgramDescription.AssemblyTitle,
+					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "OutputFileNotSpecified");
 				return;
 				}
 
@@ -170,8 +172,9 @@ namespace RD_AAOW
 						throw new Exception ("Internal error occurred. Debug is required at point 1");
 					}
 
-				MessageBox.Show (msg, ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-					MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (msg, ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
+					MessageBoxIcon.Exclamation);*/
+				RDGenerics.MessageBox (RDMessageTypes.Warning, msg);
 				return;
 				}
 
@@ -206,8 +209,9 @@ namespace RD_AAOW
 						throw new Exception ("Internal error occurred. Debug is required at point 4");
 					}
 
-				MessageBox.Show (msg, ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-					MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (msg, ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
+					MessageBoxIcon.Exclamation);*/
+				RDGenerics.MessageBox (RDMessageTypes.Warning, msg);
 				return;
 				}
 
@@ -283,8 +287,10 @@ namespace RD_AAOW
 			vectorAdapter.CloseFile ();
 
 			if (showSuccessMessage)
-				MessageBox.Show (Localization.GetText ("FileCreated", al), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.OK, MessageBoxIcon.Information);
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Success, "FileCreated");
+
+			/*MessageBox.Shw (Localization.GetText ("FileCreated", al), ProgramDescription.AssemblyTitle,
+				 MessageBoxButtons.OK, MessageBoxIcon.Information);*/
 			}
 
 		// Сохранение образца сценария
@@ -303,8 +309,9 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				MessageBox.Show (Localization.GetText ("CannotCreateSample", al),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (Localization.GetText ("CannotCreateSample", al),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "CannotCreateSample");
 				return;
 				}
 

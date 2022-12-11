@@ -185,8 +185,9 @@ namespace RD_AAOW
 					}
 				catch
 					{
-					MessageBox.Show (Localization.GetText ("ImageSaveError", language),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					/*MessageBox.Shw (Localization.GetText ("ImageSaveError", language),
+						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
 					}
 				b.Dispose ();
 				g.Dispose ();
@@ -206,8 +207,9 @@ namespace RD_AAOW
 						if ((emfa.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (emfa) < 0))
 							{
-							MessageBox.Show (Localization.GetText ("ImageSaveError", language),
-								ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+							/*MessageBox.Shw (Localization.GetText ("ImageSaveError", language),
+								ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
 							}
 						break;
 
@@ -219,8 +221,9 @@ namespace RD_AAOW
 						if ((svga.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (svga) < 0))
 							{
-							MessageBox.Show (Localization.GetText ("ImageSaveError", language),
-								ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+							/*MessageBox.Shw (Localization.GetText ("ImageSaveError", language),
+								ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
 							}
 						break;
 					}

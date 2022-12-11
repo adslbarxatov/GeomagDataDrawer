@@ -1082,7 +1082,7 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
     <value>All data files|*.*</value>
   </data>
   <data name="TablesMerger_Exit" xml:space="preserve">
-    <value>Exit the application?
+    <value>Exit the tables merger?
 
 All unsaved data will be lost!</value>
   </data>

@@ -92,8 +92,9 @@ namespace RD_AAOW
 		// Обработка ошибки ввода данных
 		private void MainDataGrid_DataError (object sender, DataGridViewDataErrorEventArgs e)
 			{
-			MessageBox.Show (Localization.GetText ("IncorrectValueError", language),
-				ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			/*MessageBox.Shw (Localization.GetText ("IncorrectValueError", language),
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+			RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "IncorrectValueError");
 			}
 
 		// Добавление строки
@@ -123,8 +124,9 @@ namespace RD_AAOW
 			// Контроль количества строк
 			if (MainDataGrid.Rows.Count <= 2)
 				{
-				MessageBox.Show (Localization.GetText ("NotEnoughRowsError", language), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (Localization.GetText ("NotEnoughRowsError", language), ProgramDescription.AssemblyTitle,
+					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "NotEnoughRowsError");
 				return;
 				}
 
@@ -238,8 +240,10 @@ namespace RD_AAOW
 			if (cancelled)
 				{
 				// Проверка на отмену изменений
-				if (MessageBox.Show (Localization.GetText ("AbortChanges", language), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+				/*if (MessageBox.Shw (Localization.GetText ("AbortChanges", language), ProgramDescription.AssemblyTitle,
+					 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)*/
+				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "AbortChanges",
+					Localization.DefaultButtons.YesNoFocus, Localization.DefaultButtons.No) == RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
 					return;
@@ -248,8 +252,10 @@ namespace RD_AAOW
 			else
 				{
 				// Проверка на применение изменений
-				if (MessageBox.Show (Localization.GetText ("ApplyChanges", language), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+				/*if (MessageBox.Shw (Localization.GetText ("ApplyChanges", language), ProgramDescription.AssemblyTitle,
+					 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)*/
+				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "ApplyChanges",
+					Localization.DefaultButtons.Yes, Localization.DefaultButtons.No) == RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
 					return;
@@ -260,9 +266,12 @@ namespace RD_AAOW
 
 				if (ddt.InitResult != DiagramDataInitResults.Ok)
 					{
-					MessageBox.Show (string.Format (Localization.GetText ("DataProcessingError", language),
+					/*MessageBox.Shw (string.Format (Localization.GetText ("DataProcessingError", language),
 						DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable, language)),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+					RDGenerics.MessageBox (RDMessageTypes.Warning,
+						string.Format (Localization.GetText ("DataProcessingError", language),
+						DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable, language)));
 					e.Cancel = true;
 					return;
 					}

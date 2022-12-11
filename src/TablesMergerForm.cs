@@ -142,8 +142,9 @@ namespace RD_AAOW
 			// Контроль
 			if (dataTables.Count < 2)
 				{
-				MessageBox.Show (Localization.GetText ("NotEnoughFilesToMerge", al), ProgramDescription.AssemblyTitle,
-					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (Localization.GetText ("NotEnoughFilesToMerge", al), ProgramDescription.AssemblyTitle,
+					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "NotEnoughFilesToMerge");
 				return;
 				}
 
@@ -278,8 +279,9 @@ namespace RD_AAOW
 			// Финальный контроль
 			if (mergedTable.Count < 2)
 				{
-				MessageBox.Show (Localization.GetText ("TablesMergeError", al),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (Localization.GetText ("TablesMergeError", al),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TablesMergeError");
 				return;
 				}
 
@@ -296,8 +298,11 @@ namespace RD_AAOW
 
 		private void TableMergerForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			e.Cancel = MessageBox.Show (Localization.GetText ("TablesMerger_Exit", al),
-				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes;
+			/*e.Cancel = MessageBox.Shw (Localization.GetText ("TablesMerger_Exit", al),
+				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) !=
+				DialogResult.Yes;*/
+			e.Cancel = (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TablesMerger_Exit",
+				Localization.DefaultButtons.Yes, Localization.DefaultButtons.No) != RDMessageButtons.ButtonOne);
 			}
 
 		// Сохранение таблицы
@@ -311,8 +316,9 @@ namespace RD_AAOW
 			DiagramData dd = new DiagramData (mergedTable, mergedColumnNames);
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)(SFDialog.FilterIndex + 1), true) != 0)
 				{
-				MessageBox.Show (Localization.GetText ("DataFileSaveError", al), ProgramDescription.AssemblyTitle,
-					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (Localization.GetText ("DataFileSaveError", al), ProgramDescription.AssemblyTitle,
+					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "DataFileSaveError");
 				}
 			else
 				{

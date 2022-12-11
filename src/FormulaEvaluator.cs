@@ -104,8 +104,9 @@ namespace RD_AAOW
 				((uint)(Math.Abs (EndValue.Value - StartValue.Value) / StepValue.Value) + 1 >
 				DiagramData.MaxDataRows) || (EndValue.Value == StartValue.Value))
 				{
-				MessageBox.Show (Localization.GetText ("IncorrectRangeError", language),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				/*MessageBox.Shw (Localization.GetText ("IncorrectRangeError", language),
+					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "IncorrectRangeError");
 				return;
 				}
 

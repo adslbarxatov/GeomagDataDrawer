@@ -1,13 +1,11 @@
-﻿using System.Windows.Forms;
-
-namespace RD_AAOW
+﻿namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс обеспечивает доступ к конфигурации программы
 	/// </summary>
 	public class ConfigAccessor
 		{
-		// Переменные
+		/*// Переменные
 		private int screenWidth = 1280, screenHeight = 720;
 
 		/// <summary>
@@ -100,7 +98,7 @@ namespace RD_AAOW
 				RDGenerics.SetAppSettingsValue ("Height", height.ToString ());
 				}
 			}
-		private uint height;
+		private uint height;*/
 
 		/// <summary>
 		/// Возвращает минимально возможную ширину окна
@@ -112,14 +110,10 @@ namespace RD_AAOW
 		/// </summary>
 		public const uint MinHeight = 660;
 
-#if !DataProcessingOnly
-
 		/// <summary>
 		/// Возвращает имя автоматически сохраняемого файла данных
 		/// </summary>
 		public const string BackupDataFileName = "Backup." + ProgramDescription.AppDataExtension;
-
-#endif
 
 		/// <summary>
 		/// Возвращает имя стандартного файла параметров предпросмотра диаграммы
@@ -275,18 +269,18 @@ namespace RD_AAOW
 		/// </summary>
 		public ConfigAccessor ()
 			{
-			// Запрос размеров текущего экрана
+			/*// Запрос размеров текущего экрана
 			try
 				{
 				screenWidth = Screen.PrimaryScreen.Bounds.Width;
 				screenHeight = Screen.PrimaryScreen.Bounds.Height;
 				}
-			catch { }
+			catch { }*/
 
 			// Язык интерфейса
 			interfaceLanguage = Localization.CurrentLanguage;
 
-			// Размеры и смещение окна
+			/*// Размеры и смещение окна
 			try
 				{
 				top = int.Parse (RDGenerics.GetAppSettingsValue ("Top"));
@@ -325,7 +319,7 @@ namespace RD_AAOW
 				{
 				height = MinHeight;
 				RDGenerics.SetAppSettingsValue ("Height", height.ToString ());
-				}
+				}*/
 
 			// Флаги
 			forceExitConfirmation = (RDGenerics.GetAppSettingsValue ("ForceExitConfirmation") == "FEC");
@@ -356,8 +350,6 @@ namespace RD_AAOW
 				forceSavingColumnNames = true;
 				RDGenerics.SetAppSettingsValue ("ForceSavingColumnNames", "FSCN");
 				}
-
-			/*disableMousePlacing = (GetSetting ("DisableMousePlacing") == "DMP");*/
 
 			// Строки поиска заголовков
 			try
