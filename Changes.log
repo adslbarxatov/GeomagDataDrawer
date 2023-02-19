@@ -4,6 +4,9 @@ ToDo:
 - Add the runtime image movement;
 - Limit for the data editor, maybe?
 
+Version 5.2.7:
+• Updated the HypeHelp mechanics
+
 Version 5.2.2:
 • The app now uses a new, secure method for setting the size and position of windows;
 • Implemented support for HypeHelp mechanics

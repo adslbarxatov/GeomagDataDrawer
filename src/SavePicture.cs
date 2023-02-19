@@ -18,22 +18,21 @@ namespace RD_AAOW
 		private List<DiagramStyle> objectStyles = new List<DiagramStyle> ();
 		private uint imageWidth, imageHeight;   // Новый размер диаграммы
 		private DiagramData diagramData;        // Данные диаграммы
-		private SupportedLanguages language;    // Язык локализации
+		/*private SupportedLanguages language;    // Язык локализации*/
 
 		/// <summary>
 		/// Конструктор. Принимает отрисовываемые данные и стиль отрисовки
 		/// </summary>
 		/// <param name="DiagramData">Данные диаграммы</param>
-		/// <param name="Language">Язык локализации</param>
 		/// <param name="Silent">Флаг 'тихого' режима (без настроек)</param>
-		public SavePicture (DiagramData DiagramData, SupportedLanguages Language, bool Silent)
+		public SavePicture (DiagramData DiagramData, /*SupportedLanguages Language,*/ bool Silent)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
-			Localization.SetControlsText (this, Language);
-			SaveButton.Text = Localization.GetText ("SaveButton", Language);
-			AbortButton.Text = Localization.GetText ("AbortButton", Language);
-			this.Text = Localization.GetControlText (this.Name, "T", Language);
+			Localization.SetControlsText (this);
+			SaveButton.Text = Localization.GetText ("SaveButton");
+			AbortButton.Text = Localization.GetText ("AbortButton");
+			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Передача значений
 			for (int i = 0; i < DiagramData.LinesCount; i++)
@@ -45,10 +44,10 @@ namespace RD_AAOW
 			diagramData = DiagramData;
 			imageWidth = DiagramData.DiagramWidth;
 			imageHeight = DiagramData.DiagramHeight;
-			language = Language;
+			/*language = Language;*/
 
 			// Настройка контролов
-			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog", Language);
+			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog");
 
 			ImageScale.Minimum = (decimal)DiagramStyle.MinScale;
 			ImageScale.Maximum = (decimal)DiagramStyle.MaxScale;
@@ -238,13 +237,13 @@ namespace RD_AAOW
 		private void CustomSize_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = true;
-			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FR", language);
+			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FR");
 			}
 
 		private void A4Horiz_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = false;
-			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FR", language);
+			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FR");
 			}
 
 		private void A4Vert_CheckedChanged (object sender, EventArgs e)
@@ -265,7 +264,7 @@ namespace RD_AAOW
 		private void VectorImage_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = false;
-			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FV", language);
+			SFDialog.Filter = Localization.GetControlText (this.Name, "SFDialog_FV");
 			}
 		}
 	}

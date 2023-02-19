@@ -179,29 +179,28 @@
 		/// Метод формирует сообщение об ошибке
 		/// </summary>
 		/// <param name="Result">Результат инициализации класса</param>
-		/// <param name="Language">Язык локализации</param>
 		/// <returns>Сообщение об ошибке</returns>
-		public static string ErrorMessage (DiagramDataInitResults Result, SupportedLanguages Language)
+		public static string ErrorMessage (DiagramDataInitResults Result/*, SupportedLanguages Language*/)
 			{
 			switch (Result)
 				{
 				case DiagramDataInitResults.NotInited:
-					return Localization.GetText ("NotInitedError", Language);
+					return Localization.GetText ("NotInitedError");
 
 				case DiagramDataInitResults.FileNotAvailable:
-					return Localization.GetText ("FileNotAvailableError", Language);
+					return Localization.GetText ("FileNotAvailableError");
 
 				case DiagramDataInitResults.BrokenFile:
-					return Localization.GetText ("BrokenFileError", Language);
+					return Localization.GetText ("BrokenFileError");
 
 				case DiagramDataInitResults.NotEnoughData:
-					return Localization.GetText ("NotEnoughDataError", Language);
+					return Localization.GetText ("NotEnoughDataError");
 
 				case DiagramDataInitResults.BrokenTable:
-					return Localization.GetText ("BrokenTableError", Language);
+					return Localization.GetText ("BrokenTableError");
 
 				case DiagramDataInitResults.ExcelNotAvailable:
-					return Localization.GetText ("ExcelNotAvailableError", Language);
+					return Localization.GetText ("ExcelNotAvailableError");
 
 				default:    // В том числе - OK
 					return "";

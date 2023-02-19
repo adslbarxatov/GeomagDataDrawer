@@ -13,15 +13,14 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="SkippedRowsCount">Количество строк, используемое для поиска имён столбцов данных, 
 		/// полученное из конфигурации программы</param>
-		/// <param name="Language">Язык локализации</param>
-		public ColumnsNamesSelector (uint SkippedRowsCount, SupportedLanguages Language)
+		public ColumnsNamesSelector (uint SkippedRowsCount/*, SupportedLanguages Language*/)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
-			Localization.SetControlsText (this, Language);
-			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
-			AbortButton.Text = Localization.GetText ("AbortButton", Language);
-			this.Text = Localization.GetControlText (this.Name, "T", Language);
+			Localization.SetControlsText (this);
+			ApplyButton.Text = Localization.GetText ("ApplyButton");
+			AbortButton.Text = Localization.GetText ("AbortButton");
+			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Настройка контролов
 			ColumnsCount.Maximum = ConfigAccessor.MaxSkippedLinesCount;

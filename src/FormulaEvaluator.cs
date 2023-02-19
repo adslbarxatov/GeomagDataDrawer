@@ -11,7 +11,7 @@ namespace RD_AAOW
 	public partial class FormulaEvaluator: Form
 		{
 		// Переменные
-		private SupportedLanguages language;
+		/*private SupportedLanguages language;*/
 
 		/// <summary>
 		/// Возвращает true, если ввод был отменён
@@ -64,23 +64,22 @@ namespace RD_AAOW
 		/// <summary>
 		/// Конструктор. Запускает форму ввода формулы
 		/// </summary>
-		/// <param name="Language">Язык локализации</param>
-		public FormulaEvaluator (SupportedLanguages Language)
+		public FormulaEvaluator (/*SupportedLanguages Language*/)
 			{
 			// Инициализация и локазизация формы
 			InitializeComponent ();
 
-			this.Text = Localization.GetControlText ("FormulaEvaluator", "T", Language);
-			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
-			AbortButton.Text = Localization.GetText ("AbortButton", Language);
-			Localization.SetControlsText (this, Language);
+			this.Text = Localization.GetControlText ("FormulaEvaluator", "T");
+			ApplyButton.Text = Localization.GetText ("ApplyButton");
+			AbortButton.Text = Localization.GetText ("AbortButton");
+			Localization.SetControlsText (this);
 
 			StartValue.Maximum = EndValue.Maximum = (decimal)ExpressionEvaluator.EvaluationLimit;
 			StartValue.Minimum = EndValue.Minimum = (decimal)-ExpressionEvaluator.EvaluationLimit;
 			StepValue.Maximum = (decimal)ExpressionEvaluator.EvaluationLimit;
 
 			// Сохранение параметров
-			language = Language;
+			/*language = Language;*/
 
 			// Начальная обработка
 			AddButton_Click (null, null);
@@ -173,51 +172,54 @@ namespace RD_AAOW
 			switch (le.FollowingStatus)
 				{
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedConstant:
-					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedConstantError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedConstantError"), le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedDivisionOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedDivisionOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedDivisionOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedExponentiationOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedExponentiationOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedExponentiationOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedFunctionCall:
-					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedFunctionCallError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedFunctionCallError"),
+						le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedLeftParenthesis:
-					InfoLabel.Text = Localization.GetText ("MisplacedLeftParenthesisError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedLeftParenthesisError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedMinusOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedMinusOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedMinusOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedMultiplicationOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedMultiplicationOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedMultiplicationOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedNumber:
-					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedNumberError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedNumberError"),
+						le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedPlusOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedPlusOperatorError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedPlusOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedRightParenthesis:
-					InfoLabel.Text = Localization.GetText ("MisplacedRightParenthesisError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedRightParenthesisError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedVariable:
-					InfoLabel.Text = Localization.GetText ("MisplacedVariableError", language);
+					InfoLabel.Text = Localization.GetText ("MisplacedVariableError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.UnknownLexeme:
-					InfoLabel.Text = string.Format (Localization.GetText ("UnknownLexemeError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("UnknownLexemeError"),
+						le.LastLexeme);
 					break;
 				}
 
@@ -237,23 +239,25 @@ namespace RD_AAOW
 			switch (le.ExpressionStatus)
 				{
 				case LexemesExtractor.ExpressionStatuses.ExpressionIsEmpty:
-					InfoLabel.Text = Localization.GetText ("ExpressionIsEmptyError", language);
+					InfoLabel.Text = Localization.GetText ("ExpressionIsEmptyError");
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.IncorrectExpressionEnd:
-					InfoLabel.Text = string.Format (Localization.GetText ("IncorrectExpressionEndError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("IncorrectExpressionEndError"),
+						le.LastLexeme);
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.IncorrectExpressionStart:
-					InfoLabel.Text = string.Format (Localization.GetText ("IncorrectExpressionStartError", language), le.LastLexeme);
+					InfoLabel.Text = string.Format (Localization.GetText ("IncorrectExpressionStartError"),
+						le.LastLexeme);
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.LeftParenthesisWasNotClosed:
-					InfoLabel.Text = Localization.GetText ("LeftParenthesisWasNotClosedError", language);
+					InfoLabel.Text = Localization.GetText ("LeftParenthesisWasNotClosedError");
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.MisplacedRightParenthesis:
-					InfoLabel.Text = Localization.GetText ("UnexpectedRightParenthesisError", language);
+					InfoLabel.Text = Localization.GetText ("UnexpectedRightParenthesisError");
 					break;
 				}
 
@@ -271,7 +275,7 @@ namespace RD_AAOW
 
 			// Проверка успешно завершена
 			InfoLabel.ForeColor = Color.FromArgb (0, 128, 0);
-			InfoLabel.Text = Localization.GetText ("NoErrors", language) + "\nf(x) = ";
+			InfoLabel.Text = Localization.GetText ("NoErrors") + "\nf(x) = ";
 			string formula = "";
 			for (int i = 0; i < le.ExtractedLexemes.Count; i++)
 				{
@@ -308,11 +312,12 @@ namespace RD_AAOW
 		// Определение количества точек
 		private void StartValue_ValueChanged (object sender, EventArgs e)
 			{
-			Label05.Text = Localization.GetControlText ("FormulaEvaluator", "Label05W", language);
+			Label05.Text = Localization.GetControlText ("FormulaEvaluator", "Label05W");
 			if (StepValue.Value == 0)
 				Label05.Text += " ∞";
 			else
-				Label05.Text += (" " + ((uint)(Math.Abs (EndValue.Value - StartValue.Value) / StepValue.Value) + 1).ToString ());
+				Label05.Text += (" " + ((uint)(Math.Abs (EndValue.Value - StartValue.Value) /
+					StepValue.Value) + 1).ToString ());
 
 			Label05.Text += (" / " + DiagramData.MaxDataRows.ToString ());
 			}

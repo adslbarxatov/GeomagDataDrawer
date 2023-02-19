@@ -22,12 +22,12 @@ namespace RD_AAOW
 			Application.SetCompatibleTextRenderingDefault (false);
 
 			// Язык интерфейса и контроль XPR
-			SupportedLanguages al = Localization.CurrentLanguage;
-			if (!Localization.IsXPRClassAcceptable)
+			/*SupportedLanguages al = Localization.CurrentLanguage;*/
+			if (!Localization.IsXPUNClassAcceptable)
 				return;
 
 			// Проверка запуска единственной копии
-			if (!RDGenerics.IsThisInstanceUnique (al == SupportedLanguages.ru_ru))
+			if (!RDGenerics.IsThisInstanceUnique (Localization.IsCurrentLanguageRuRu))
 				return;
 
 			// Отображение справки и запроса на принятие Политики
@@ -41,8 +41,6 @@ namespace RD_AAOW
 				// Справка по командной строке
 				if (args[0].Contains ("?"))
 					{
-					/*MessageBox.Shw (Localization.GetText ("CommandLineHelp", ca.InterfaceLanguage),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);*/
 					RDGenerics.LocalizedMessageBox (RDMessageTypes.Information, "CommandLineHelp");
 					return;
 					}
@@ -146,14 +144,9 @@ namespace RD_AAOW
 				// Контроль результата
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					/*MessageBox.Shw (string.Format (Localization.GetText ("DataFileLoadError",
-						ca.InterfaceLanguage), args[0],
-						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 					RDGenerics.MessageBox (RDMessageTypes.Warning,
-						string.Format (Localization.GetText ("DataFileLoadError",
-						ca.InterfaceLanguage), args[0],
-						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)));
+						string.Format (Localization.GetText ("DataFileLoadError"), args[0],
+						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
 					return;
 					}
 
@@ -162,8 +155,6 @@ namespace RD_AAOW
 					{
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
-						/*MessageBox.Shw (Localization.GetText ("DataFileSaveError", ca.InterfaceLanguage),
-							ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "DataFileSaveError");
 						return;
 						}
@@ -172,14 +163,12 @@ namespace RD_AAOW
 				else
 					{
 					// Применение шаблона отображения
-					ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true, ca.InterfaceLanguage);
+					ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true);
 					if (!cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
 						{
 						if (!cad.CreateParametersFile (RDGenerics.AppStartupPath +
 							ConfigAccessor.LineParametersFileName))
-							{
 							return;
-							}
 
 						cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName);
 						}
@@ -189,9 +178,7 @@ namespace RD_AAOW
 						{
 						int res = dd.AddDiagram (cad.XColumnNumber[i], cad.YColumnNumber[i]);
 						if (res < 0)
-							{
 							continue;
-							}
 
 						dd.GetStyle (i).DiagramImageWidth = cad.ImageWidth[i];
 						dd.GetStyle (i).DiagramImageHeight = cad.ImageHeight[i];
@@ -206,7 +193,7 @@ namespace RD_AAOW
 						}
 
 					// Сохранение изображения
-					SavePicture sp = new SavePicture (dd, ca.InterfaceLanguage, true);
+					SavePicture sp = new SavePicture (dd, true);
 					sp.SaveImage (args[1], (ImageOutputTypes)outputType);
 					}
 

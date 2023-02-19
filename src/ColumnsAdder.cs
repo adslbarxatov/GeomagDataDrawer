@@ -72,23 +72,22 @@ namespace RD_AAOW
 		/// Конструктор. Запускает форму выбора данных
 		/// </summary>
 		/// <param name="SourceData">Исходные данные диаграммы</param>
-		/// <param name="Language">Язык локализации</param>
-		public ColumnsAdder (DiagramData SourceData, SupportedLanguages Language)
+		public ColumnsAdder (DiagramData SourceData/*, SupportedLanguages Language*/)
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = Localization.GetControlText ("ColumnsAdder", "TN", Language);
+			this.Text = Localization.GetControlText ("ColumnsAdder", "TN");
 
 			// Заполнение списка типов объектов
 			for (int i = 1; i <= 9; i++)
 				{
 				ObjectCombo.Items.Add (Localization.GetControlText ("ColumnsAdder", "ObjectType_" +
-					i.ToString (), Language));
+					i.ToString ()));
 				}
 			ObjectCombo.Text = ObjectCombo.Items[0].ToString ();
 
 			// Основные настройки
-			ColumnsAdderConstructor (SourceData, -1, -1, Language);
+			ColumnsAdderConstructor (SourceData, -1, -1);
 			}
 
 		/// <summary>
@@ -99,29 +98,28 @@ namespace RD_AAOW
 		/// как столбец абсцисс</param>
 		/// <param name="OldYColumnNumber">Номер ранее выбранного столбца данных, интерпретируемых 
 		/// как столбец ординат</param>
-		/// <param name="Language">Язык локализации</param>
-		public ColumnsAdder (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber,
-			SupportedLanguages Language)
+		public ColumnsAdder (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber/*,
+			SupportedLanguages Language*/)
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = Localization.GetControlText ("ColumnsAdder", "TE", Language);
+			this.Text = Localization.GetControlText ("ColumnsAdder", "TE");
 
 			// Запрет на обновление данных дополнительных объектов
 			Radio02.Enabled = false;
 
 			// Основные настройки
-			ColumnsAdderConstructor (SourceData, OldXColumnNumber, OldYColumnNumber, Language);
+			ColumnsAdderConstructor (SourceData, OldXColumnNumber, OldYColumnNumber);
 			}
 
 		// Конструктор
 		private void ColumnsAdderConstructor (DiagramData SourceData, int OldXColumnNumber,
-			int OldYColumnNumber, SupportedLanguages Language)
+			int OldYColumnNumber/*, SupportedLanguages Language*/)
 			{
 			// Локазизация формы
-			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
-			AbortButton.Text = Localization.GetText ("AbortButton", Language);
-			Localization.SetControlsText (this, Language);
+			ApplyButton.Text = Localization.GetText ("ApplyButton");
+			AbortButton.Text = Localization.GetText ("AbortButton");
+			Localization.SetControlsText (this);
 
 			// Загрузка параметров
 			for (uint col = 0; col < SourceData.DataColumnsCount; col++)

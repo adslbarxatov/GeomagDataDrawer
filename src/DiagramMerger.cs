@@ -98,23 +98,22 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="Line1Name">Имя первой совмещаемой кривой</param>
 		/// <param name="Line2Name">Имя второй совмещаемой кривой</param>
-		/// <param name="Language">Язык локализации</param>
-		public DiagramMerger (string Line1Name, string Line2Name, SupportedLanguages Language)
+		public DiagramMerger (string Line1Name, string Line2Name/*, SupportedLanguages Language*/)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			Localization.SetControlsText (this, Language);          // Кнопки
-			Localization.SetControlsText (MergingAxes, Language);   // Панели
-			Localization.SetControlsText (MergingVariant, Language);
+			Localization.SetControlsText (this);    // Кнопки
+			Localization.SetControlsText (MergingAxes); // Панели
+			Localization.SetControlsText (MergingVariant);
 
-			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
-			AbortButton.Text = Localization.GetText ("AbortButton", Language);
-			this.Text = Localization.GetControlText (this.Name, "T", Language);
+			ApplyButton.Text = Localization.GetText ("ApplyButton");
+			AbortButton.Text = Localization.GetText ("AbortButton");
+			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Сохранение параметров
-			FirstLine.Text = Localization.GetControlText (MergingVariant.Name, "Line", Language) + " " + Line1Name;
-			SecondLine.Text = Localization.GetControlText (MergingVariant.Name, "Line", Language) + " " + Line2Name;
+			FirstLine.Text = Localization.GetControlText (MergingVariant.Name, "Line") + " " + Line1Name;
+			SecondLine.Text = Localization.GetControlText (MergingVariant.Name, "Line") + " " + Line2Name;
 
 			// Запуск
 			this.ShowDialog ();

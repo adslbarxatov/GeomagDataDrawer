@@ -15,7 +15,7 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private uint dataColumnsCount = 0;  // Число столбцов в исходном массиве данных
-		private SupportedLanguages language;
+		/*private SupportedLanguages language;*/
 
 		/// <summary>
 		/// Возвращает номер столбца данных, интерпретируемого как столбец абсцисс
@@ -154,30 +154,27 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="DataColumnsCount">Число доступных столбцов исходного массива данных</param>
 		/// <param name="Silent">Инициализация в тихом режиме</param>
-		/// <param name="Language">Язык локализации</param>
-		public ColumnsAdderCmd (uint DataColumnsCount, bool Silent, SupportedLanguages Language)
+		public ColumnsAdderCmd (uint DataColumnsCount, bool Silent/*, SupportedLanguages Language*/)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
-			Localization.SetControlsText (this, Language);
-			ApplyButton.Text = Localization.GetText ("ApplyButton", Language);
-			AbortButton.Text = Localization.GetText ("AbortButton", Language);
-			this.Text = Localization.GetControlText (this.Name, "T", Language);
+			Localization.SetControlsText (this);
+			ApplyButton.Text = Localization.GetText ("ApplyButton");
+			AbortButton.Text = Localization.GetText ("AbortButton");
+			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Настройка контролов
-			OFDialog.Filter = SFDialog.Filter = Localization.GetControlText (this.Name, "OFDialog_F", Language);
-			OFDialog.Title = Localization.GetControlText (this.Name, "OFDialog", Language);
-			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog", Language);
+			OFDialog.Filter = SFDialog.Filter = Localization.GetControlText (this.Name, "OFDialog_F");
+			OFDialog.Title = Localization.GetControlText (this.Name, "OFDialog");
+			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog");
 
 			// Загрузка параметров
 			dataColumnsCount = DataColumnsCount;
-			language = Language;
+			/*language = Language;*/
 
 			// Запуск
 			if (!Silent)
-				{
 				this.ShowDialog ();
-				}
 			}
 
 		// Отмена
@@ -215,7 +212,7 @@ namespace RD_AAOW
 
 			// Обработка
 			ProcessingMsg.Text = ProcessCommandLine (CommandLine.Text);
-			if (ProcessingMsg.Text == Localization.GetControlText (this.Name, "Correct", language))
+			if (ProcessingMsg.Text == Localization.GetControlText (this.Name, "Correct"))
 				{
 				// Успешно
 				ApplyButton.Enabled = true;
@@ -254,7 +251,7 @@ namespace RD_AAOW
 					}
 				catch
 					{
-					return Localization.GetControlText (this.Name, "ICNError", language);
+					return Localization.GetControlText (this.Name, "ICNError");
 					}
 
 				try
@@ -264,7 +261,7 @@ namespace RD_AAOW
 					}
 				catch
 					{
-					return Localization.GetControlText (this.Name, "IDSError", language);
+					return Localization.GetControlText (this.Name, "IDSError");
 					}
 
 				try
@@ -274,7 +271,7 @@ namespace RD_AAOW
 					}
 				catch
 					{
-					return Localization.GetControlText (this.Name, "IDOError", language);
+					return Localization.GetControlText (this.Name, "IDOError");
 					}
 
 				// Длинная строка
@@ -291,38 +288,38 @@ namespace RD_AAOW
 						}
 					catch
 						{
-						return Localization.GetControlText (this.Name, "ITOError", language);
+						return Localization.GetControlText (this.Name, "ITOError");
 						}
 					}
 				}
 			else
 				{
-				return Localization.GetControlText (this.Name, "IPCError", language);
+				return Localization.GetControlText (this.Name, "IPCError");
 				}
 
 			// Контроль диапазонов
 			if ((xColumnNumberT >= dataColumnsCount) || (yColumnNumberT >= dataColumnsCount))
 				{
-				return string.Format (Localization.GetControlText (this.Name, "OCNError", language), dataColumnsCount);
+				return string.Format (Localization.GetControlText (this.Name, "OCNError"), dataColumnsCount);
 				}
 
 			if ((imageWidthT > DiagramStyle.MaxImageWidth) || (imageWidthT < DiagramStyle.MinImageWidth) ||
 				(imageHeightT > DiagramStyle.MaxImageHeight) || (imageHeightT < DiagramStyle.MinImageHeight))
 				{
-				return string.Format (Localization.GetControlText (this.Name, "ODSError", language),
+				return string.Format (Localization.GetControlText (this.Name, "ODSError"),
 					DiagramStyle.MinImageWidth, DiagramStyle.MaxImageWidth, DiagramStyle.MinImageHeight,
 					DiagramStyle.MaxImageHeight);
 				}
 
 			if ((imageLeftT > DiagramStyle.MaxImageWidth) || (imageTopT > DiagramStyle.MaxImageHeight))
 				{
-				return string.Format (Localization.GetControlText (this.Name, "ODOError", language),
+				return string.Format (Localization.GetControlText (this.Name, "ODOError"),
 					DiagramStyle.MaxImageWidth, DiagramStyle.MaxImageHeight);
 				}
 
 			if ((lineNameLeftOffsetT > imageWidthT) || (lineNameTopOffsetT > imageHeightT))
 				{
-				return string.Format (Localization.GetControlText (this.Name, "OTOError", language),
+				return string.Format (Localization.GetControlText (this.Name, "OTOError"),
 					imageWidthT, imageHeightT);
 				}
 
@@ -338,7 +335,7 @@ namespace RD_AAOW
 			lineNameLeftOffset.Add (lineNameLeftOffsetT);
 			lineNameTopOffset.Add (lineNameTopOffsetT);
 
-			return Localization.GetControlText (this.Name, "Correct", language);
+			return Localization.GetControlText (this.Name, "Correct");
 			}
 
 		// Выбор варианта загрузки
@@ -393,7 +390,7 @@ namespace RD_AAOW
 
 			if (ProcessingResults.Text == "")
 				{
-				ProcessingResults.Text = Localization.GetControlText (this.Name, "Correct", language);
+				ProcessingResults.Text = Localization.GetControlText (this.Name, "Correct");
 				ProcessingResults.ForeColor = Color.FromArgb (0, 192, 0);
 				}
 			}
@@ -426,7 +423,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				ProcessingResults.Text = Localization.GetText ("TemplateLoadError", language);
+				ProcessingResults.Text = Localization.GetText ("TemplateLoadError");
 				return false;
 				}
 
@@ -440,14 +437,14 @@ namespace RD_AAOW
 				string res = ProcessCommandLine (SR.ReadLine ());
 				line++;
 
-				if (res != Localization.GetControlText (this.Name, "Correct", language))
+				if (res != Localization.GetControlText (this.Name, "Correct"))
 					{
 					ProcessingResults.Text += ("#" + line.ToString () + ": " + res + "\r\n");
 					}
 
 				if (line >= DiagramData.MaxLines)
 					{
-					ProcessingResults.Text += (string.Format (Localization.GetText ("LinesOverloadError", language),
+					ProcessingResults.Text += (string.Format (Localization.GetText ("LinesOverloadError"),
 						DiagramData.MaxLines) + "\r\n");
 					break;
 					}
@@ -468,29 +465,11 @@ namespace RD_AAOW
 			{
 			if (!CreateDefaultParametersFile (FileName))
 				{
-				ProcessingResults.Text = Localization.GetText ("TemplateSaveError", language);
+				ProcessingResults.Text = Localization.GetText ("TemplateSaveError");
 				return false;
 				}
 
 			return true;
-
-			/*// Попытка открытия файла
-			FileStream FS = null;
-			try
-				{
-				FS = new FileStream (FileName, FileMode.Create);
-				}
-			catch
-				{
-				ProcessingResults.Text = Localization.GetText ("TemplateSaveError", language);
-				return false;
-				}
-
-			// Запись и завершение
-			FS.Write (RD_AAOW.Properties.GeomagDataDrawer.LineParameters, 0,
-				RD_AAOW.Properties.GeomagDataDrawer.LineParameters.Length);
-			FS.Close ();
-			return true;*/
 			}
 
 		/// <summary>

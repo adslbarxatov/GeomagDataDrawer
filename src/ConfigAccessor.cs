@@ -5,101 +5,6 @@
 	/// </summary>
 	public class ConfigAccessor
 		{
-		/*// Переменные
-		private int screenWidth = 1280, screenHeight = 720;
-
-		/// <summary>
-		/// Возвращает или задаёт смещение окна относительно верхнего края экрана
-		/// </summary>
-		public int Top
-			{
-			get
-				{
-				return top;
-				}
-			set
-				{
-				if (value > screenHeight)
-					top = screenHeight;
-				else if (value < 0)
-					top = 0;
-				else
-					top = value;
-
-				RDGenerics.SetAppSettingsValue ("Top", top.ToString ());
-				}
-			}
-		private int top;
-
-		/// <summary>
-		/// Возвращает или задаёт смещение окна относительно левого края экрана
-		/// </summary>
-		public int Left
-			{
-			get
-				{
-				return left;
-				}
-			set
-				{
-				if (value > screenWidth)
-					left = screenWidth;
-				else if (value < 0)
-					left = 0;
-				else
-					left = value;
-
-				RDGenerics.SetAppSettingsValue ("Left", left.ToString ());
-				}
-			}
-		private int left;
-
-		/// <summary>
-		/// Возвращает или задаёт ширину окна
-		/// </summary>
-		public uint Width
-			{
-			get
-				{
-				return width;
-				}
-			set
-				{
-				if (value > screenWidth)
-					width = (uint)screenWidth;
-				else if (value < MinWidth)
-					width = MinWidth;
-				else
-					width = value;
-
-				RDGenerics.SetAppSettingsValue ("Width", width.ToString ());
-				}
-			}
-		private uint width;
-
-		/// <summary>
-		/// Возвращает или задаёт высоту окна
-		/// </summary>
-		public uint Height
-			{
-			get
-				{
-				return height;
-				}
-			set
-				{
-				if (value > screenHeight)
-					height = (uint)screenHeight;
-				else if (value < MinHeight)
-					height = MinHeight;
-				else
-					height = value;
-
-				RDGenerics.SetAppSettingsValue ("Height", height.ToString ());
-				}
-			}
-		private uint height;*/
-
 		/// <summary>
 		/// Возвращает минимально возможную ширину окна
 		/// </summary>
@@ -248,7 +153,7 @@
 		/// </summary>
 		public const uint MinExpectedColumnsCount = 2;
 
-		/// <summary>
+		/*/// <summary>
 		/// Возвращает или задаёт язык интерфейса
 		/// </summary>
 		public SupportedLanguages InterfaceLanguage
@@ -262,64 +167,15 @@
 				Localization.CurrentLanguage = interfaceLanguage = value;
 				}
 			}
-		private SupportedLanguages interfaceLanguage;
+		private SupportedLanguages interfaceLanguage;*/
 
 		/// <summary>
 		/// Конструктор. Загружает ранее сохранённые параметры работы программы
 		/// </summary>
 		public ConfigAccessor ()
 			{
-			/*// Запрос размеров текущего экрана
-			try
-				{
-				screenWidth = Screen.PrimaryScreen.Bounds.Width;
-				screenHeight = Screen.PrimaryScreen.Bounds.Height;
-				}
-			catch { }*/
-
 			// Язык интерфейса
-			interfaceLanguage = Localization.CurrentLanguage;
-
-			/*// Размеры и смещение окна
-			try
-				{
-				top = int.Parse (RDGenerics.GetAppSettingsValue ("Top"));
-				}
-			catch
-				{
-				top = (screenHeight - (int)MinHeight) / 2;
-				RDGenerics.SetAppSettingsValue ("Top", top.ToString ());
-				}
-
-			try
-				{
-				left = int.Parse (RDGenerics.GetAppSettingsValue ("Left"));
-				}
-			catch
-				{
-				left = (screenWidth - (int)MinWidth) / 2;
-				RDGenerics.SetAppSettingsValue ("Left", left.ToString ());
-				}
-
-			try
-				{
-				width = uint.Parse (RDGenerics.GetAppSettingsValue ("Width"));
-				}
-			catch
-				{
-				width = MinWidth;
-				RDGenerics.SetAppSettingsValue ("Width", width.ToString ());
-				}
-
-			try
-				{
-				height = uint.Parse (RDGenerics.GetAppSettingsValue ("Height"));
-				}
-			catch
-				{
-				height = MinHeight;
-				RDGenerics.SetAppSettingsValue ("Height", height.ToString ());
-				}*/
+			/*interfaceLanguage = Localization.CurrentLanguage;*/
 
 			// Флаги
 			forceExitConfirmation = (RDGenerics.GetAppSettingsValue ("ForceExitConfirmation") == "FEC");

@@ -9,7 +9,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает главную форму программы
 	/// </summary>
-	public partial class GeomagDataDrawerForm:Form
+	public partial class GeomagDataDrawerForm: Form
 		{
 		// Создание класса-представителя данных диаграммы (фиктивная инициализация)
 		private DiagramData dd =
@@ -19,7 +19,7 @@ namespace RD_AAOW
 		private bool loading = false, selectionMode = false;
 
 		// Аксессор конфигурации программы (загрузка или инициализация)
-		private ConfigAccessor ca = new ConfigAccessor ();      
+		private ConfigAccessor ca = new ConfigAccessor ();
 
 		private MarkersLoader ml = new MarkersLoader ();        // Загрузчик маркеров
 		private Graphics drawField;                             // Основное поле отрисовки программы
@@ -58,7 +58,7 @@ namespace RD_AAOW
 			MLanguage.Items.AddRange (Localization.LanguagesNames);
 			try
 				{
-				MLanguage.SelectedIndex = (int)ca.InterfaceLanguage;    // Инициация локализации
+				MLanguage.SelectedIndex = (int)Localization.CurrentLanguage;
 				}
 			catch
 				{
@@ -69,10 +69,6 @@ namespace RD_AAOW
 			this.Text = ProgramDescription.AssemblyTitle;
 			this.MinimumSize = new Size ((int)ConfigAccessor.MinWidth, (int)ConfigAccessor.MinHeight);
 			RDGenerics.LoadWindowDimensions (this);
-			/*this.Left = (int)ca.Left;
-			this.Top = (int)ca.Top;
-			this.Width = (int)ca.Width;
-			this.Height = (int)ca.Height;*/
 
 			// Потеря фокуса полем настройки
 			MainTabControl_Leave (MainTabControl, null);
@@ -131,7 +127,8 @@ namespace RD_AAOW
 				// Загрузка стандартного файла данных при старте
 				if (ca.ForceUsingBackupDataFile)
 					{
-					dd = new DiagramData (RDGenerics.AppStartupPath + ConfigAccessor.BackupDataFileName, DataInputTypes.GDD, 0);
+					dd = new DiagramData (RDGenerics.AppStartupPath + ConfigAccessor.BackupDataFileName,
+						DataInputTypes.GDD, 0);
 					}
 				}
 			else
@@ -151,12 +148,9 @@ namespace RD_AAOW
 				if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult !=
 					DiagramDataInitResults.BrokenFile))
 					{
-					/*MessageBox.Shw (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
-						SentFileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult, ca.InterfaceLanguage)),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 					RDGenerics.MessageBox (RDMessageTypes.Warning,
-						string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
-						SentFileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult, ca.InterfaceLanguage)));
+						string.Format (Localization.GetText ("DataFileLoadError"),
+						SentFileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult)));
 					return;
 					}
 
@@ -197,7 +191,7 @@ namespace RD_AAOW
 
 				ChangeControlsState (true);
 
-				if (ca.ForceShowDiagram && (SentFileType != DataInputTypes.GDD) && 
+				if (ca.ForceShowDiagram && (SentFileType != DataInputTypes.GDD) &&
 					(SentFileType != DataInputTypes.Unspecified))
 					{
 					AddFirstColumns ();
@@ -207,14 +201,11 @@ namespace RD_AAOW
 				}
 			else if (SentFileType != DataInputTypes.Unspecified)
 				{
-				/*MessageBox.Shw (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
-					SentFileName,
-					DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning,
-					string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage), SentFileName,
-					DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)));
+					string.Format (Localization.GetText ("DataFileLoadError"), SentFileName,
+					DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
 				}
+
 			#endregion
 			}
 
@@ -224,56 +215,51 @@ namespace RD_AAOW
 			// Поля настройки
 			for (int i = 0; i < MainTabControl.TabPages.Count; i++)
 				{
-				Localization.SetControlsText (MainTabControl.TabPages[i], ca.InterfaceLanguage);
-				Localization.SetControlsText (MainTabControl.TabPages[i], MainToolTip, ca.InterfaceLanguage);
+				Localization.SetControlsText (MainTabControl.TabPages[i]);
+				Localization.SetControlsText (MainTabControl.TabPages[i], MainToolTip);
 				}
 
 			// Меню программы
-			Localization.SetControlsText (GeomagDataDrawerFormMenuStrip, ca.InterfaceLanguage);
-			Localization.SetControlsText (MFile, ca.InterfaceLanguage);
-			Localization.SetControlsText (MOperations, ca.InterfaceLanguage);
-			Localization.SetControlsText (MUpperHelp, ca.InterfaceLanguage);
-			Localization.SetControlsText (MAdditional, ca.InterfaceLanguage);
+			Localization.SetControlsText (GeomagDataDrawerFormMenuStrip);
+			Localization.SetControlsText (MFile);
+			Localization.SetControlsText (MOperations);
+			Localization.SetControlsText (MUpperHelp);
+			Localization.SetControlsText (MAdditional);
 
 			// Кнопки управления
-			Localization.SetControlsText (this, MainToolTip, ca.InterfaceLanguage);
+			Localization.SetControlsText (this, MainToolTip);
 
 			// Панель настроек
-			Localization.SetControlsText (MainTabControl, ca.InterfaceLanguage);
+			Localization.SetControlsText (MainTabControl);
 
 			// Контролы и диалоги
-			OFDialog.Filter = string.Format (Localization.GetControlText (this.Name, "OFDialog_F", ca.InterfaceLanguage),
+			OFDialog.Filter = string.Format (Localization.GetControlText (this.Name, "OFDialog_F"),
 				ProgramDescription.AssemblyTitle, ProgramDescription.AppDataExtension);
-			OFDialog.Title = Localization.GetControlText (this.Name, "OFDialog", ca.InterfaceLanguage);
-			SFDialog.Filter = string.Format (Localization.GetControlText (this.Name, "SFDialog_F", ca.InterfaceLanguage),
+			OFDialog.Title = Localization.GetControlText (this.Name, "OFDialog");
+			SFDialog.Filter = string.Format (Localization.GetControlText (this.Name, "SFDialog_F"),
 				ProgramDescription.AssemblyTitle, ProgramDescription.AppDataExtension);
-			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog", ca.InterfaceLanguage);
+			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog");
 
 			LoadStyleDialog.Filter = SaveStyleDialog.Filter = string.Format (Localization.GetControlText (this.Name,
-				"StyleDialog_F", ca.InterfaceLanguage), ProgramDescription.AppStyleExtension);
-			LoadStyleDialog.Title = Localization.GetControlText (this.Name, "LoadStyleDialog", ca.InterfaceLanguage);
-			SaveStyleDialog.Title = Localization.GetControlText (this.Name, "SaveStyleDialog", ca.InterfaceLanguage);
+				"StyleDialog_F"), ProgramDescription.AppStyleExtension);
+			LoadStyleDialog.Title = Localization.GetControlText (this.Name, "LoadStyleDialog");
+			SaveStyleDialog.Title = Localization.GetControlText (this.Name, "SaveStyleDialog");
 
-			MainToolTip.ToolTipTitle = Localization.GetControlText (this.Name, "MainToolTip", ca.InterfaceLanguage);
+			MainToolTip.ToolTipTitle = Localization.GetControlText (this.Name, "MainToolTip");
 
 			for (int i = 0; i < 4; i++)
 				{
-				OxPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OxPlacement_" + i.ToString (),
-					ca.InterfaceLanguage);
-				OyPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OyPlacement_" + i.ToString (),
-					ca.InterfaceLanguage);
+				OxPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OxPlacement_" + i.ToString ());
+				OyPlacementCombo.Items[i] = Localization.GetControlText (this.Name, "OyPlacement_" + i.ToString ());
 
 				if (i < 3)
 					{
-					OxFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString (),
-						ca.InterfaceLanguage);
-					OyFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString (),
-						ca.InterfaceLanguage);
+					OxFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString ());
+					OyFormatCombo.Items[i] = Localization.GetControlText (this.Name, "OxFormat_" + i.ToString ());
 					}
 				if (i < 3)
 					{
-					LineStyleCombo.Items[i] = Localization.GetControlText (this.Name, "LineStyle_" + i.ToString (),
-						ca.InterfaceLanguage);
+					LineStyleCombo.Items[i] = Localization.GetControlText (this.Name, "LineStyle_" + i.ToString ());
 					}
 				}
 			}
@@ -286,7 +272,7 @@ namespace RD_AAOW
 			UnknownFileParametersSelector ufps = null;
 			if (InputType == DataInputTypes.Unknown)
 				{
-				ufps = new UnknownFileParametersSelector (ca.ExpectedColumnsCount, ca.InterfaceLanguage, false);
+				ufps = new UnknownFileParametersSelector (ca.ExpectedColumnsCount, false);
 
 				if (ufps.Cancelled)
 					{
@@ -301,12 +287,10 @@ namespace RD_AAOW
 			ColumnsNamesSelector cns = null;
 			if (InputType != DataInputTypes.GDD)
 				{
-				cns = new ColumnsNamesSelector (ca.SkippedLinesCount, ca.InterfaceLanguage);
+				cns = new ColumnsNamesSelector (ca.SkippedLinesCount);
 
 				if (cns.Cancelled)
-					{
 					return false;
-					}
 
 				// Сохранение изменившегося значения
 				ca.SkippedLinesCount = cns.SkippedRowsCount;
@@ -400,7 +384,7 @@ namespace RD_AAOW
 
 			LineStyleCombo.Enabled = (NewState && !isAnObject && hasItems);
 
-			Label28.Enabled = Label29.Enabled = LineWidth.Enabled = (NewState && hasItems && 
+			Label28.Enabled = Label29.Enabled = LineWidth.Enabled = (NewState && hasItems &&
 				(!isAnObject || isAnObject &&
 				((objectType == DiagramAdditionalObjects.LineH) ||
 				(objectType == DiagramAdditionalObjects.LineV) ||
@@ -713,7 +697,7 @@ namespace RD_AAOW
 					MessageBoxButtons.YesNo,
 					ca.ForceUsingBackupDataFile ? MessageBoxIcon.Question : MessageBoxIcon.Exclamation,
 					MessageBoxDefaultButton.Button2) == DialogResult.No)*/
-				if (RDGenerics.LocalizedMessageBox (ca.ForceUsingBackupDataFile ? RDMessageTypes.Question : 
+				if (RDGenerics.LocalizedMessageBox (ca.ForceUsingBackupDataFile ? RDMessageTypes.Question :
 					RDMessageTypes.Warning, ca.ForceUsingBackupDataFile ? "ApplicationExit" :
 					"ApplicationExitNoBackup", Localization.DefaultButtons.YesNoFocus, Localization.DefaultButtons.No) ==
 					RDMessageButtons.ButtonTwo)
@@ -767,12 +751,9 @@ namespace RD_AAOW
 			// Контроль результата (до настоящей загрузки результат BrokenFile допустим по признаку имён столбцов)
 			if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult != DiagramDataInitResults.BrokenFile))
 				{
-				/*MessageBox.Shw (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
-					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult, ca.InterfaceLanguage)),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning,
-					string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
-					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult, ca.InterfaceLanguage)));
+					string.Format (Localization.GetText ("DataFileLoadError"),
+					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult)));
 				return;
 				}
 
@@ -795,12 +776,9 @@ namespace RD_AAOW
 			if (dd.InitResult != DiagramDataInitResults.Ok)
 				{
 				// Файл точно с ошибками, или выбрано некорректное количество строк для поиска имён
-				/*MessageBox.Shw (string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
-					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning,
-					string.Format (Localization.GetText ("DataFileLoadError", ca.InterfaceLanguage),
-					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, ca.InterfaceLanguage)));
+					string.Format (Localization.GetText ("DataFileLoadError"),
+					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
 				return;
 				}
 
@@ -811,9 +789,7 @@ namespace RD_AAOW
 			if (OFDialog.FilterIndex == (int)DataInputTypes.Unknown)
 				{
 				if (ca.ForceShowDiagram)
-					{
 					AddFirstColumns ();
-					}
 				}
 			else
 				{
@@ -857,7 +833,7 @@ namespace RD_AAOW
 		private void AddFirstColumns ()
 			{
 			// Получение параметров
-			ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true, ca.InterfaceLanguage);
+			ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true);
 			if (!cad.LoadParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
 				{
 				if (!cad.CreateParametersFile (RDGenerics.AppStartupPath + ConfigAccessor.LineParametersFileName))
@@ -880,12 +856,8 @@ namespace RD_AAOW
 					}
 				else if (res == -3)
 					{
-					/*MessageBox.Shw (string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
-						DiagramData.MaxLines), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, 
-						MessageBoxIcon.Exclamation);*/
 					RDGenerics.MessageBox (RDMessageTypes.Warning,
-						string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
-						DiagramData.MaxLines));
+						string.Format (Localization.GetText ("LinesOverloadError"), DiagramData.MaxLines));
 					break;
 					}
 
@@ -931,7 +903,7 @@ namespace RD_AAOW
 		// Сохранение изображения
 		private void MSaveDiagramImage_Click (object sender, EventArgs e)
 			{
-			SavePicture sp = new SavePicture (dd, ca.InterfaceLanguage, false);
+			SavePicture sp = new SavePicture (dd, false);
 			}
 
 		// Настройки программы
@@ -959,19 +931,15 @@ namespace RD_AAOW
 				Localization.DefaultButtons.YesNoFocus, Localization.DefaultButtons.No) != RDMessageButtons.ButtonOne))
 				return;
 
-			/*(MessageBox.Shw (Localization.GetText ("AbortChanges", ca.InterfaceLanguage),
-			ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
-			MessageBoxDefaultButton.Button2) != DialogResult.Yes))*/
-
 			// Генерация данных по формуле
-			FormulaEvaluator fe = new FormulaEvaluator (ca.InterfaceLanguage);
+			FormulaEvaluator fe = new FormulaEvaluator ();
 			if (fe.Cancelled)
 				return;
 
 			// Создание диаграммы
 			dd = new DiagramData (fe.X, fe.Y, fe.ColumnsNames);
 			if (dd.InitResult != DiagramDataInitResults.Ok)
-				throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (2)");
+				throw new Exception (Localization.GetText ("ExceptionMessage") + " (2)");
 
 			// Сброс списка кривых
 			LineNamesList.Items.Clear ();
@@ -995,7 +963,7 @@ namespace RD_AAOW
 				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "AbortChanges",
 				Localization.DefaultButtons.YesNoFocus, Localization.DefaultButtons.No) != RDMessageButtons.ButtonOne))
 				return;
-			
+
 			/*(MessageBox.Shw (Localization.GetText ("AbortChanges", ca.InterfaceLanguage),
 			ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
 			MessageBoxDefaultButton.Button2) != DialogResult.Yes))
@@ -1077,7 +1045,7 @@ namespace RD_AAOW
 		private void MLanguage_SelectedIndexChanged (object sender, EventArgs e)
 			{
 			// Обновление конфигурации
-			ca.InterfaceLanguage = (SupportedLanguages)MLanguage.SelectedIndex;
+			Localization.CurrentLanguage = (SupportedLanguages)MLanguage.SelectedIndex;
 
 			// Релокализация формы
 			LocalizeForm ();
@@ -1214,15 +1182,13 @@ namespace RD_AAOW
 		private void MSaveTemplate_Click (object sender, EventArgs e)
 			{
 			// Инициализация
-			ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true, ca.InterfaceLanguage);
+			ColumnsAdderCmd cad = new ColumnsAdderCmd (dd.DataColumnsCount, true);
 			switch (cad.SaveParametersFile (dd))
 				{
 				case -1:
-					throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (9)");
+					throw new Exception (Localization.GetText ("ExceptionMessage") + " (9)");
 
 				case -2:
-					/*MessageBox.Shw (Localization.GetText ("TemplateSaveError", ca.InterfaceLanguage),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TemplateSaveError");
 					break;
 
@@ -1249,7 +1215,7 @@ namespace RD_AAOW
 				{
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TemplateSaveError");
 				}
-			
+
 			/*MessageBox.Shw (Localization.GetText ("TemplateSaveError", ca.InterfaceLanguage),
 				ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 			}
@@ -1295,7 +1261,7 @@ namespace RD_AAOW
 				}
 
 			// Запуск
-			DiagramDataEditor dde = new DiagramDataEditor (dd, ca.InterfaceLanguage);
+			DiagramDataEditor dde = new DiagramDataEditor (dd);
 
 			// Обработка
 			if (!dde.Cancelled)
@@ -1330,8 +1296,6 @@ namespace RD_AAOW
 					{
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = LineNamesList.Items.Count - 1;
-					/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-						MDeleteColumn.Enabled = MReplaceColumn.Enabled = true;*/
 
 					// Перерисовка
 					Redraw ();
@@ -1352,7 +1316,7 @@ namespace RD_AAOW
 		private void MMergeTables_Click (object sender, EventArgs e)
 			{
 			// Вызов диалога
-			TablesMergerForm tmf = new TablesMergerForm (ca.InterfaceLanguage);
+			TablesMergerForm tmf = new TablesMergerForm ();
 			tmf.Dispose ();
 			}
 
@@ -1360,7 +1324,7 @@ namespace RD_AAOW
 		private void MGenerateVI_Click (object sender, EventArgs e)
 			{
 			// Вызов диалога
-			SVGGeneratorForm svggf = new SVGGeneratorForm (ca.InterfaceLanguage);
+			SVGGeneratorForm svggf = new SVGGeneratorForm ();
 			svggf.Dispose ();
 			}
 
@@ -1372,7 +1336,7 @@ namespace RD_AAOW
 		private void AddColumn_Click (object sender, EventArgs e)
 			{
 			// Запуск выбора
-			ColumnsAdder cad = new ColumnsAdder (dd, ca.InterfaceLanguage);
+			ColumnsAdder cad = new ColumnsAdder (dd);
 
 			if (!cad.Cancelled)
 				{
@@ -1388,26 +1352,20 @@ namespace RD_AAOW
 
 				if ((res < 0) && (res != -3))
 					{
-					throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (9)");
+					throw new Exception (Localization.GetText ("ExceptionMessage") + " (9)");
 					}
 				else if (res == -3)
 					{
 					if (cad.IsNewObjectADiagram)
 						{
-						/*MessageBox.Shw (string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
-							DiagramData.MaxLines), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-							MessageBoxIcon.Exclamation);*/
 						RDGenerics.MessageBox (RDMessageTypes.Warning,
-							string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
+							string.Format (Localization.GetText ("LinesOverloadError"),
 							DiagramData.MaxLines));
 						}
 					else
 						{
-						/*MessageBox.Shw (string.Format (Localization.GetText ("ObjectsOverloadError", ca.InterfaceLanguage),
-							DiagramData.MaxAdditionalObjects), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-							MessageBoxIcon.Exclamation);*/
 						RDGenerics.MessageBox (RDMessageTypes.Warning,
-							string.Format (Localization.GetText ("ObjectsOverloadError", ca.InterfaceLanguage),
+							string.Format (Localization.GetText ("ObjectsOverloadError"),
 							DiagramData.MaxAdditionalObjects));
 						}
 					return;
@@ -1416,24 +1374,21 @@ namespace RD_AAOW
 				// Обновление списка названий кривых
 				if (cad.IsNewObjectADiagram)
 					{
-					LineNamesList.Items.Insert ((int)dd.LinesCount - 1, dd.GetDataColumnName (cad.YColumnNumber) + " @ " +
-						dd.GetDataColumnName (cad.XColumnNumber));
+					LineNamesList.Items.Insert ((int)dd.LinesCount - 1, dd.GetDataColumnName (cad.YColumnNumber) +
+						" @ " + dd.GetDataColumnName (cad.XColumnNumber));
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = (int)dd.LinesCount - 1;
 					}
 				else
 					{
-					LineNamesList.Items.Add (dd.GetStyle ((int)dd.LinesCount + (int)dd.AdditionalObjectsCount - 1).LineName);
+					LineNamesList.Items.Add (dd.GetStyle ((int)dd.LinesCount +
+						(int)dd.AdditionalObjectsCount - 1).LineName);
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = LineNamesList.Items.Count - 1;
 					}
 
 				// Перерисовка
 				Redraw ();
-
-				// Включение возможности удаления
-				/*DeleteColumn.Enabled = ReplaceColumn.Enabled = 
-					MDeleteColumn.Enabled = MReplaceColumn.Enabled = true;*/
 				}
 			}
 
@@ -1520,7 +1475,7 @@ namespace RD_AAOW
 		private void AddColumnCmd_Click (object sender, EventArgs e)
 			{
 			// Запуск выбора
-			ColumnsAdderCmd cac = new ColumnsAdderCmd (dd.DataColumnsCount, false, ca.InterfaceLanguage);
+			ColumnsAdderCmd cac = new ColumnsAdderCmd (dd.DataColumnsCount, false);
 
 			if (!cac.Cancelled)
 				{
@@ -1530,21 +1485,19 @@ namespace RD_AAOW
 					int res = dd.AddDiagram (cac.XColumnNumber[i], cac.YColumnNumber[i]);
 					if ((res < 0) && (res != -3))
 						{
-						throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (10)");
+						throw new Exception (Localization.GetText ("ExceptionMessage") + " (10)");
 						}
 					else if (res == -3)
 						{
-						/*MessageBox.Shw (string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
-							DiagramData.MaxLines), ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-							MessageBoxIcon.Exclamation);*/
 						RDGenerics.MessageBox (RDMessageTypes.Warning,
-							string.Format (Localization.GetText ("LinesOverloadError", ca.InterfaceLanguage),
+							string.Format (Localization.GetText ("LinesOverloadError"),
 							DiagramData.MaxLines));
 						break;
 						}
 
 					// Обновление списка названий кривых
-					LineNamesList.Items.Insert ((int)dd.LinesCount - 1, dd.GetDataColumnName (cac.YColumnNumber[i]) + " @ " +
+					LineNamesList.Items.Insert ((int)dd.LinesCount - 1,
+						dd.GetDataColumnName (cac.YColumnNumber[i]) + " @ " +
 						dd.GetDataColumnName (cac.XColumnNumber[i]));
 					LineNamesList.SelectedItems.Clear ();
 					LineNamesList.SelectedIndex = (int)dd.LinesCount - 1;
@@ -1654,7 +1607,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (12)");
+				throw new Exception (Localization.GetText ("ExceptionMessage") + " (12)");
 				}
 
 			// Обновление ограничений
@@ -1695,26 +1648,21 @@ namespace RD_AAOW
 
 			// Запрос параметров совмещения
 			DiagramMerger dm = new DiagramMerger (LineNamesList.SelectedItems[0].ToString (),
-				LineNamesList.SelectedItems[1].ToString (), ca.InterfaceLanguage);
+				LineNamesList.SelectedItems[1].ToString ());
 			if (dm.Cancelled)
 				return;
 
 			// Обработка варианта совмещения
-			/*int from, to;*/
 			int fromIdx, toIdx;
 			if (dm.MergeVariant == DiagramMerger.MergeVariants.FirstLine)
 				{
 				fromIdx = LineNamesList.SelectedIndices[0];
 				toIdx = LineNamesList.SelectedIndices[1];
-				/*from = 0;
-				to = 1;*/
 				}
 			else
 				{
 				fromIdx = LineNamesList.SelectedIndices[1];
 				toIdx = LineNamesList.SelectedIndices[0];
-				/*from = 1;
-				to = 0;*/
 				}
 
 			dd.GetStyle (toIdx).DiagramImageLeftOffset = dd.GetStyle (fromIdx).DiagramImageLeftOffset;
@@ -1793,27 +1741,25 @@ namespace RD_AAOW
 			// Контроль
 			if ((LineNamesList.SelectedIndices.Count == 0) || (LineNamesList.SelectedIndex >= dd.LinesCount))
 				{
-				/*MessageBox.Shw (Localization.GetText ("LineForReplaceNSError", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "LineForReplaceNSError");
 				return;
 				}
 
 			// Запуск выбора
 			ColumnsAdder cad = new ColumnsAdder (dd, (int)dd.GetStyle (LineNamesList.SelectedIndex).XColumnNumber,
-				(int)dd.GetStyle (LineNamesList.SelectedIndex).YColumnNumber, ca.InterfaceLanguage);
+				(int)dd.GetStyle (LineNamesList.SelectedIndex).YColumnNumber);
 
 			if (!cad.Cancelled)
 				{
 				int res = dd.ReplaceDiagram ((uint)LineNamesList.SelectedIndex, cad.XColumnNumber, cad.YColumnNumber);
 				if (res < 0)
 					{
-					throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (14)");
+					throw new Exception (Localization.GetText ("ExceptionMessage") + " (14)");
 					}
 
 				// Обновление списка названий кривых
-				LineNamesList.Items[LineNamesList.SelectedIndex] = dd.GetDataColumnName (cad.YColumnNumber) + " @ " +
-					dd.GetDataColumnName (cad.XColumnNumber);
+				LineNamesList.Items[LineNamesList.SelectedIndex] = dd.GetDataColumnName (cad.YColumnNumber) +
+					" @ " + dd.GetDataColumnName (cad.XColumnNumber);
 
 				// Перерисовка
 				Redraw ();
@@ -2005,15 +1951,13 @@ namespace RD_AAOW
 
 						// Любое нештатное значение
 						default:
-							throw new Exception (Localization.GetText ("ExceptionMessage", ca.InterfaceLanguage) + " (13)");
+							throw new Exception (Localization.GetText ("ExceptionMessage") + " (13)");
 						}
 					}
 				}
 			// Вряд ли, но на всякий случай
 			catch
 				{
-				/*MessageBox.Shw (Localization.GetText ("LinesForSettingNSError", ca.InterfaceLanguage),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "LinesForSettingNSError");
 				}
 

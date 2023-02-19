@@ -19,17 +19,16 @@ namespace RD_AAOW
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			Localization.SetControlsText (this, ca.InterfaceLanguage);
-			SaveButton.Text = Localization.GetText ("SaveButton", ca.InterfaceLanguage);
-			AbortButton.Text = Localization.GetText ("AbortButton", ca.InterfaceLanguage);
-			this.Text = Localization.GetControlText (this.Name, "T", ca.InterfaceLanguage);
+			Localization.SetControlsText (this);
+			SaveButton.Text = Localization.GetText ("SaveButton");
+			AbortButton.Text = Localization.GetText ("AbortButton");
+			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Настройка контролов
 			ConfirmExit.Checked = ca.ForceExitConfirmation;
 			ForceUsingBackupFile.Checked = ca.ForceUsingBackupDataFile;
 			ForceShowDiagram.Checked = ca.ForceShowDiagram;
 			ForceSavingColumnNames.Checked = ca.ForceSavingColumnNames;
-			/*DisableMousePlacing.Checked = ca.DisableMousePlacing;*/
 
 			// Запуск
 			this.ShowDialog ();
@@ -48,7 +47,6 @@ namespace RD_AAOW
 			ca.ForceUsingBackupDataFile = ForceUsingBackupFile.Checked;
 			ca.ForceShowDiagram = ForceShowDiagram.Checked;
 			ca.ForceSavingColumnNames = ForceSavingColumnNames.Checked;
-			/*ca.DisableMousePlacing = DisableMousePlacing.Checked;*/
 
 			this.Close ();
 			}

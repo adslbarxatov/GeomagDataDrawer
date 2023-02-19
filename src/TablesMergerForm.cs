@@ -12,7 +12,7 @@ namespace RD_AAOW
 	public partial class TablesMergerForm: Form
 		{
 		// Переменные
-		private SupportedLanguages al;
+		/*private SupportedLanguages al;*/
 
 		// Исходные таблицы
 		private List<List<List<double>>> dataTables = new List<List<List<double>>> ();
@@ -32,18 +32,17 @@ namespace RD_AAOW
 		/// <summary>
 		/// Конструктор. Запускает интерфейс мерджера
 		/// </summary>
-		public TablesMergerForm (SupportedLanguages InterfaceLanguage)
+		public TablesMergerForm (/*SupportedLanguages InterfaceLanguage*/)
 			{
 			// Инициализация окна
 			InitializeComponent ();
-			al = InterfaceLanguage;
+			/*al = InterfaceLanguage;*/
 
 			// Настройка контролов
 			OFDialog.Multiselect = true;
 			SFDialog.FilterIndex = 3;
 
-			ProcessingResults.Items.Add ("Tables merger" +
-				Localization.GetText ("TablesMerger_LaunchedAt", al) +
+			ProcessingResults.Items.Add ("Tables merger" + Localization.GetText ("TablesMerger_LaunchedAt") +
 				DateTime.Now.ToString ("dd.MM.yyyy HH:mm"));
 			ProcessingResults.SelectedIndex = ProcessingResults.Items.Count - 1;
 
@@ -58,10 +57,10 @@ namespace RD_AAOW
 		private void LocalizeForm ()
 			{
 			// Локализация
-			OFDialog.Filter = Localization.GetText (this.Name + "_OFDialog_F", al);
-			OFDialog.Title = Localization.GetControlText ("GeomagDataDrawerForm", "OFDialog", al);
-			SFDialog.Filter = Localization.GetText (this.Name + "_SFDialog_F", al);
-			SFDialog.Title = Localization.GetControlText ("GeomagDataDrawerForm", "SFDialog", al);
+			OFDialog.Filter = Localization.GetText (this.Name + "_OFDialog_F");
+			OFDialog.Title = Localization.GetControlText ("GeomagDataDrawerForm", "OFDialog");
+			SFDialog.Filter = Localization.GetText (this.Name + "_SFDialog_F");
+			SFDialog.Title = Localization.GetControlText ("GeomagDataDrawerForm", "SFDialog");
 
 			while (MergeType.Items.Count < 2)
 				{
@@ -69,10 +68,10 @@ namespace RD_AAOW
 				MergeType.SelectedIndex = 0;
 				}
 			for (int i = 0; i < MergeType.Items.Count; i++)
-				MergeType.Items[i] = Localization.GetText ("TablesMergerForm_MergeType" + i.ToString (), al);
+				MergeType.Items[i] = Localization.GetText ("TablesMergerForm_MergeType" + i.ToString ());
 
-			Localization.SetControlsText (this, al);
-			BExit.Text = Localization.GetText ("MFile_MExit", al);
+			Localization.SetControlsText (this);
+			BExit.Text = Localization.GetText ("MFile_MExit");
 			}
 
 		// Добавление файлов в обработку
@@ -84,11 +83,11 @@ namespace RD_AAOW
 		private void OFDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Запрос параметров обработки файлов
-			UnknownFileParametersSelector ufps = new UnknownFileParametersSelector (2, al, true);
+			UnknownFileParametersSelector ufps = new UnknownFileParametersSelector (2, true);
 			if (ufps.Cancelled)
 				return;
 
-			ColumnsNamesSelector cns = new ColumnsNamesSelector (0, al);
+			ColumnsNamesSelector cns = new ColumnsNamesSelector (0);
 			if (cns.Cancelled)
 				return;
 
@@ -99,9 +98,9 @@ namespace RD_AAOW
 				DiagramData dd = new DiagramData (OFDialog.FileNames[i], ufps.DataColumnsCount, cns.SkippedRowsCount);
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					ProcessingResults.Items.Add (string.Format (Localization.GetText ("FileAddError", al),
+					ProcessingResults.Items.Add (string.Format (Localization.GetText ("FileAddError"),
 						Path.GetFileName (OFDialog.FileNames[i]),
-						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult, al)));
+						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
 					continue;
 					}
 
@@ -114,7 +113,7 @@ namespace RD_AAOW
 					}
 				abscissasColumnsNumbers.Add (ufps.AbscissasColumn);
 				FileNamesList.Items.Add (OFDialog.FileNames[i]);
-				ProcessingResults.Items.Add (string.Format (Localization.GetText ("FileAddCompleted", al),
+				ProcessingResults.Items.Add (string.Format (Localization.GetText ("FileAddCompleted"),
 					Path.GetFileName (OFDialog.FileNames[i]),
 					dataTables[dataTables.Count - 1].Count,
 					dataTables[dataTables.Count - 1][0].Count));
@@ -132,7 +131,7 @@ namespace RD_AAOW
 			columnNames.Clear ();
 			abscissasColumnsNumbers.Clear ();
 
-			ProcessingResults.Items.Add (Localization.GetText ("FilesListReset", al));
+			ProcessingResults.Items.Add (Localization.GetText ("FilesListReset"));
 			ProcessingResults.SelectedIndex = ProcessingResults.Items.Count - 1;
 			}
 
@@ -142,8 +141,6 @@ namespace RD_AAOW
 			// Контроль
 			if (dataTables.Count < 2)
 				{
-				/*MessageBox.Shw (Localization.GetText ("NotEnoughFilesToMerge", al), ProgramDescription.AssemblyTitle,
-					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "NotEnoughFilesToMerge");
 				return;
 				}
@@ -164,7 +161,7 @@ namespace RD_AAOW
 				BExit.Enabled = true;
 			if (success)
 				{
-				ProcessingResults.Items.Add (string.Format (Localization.GetText ("TablesMergeCompleted", al),
+				ProcessingResults.Items.Add (string.Format (Localization.GetText ("TablesMergeCompleted"),
 					mergedTable.Count, mergedTable[0].Count));
 				ProcessingResults.SelectedIndex = ProcessingResults.Items.Count - 1;
 				SaveResult.Enabled = true;
@@ -185,7 +182,7 @@ namespace RD_AAOW
 					// Возврат прогресса
 					((BackgroundWorker)sender).ReportProgress ((int)(r * HardWorkExecutor.ProgressBarSize /
 						dataTables[f][(int)abscissasColumnsNumbers[f]].Count),
-						string.Format (Localization.GetText ("TablesAssembling", al), f + 1, r));
+						string.Format (Localization.GetText ("TablesAssembling"), f + 1, r));
 
 					// Создание строки
 					dataRows.Add (new SourceTableRow ((uint)f, dataTables[f][(int)abscissasColumnsNumbers[f]][r]));
@@ -218,7 +215,7 @@ namespace RD_AAOW
 
 			// Сортировка
 			((BackgroundWorker)sender).ReportProgress ((int)HardWorkExecutor.ProgressBarSize,
-				Localization.GetText ("TablesSorting", al));
+				Localization.GetText ("TablesSorting"));
 			dataRows.Sort ();
 
 			// Сборка итоговой таблицы
@@ -227,7 +224,7 @@ namespace RD_AAOW
 				{
 				// Возврат прогресса
 				((BackgroundWorker)sender).ReportProgress ((int)(r * HardWorkExecutor.ProgressBarSize / dataRows.Count),
-					string.Format (Localization.GetText ("TablesMerging", al), r));
+					string.Format (Localization.GetText ("TablesMerging"), r));
 
 				// Добавление строк в таблицу
 				if (currentAbscissa != dataRows[r].X)
@@ -279,8 +276,6 @@ namespace RD_AAOW
 			// Финальный контроль
 			if (mergedTable.Count < 2)
 				{
-				/*MessageBox.Shw (Localization.GetText ("TablesMergeError", al),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TablesMergeError");
 				return;
 				}
@@ -316,15 +311,12 @@ namespace RD_AAOW
 			DiagramData dd = new DiagramData (mergedTable, mergedColumnNames);
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)(SFDialog.FilterIndex + 1), true) != 0)
 				{
-				/*MessageBox.Shw (Localization.GetText ("DataFileSaveError", al), ProgramDescription.AssemblyTitle,
-					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "DataFileSaveError");
+				return;
 				}
-			else
-				{
-				ProcessingResults.Items.Add (Localization.GetText ("TablesMerger_FileSaved", al));
-				ProcessingResults.SelectedIndex = ProcessingResults.Items.Count - 1;
-				}
+
+			ProcessingResults.Items.Add (Localization.GetText ("TablesMerger_FileSaved"));
+			ProcessingResults.SelectedIndex = ProcessingResults.Items.Count - 1;
 			}
 		}
 	}

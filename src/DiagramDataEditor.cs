@@ -11,7 +11,7 @@ namespace RD_AAOW
 	public partial class DiagramDataEditor: Form
 		{
 		// Переменные
-		private SupportedLanguages language;    // Язык локализации
+		/*private SupportedLanguages language;    // Язык локализации*/
 		private DiagramData sourceData;
 
 		/// <summary>
@@ -42,24 +42,23 @@ namespace RD_AAOW
 		/// <summary>
 		/// Конструктор. Запускает форму редактирования данных
 		/// </summary>
-		/// <param name="Language">Язык локализации</param>
 		/// <param name="SourceData">Данные диаграммы</param>
-		public DiagramDataEditor (DiagramData SourceData, SupportedLanguages Language)
+		public DiagramDataEditor (DiagramData SourceData/*, SupportedLanguages Language*/)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
 			sourceData = SourceData;
 
-			Localization.SetControlsText (this, Language);  // Кнопки
-			Localization.SetControlsText (ColumnNameInput, MainToolTip, Language);  // Панель имени столбца
-			Localization.SetControlsText (this, MainToolTip, Language); // Подсказки
+			Localization.SetControlsText (this);  // Кнопки
+			Localization.SetControlsText (ColumnNameInput, MainToolTip);  // Панель имени столбца
+			Localization.SetControlsText (this, MainToolTip); // Подсказки
 
-			SaveButton.Text = Localization.GetText ("SaveButton", Language);
-			AbortButton.Text = Localization.GetText ("AbortButton", Language);
-			this.Text = Localization.GetControlText (this.Name, "T", Language);
+			SaveButton.Text = Localization.GetText ("SaveButton");
+			AbortButton.Text = Localization.GetText ("AbortButton");
+			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Сохранение параметров
-			language = Language;
+			/*language = Language;*/
 
 			// Запуск
 			this.ShowDialog ();
@@ -240,10 +239,9 @@ namespace RD_AAOW
 			if (cancelled)
 				{
 				// Проверка на отмену изменений
-				/*if (MessageBox.Shw (Localization.GetText ("AbortChanges", language), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)*/
 				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "AbortChanges",
-					Localization.DefaultButtons.YesNoFocus, Localization.DefaultButtons.No) == RDMessageButtons.ButtonTwo)
+					Localization.DefaultButtons.YesNoFocus, Localization.DefaultButtons.No) ==
+					RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
 					return;
@@ -252,8 +250,6 @@ namespace RD_AAOW
 			else
 				{
 				// Проверка на применение изменений
-				/*if (MessageBox.Shw (Localization.GetText ("ApplyChanges", language), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)*/
 				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "ApplyChanges",
 					Localization.DefaultButtons.Yes, Localization.DefaultButtons.No) == RDMessageButtons.ButtonTwo)
 					{
@@ -266,12 +262,9 @@ namespace RD_AAOW
 
 				if (ddt.InitResult != DiagramDataInitResults.Ok)
 					{
-					/*MessageBox.Shw (string.Format (Localization.GetText ("DataProcessingError", language),
-						DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable, language)),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 					RDGenerics.MessageBox (RDMessageTypes.Warning,
-						string.Format (Localization.GetText ("DataProcessingError", language),
-						DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable, language)));
+						string.Format (Localization.GetText ("DataProcessingError"),
+						DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable)));
 					e.Cancel = true;
 					return;
 					}

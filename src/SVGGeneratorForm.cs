@@ -12,16 +12,15 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private bool showSuccessMessage = true;
-		private SupportedLanguages al;
+		/*private SupportedLanguages al;*/
 
 		/// <summary>
 		/// Конструктор. Запускает главную форму программы
 		/// </summary>
-		/// <param name="InterfaceLanguage">Язык интерфейса</param>
-		public SVGGeneratorForm (SupportedLanguages InterfaceLanguage)
+		public SVGGeneratorForm (/*SupportedLanguages InterfaceLanguage*/)
 			{
 			InitializeComponent ();
-			al = InterfaceLanguage;
+			/*al = InterfaceLanguage;*/
 
 			// Настройка контролов
 			this.Text = ProgramDescription.AssemblyTitle;
@@ -134,7 +133,7 @@ namespace RD_AAOW
 			SVGScriptReader svgsr = new SVGScriptReader (OFName.Text);
 			if (svgsr.InitResult != SVGScriptReader.InitResults.Ok)
 				{
-				string msg = Localization.GetText ("VIG_ScriptReadingError", al);
+				string msg = Localization.GetText ("VIG_ScriptReadingError");
 
 				switch (svgsr.InitResult)
 					{
@@ -153,18 +152,18 @@ namespace RD_AAOW
 					case SVGScriptReader.InitResults.BrokenOyWidth:
 
 					case SVGScriptReader.InitResults.BrokenText:
-						msg += (string.Format (Localization.GetText ("VIG_" + svgsr.InitResult.ToString (), al),
+						msg += (string.Format (Localization.GetText ("VIG_" + svgsr.InitResult.ToString ()),
 							svgsr.CurrentLine));
 						break;
 
 					case SVGScriptReader.InitResults.CannotCreateTMP:
 					case SVGScriptReader.InitResults.FileNotAvailable:
 					case SVGScriptReader.InitResults.IncludeDeepOverflow:
-						msg += Localization.GetText ("VIG_" + svgsr.InitResult.ToString (), al);
+						msg += Localization.GetText ("VIG_" + svgsr.InitResult.ToString ());
 						break;
 
 					case SVGScriptReader.InitResults.CannotIncludeFile:
-						msg += (string.Format (Localization.GetText ("VIG_" + svgsr.InitResult.ToString (), al),
+						msg += (string.Format (Localization.GetText ("VIG_" + svgsr.InitResult.ToString ()),
 							svgsr.FaliedIncludeFile));
 						break;
 
@@ -172,8 +171,6 @@ namespace RD_AAOW
 						throw new Exception ("Internal error occurred. Debug is required at point 1");
 					}
 
-				/*MessageBox.Shw (msg, ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-					MessageBoxIcon.Exclamation);*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning, msg);
 				return;
 				}
@@ -196,21 +193,19 @@ namespace RD_AAOW
 				}
 			if (vectorAdapter.InitResult != VectorAdapterInitResults.Opened)
 				{
-				string msg = Localization.GetText ("FileWritingError", al);
+				string msg = Localization.GetText ("FileWritingError");
 
 				switch (vectorAdapter.InitResult)
 					{
 					case VectorAdapterInitResults.CannotCreateFile:
 					case VectorAdapterInitResults.IncorrectImageSize:
-						msg += Localization.GetText ("VIG_" + vectorAdapter.InitResult.ToString (), al);
+						msg += Localization.GetText ("VIG_" + vectorAdapter.InitResult.ToString ());
 						break;
 
 					default:    // f.e., Closed, NotInited
 						throw new Exception ("Internal error occurred. Debug is required at point 4");
 					}
 
-				/*MessageBox.Shw (msg, ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-					MessageBoxIcon.Exclamation);*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning, msg);
 				return;
 				}
@@ -288,9 +283,6 @@ namespace RD_AAOW
 
 			if (showSuccessMessage)
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Success, "FileCreated");
-
-			/*MessageBox.Shw (Localization.GetText ("FileCreated", al), ProgramDescription.AssemblyTitle,
-				 MessageBoxButtons.OK, MessageBoxIcon.Information);*/
 			}
 
 		// Сохранение образца сценария
@@ -309,13 +301,11 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				/*MessageBox.Shw (Localization.GetText ("CannotCreateSample", al),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "CannotCreateSample");
 				return;
 				}
 
-			if (al == SupportedLanguages.ru_ru)
+			if (Localization.IsCurrentLanguageRuRu)
 				FS.Write (RD_AAOW.Properties.GeomagDataDrawer.Sample_ru_ru, 0,
 					RD_AAOW.Properties.GeomagDataDrawer.Sample_ru_ru.Length);
 			else
@@ -329,17 +319,17 @@ namespace RD_AAOW
 		private void LocalizeForm ()
 			{
 			// Локализация
-			OFDialog.Title = OFLabel.Text = Localization.GetText ("VIG_OFDialogTitle", al);
-			OFDialog.Filter = SSDialog.Filter = Localization.GetText ("VIG_OFDialogFilter", al);
+			OFDialog.Title = OFLabel.Text = Localization.GetText ("VIG_OFDialogTitle");
+			OFDialog.Filter = SSDialog.Filter = Localization.GetText ("VIG_OFDialogFilter");
 
-			SFDialog.Title = SFLabel.Text = Localization.GetText ("VIG_SFDialogTitle", al);
-			SFDialog.Filter = Localization.GetText ("VIG_SFDialogFilter", al);
+			SFDialog.Title = SFLabel.Text = Localization.GetText ("VIG_SFDialogTitle");
+			SFDialog.Filter = Localization.GetText ("VIG_SFDialogFilter");
 
-			SSDialog.Title = Localization.GetText ("VIG_SSDialogTitle", al);
+			SSDialog.Title = Localization.GetText ("VIG_SSDialogTitle");
 
-			SaveSample.Text = Localization.GetText ("VIG_SaveSampleText", al);
-			GenerateImage.Text = Localization.GetText ("VIG_GenerateImageText", al);
-			BExit.Text = Localization.GetText ("MFile_MExit", al);
+			SaveSample.Text = Localization.GetText ("VIG_SaveSampleText");
+			GenerateImage.Text = Localization.GetText ("VIG_GenerateImageText");
+			BExit.Text = Localization.GetText ("MFile_MExit");
 			}
 		}
 	}
