@@ -57,6 +57,8 @@
     - [Файлы данных в формате Microsoft Office Excel](#62-файлы-данных-в-формате-microsoft-office-excel)
     - [Файлы данных в формате Windows CSV](#63-файлы-данных-в-формате-windows-csv)
     - [Файлы, из которых необходимо извлечь данные](#64-файлы-из-которых-необходимо-извлечь-данные)
+- [Ссылки для загрузки](https://adslbarxatov.github.io/DPArray/ru#geomagdatadrawer)
+
 
 
 #
