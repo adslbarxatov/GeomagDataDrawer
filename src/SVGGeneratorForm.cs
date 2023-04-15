@@ -12,15 +12,13 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private bool showSuccessMessage = true;
-		/*private SupportedLanguages al;*/
 
 		/// <summary>
 		/// Конструктор. Запускает главную форму программы
 		/// </summary>
-		public SVGGeneratorForm (/*SupportedLanguages InterfaceLanguage*/)
+		public SVGGeneratorForm ()
 			{
 			InitializeComponent ();
-			/*al = InterfaceLanguage;*/
 
 			// Настройка контролов
 			this.Text = ProgramDescription.AssemblyTitle;
@@ -115,16 +113,12 @@ namespace RD_AAOW
 			// Контроль параметров
 			if (OFName.Text == "")
 				{
-				/*MessageBox.Shw (Localization.GetText ("InputFileNotSpecified", al), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "InputFileNotSpecified");
 				return;
 				}
 
 			if (SFName.Text == "")
 				{
-				/*MessageBox.Shw (Localization.GetText ("OutputFileNotSpecified", al), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "OutputFileNotSpecified");
 				return;
 				}

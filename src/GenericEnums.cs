@@ -180,7 +180,7 @@
 		/// </summary>
 		/// <param name="Result">Результат инициализации класса</param>
 		/// <returns>Сообщение об ошибке</returns>
-		public static string ErrorMessage (DiagramDataInitResults Result/*, SupportedLanguages Language*/)
+		public static string ErrorMessage (DiagramDataInitResults Result)
 			{
 			switch (Result)
 				{

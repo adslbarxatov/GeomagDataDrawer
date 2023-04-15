@@ -72,7 +72,7 @@ namespace RD_AAOW
 		/// Конструктор. Запускает форму выбора данных
 		/// </summary>
 		/// <param name="SourceData">Исходные данные диаграммы</param>
-		public ColumnsAdder (DiagramData SourceData/*, SupportedLanguages Language*/)
+		public ColumnsAdder (DiagramData SourceData)
 			{
 			// Инициализация
 			InitializeComponent ();
@@ -98,8 +98,7 @@ namespace RD_AAOW
 		/// как столбец абсцисс</param>
 		/// <param name="OldYColumnNumber">Номер ранее выбранного столбца данных, интерпретируемых 
 		/// как столбец ординат</param>
-		public ColumnsAdder (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber/*,
-			SupportedLanguages Language*/)
+		public ColumnsAdder (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber)
 			{
 			// Инициализация
 			InitializeComponent ();
@@ -113,12 +112,11 @@ namespace RD_AAOW
 			}
 
 		// Конструктор
-		private void ColumnsAdderConstructor (DiagramData SourceData, int OldXColumnNumber,
-			int OldYColumnNumber/*, SupportedLanguages Language*/)
+		private void ColumnsAdderConstructor (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber)
 			{
 			// Локазизация формы
-			ApplyButton.Text = Localization.GetText ("ApplyButton");
-			AbortButton.Text = Localization.GetText ("AbortButton");
+			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
+			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
 			Localization.SetControlsText (this);
 
 			// Загрузка параметров

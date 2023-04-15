@@ -10,9 +10,6 @@ namespace RD_AAOW
 	/// </summary>
 	public partial class FormulaEvaluator: Form
 		{
-		// Переменные
-		/*private SupportedLanguages language;*/
-
 		/// <summary>
 		/// Возвращает true, если ввод был отменён
 		/// </summary>
@@ -64,22 +61,19 @@ namespace RD_AAOW
 		/// <summary>
 		/// Конструктор. Запускает форму ввода формулы
 		/// </summary>
-		public FormulaEvaluator (/*SupportedLanguages Language*/)
+		public FormulaEvaluator ()
 			{
 			// Инициализация и локазизация формы
 			InitializeComponent ();
 
 			this.Text = Localization.GetControlText ("FormulaEvaluator", "T");
-			ApplyButton.Text = Localization.GetText ("ApplyButton");
-			AbortButton.Text = Localization.GetText ("AbortButton");
+			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
+			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
 			Localization.SetControlsText (this);
 
 			StartValue.Maximum = EndValue.Maximum = (decimal)ExpressionEvaluator.EvaluationLimit;
 			StartValue.Minimum = EndValue.Minimum = (decimal)-ExpressionEvaluator.EvaluationLimit;
 			StepValue.Maximum = (decimal)ExpressionEvaluator.EvaluationLimit;
-
-			// Сохранение параметров
-			/*language = Language;*/
 
 			// Начальная обработка
 			AddButton_Click (null, null);
@@ -103,8 +97,6 @@ namespace RD_AAOW
 				((uint)(Math.Abs (EndValue.Value - StartValue.Value) / StepValue.Value) + 1 >
 				DiagramData.MaxDataRows) || (EndValue.Value == StartValue.Value))
 				{
-				/*MessageBox.Shw (Localization.GetText ("IncorrectRangeError", language),
-					ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "IncorrectRangeError");
 				return;
 				}

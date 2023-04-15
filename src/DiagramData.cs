@@ -24,15 +24,15 @@ namespace RD_AAOW
 		private CultureInfo cir = new CultureInfo ("ru-ru");            // Десятичная запятая
 
 		// Исходный массив данных
-		private List<List<double>> dataValues = new List<List<double>> ();      
-		
+		private List<List<double>> dataValues = new List<List<double>> ();
+
 		// Имена столбцов исходного массива данных
 		private List<string> dataColumnNames = new List<string> ();
 
 #if !DataProcessingOnly
 
 		// Массив кривых диаграммы
-		private List<DiagramCurve> curves = new List<DiagramCurve> ();          
+		private List<DiagramCurve> curves = new List<DiagramCurve> ();
 
 		// Массив сопоставленных стилей отображения
 		private List<DiagramStyle> lineStyles = new List<DiagramStyle> ();
@@ -47,8 +47,8 @@ namespace RD_AAOW
 		private const float RightMargin = LeftMargin + DiagramFieldPart;
 
 		// Нижний отступ от края изображения до диаграммы (в долях)
-		private const float BottomMargin = TopMargin + DiagramFieldPart;    
-		
+		private const float BottomMargin = TopMargin + DiagramFieldPart;
+
 #endif
 
 		// КОНСТАНТЫ
@@ -350,12 +350,12 @@ namespace RD_AAOW
 			}
 
 		// Метод загружает данные диаграммы из любого текста, передаваемого из файла или буфера обмена
-		private void LoadRawText (bool FromClipboard, string DataFileName, uint ColumnsCount, 
+		private void LoadRawText (bool FromClipboard, string DataFileName, uint ColumnsCount,
 			uint SkippedLinesCount)
 			{
 			// Контроль значений
 			if ((ColumnsCount < 2) || (ColumnsCount > MaxDataColumns) || !FromClipboard && (DataFileName == null))
-				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (1)");
+				throw new Exception (Localization.GetText ("ExceptionMessage") + " (1)");
 
 			// Попытка открытия файла
 			FileStream FS = null;
@@ -490,7 +490,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if (Table == null)
-				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (3)");
+				throw new Exception (Localization.GetText ("ExceptionMessage") + " (3)");
 
 			// Вызов функции загрузки
 			LoadDataFromTable (Table, 0);
@@ -507,7 +507,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if ((X == null) || (Y == null) || (X.Count == 0))
-				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (4)");
+				throw new Exception (Localization.GetText ("ExceptionMessage") + " (4)");
 
 			if ((X.Count < 2) || (Y.Count != ColumnsNames.Count))
 				{
@@ -520,7 +520,7 @@ namespace RD_AAOW
 				{
 				// Контроль
 				if (X.Count != Y[c].Count)
-					throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (5)");
+					throw new Exception (Localization.GetText ("ExceptionMessage") + " (5)");
 
 				// Создание структуры
 				if (c == 0)
@@ -555,7 +555,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if ((DataTable == null) || (ColumnNames == null))
-				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (6)");
+				throw new Exception (Localization.GetText ("ExceptionMessage") + " (6)");
 
 			if ((DataTable.Count < 2) || (ColumnNames.Count < 2))
 				{
@@ -571,7 +571,7 @@ namespace RD_AAOW
 				{
 				// Контроль
 				if (DataTable[r].Count != ColumnNames.Count)
-					throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (7)");
+					throw new Exception (Localization.GetText ("ExceptionMessage") + " (7)");
 
 				for (int c = 0; c < DataTable[r].Count; c++)
 					{
@@ -586,8 +586,6 @@ namespace RD_AAOW
 			// Успешно
 			initResult = DiagramDataInitResults.Ok;
 			}
-
-#if !DataProcessingOnly
 
 		// Метод загружает файл в формате GDD
 		private void LoadGDDFile (string DataFileName)
@@ -765,8 +763,6 @@ namespace RD_AAOW
 			FS.Close ();
 			}
 
-#endif
-
 		// Метод загружает файл в формате Excel
 		private void LoadExcelFile (string DataFileName, uint SkippedLinesCount)
 			{
@@ -920,8 +916,6 @@ namespace RD_AAOW
 				return (uint)dataValues.Count;
 				}
 			}
-
-#if !DataProcessingOnly
 
 		/// <summary>
 		/// Метод добавляет новую кривую в список сформированных кривых, используя загруженные данные
@@ -1383,8 +1377,6 @@ namespace RD_AAOW
 				}
 			}
 
-#endif
-
 		/// <summary>
 		/// Возвращает результат инициализации класса
 		/// </summary>
@@ -1397,14 +1389,12 @@ namespace RD_AAOW
 			}
 		private DiagramDataInitResults initResult = DiagramDataInitResults.NotInited;
 
-#if !DataProcessingOnly
-
 		// Метод формирует изображение одной кривой
-		private void DrawDiagram (int LineNumber, DiagramStyle LineStyle, Graphics DrawField, 
+		private void DrawDiagram (int LineNumber, DiagramStyle LineStyle, Graphics DrawField,
 			bool IsSelected)
 			{
 			// Создание пустого изображения заданного размера с белым фоном
-			Bitmap lineImage = new Bitmap ((int)LineStyle.DiagramImageWidth, (int)LineStyle.DiagramImageHeight);    
+			Bitmap lineImage = new Bitmap ((int)LineStyle.DiagramImageWidth, (int)LineStyle.DiagramImageHeight);
 			// Будущее изображение
 
 			Graphics g = Graphics.FromImage (lineImage);    // Графический дескриптор
@@ -1592,18 +1582,6 @@ namespace RD_AAOW
 						break;
 
 					case NumbersFormat.Date:
-						/*try
-							{
-							double d1 = styleMinX + (styleMaxX - styleMinX) * (double)i /
-								(double)styleXPrimaryDiv;
-							DateTime d2 = new DateTime ((int)d1, 1, 1);
-							d2 = d2.AddDays ((d1 - (int)d1) * (d2.Year % 4 == 0 ? 366.0 : 365.0));
-							txt = d2.ToString ("dd.MM.yyyy");
-							}
-						catch
-							{
-							txt = "00.00.0000";
-							}*/
 						txt = DecompressDateValue (styleMinX + (styleMaxX - styleMinX) * (double)i /
 							(double)styleXPrimaryDiv);
 						break;
@@ -1711,18 +1689,6 @@ namespace RD_AAOW
 						break;
 
 					case NumbersFormat.Date:
-						/*try
-							{
-							double d1 = styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
-								(double)styleYPrimaryDiv;
-							DateTime d2 = new DateTime ((int)d1, 1, 1);
-							d2 = d2.AddDays ((d1 - (int)d1) * (d2.Year % 4 == 0 ? 366 : 365));
-							txt = d2.ToString ("dd.MM.yyyy");
-							}
-						catch
-							{
-							txt = "00.00.0000";
-							}*/
 						txt = DecompressDateValue (styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
 							(double)styleYPrimaryDiv);
 						break;
@@ -1904,7 +1870,7 @@ namespace RD_AAOW
 			}
 
 		// Метод формирует изображение одного дополнительного объекта
-		private void DrawObject (int ObjectNumber, DiagramStyle ObjectStyle, Graphics DrawField, 
+		private void DrawObject (int ObjectNumber, DiagramStyle ObjectStyle, Graphics DrawField,
 			bool IsSelected)
 			{
 			// Создание пустого изображения заданного размера с белым фоном
@@ -2020,7 +1986,7 @@ namespace RD_AAOW
 		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
 		/// -2, если входные параметры некорректны</returns>
 		public int DrawAllDiagrams (uint WidthValue, uint HeightValue, List<DiagramStyle> NewLinesStyles,
-			List<DiagramStyle> NewObjectsStyles, Graphics DrawField, ListBox.SelectedIndexCollection 
+			List<DiagramStyle> NewObjectsStyles, Graphics DrawField, ListBox.SelectedIndexCollection
 			CurrentLines)
 			{
 			// Контроль значений
@@ -2283,18 +2249,6 @@ namespace RD_AAOW
 						break;
 
 					case NumbersFormat.Date:
-						/*try
-							{
-							double d1 = styleMinX + (styleMaxX - styleMinX) * (double)i /
-								(double)styleXPrimaryDiv;
-							DateTime d2 = new DateTime ((int)d1, 1, 1);
-							d2 = d2.AddDays ((d1 - (int)d1) * (d2.Year % 4 == 0 ? 366 : 365));
-							txt = d2.ToString ("dd.MM.yyyy");
-							}
-						catch
-							{
-							txt = "00.00.0000";
-							}*/
 						txt = DecompressDateValue (styleMinX + (styleMaxX - styleMinX) * (double)i /
 							(double)styleXPrimaryDiv);
 						break;
@@ -2409,18 +2363,6 @@ namespace RD_AAOW
 						break;
 
 					case NumbersFormat.Date:
-						/*try
-							{
-							double d1 = styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
-								(double)styleXPrimaryDiv;
-							DateTime d2 = new DateTime ((int)d1, 1, 1);
-							d2 = d2.AddDays ((d1 - (int)d1) * (d2.Year % 4 == 0 ? 366 : 365));
-							txt = d2.ToString ("dd.MM.yyyy");
-							}
-						catch
-							{
-							txt = "00.00.0000";
-							}*/
 						txt = DecompressDateValue (styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
 							(double)styleXPrimaryDiv);
 						break;
@@ -2429,12 +2371,14 @@ namespace RD_AAOW
 
 				if (ox < (float)lineStyles[LineNumber].DiagramImageWidth / 2.0f)
 					{
-					VectorAdapter.DrawText ((lineStyles[LineNumber].AutoTextOffset) ? (x2 + 2.0f * NotchSize) : (X + lineStyles[LineNumber].OyTextOffset), y1 + sz.Height / 2.0f,
+					VectorAdapter.DrawText ((lineStyles[LineNumber].AutoTextOffset) ? (x2 + 2.0f * NotchSize) :
+						(X + lineStyles[LineNumber].OyTextOffset), y1 + sz.Height / 2.0f,
 						txt, lineStyles[LineNumber].AxesFont, lineStyles[LineNumber].AxesFontColor);
 					}
 				else
 					{
-					VectorAdapter.DrawText ((lineStyles[LineNumber].AutoTextOffset) ? (x2 - sz.Width * 0.8f - 2.0f * NotchSize) : (X + lineStyles[LineNumber].OyTextOffset), y1 + sz.Height / 2.0f,
+					VectorAdapter.DrawText ((lineStyles[LineNumber].AutoTextOffset) ? (x2 - sz.Width * 0.8f - 2.0f *
+						NotchSize) : (X + lineStyles[LineNumber].OyTextOffset), y1 + sz.Height / 2.0f,
 						txt, lineStyles[LineNumber].AxesFont, lineStyles[LineNumber].AxesFontColor);
 					}
 				}
@@ -2654,7 +2598,7 @@ namespace RD_AAOW
 
 			// Готово
 			if (!VectorAdapter.CloseFile ())
-				throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (8)");
+				throw new Exception (Localization.GetText ("ExceptionMessage") + " (8)");
 			return 0;
 			}
 
@@ -2734,15 +2678,14 @@ namespace RD_AAOW
 			return 0;
 			}
 
-#endif
-
 		/// <summary>
 		/// Метод сохраняет загруженные экземпляром класса данные в файл
 		/// </summary>
 		/// <param name="DataFileName">Путь для сохраняемого файла</param>
 		/// <param name="DataFileType">Тип файла данных</param>
 		/// <param name="SaveColumnNames">Флаг, требующий сохранения имён столбцов данных</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// <returns>Возвращает 0 в случае успеха;
+		/// -1, если класс не был успешно инициализирован; 
 		/// -2, если не удалось записать файл</returns>
 		public int SaveDataFile (string DataFileName, DataOutputTypes DataFileType, bool SaveColumnNames)
 			{
@@ -2830,14 +2773,15 @@ namespace RD_AAOW
 			return 0;
 			}
 
-#if !DataProcessingOnly
-
 		/// <summary>
 		/// Метод загружает стили кривых из файла и добавляет указанные в них кривые на диаграмму
 		/// </summary>
 		/// <param name="StyleFileName">Путь к файлу стиля</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; -2, если входные параметры некорректны;
-		/// -3, если файл стиля недоступен; -4, если файл стиля повреждён</returns>
+		/// <returns>Возвращает 0 в случае успеха;
+		/// -1, если класс не был успешно инициализирован;
+		/// -2, если входные параметры некорректны;
+		/// -3, если файл стиля недоступен;
+		/// -4, если файл стиля повреждён</returns>
 		public int LoadStyle (string StyleFileName)
 			{
 			return StyleLoadingExecutor (StyleFileName, false, null);
@@ -2848,9 +2792,11 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="LineNumbers">Номера кривых для применения стилей</param>
 		/// <param name="StyleFileName">Путь к файлу стиля</param>
-		/// <returns>Возвращает 0 в случае успеха; -1, если класс не был успешно инициализирован; 
+		/// <returns>Возвращает 0 в случае успеха;
+		/// -1, если класс не был успешно инициализирован; 
 		/// -2, если входные параметры некорректны;
-		/// -3, если файл стиля недоступен; -4, если файл стиля повреждён</returns>
+		/// -3, если файл стиля недоступен;
+		/// -4, если файл стиля повреждён</returns>
 		public int LoadStyle (string StyleFileName, ListBox.SelectedIndexCollection LineNumbers)
 			{
 			return StyleLoadingExecutor (StyleFileName, true, LineNumbers);
@@ -2897,8 +2843,10 @@ namespace RD_AAOW
 			return 0;
 			}
 
-		// Метод загружает файл стиля и применяет его к имеющимся кривым (Update = true) или добавляет новые кривые (Update = false)
-		private int StyleLoadingExecutor (string StyleFileName, bool Update, ListBox.SelectedIndexCollection LineNumbers)
+		// Метод загружает файл стиля и применяет его к имеющимся кривым (Update = true)
+		// или добавляет новые кривые (Update = false)
+		private int StyleLoadingExecutor (string StyleFileName, bool Update,
+			ListBox.SelectedIndexCollection LineNumbers)
 			{
 			// Контроль состояния
 			if (initResult != DiagramDataInitResults.Ok)
@@ -3276,8 +3224,6 @@ namespace RD_AAOW
 			}
 
 
-#endif
-
 		/// <summary>
 		/// Метод возвращает исходный массив данных
 		/// </summary>
@@ -3383,26 +3329,5 @@ namespace RD_AAOW
 				return "00.00.0000";
 				}
 			}
-
-		/*#if !DataProcessingOnly
-
-				// Методы выполняют преобразование значения в дату
-				private long MakeDateFromEdgeValue (double Value)
-					{
-					int d = (int)((long)Value % 100);
-					int m = (int)(((long)Value / 100) % 100);
-					int y = (int)(((long)Value / 10000) % 10000);
-
-					try
-						{
-						return new DateTime (y, m, d).ToFileTime ();
-						}
-					catch
-						{
-						return 0;
-						}
-					}
-
-		#endif*/
 		}
 	}

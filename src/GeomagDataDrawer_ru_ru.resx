@@ -264,9 +264,6 @@
   <data name="MainTabControl_TextTab_TT" xml:space="preserve">
     <value>Панель настройки подписей</value>
   </data>
-  <data name="MFile_MExit" xml:space="preserve">
-    <value>Выход</value>
-  </data>
   <data name="MOperations_MLoadStyle" xml:space="preserve">
     <value>Загрузить стиль...</value>
   </data>
@@ -339,17 +336,11 @@
   <data name="RangeTab_SwitchXY" xml:space="preserve">
     <value>Выполнить транспонирование кривой</value>
   </data>
-  <data name="AbortButton" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
   <data name="AbortChanges" xml:space="preserve">
     <value>Все несохранённые изменения будут утеряны. Продолжить?</value>
   </data>
   <data name="ApplicationExit" xml:space="preserve">
     <value>Завершить работу с программой?</value>
-  </data>
-  <data name="ApplyButton" xml:space="preserve">
-    <value>ОК</value>
   </data>
   <data name="ApplyChanges" xml:space="preserve">
     <value>Сохранить внесённые изменения?</value>
@@ -726,9 +717,6 @@
   </data>
   <data name="RangeTab_SwapY_TT" xml:space="preserve">
     <value>Кнопка позволяет обменять местами минимальную и максимальную ординаты диапазона построения (отразить ось Oy)</value>
-  </data>
-  <data name="SaveButton" xml:space="preserve">
-    <value>Сохранить</value>
   </data>
   <data name="SaveCfgFileError" xml:space="preserve">
     <value>Не удалось сохранить конфигурацию программы. Возможно, место установки программы защищено от записи, или файл занят другой программой</value>

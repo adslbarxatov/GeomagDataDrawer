@@ -153,30 +153,11 @@
 		/// </summary>
 		public const uint MinExpectedColumnsCount = 2;
 
-		/*/// <summary>
-		/// Возвращает или задаёт язык интерфейса
-		/// </summary>
-		public SupportedLanguages InterfaceLanguage
-			{
-			get
-				{
-				return interfaceLanguage;
-				}
-			set
-				{
-				Localization.CurrentLanguage = interfaceLanguage = value;
-				}
-			}
-		private SupportedLanguages interfaceLanguage;*/
-
 		/// <summary>
 		/// Конструктор. Загружает ранее сохранённые параметры работы программы
 		/// </summary>
 		public ConfigAccessor ()
 			{
-			// Язык интерфейса
-			/*interfaceLanguage = Localization.CurrentLanguage;*/
-
 			// Флаги
 			forceExitConfirmation = (RDGenerics.GetAppSettingsValue ("ForceExitConfirmation") == "FEC");
 

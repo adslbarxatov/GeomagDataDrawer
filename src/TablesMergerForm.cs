@@ -11,9 +11,6 @@ namespace RD_AAOW
 	/// </summary>
 	public partial class TablesMergerForm: Form
 		{
-		// Переменные
-		/*private SupportedLanguages al;*/
-
 		// Исходные таблицы
 		private List<List<List<double>>> dataTables = new List<List<List<double>>> ();
 		private List<List<string>> columnNames = new List<List<string>> ();
@@ -32,11 +29,10 @@ namespace RD_AAOW
 		/// <summary>
 		/// Конструктор. Запускает интерфейс мерджера
 		/// </summary>
-		public TablesMergerForm (/*SupportedLanguages InterfaceLanguage*/)
+		public TablesMergerForm ()
 			{
 			// Инициализация окна
 			InitializeComponent ();
-			/*al = InterfaceLanguage;*/
 
 			// Настройка контролов
 			OFDialog.Multiselect = true;
@@ -293,11 +289,8 @@ namespace RD_AAOW
 
 		private void TableMergerForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			/*e.Cancel = MessageBox.Shw (Localization.GetText ("TablesMerger_Exit", al),
-				ProgramDescription.AssemblyTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) !=
-				DialogResult.Yes;*/
 			e.Cancel = (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TablesMerger_Exit",
-				Localization.DefaultButtons.Yes, Localization.DefaultButtons.No) != RDMessageButtons.ButtonOne);
+				LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) != RDMessageButtons.ButtonOne);
 			}
 
 		// Сохранение таблицы

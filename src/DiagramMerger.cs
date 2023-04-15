@@ -98,7 +98,7 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="Line1Name">Имя первой совмещаемой кривой</param>
 		/// <param name="Line2Name">Имя второй совмещаемой кривой</param>
-		public DiagramMerger (string Line1Name, string Line2Name/*, SupportedLanguages Language*/)
+		public DiagramMerger (string Line1Name, string Line2Name)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
@@ -107,8 +107,8 @@ namespace RD_AAOW
 			Localization.SetControlsText (MergingAxes); // Панели
 			Localization.SetControlsText (MergingVariant);
 
-			ApplyButton.Text = Localization.GetText ("ApplyButton");
-			AbortButton.Text = Localization.GetText ("AbortButton");
+			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
+			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
 			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Сохранение параметров

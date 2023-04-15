@@ -15,7 +15,6 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private uint dataColumnsCount = 0;  // Число столбцов в исходном массиве данных
-		/*private SupportedLanguages language;*/
 
 		/// <summary>
 		/// Возвращает номер столбца данных, интерпретируемого как столбец абсцисс
@@ -154,13 +153,13 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="DataColumnsCount">Число доступных столбцов исходного массива данных</param>
 		/// <param name="Silent">Инициализация в тихом режиме</param>
-		public ColumnsAdderCmd (uint DataColumnsCount, bool Silent/*, SupportedLanguages Language*/)
+		public ColumnsAdderCmd (uint DataColumnsCount, bool Silent)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
 			Localization.SetControlsText (this);
-			ApplyButton.Text = Localization.GetText ("ApplyButton");
-			AbortButton.Text = Localization.GetText ("AbortButton");
+			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
+			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
 			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Настройка контролов
@@ -170,7 +169,6 @@ namespace RD_AAOW
 
 			// Загрузка параметров
 			dataColumnsCount = DataColumnsCount;
-			/*language = Language;*/
 
 			// Запуск
 			if (!Silent)

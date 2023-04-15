@@ -18,20 +18,19 @@ namespace RD_AAOW
 		private List<DiagramStyle> objectStyles = new List<DiagramStyle> ();
 		private uint imageWidth, imageHeight;   // Новый размер диаграммы
 		private DiagramData diagramData;        // Данные диаграммы
-		/*private SupportedLanguages language;    // Язык локализации*/
 
 		/// <summary>
 		/// Конструктор. Принимает отрисовываемые данные и стиль отрисовки
 		/// </summary>
 		/// <param name="DiagramData">Данные диаграммы</param>
 		/// <param name="Silent">Флаг 'тихого' режима (без настроек)</param>
-		public SavePicture (DiagramData DiagramData, /*SupportedLanguages Language,*/ bool Silent)
+		public SavePicture (DiagramData DiagramData, bool Silent)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
 			Localization.SetControlsText (this);
-			SaveButton.Text = Localization.GetText ("SaveButton");
-			AbortButton.Text = Localization.GetText ("AbortButton");
+			SaveButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Save);
+			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
 			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Передача значений
@@ -44,7 +43,6 @@ namespace RD_AAOW
 			diagramData = DiagramData;
 			imageWidth = DiagramData.DiagramWidth;
 			imageHeight = DiagramData.DiagramHeight;
-			/*language = Language;*/
 
 			// Настройка контролов
 			SFDialog.Title = Localization.GetControlText (this.Name, "SFDialog");
@@ -91,10 +89,10 @@ namespace RD_AAOW
 					VectorImage.Checked = true;
 					break;
 
-					/*case ImageOutputTypes.EMF:
-						VectorImage.Checked = true;
-						SFDialog.FilterIndex = 2;
-						break;*/
+				/*case ImageOutputTypes.EMF:
+					VectorImage.Checked = true;
+					SFDialog.FilterIndex = 2;
+					break;*/
 				}
 
 			// Сохранение
@@ -184,8 +182,6 @@ namespace RD_AAOW
 					}
 				catch
 					{
-					/*MessageBox.Shw (Localization.GetText ("ImageSaveError", language),
-						ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
 					}
 				b.Dispose ();
@@ -206,8 +202,6 @@ namespace RD_AAOW
 						if ((emfa.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (emfa) < 0))
 							{
-							/*MessageBox.Shw (Localization.GetText ("ImageSaveError", language),
-								ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
 							}
 						break;
@@ -220,8 +214,6 @@ namespace RD_AAOW
 						if ((svga.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (svga) < 0))
 							{
-							/*MessageBox.Shw (Localization.GetText ("ImageSaveError", language),
-								ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
 							}
 						break;

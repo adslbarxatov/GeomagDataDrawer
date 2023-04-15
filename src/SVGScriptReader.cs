@@ -681,7 +681,7 @@ namespace RD_AAOW
 							}
 						catch
 							{
-							throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (2)");
+							throw new Exception (Localization.GetText ("ExceptionMessage") + " (2)");
 							}
 						break;
 					#endregion
@@ -697,7 +697,7 @@ namespace RD_AAOW
 							}
 						catch
 							{
-							throw new Exception (Localization.GetText ("ExceptionMessage", SupportedLanguages.en_us) + " (3)");
+							throw new Exception (Localization.GetText ("ExceptionMessage") + " (3)");
 							}
 						break;
 					#endregion
@@ -1015,14 +1015,6 @@ namespace RD_AAOW
 						xOffsetSum = ArraySum (xOffset);
 						yOffsetSum = ArraySum (yOffset);
 
-						// Проверка на наличие предыдущих описаний (удалена в связи с возможным повторением
-						// блока во включаемых файлах)
-						/*if (textInited)
-							{
-							break;
-							}
-						textInited = true;*/
-
 						// Заполнение
 						while (((str = SR.ReadLine ()) != null) && (str.Trim () != ""))
 							{
@@ -1031,7 +1023,7 @@ namespace RD_AAOW
 
 							try
 								{
-								values = str.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
+								values = str.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 
 								textX.Add (float.Parse (values[0], cie.NumberFormat) + xOffsetSum);
 								if (minX > textX[textX.Count - 1])
@@ -1053,7 +1045,8 @@ namespace RD_AAOW
 									maxY = textY[textY.Count - 1];
 									}
 
-								textColors.Add (Color.FromArgb (int.Parse (values[2]), int.Parse (values[3]), int.Parse (values[4])));
+								textColors.Add (Color.FromArgb (int.Parse (values[2]), int.Parse (values[3]),
+									int.Parse (values[4])));
 								textFonts.Add (new Font ("Arial", float.Parse (values[5]), FontStyle.Regular));
 
 								// Текст

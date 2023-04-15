@@ -167,7 +167,8 @@ namespace RD_AAOW
 			}
 		private double operand2Value = 0.0;
 
-		/*/// <summary>
+#if IndexedVariables
+		/// <summary>
 		/// Значение индекса первого операнда шага вычисления (для переменных)
 		/// </summary>
 		public uint Operand1Index
@@ -189,7 +190,8 @@ namespace RD_AAOW
 				return operand2Index;
 				}
 			}
-		private uint operand2Index = 0;*/
+		private uint operand2Index = 0;
+#endif
 
 		/// <summary>
 		/// Тип операции шага вычисления
@@ -205,7 +207,10 @@ namespace RD_AAOW
 
 		// Функция обработки нессылочных операндов
 		private bool LoadRealOperand (Lexeme Operand, out OperandTypes OperandType, out double OperandValue
-			/*, out uint OperandIndex*/)
+#if IndexedVariables
+			, out uint OperandIndex
+#endif
+			)
 			{
 			// Контроль операнда 1
 			switch (Operand.LexemeType)
@@ -213,32 +218,42 @@ namespace RD_AAOW
 				case Lexeme.LexemeTypes.E:
 					OperandType = OperandTypes.Number;
 					OperandValue = Math.E;
-					//OperandIndex = 0;
+#if IndexedVariables
+					OperandIndex = 0;
+#endif
 					return true;
 
 				case Lexeme.LexemeTypes.Number:
 					OperandType = OperandTypes.Number;
 					OperandValue = double.Parse (Operand.LexemeValue);
-					//OperandIndex = 0;
+#if IndexedVariables
+					OperandIndex = 0;
+#endif
 					return true;
 
 				case Lexeme.LexemeTypes.Pi:
 					OperandType = OperandTypes.Number;
 					OperandValue = Math.PI;
-					//OperandIndex = 0;
+#if IndexedVariables
+					OperandIndex = 0;
+#endif
 					return true;
 
 				case Lexeme.LexemeTypes.Variable:
 					OperandType = OperandTypes.Variable;
 					OperandValue = 0.0;
-					//OperandIndex = Operand.LexemeIndex;
+#if IndexedVariables
+					OperandIndex = Operand.LexemeIndex;
+#endif
 					return true;
 
 				// В остальных случаях инициализация считается неуспешной
 				default:
 					OperandType = OperandTypes.Nothing;
 					OperandValue = 0.0;
+#if IndexedVariables
 					//OperandIndex = 0;
+#endif
 					return false;
 				}
 			}
@@ -271,22 +286,24 @@ namespace RD_AAOW
 		public EvaluationChainElement (Lexeme Operand1, Lexeme Operation, Lexeme Operand2)
 			{
 			// Контроль операнда 1
-			if (!LoadRealOperand (Operand1, out operand1Type, out operand1Value/*, out operand1Index*/))
-				{
+			if (!LoadRealOperand (Operand1, out operand1Type, out operand1Value
+#if IndexedVariables
+				, out operand1Index
+#endif
+				))
 				return;
-				}
 
 			// Контроль операнда 2
-			if (!LoadRealOperand (Operand2, out operand2Type, out operand2Value/*, out operand2Index*/))
-				{
+			if (!LoadRealOperand (Operand2, out operand2Type, out operand2Value
+#if IndexedVariables
+				, out operand2Index
+#endif
+				))
 				return;
-				}
 
 			// Контроль операции
 			if (!LoadBinaryOperation (Operation))
-				{
 				return;
-				}
 
 			// Успешно
 			isInited = true;
@@ -310,21 +327,19 @@ namespace RD_AAOW
 			{
 			// Контроль операнда 1
 			if (!LoadLinkedOperand (Operand1, out operand1Type, out operand1Value))
-				{
 				return;
-				}
 
 			// Контроль операнда 2
-			if (!LoadRealOperand (Operand2, out operand2Type, out operand2Value/*, out operand2Index*/))
-				{
+			if (!LoadRealOperand (Operand2, out operand2Type, out operand2Value
+#if IndexedVariables
+				, out operand2Index
+#endif
+				))
 				return;
-				}
 
 			// Контроль операции
 			if (!LoadBinaryOperation (Operation))
-				{
 				return;
-				}
 
 			// Успешно
 			isInited = true;
@@ -339,22 +354,20 @@ namespace RD_AAOW
 		public EvaluationChainElement (Lexeme Operand1, Lexeme Operation, uint Operand2)
 			{
 			// Контроль операнда 1
-			if (!LoadRealOperand (Operand1, out operand1Type, out operand1Value/*, out operand1Index*/))
-				{
+			if (!LoadRealOperand (Operand1, out operand1Type, out operand1Value
+#if IndexedVariables
+				, out operand1Index
+#endif
+				))
 				return;
-				}
 
 			// Контроль операнда 2
 			if (!LoadLinkedOperand (Operand2, out operand2Type, out operand2Value))
-				{
 				return;
-				}
 
 			// Контроль операции
 			if (!LoadBinaryOperation (Operation))
-				{
 				return;
-				}
 
 			// Успешно
 			isInited = true;
@@ -370,21 +383,15 @@ namespace RD_AAOW
 			{
 			// Контроль операнда 1
 			if (!LoadLinkedOperand (Operand1, out operand1Type, out operand1Value))
-				{
 				return;
-				}
 
 			// Контроль операнда 2
 			if (!LoadLinkedOperand (Operand2, out operand2Type, out operand2Value))
-				{
 				return;
-				}
 
 			// Контроль операции
 			if (!LoadBinaryOperation (Operation))
-				{
 				return;
-				}
 
 			// Успешно
 			isInited = true;
@@ -422,16 +429,16 @@ namespace RD_AAOW
 		public EvaluationChainElement (Lexeme Function, Lexeme Operand)
 			{
 			// Контроль операнда
-			if (!LoadRealOperand (Operand, out operand2Type, out operand2Value/*, out operand2Index*/))
-				{
+			if (!LoadRealOperand (Operand, out operand2Type, out operand2Value
+#if IndexedVariables
+				, out operand2Index
+#endif
+				))
 				return;
-				}
 
 			// Контроль операции
 			if (!LoadFunction (Function))
-				{
 				return;
-				}
 
 			// Успешно
 			isInited = true;
@@ -446,15 +453,11 @@ namespace RD_AAOW
 			{
 			// Контроль операнда
 			if (!LoadLinkedOperand (Operand, out operand2Type, out operand2Value))
-				{
 				return;
-				}
 
 			// Контроль операции
 			if (!LoadFunction (Function))
-				{
 				return;
-				}
 
 			// Успешно
 			isInited = true;
@@ -467,10 +470,12 @@ namespace RD_AAOW
 		public EvaluationChainElement (Lexeme Operand)
 			{
 			// Контроль операнда
-			if (!LoadRealOperand (Operand, out operand2Type, out operand2Value/*, out operand2Index*/))
-				{
+			if (!LoadRealOperand (Operand, out operand2Type, out operand2Value
+#if IndexedVariables
+				, out operand2Index
+#endif
+				))
 				return;
-				}
 
 			// Успешно
 			isInited = true;

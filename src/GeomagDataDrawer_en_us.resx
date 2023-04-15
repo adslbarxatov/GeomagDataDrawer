@@ -264,9 +264,6 @@
   <data name="MainTabControl_TextTab_TT" xml:space="preserve">
     <value>Labels and captions panel</value>
   </data>
-  <data name="MFile_MExit" xml:space="preserve">
-    <value>Exit</value>
-  </data>
   <data name="MOperations_MLoadStyle" xml:space="preserve">
     <value>Load style...</value>
   </data>
@@ -339,17 +336,11 @@
   <data name="RangeTab_SwitchXY" xml:space="preserve">
     <value>Perform the curve transposition</value>
   </data>
-  <data name="AbortButton" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
   <data name="AbortChanges" xml:space="preserve">
     <value>All unsaved changes will be lost. Continue?</value>
   </data>
   <data name="ApplicationExit" xml:space="preserve">
     <value>Exit the application?</value>
-  </data>
-  <data name="ApplyButton" xml:space="preserve">
-    <value>OK</value>
   </data>
   <data name="ApplyChanges" xml:space="preserve">
     <value>Save all changes made?</value>
@@ -719,9 +710,6 @@
   </data>
   <data name="RangeTab_SwapY_TT" xml:space="preserve">
     <value>Button allows you to swap minimum and maximum ordinate of plotting range of selected curve(s)  and/or object(s) (reflect Y-axis)</value>
-  </data>
-  <data name="SaveButton" xml:space="preserve">
-    <value>Save</value>
   </data>
   <data name="SaveCfgFileError" xml:space="preserve">
     <value>Failed to write the configuration file. Startup path may be not writable, or file is in use by another application</value>

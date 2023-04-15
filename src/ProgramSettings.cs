@@ -20,8 +20,8 @@ namespace RD_AAOW
 			InitializeComponent ();
 
 			Localization.SetControlsText (this);
-			SaveButton.Text = Localization.GetText ("SaveButton");
-			AbortButton.Text = Localization.GetText ("AbortButton");
+			SaveButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Save);
+			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
 			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Настройка контролов

@@ -14,14 +14,13 @@ namespace RD_AAOW
 		/// <param name="ExpectedColumnsCount">Ожидаемое количество столбцов, полученное из конфигурации 
 		/// программы</param>
 		/// <param name="SelectAbscissas">Флаг, указывающий, следует ли запрашивать номер столбца абсцисс</param>
-		public UnknownFileParametersSelector (uint ExpectedColumnsCount, /*SupportedLanguages Language,*/
-			bool SelectAbscissas)
+		public UnknownFileParametersSelector (uint ExpectedColumnsCount, bool SelectAbscissas)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
 			Localization.SetControlsText (this);
-			ApplyButton.Text = Localization.GetText ("ApplyButton");
-			AbortButton.Text = Localization.GetText ("AbortButton");
+			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
+			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
 			this.Text = Localization.GetControlText (this.Name, "T");
 
 			// Настройка контролов

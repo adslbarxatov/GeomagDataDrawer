@@ -11,7 +11,6 @@ namespace RD_AAOW
 	public partial class DiagramDataEditor: Form
 		{
 		// Переменные
-		/*private SupportedLanguages language;    // Язык локализации*/
 		private DiagramData sourceData;
 
 		/// <summary>
@@ -43,7 +42,7 @@ namespace RD_AAOW
 		/// Конструктор. Запускает форму редактирования данных
 		/// </summary>
 		/// <param name="SourceData">Данные диаграммы</param>
-		public DiagramDataEditor (DiagramData SourceData/*, SupportedLanguages Language*/)
+		public DiagramDataEditor (DiagramData SourceData)
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
@@ -53,12 +52,9 @@ namespace RD_AAOW
 			Localization.SetControlsText (ColumnNameInput, MainToolTip);  // Панель имени столбца
 			Localization.SetControlsText (this, MainToolTip); // Подсказки
 
-			SaveButton.Text = Localization.GetText ("SaveButton");
-			AbortButton.Text = Localization.GetText ("AbortButton");
+			SaveButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Save);
+			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
 			this.Text = Localization.GetControlText (this.Name, "T");
-
-			// Сохранение параметров
-			/*language = Language;*/
 
 			// Запуск
 			this.ShowDialog ();
@@ -91,8 +87,6 @@ namespace RD_AAOW
 		// Обработка ошибки ввода данных
 		private void MainDataGrid_DataError (object sender, DataGridViewDataErrorEventArgs e)
 			{
-			/*MessageBox.Shw (Localization.GetText ("IncorrectValueError", language),
-				ProgramDescription.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 			RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "IncorrectValueError");
 			}
 
@@ -123,8 +117,6 @@ namespace RD_AAOW
 			// Контроль количества строк
 			if (MainDataGrid.Rows.Count <= 2)
 				{
-				/*MessageBox.Shw (Localization.GetText ("NotEnoughRowsError", language), ProgramDescription.AssemblyTitle,
-					 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "NotEnoughRowsError");
 				return;
 				}
@@ -240,7 +232,7 @@ namespace RD_AAOW
 				{
 				// Проверка на отмену изменений
 				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "AbortChanges",
-					Localization.DefaultButtons.YesNoFocus, Localization.DefaultButtons.No) ==
+					LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) ==
 					RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
@@ -251,7 +243,7 @@ namespace RD_AAOW
 				{
 				// Проверка на применение изменений
 				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "ApplyChanges",
-					Localization.DefaultButtons.Yes, Localization.DefaultButtons.No) == RDMessageButtons.ButtonTwo)
+					LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
 					return;
