@@ -10,7 +10,9 @@ namespace RD_AAOW
 		// Переменные
 		private string lexemeValue;
 		private LexemeTypes lexemeType;
-		//private uint lexemeIndex;
+#if IndexedVariables
+		private uint lexemeIndex;
+#endif
 
 		// Константы настройки
 		private CultureInfo ce = new CultureInfo ("en-us");
@@ -18,13 +20,16 @@ namespace RD_AAOW
 		/// <summary>
 		/// Конструктор. Формирует лексему по её строковому представлению
 		/// </summary>
-		/// <param name="LexemePresentation">Строка, представляющая лексему. Не должна содержать посторонних символов, в т.ч. пробелы</param>
+		/// <param name="LexemePresentation">Строка, представляющая лексему.
+		/// Не должна содержать посторонних символов, в т.ч. пробелы</param>
 		public Lexeme (string LexemePresentation)
 			{
 			// Начальная установка
 			lexemeValue = LexemePresentation;
 			lexemeType = LexemeTypes.Unknown;
-			//lexemeIndex = 0;
+#if IndexedVariables
+			lexemeIndex = 0;
+#endif
 
 			// Знаки и имена функций
 			switch (LexemePresentation.ToLower ())
@@ -153,8 +158,9 @@ namespace RD_AAOW
 				{
 				}
 
+#if IndexedVariables
 			// Имена переменных с индексами (попробуем без регулярных выражений)
-			/*if (LexemePresentation.Length == 2)
+			if (LexemePresentation.Length == 2)
 				{
 				if (((LexemePresentation[0] == 'x') || (LexemePresentation[0] == 'X')) &&
 					(LexemePresentation[1] >= '0') && (LexemePresentation[1] <= '9'))
@@ -175,7 +181,8 @@ namespace RD_AAOW
 					lexemeValue = "x" + LexemePresentation.Substring (1, 2);
 					lexemeIndex = uint.Parse (LexemePresentation.Substring (1, 2));
 					}
-				}*/
+				}
+#endif
 			}
 
 		/// <summary>
@@ -316,7 +323,8 @@ namespace RD_AAOW
 				}
 			}
 
-		/*/// <summary>
+#if IndexedVariables
+		/// <summary>
 		/// Возвращает индекс лексемы (для переменных)
 		/// </summary>
 		public uint LexemeIndex
@@ -325,6 +333,7 @@ namespace RD_AAOW
 				{
 				return lexemeIndex;
 				}
-			}*/
+			}
+#endif
 		}
 	}

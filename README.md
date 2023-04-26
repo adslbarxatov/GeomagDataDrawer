@@ -1,9 +1,9 @@
-# GeomagDataDrawer v 5.3
-> PCC: 001478B7B18F4D05
+# GeomagDataDrawer v 5.3.2
+> PCC: 00132CB1F1438CC7
 
 
 Autonomous utility for plotting and preparing of data diagrams.
-A detailed description of the app is now available in [this video](https://youtu.be/uYtQJX5BgvU)
+Detailed description of the app is now available in [this video](https://youtu.be/uYtQJX5BgvU)
 
 ---
 

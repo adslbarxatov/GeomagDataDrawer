@@ -67,7 +67,7 @@ namespace RD_AAOW
 				MergeType.Items[i] = Localization.GetText ("TablesMergerForm_MergeType" + i.ToString ());
 
 			Localization.SetControlsText (this);
-			BExit.Text = Localization.GetText ("MFile_MExit");
+			BExit.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
 			}
 
 		// Добавление файлов в обработку

@@ -323,7 +323,7 @@ namespace RD_AAOW
 
 			SaveSample.Text = Localization.GetText ("VIG_SaveSampleText");
 			GenerateImage.Text = Localization.GetText ("VIG_GenerateImageText");
-			BExit.Text = Localization.GetText ("MFile_MExit");
+			BExit.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
 			}
 		}
 	}
