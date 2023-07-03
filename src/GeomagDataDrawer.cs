@@ -127,9 +127,9 @@ namespace RD_AAOW
 							outputType = (int)ImageOutputTypes.SVG;
 							break;
 
-						/*case ".emf":
-							outputType = (int)ImageOutputTypes.EMF;
-							break;*/
+							/*case ".emf":
+								outputType = (int)ImageOutputTypes.EMF;
+								break;*/
 						}
 					}
 

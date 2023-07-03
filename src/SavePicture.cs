@@ -89,10 +89,10 @@ namespace RD_AAOW
 					VectorImage.Checked = true;
 					break;
 
-				/*case ImageOutputTypes.EMF:
-					VectorImage.Checked = true;
-					SFDialog.FilterIndex = 2;
-					break;*/
+					/*case ImageOutputTypes.EMF:
+						VectorImage.Checked = true;
+						SFDialog.FilterIndex = 2;
+						break;*/
 				}
 
 			// Сохранение

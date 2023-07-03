@@ -3,21 +3,20 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
-using System.Text;
 
 namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс обеспечивает поддержку формата SVG
 	/// </summary>
-	public class SVGAdapter: RD_AAOW.IVectorAdapter
+	public class SVGAdapter: IVectorAdapter
 		{
 		// Общие переменные
 		private FileStream FS = null;
 		private StreamWriter SW = null;
 		private uint width, height;
 		private string fileName;
-		private CultureInfo cie = new CultureInfo ("en-us");
+		/*private CultureInfo cie = new CultureInfo ("en-us");*/
 
 		/// <summary>
 		/// Возвращает результат инициализации класса
@@ -56,7 +55,7 @@ namespace RD_AAOW
 				initResult = VectorAdapterInitResults.CannotCreateFile;
 				return;
 				}
-			SW = new StreamWriter (FS, Encoding.GetEncoding ("utf-8"));
+			SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Запись заголовка
 			SW.WriteLine ("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
@@ -150,12 +149,13 @@ namespace RD_AAOW
 				X1, X2, Y1, Y2, out x1, out x2, out y1, out y2);
 
 			// Отрисовка
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 			SW.WriteLine ("<line stroke=\"#" + (LineColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
-				"\" stroke-width=\"" + ((double)LineWidth / 2.0).ToString (cie.NumberFormat) +
-				"\" x1=\"" + x1.ToString (cie.NumberFormat) +
-				"\" y1=\"" + y1.ToString (cie.NumberFormat) +
-				"\" x2=\"" + x2.ToString (cie.NumberFormat) +
-				"\" y2=\"" + y2.ToString (cie.NumberFormat) + "\"/>");
+				"\" stroke-width=\"" + ((double)LineWidth / 2.0).ToString (nfi) +
+				"\" x1=\"" + x1.ToString (nfi) +
+				"\" y1=\"" + y1.ToString (nfi) +
+				"\" x2=\"" + x2.ToString (nfi) +
+				"\" y2=\"" + y2.ToString (nfi) + "\"/>");
 
 			return true;
 			}
@@ -212,23 +212,24 @@ namespace RD_AAOW
 				X1, X2, Y1, Y2, out x1, out x2, out y1, out y2);
 
 			// Отрисовка
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 			if (Fill)
 				{
 				SW.WriteLine ("<rect fill=\"#" + (RectangleColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
-					"\" x=\"" + x1.ToString (cie.NumberFormat) +
-					"\" y=\"" + y1.ToString (cie.NumberFormat) +
-					"\" width=\"" + (x2 - x1).ToString (cie.NumberFormat) +
-					"\" height=\"" + (y2 - y1).ToString (cie.NumberFormat) + "\"/>");
+					"\" x=\"" + x1.ToString (nfi) +
+					"\" y=\"" + y1.ToString (nfi) +
+					"\" width=\"" + (x2 - x1).ToString (nfi) +
+					"\" height=\"" + (y2 - y1).ToString (nfi) + "\"/>");
 				}
 			else
 				{
 				SW.WriteLine ("<rect stroke=\"#" + (RectangleColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
-					"\" stroke-width=\"" + ((double)LineWidth / 2.0).ToString (cie.NumberFormat) +
+					"\" stroke-width=\"" + ((double)LineWidth / 2.0).ToString (nfi) +
 					"\" fill=\"none" +
-					"\" x=\"" + x1.ToString (cie.NumberFormat) +
-					"\" y=\"" + y1.ToString (cie.NumberFormat) +
-					"\" width=\"" + (x2 - x1).ToString (cie.NumberFormat) +
-					"\" height=\"" + (y2 - y1).ToString (cie.NumberFormat) + "\"/>");
+					"\" x=\"" + x1.ToString (nfi) +
+					"\" y=\"" + y1.ToString (nfi) +
+					"\" width=\"" + (x2 - x1).ToString (nfi) +
+					"\" height=\"" + (y2 - y1).ToString (nfi) + "\"/>");
 				}
 
 			return true;
@@ -286,23 +287,24 @@ namespace RD_AAOW
 				X1, X2, Y1, Y2, out x1, out x2, out y1, out y2);
 
 			// Отрисовка
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 			if (Fill)
 				{
 				SW.WriteLine ("<ellipse fill=\"#" + (RectangleColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
-					"\" cx=\"" + (x1 + (x2 - x1) / 2).ToString (cie.NumberFormat) +
-					"\" cy=\"" + (y1 + (y2 - y1) / 2).ToString (cie.NumberFormat) +
-					"\" rx=\"" + ((x2 - x1) / 2).ToString (cie.NumberFormat) +
-					"\" ry=\"" + ((y2 - y1) / 2).ToString (cie.NumberFormat) + "\"/>");
+					"\" cx=\"" + (x1 + (x2 - x1) / 2).ToString (nfi) +
+					"\" cy=\"" + (y1 + (y2 - y1) / 2).ToString (nfi) +
+					"\" rx=\"" + ((x2 - x1) / 2).ToString (nfi) +
+					"\" ry=\"" + ((y2 - y1) / 2).ToString (nfi) + "\"/>");
 				}
 			else
 				{
 				SW.WriteLine ("<ellipse stroke=\"#" + (RectangleColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
-					"\" stroke-width=\"" + ((double)LineWidth / 2.0).ToString (cie.NumberFormat) +
+					"\" stroke-width=\"" + ((double)LineWidth / 2.0).ToString (nfi) +
 					"\" fill=\"none" +
-					"\" cx=\"" + (x1 + (x2 - x1) / 2).ToString (cie.NumberFormat) +
-					"\" cy=\"" + (y1 + (y2 - y1) / 2).ToString (cie.NumberFormat) +
-					"\" rx=\"" + ((x2 - x1) / 2).ToString (cie.NumberFormat) +
-					"\" ry=\"" + ((y2 - y1) / 2).ToString (cie.NumberFormat) + "\"/>");
+					"\" cx=\"" + (x1 + (x2 - x1) / 2).ToString (nfi) +
+					"\" cy=\"" + (y1 + (y2 - y1) / 2).ToString (nfi) +
+					"\" rx=\"" + ((x2 - x1) / 2).ToString (nfi) +
+					"\" ry=\"" + ((y2 - y1) / 2).ToString (nfi) + "\"/>");
 				}
 
 			return true;
@@ -432,8 +434,9 @@ namespace RD_AAOW
 				return false;
 
 			// Отрисовка
-			SW.WriteLine ("<image overflow=\"visible\" x=\"" + X.ToString (cie.NumberFormat) +
-				"\" y=\"" + Y.ToString (cie.NumberFormat) + "\" width=\"" + ImageWidth.ToString () +
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			SW.WriteLine ("<image overflow=\"visible\" x=\"" + X.ToString (nfi) +
+				"\" y=\"" + Y.ToString (nfi) + "\" width=\"" + ImageWidth.ToString () +
 				"\" height=\"" + ImageHeight + "\" xlink:href=\"data:image/png;base64," + codeString + "\"></image>");
 
 			return true;
@@ -460,15 +463,14 @@ namespace RD_AAOW
 				return false;
 
 			// Отрисовка (перечёркивание не выполняется)
-			SW.WriteLine ("<text x=\"" + X.ToString (cie.NumberFormat) + "\" y=\"" +
-				Y.ToString (cie.NumberFormat) + "\" fill=\"#" + (TextColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			SW.WriteLine ("<text x=\"" + X.ToString (nfi) + "\" y=\"" +
+				Y.ToString (nfi) + "\" fill=\"#" + (TextColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
 				"\" font-family=\"'" + TextFont.Name + "'\" font-size=\"" + TextFont.Size + "\">" +
 				(TextFont.Bold ? "<tspan style=\"font-weight: bold;\">" : "") +
 				(TextFont.Italic ? "<tspan style=\"font-style: italic;\">" : "") +
 				(TextFont.Underline ? "<tspan style=\"text-decoration: underline;\">" : "") +
-				//(TextFont.Strikeout ? "<tspan style=\"text-decoration: ;\">" : "") +
 				TextToDraw +
-				//(TextFont.Strikeout ? "</tspan>" : "") +
 				(TextFont.Underline ? "</tspan>" : "") +
 				(TextFont.Italic ? "</tspan>" : "") +
 				(TextFont.Bold ? "</tspan>" : "") +
@@ -593,10 +595,10 @@ namespace RD_AAOW
 				}
 
 			// Запись маркера в файл
-
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 			SW.WriteLine ("<image overflow=\"visible\" x=\"" + (CenterX - (double)MarkerImage.Width /
-				2.0).ToString (cie.NumberFormat) +
-				"\" y=\"" + (CenterY - (double)MarkerImage.Height / 2.0).ToString (cie.NumberFormat) + "\" width=\"" +
+				2.0).ToString (nfi) +
+				"\" y=\"" + (CenterY - (double)MarkerImage.Height / 2.0).ToString (nfi) + "\" width=\"" +
 				MarkerImage.Width.ToString () + "\" height=\"" + MarkerImage.Height.ToString () + "\" xlink:href=\"" +
 				Path.GetFileName (fileName) + ".img/" + LineNumber.ToString () + ".png\"></image>");
 

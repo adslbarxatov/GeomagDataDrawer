@@ -4,6 +4,11 @@ ToDo:
 - Add the runtime image movement?
 - Limit for the data editor?
 
+Version 5.3.7:
+• Added UTF32 encoding;
+• All text encodings changed to UTF8;
+• Windows: the interface was adapted to Windows 10, incorrect window borders were fixed
+
 Version 5.3.5:
 • Cumulative updates have been applied
 

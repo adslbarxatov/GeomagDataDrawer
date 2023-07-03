@@ -15,7 +15,7 @@ namespace RD_AAOW
 		/// <param name="PLineName">Имя создаваемой кривой</param>
 		/// <param name="SourceXColumnNumber">Номер столбца абсцисс, использованного при создании кривой</param>
 		/// <param name="SourceYColumnNumber">Номер столбца ординат, использованного при создании кривой</param>
-		public DiagramStyle (uint LineNumber, string PLineName, uint SourceXColumnNumber, 
+		public DiagramStyle (uint LineNumber, string PLineName, uint SourceXColumnNumber,
 			uint SourceYColumnNumber)
 			{
 			// Номера столбцов данных

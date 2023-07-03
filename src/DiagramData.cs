@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -20,8 +19,8 @@ namespace RD_AAOW
 		private char[] anyHeadersSplitters = new char[] { '\t', ';' };
 		private char[] csvSplitters = new char[] { ';' };
 		private char[] dateSplitters = new char[] { '.', '/', '-' };
-		private CultureInfo cie = new CultureInfo ("en-us");            // Десятичная точка
-		private CultureInfo cir = new CultureInfo ("ru-ru");            // Десятичная запятая
+		/*private CultureInfo cie = new CultureInfo ("en-us");            // Десятичная точка
+		private CultureInfo cir = new CultureInfo ("ru-ru");            // Десятичная запятая*/
 
 		// Исходный массив данных
 		private List<List<double>> dataValues = new List<List<double>> ();
@@ -232,7 +231,7 @@ namespace RD_AAOW
 
 			// Сброс указателя чтения в файле (потребуется повторный пропуск)
 			FS.Seek (0, SeekOrigin.Begin);
-			SR = new StreamReader (FS, Encoding.GetEncoding (1251));
+			SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Разметка массива
 			for (int i = 0; i < dataColumnsCount; i++)
@@ -297,7 +296,8 @@ namespace RD_AAOW
 					try
 						{
 						// Заполнение строки
-						dataValues[i].Add (double.Parse (PrepareDataValue (values[i], true), cie.NumberFormat));
+						dataValues[i].Add (double.Parse (PrepareDataValue (values[i], true),
+							Localization.GetCulture (SupportedLanguages.en_us).NumberFormat));
 						}
 					catch
 						{
@@ -372,7 +372,7 @@ namespace RD_AAOW
 					initResult = DiagramDataInitResults.FileNotAvailable;
 					return;
 					}
-				SR = new StreamReader (FS, Encoding.GetEncoding (1251));
+				SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 				}
 			else
 				{
@@ -454,7 +454,8 @@ namespace RD_AAOW
 
 					// Попытка извлечения значения с текущим десятичным разделителем
 					double parsed = 0.0;
-					double.TryParse (PrepareDataValue (values[i], false), NumberStyles.Float, cie.NumberFormat, out parsed);
+					double.TryParse (PrepareDataValue (values[i], false), NumberStyles.Float,
+						Localization.GetCulture (SupportedLanguages.en_us).NumberFormat, out parsed);
 					dataValues[i].Add (parsed);
 					}
 
@@ -603,7 +604,7 @@ namespace RD_AAOW
 				}
 
 			// Файл открыт
-			BinaryReader BR = new BinaryReader (FS, Encoding.GetEncoding (1251));
+			BinaryReader BR = new BinaryReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			try
 				{
@@ -885,8 +886,8 @@ namespace RD_AAOW
 					{
 					try
 						{
-						dataValues[c].Add (double.Parse (PrepareDataValue (table.Rows[(int)r].ItemArray[c].ToString (), true),
-							cie.NumberFormat));
+						dataValues[c].Add (double.Parse (PrepareDataValue (table.Rows[(int)r].ItemArray[c].ToString (),
+							true), Localization.GetCulture (SupportedLanguages.en_us).NumberFormat));
 						}
 					catch
 						{
@@ -1242,18 +1243,15 @@ namespace RD_AAOW
 		/// параметрах)</returns>
 		public string ColumnPresentation (uint ColumnNumber)
 			{
-			if (ColumnNumber < dataValues.Count)
-				{
-				return (dataColumnNames[(int)ColumnNumber] + ": " + dataValues[(int)ColumnNumber][0].ToString (cir.NumberFormat) +
-					((dataValues[0].Count > 1) ? ("; " + dataValues[(int)ColumnNumber][1].ToString (cir.NumberFormat)) : "") +
-					((dataValues[0].Count > 2) ? ("; " + dataValues[(int)ColumnNumber][2].ToString (cir.NumberFormat)) : "") +
-					((dataValues[0].Count > 3) ? ("; " + dataValues[(int)ColumnNumber][3].ToString (cir.NumberFormat)) : "") +
-					"; ...");
-				}
-			else
-				{
+			if (ColumnNumber >= dataValues.Count)
 				return "";
-				}
+
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.ru_ru).NumberFormat;
+			return (dataColumnNames[(int)ColumnNumber] + ": " + dataValues[(int)ColumnNumber][0].ToString (nfi) +
+				((dataValues[0].Count > 1) ? ("; " + dataValues[(int)ColumnNumber][1].ToString (nfi)) : "") +
+				((dataValues[0].Count > 2) ? ("; " + dataValues[(int)ColumnNumber][2].ToString (nfi)) : "") +
+				((dataValues[0].Count > 3) ? ("; " + dataValues[(int)ColumnNumber][3].ToString (nfi)) : "") +
+				"; ...");
 			}
 
 		/// <summary>
@@ -1573,7 +1571,7 @@ namespace RD_AAOW
 					case NumbersFormat.Normal:
 					default:
 						txt = (styleMinX + (styleMaxX - styleMinX) * (double)i /
-							(double)styleXPrimaryDiv).ToString (cie.NumberFormat);
+							(double)styleXPrimaryDiv).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
 						break;
 
 					case NumbersFormat.Exponential:
@@ -1626,9 +1624,8 @@ namespace RD_AAOW
 					if (LineStyle.SecondaryGridColor.ToArgb () != DiagramStyle.ImageBackColor.ToArgb ())
 						{
 						if (p != null)
-							{
 							p.Dispose ();
-							}
+
 						p = new Pen (LineStyle.SecondaryGridColor, LineStyle.GridLinesWidth);
 						g.DrawLine (p, x1, (float)LineStyle.DiagramImageHeight * TopMargin, x1,
 							(float)LineStyle.DiagramImageHeight * BottomMargin);
@@ -1636,9 +1633,8 @@ namespace RD_AAOW
 
 					// Засечки
 					if (p != null)
-						{
 						p.Dispose ();
-						}
+
 					p = new Pen (LineStyle.AxesColor, LineStyle.AxesLinesWidth);
 					g.DrawLine (p, x1, y1, x1, y2);
 					}
@@ -1652,15 +1648,15 @@ namespace RD_AAOW
 
 			for (uint i = 0; i <= styleYPrimaryDiv; i++)
 				{
-				y1 = (float)LineStyle.DiagramImageHeight * (float)(TopMargin + DiagramFieldPart * ((double)i / (double)styleYPrimaryDiv));
+				y1 = (float)LineStyle.DiagramImageHeight * (float)(TopMargin + DiagramFieldPart * ((double)i /
+					(double)styleYPrimaryDiv));
 
 				// Отрисовка сетки, если необходимо
 				if (LineStyle.PrimaryGridColor.ToArgb () != DiagramStyle.ImageBackColor.ToArgb ())
 					{
 					if (p != null)
-						{
 						p.Dispose ();
-						}
+
 					p = new Pen (LineStyle.PrimaryGridColor, LineStyle.GridLinesWidth);
 					g.DrawLine (p, (float)LineStyle.DiagramImageWidth * LeftMargin, y1, (float)LineStyle.DiagramImageWidth *
 						RightMargin, y1);
@@ -1668,9 +1664,8 @@ namespace RD_AAOW
 
 				// Засечки
 				if (p != null)
-					{
 					p.Dispose ();
-					}
+
 				p = new Pen (LineStyle.AxesColor, LineStyle.AxesLinesWidth);
 				g.DrawLine (p, x1, y1, x2, y1);
 
@@ -1680,7 +1675,7 @@ namespace RD_AAOW
 					case NumbersFormat.Normal:
 					default:
 						txt = (styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
-							(double)styleYPrimaryDiv).ToString (cie.NumberFormat);
+							(double)styleYPrimaryDiv).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
 						break;
 
 					case NumbersFormat.Exponential:
@@ -1698,13 +1693,12 @@ namespace RD_AAOW
 				if (ox < (float)LineStyle.DiagramImageWidth / 2.0f)
 					{
 					g.DrawString (txt, LineStyle.AxesFont, br,
-						(LineStyle.AutoTextOffset) ? (x2 + 2.0f * NotchSize) : (LineStyle.OyTextOffset), y1 - sz.Height / 4.0f);
+						(LineStyle.AutoTextOffset) ? (x2 + 2.0f * NotchSize) : (LineStyle.OyTextOffset),
+						y1 - sz.Height / 4.0f);
 
 					// Возврат расположения подписей (записывается в стиль)
 					if (LineStyle.AutoTextOffset)
-						{
 						LineStyle.OyTextOffset = (uint)(x2 + 2.0f * NotchSize);
-						}
 					}
 				else
 					{
@@ -1714,9 +1708,7 @@ namespace RD_AAOW
 
 					// Возврат расположения подписей (записывается в стиль)
 					if (LineStyle.AutoTextOffset)
-						{
 						LineStyle.OyTextOffset = (uint)(x2 - sz.Width - 2.0f * NotchSize);
-						}
 					}
 				}
 
@@ -1727,16 +1719,16 @@ namespace RD_AAOW
 				{
 				for (uint j = 1; j < styleYSecondaryDiv; j++)
 					{
-					y1 = (float)LineStyle.DiagramImageHeight * (float)(TopMargin + DiagramFieldPart * ((double)i / (double)styleYPrimaryDiv +
+					y1 = (float)LineStyle.DiagramImageHeight * (float)(TopMargin + DiagramFieldPart *
+						((double)i / (double)styleYPrimaryDiv +
 						(double)j / (double)(styleYSecondaryDiv * styleYPrimaryDiv)));
 
 					// Сетка
 					if (LineStyle.SecondaryGridColor.ToArgb () != DiagramStyle.ImageBackColor.ToArgb ())
 						{
 						if (p != null)
-							{
 							p.Dispose ();
-							}
+
 						p = new Pen (LineStyle.SecondaryGridColor, LineStyle.GridLinesWidth);
 						g.DrawLine (p, (float)LineStyle.DiagramImageWidth * LeftMargin, y1, (float)LineStyle.DiagramImageWidth *
 							RightMargin, y1);
@@ -1744,9 +1736,8 @@ namespace RD_AAOW
 
 					// Засечки
 					if (p != null)
-						{
 						p.Dispose ();
-						}
+
 					p = new Pen (LineStyle.AxesColor, LineStyle.AxesLinesWidth);
 					g.DrawLine (p, x1, y1, x2, y1);
 					}
@@ -2240,7 +2231,8 @@ namespace RD_AAOW
 					{
 					case NumbersFormat.Normal:
 					default:
-						txt = (styleMinX + (styleMaxX - styleMinX) * (double)i / (double)styleXPrimaryDiv).ToString (cie.NumberFormat);
+						txt = (styleMinX + (styleMaxX - styleMinX) * (double)i /
+							(double)styleXPrimaryDiv).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
 						break;
 
 					case NumbersFormat.Exponential:
@@ -2257,12 +2249,14 @@ namespace RD_AAOW
 
 				if (oy < (float)lineStyles[LineNumber].DiagramImageHeight / 2.0f)
 					{
-					VectorAdapter.DrawText (x1 - sz.Width / 2.0f, (lineStyles[LineNumber].AutoTextOffset) ? (y2 + sz.Height) : (Y + lineStyles[LineNumber].OxTextOffset + sz.Height),
+					VectorAdapter.DrawText (x1 - sz.Width / 2.0f, (lineStyles[LineNumber].AutoTextOffset) ?
+						(y2 + sz.Height) : (Y + lineStyles[LineNumber].OxTextOffset + sz.Height),
 						txt, lineStyles[LineNumber].AxesFont, lineStyles[LineNumber].AxesFontColor);
 					}
 				else
 					{
-					VectorAdapter.DrawText (x1 - sz.Width / 2.0f, (lineStyles[LineNumber].AutoTextOffset) ? (y2 - sz.Height / 2) : (Y + lineStyles[LineNumber].OxTextOffset + sz.Height),
+					VectorAdapter.DrawText (x1 - sz.Width / 2.0f, (lineStyles[LineNumber].AutoTextOffset) ?
+						(y2 - sz.Height / 2) : (Y + lineStyles[LineNumber].OxTextOffset + sz.Height),
 						txt, lineStyles[LineNumber].AxesFont, lineStyles[LineNumber].AxesFontColor);
 					}
 				}
@@ -2284,10 +2278,11 @@ namespace RD_AAOW
 				// Сетка по большим засечкам
 				if (lineStyles[LineNumber].PrimaryGridColor.ToArgb () != DiagramStyle.ImageBackColor.ToArgb ())
 					{
-					y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight * (double)(TopMargin + DiagramFieldPart * ((double)i /
-					(double)styleYPrimaryDiv));
+					y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight *
+						(double)(TopMargin + DiagramFieldPart * ((double)i / (double)styleYPrimaryDiv));
 
-					VectorAdapter.DrawLine ((double)X + (double)lineStyles[LineNumber].DiagramImageWidth * LeftMargin, y1,
+					VectorAdapter.DrawLine ((double)X + (double)lineStyles[LineNumber].DiagramImageWidth *
+						LeftMargin, y1,
 						(double)X + (double)lineStyles[LineNumber].DiagramImageWidth * RightMargin, y1,
 						lineStyles[LineNumber].GridLinesWidth, lineStyles[LineNumber].PrimaryGridColor);
 					}
@@ -2299,10 +2294,13 @@ namespace RD_AAOW
 						{
 						if (lineStyles[LineNumber].SecondaryGridColor.ToArgb () != DiagramStyle.ImageBackColor.ToArgb ())
 							{
-							y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight * (double)(TopMargin + DiagramFieldPart *
-								((double)i / (double)styleYPrimaryDiv + (double)j / (double)(styleYSecondaryDiv * styleYPrimaryDiv)));
+							y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight *
+								(double)(TopMargin + DiagramFieldPart *
+								((double)i / (double)styleYPrimaryDiv + (double)j / (double)(styleYSecondaryDiv *
+								styleYPrimaryDiv)));
 
-							VectorAdapter.DrawLine ((double)X + (double)lineStyles[LineNumber].DiagramImageWidth * LeftMargin, y1,
+							VectorAdapter.DrawLine ((double)X + (double)lineStyles[LineNumber].DiagramImageWidth *
+								LeftMargin, y1,
 								(double)X + (double)lineStyles[LineNumber].DiagramImageWidth * RightMargin, y1,
 								lineStyles[LineNumber].GridLinesWidth, lineStyles[LineNumber].SecondaryGridColor);
 							}
@@ -2315,26 +2313,32 @@ namespace RD_AAOW
 			// Ось
 			VectorAdapter.OpenGroup ();
 
-			VectorAdapter.DrawLine ((double)X + ox, (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight * TopMargin,
+			VectorAdapter.DrawLine ((double)X + ox, (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight *
+				TopMargin,
 				(double)X + ox, (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight * BottomMargin,
 				lineStyles[LineNumber].AxesLinesWidth, lineStyles[LineNumber].AxesColor);
 
 			// Засечки (большие)
 			for (uint i = 0; i <= styleYPrimaryDiv; i++)
 				{
-				y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight * (double)(TopMargin + DiagramFieldPart * ((double)i /
+				y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight *
+					(double)(TopMargin + DiagramFieldPart * ((double)i /
 					(double)styleYPrimaryDiv));
-				VectorAdapter.DrawLine (x1, y1, x2, y1, lineStyles[LineNumber].AxesLinesWidth, lineStyles[LineNumber].AxesColor);
+				VectorAdapter.DrawLine (x1, y1, x2, y1, lineStyles[LineNumber].AxesLinesWidth,
+					lineStyles[LineNumber].AxesColor);
 
 				// Засечки (малые)
 				if (i < styleYPrimaryDiv)
 					{
 					for (uint j = 1; j < styleYSecondaryDiv; j++)
 						{
-						y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight * (double)(TopMargin + DiagramFieldPart *
-							((double)i / (double)styleYPrimaryDiv + (double)j / (double)(styleYSecondaryDiv * styleYPrimaryDiv)));
+						y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight *
+							(double)(TopMargin + DiagramFieldPart *
+							((double)i / (double)styleYPrimaryDiv + (double)j / (double)(styleYSecondaryDiv *
+							styleYPrimaryDiv)));
 
-						VectorAdapter.DrawLine (x1 + NotchSize / 2.0f, y1, x2 - NotchSize / 2.0f, y1, lineStyles[LineNumber].AxesLinesWidth, lineStyles[LineNumber].AxesColor);
+						VectorAdapter.DrawLine (x1 + NotchSize / 2.0f, y1, x2 - NotchSize / 2.0f, y1,
+							lineStyles[LineNumber].AxesLinesWidth, lineStyles[LineNumber].AxesColor);
 						}
 					}
 				}
@@ -2346,15 +2350,15 @@ namespace RD_AAOW
 
 			for (uint i = 0; i <= styleYPrimaryDiv; i++)
 				{
-				y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight * (double)(TopMargin + DiagramFieldPart * ((double)i /
-					(double)styleYPrimaryDiv));
+				y1 = (double)Y + (double)lineStyles[LineNumber].DiagramImageHeight *
+					(double)(TopMargin + DiagramFieldPart * ((double)i / (double)styleYPrimaryDiv));
 
 				switch (lineStyles[LineNumber].OyFormat)
 					{
 					case NumbersFormat.Normal:
 					default:
 						txt = (styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
-							(double)styleYPrimaryDiv).ToString (cie.NumberFormat);
+							(double)styleYPrimaryDiv).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
 						break;
 
 					case NumbersFormat.Exponential:
@@ -2363,8 +2367,8 @@ namespace RD_AAOW
 						break;
 
 					case NumbersFormat.Date:
-						txt = DecompressDateValue (styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
-							(double)styleXPrimaryDiv);
+						txt = DecompressDateValue (styleMinY + (styleMaxY - styleMinY) *
+							(double)(styleYPrimaryDiv - i) / (double)styleXPrimaryDiv);
 						break;
 					}
 				sz = g.MeasureString (txt, lineStyles[LineNumber].AxesFont);
@@ -2415,7 +2419,8 @@ namespace RD_AAOW
 				(double)Y + (double)(lineStyles[LineNumber].DiagramImageHeight + 2) * (double)BottomMargin);
 
 			// Без этого ограничения можно натолкнуться на деление на ноль
-			if ((lineStyles[LineNumber].MinX != lineStyles[LineNumber].MaxX) && (lineStyles[LineNumber].MinY != lineStyles[LineNumber].MaxY))
+			if ((lineStyles[LineNumber].MinX != lineStyles[LineNumber].MaxX) && (lineStyles[LineNumber].MinY !=
+				lineStyles[LineNumber].MaxY))
 				{
 				#region Отрисовка кривых
 				// Открытие группы для кривой
@@ -2617,7 +2622,7 @@ namespace RD_AAOW
 				}
 
 			// Начало записи
-			BinaryWriter BW = new BinaryWriter (FS, Encoding.GetEncoding (1251));
+			BinaryWriter BW = new BinaryWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 			BW.Write ("Geomag data drawer file format. File version: " + ProgramDescription.AssemblyVersion +
 				". Creation date: " + DateTime.Now.ToString ("dd.MM.yyyy, HH:mm:ss"));  // Запись версии и даты
 
@@ -2726,7 +2731,7 @@ namespace RD_AAOW
 				{
 				return -2;
 				}
-			StreamWriter SW = new StreamWriter (FS, Encoding.GetEncoding (1251));
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Запись имён столбцов
 			if (SaveColumnNames)
@@ -2755,11 +2760,11 @@ namespace RD_AAOW
 					switch (DataFileType)
 						{
 						case DataOutputTypes.ANY:
-							SW.Write (dataValues[col][row].ToString (cie.NumberFormat) + anyDataSplitters[1].ToString ());
+							SW.Write (dataValues[col][row].ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat) + anyDataSplitters[1].ToString ());
 							break;
 
 						case DataOutputTypes.CSV:
-							SW.Write (dataValues[col][row].ToString (cir.NumberFormat) + csvSplitters[0].ToString ());
+							SW.Write (dataValues[col][row].ToString (Localization.GetCulture (SupportedLanguages.ru_ru).NumberFormat) + csvSplitters[0].ToString ());
 							break;
 						}
 					}
@@ -2871,7 +2876,7 @@ namespace RD_AAOW
 				}
 
 			// Файл открыт
-			BinaryReader BR = new BinaryReader (FS, Encoding.GetEncoding (1251));
+			BinaryReader BR = new BinaryReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Получение количества стилей в файле
 			uint stylesCount = 0;
@@ -3048,7 +3053,7 @@ namespace RD_AAOW
 				}
 
 			// Файл открыт
-			BinaryWriter BW = new BinaryWriter (FS, Encoding.GetEncoding (1251));
+			BinaryWriter BW = new BinaryWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 			BW.Write ("Geomag data drawer style file. File version: " + ProgramDescription.AssemblyVersion +
 				". Creation date: " + DateTime.Now.ToString ("dd.MM.yyyy, HH:mm:ss"));  // Запись версии и даты
 
@@ -3295,7 +3300,7 @@ namespace RD_AAOW
 			if (result.Contains (dateSplitters[0].ToString ())) // Дата в формате ДД.ММ.ГГ[ГГ]
 				try
 					{
-					dt = DateTime.Parse (result, cir.DateTimeFormat);
+					dt = DateTime.Parse (result, Localization.GetCulture (SupportedLanguages.ru_ru).DateTimeFormat);
 					}
 				catch
 					{
@@ -3305,14 +3310,14 @@ namespace RD_AAOW
 			else // if (result.Contains (dateSplitters[1].ToString ())) // Дата в формате ММ/ДД/ГГ[ГГ]
 				try
 					{
-					dt = DateTime.Parse (result, cie.DateTimeFormat);
+					dt = DateTime.Parse (result, Localization.GetCulture (SupportedLanguages.en_us).DateTimeFormat);
 					}
 				catch
 					{
 					return result;
 					}
 
-			return ((double)dt.Year + (dt.DayOfYear - 1) / (dt.Year % 4 == 0 ? 366.0 : 365.0)).ToString (cie.NumberFormat);
+			return ((double)dt.Year + (dt.DayOfYear - 1) / (dt.Year % 4 == 0 ? 366.0 : 365.0)).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
 			}
 
 		// Метод разворачивает значение даты из рационального числа

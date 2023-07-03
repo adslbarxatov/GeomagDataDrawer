@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace RD_AAOW
+﻿namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает отдельную лексему
@@ -15,7 +13,7 @@ namespace RD_AAOW
 #endif
 
 		// Константы настройки
-		private CultureInfo ce = new CultureInfo ("en-us");
+		/*private CultureInfo ce = new CultureInfo ("en-us");*/
 
 		/// <summary>
 		/// Конструктор. Формирует лексему по её строковому представлению
@@ -147,16 +145,14 @@ namespace RD_AAOW
 			// Числа с точками
 			try
 				{
-				double a = double.Parse (lexemeValue, ce.NumberFormat);
+				double a = double.Parse (lexemeValue, Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
 
 				// Точно число
 				lexemeValue = a.ToString ();
 				lexemeType = LexemeTypes.Number;
 				return;
 				}
-			catch
-				{
-				}
+			catch { }
 
 #if IndexedVariables
 			// Имена переменных с индексами (попробуем без регулярных выражений)

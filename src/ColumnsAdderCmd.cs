@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -426,7 +425,7 @@ namespace RD_AAOW
 				}
 
 			// Файл открыт
-			StreamReader SR = new StreamReader (FS, Encoding.GetEncoding (1251));
+			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Чтение и обработка
 			uint line = 0;
@@ -539,7 +538,7 @@ namespace RD_AAOW
 				{
 				return false;
 				}
-			StreamWriter SW = new StreamWriter (FS, Encoding.UTF8);
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Запись
 			for (int i = 0; i < Data.LinesCount; i++)

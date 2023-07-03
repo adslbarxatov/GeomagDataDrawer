@@ -104,9 +104,8 @@ namespace RD_AAOW
 				dataTables.Add (dd.GetData ());
 				columnNames.Add (new List<string> ());
 				for (uint c = 0; c < dd.DataColumnsCount; c++)
-					{
 					columnNames[columnNames.Count - 1].Add (dd.GetDataColumnName (c));
-					}
+
 				abscissasColumnsNumbers.Add (ufps.AbscissasColumn);
 				FileNamesList.Items.Add (OFDialog.FileNames[i]);
 				ProcessingResults.Items.Add (string.Format (Localization.GetText ("FileAddCompleted"),

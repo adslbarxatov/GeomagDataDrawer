@@ -6,7 +6,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает строку исходной таблицы в исходном состоянии
 	/// </summary>
-	public class SourceTableRow:IComparable<SourceTableRow>, IEquatable<SourceTableRow>
+	public class SourceTableRow: IComparable<SourceTableRow>, IEquatable<SourceTableRow>
 		{
 		/// <summary>
 		/// Абсцисса строки

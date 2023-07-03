@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Text;
 
 namespace RD_AAOW
 	{
@@ -17,7 +16,7 @@ namespace RD_AAOW
 
 		// Внутренние параметры
 		private char[] splitters = new char[] { ';' };          // Массив сплиттеров строк параметров
-		private CultureInfo cie = new CultureInfo ("en-us");    // Тип десятичного разделителя
+		/*private CultureInfo cie = new CultureInfo ("en-us");    // Тип десятичного разделителя*/
 		private const string tmpExtension = ".pcsc";            // Расширение вспомогательного файла
 		private const uint maxIncludeDeep = 100;                // Максимальное количество подключений
 
@@ -497,6 +496,7 @@ namespace RD_AAOW
 			uint includeDeep = 0;       // Количество подключенных файлов (для прерывания зацикливания)
 			string fileNameI = FileName,    // Имена промежуточных файлов
 				fileNameO = FileName + tmpExtension + step.ToString ();
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 
 			#region Сборка скрипта
 			while (notIncluded)
@@ -513,7 +513,7 @@ namespace RD_AAOW
 					initResult = InitResults.FileNotAvailable;
 					return;
 					}
-				SR = new StreamReader (FSI, Encoding.GetEncoding (1251));
+				SR = new StreamReader (FSI, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 				try
 					{
@@ -527,7 +527,7 @@ namespace RD_AAOW
 					initResult = InitResults.FileNotAvailable;
 					return;
 					}
-				SW = new StreamWriter (FSO, Encoding.GetEncoding (1251));
+				SW = new StreamWriter (FSO, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 				// Запись
 				while (!SR.EndOfStream)
@@ -574,17 +574,18 @@ namespace RD_AAOW
 							faliedIncludeFile = line;
 							return;
 							}
-						SRInc = new StreamReader (FSInc, Encoding.GetEncoding (1251));
+						SRInc = new StreamReader (FSInc, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 						// Получение координат вставки
 						line = SR.ReadLine ();
-						string[] values = line.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
+						string[] values = line.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 						float x = 0;
 						double y = 0;
+
 						try
 							{
-							x = float.Parse (values[0], cie.NumberFormat);
-							y = double.Parse (values[1], cie.NumberFormat);
+							x = float.Parse (values[0], nfi);
+							y = double.Parse (values[1], nfi);
 							}
 						catch
 							{
@@ -603,7 +604,7 @@ namespace RD_AAOW
 						// Запись
 						SW.WriteLine ();
 						SW.WriteLine ("{");
-						SW.WriteLine (x.ToString (cie.NumberFormat) + ";" + y.ToString (cie.NumberFormat));
+						SW.WriteLine (x.ToString (nfi) + ";" + y.ToString (nfi));
 						while (!SRInc.EndOfStream)
 							{
 							SW.WriteLine (SRInc.ReadLine ());
@@ -631,9 +632,7 @@ namespace RD_AAOW
 						{
 						File.Delete (fileNameI);
 						}
-					catch
-						{
-						}
+					catch { }
 					}
 				fileNameI = fileNameO;
 				step++;
@@ -651,7 +650,7 @@ namespace RD_AAOW
 				initResult = InitResults.FileNotAvailable;
 				return;
 				}
-			SR = new StreamReader (FSI, Encoding.GetEncoding (1251));
+			SR = new StreamReader (FSI, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Создание накопителей смещений
 			List<float> xOffset = new List<float> ();
@@ -673,11 +672,11 @@ namespace RD_AAOW
 						sourceScript.Add (str);
 						currentLine++;
 
-						string[] values = str.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
+						string[] values = str.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 						try
 							{
-							xOffset.Add (float.Parse (values[0], cie.NumberFormat));
-							yOffset.Add (double.Parse (values[1], cie.NumberFormat));
+							xOffset.Add (float.Parse (values[0], nfi));
+							yOffset.Add (double.Parse (values[1], nfi));
 							}
 						catch
 							{
@@ -763,7 +762,7 @@ namespace RD_AAOW
 									try
 										{
 										values = str.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
-										linesX[linesX.Count - 1].Add (float.Parse (values[0], cie.NumberFormat) + xOffsetSum);
+										linesX[linesX.Count - 1].Add (float.Parse (values[0], nfi) + xOffsetSum);
 										// Пересчёт границ необходим для того, чтобы элементы не выходили за границы изображения
 										if (minX > linesX[linesX.Count - 1][linesX[linesX.Count - 1].Count - 1])
 											{
@@ -773,7 +772,7 @@ namespace RD_AAOW
 											{
 											maxX = linesX[linesX.Count - 1][linesX[linesX.Count - 1].Count - 1];
 											}
-										linesY[linesY.Count - 1].Add (double.Parse (values[1], cie.NumberFormat) + yOffsetSum);
+										linesY[linesY.Count - 1].Add (double.Parse (values[1], nfi) + yOffsetSum);
 										if (minY > linesY[linesY.Count - 1][linesY[linesY.Count - 1].Count - 1])
 											{
 											minY = linesY[linesY.Count - 1][linesY[linesY.Count - 1].Count - 1];
@@ -876,7 +875,7 @@ namespace RD_AAOW
 									try
 										{
 										values = str.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
-										oxNotchesOffsets.Add (float.Parse (values[0], cie.NumberFormat) + xOffsetSum);
+										oxNotchesOffsets.Add (float.Parse (values[0], nfi) + xOffsetSum);
 										if (minX > oxNotchesOffsets[oxNotchesOffsets.Count - 1])
 											{
 											minX = oxNotchesOffsets[oxNotchesOffsets.Count - 1];
@@ -885,7 +884,7 @@ namespace RD_AAOW
 											{
 											maxX = oxNotchesOffsets[oxNotchesOffsets.Count - 1];
 											}
-										oxNotchesSizes.Add (double.Parse (values[1], cie.NumberFormat));
+										oxNotchesSizes.Add (double.Parse (values[1], nfi));
 										}
 									catch
 										{
@@ -980,7 +979,7 @@ namespace RD_AAOW
 									try
 										{
 										values = str.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
-										oyNotchesOffsets.Add (double.Parse (values[0], cie.NumberFormat) + yOffsetSum);
+										oyNotchesOffsets.Add (double.Parse (values[0], nfi) + yOffsetSum);
 										if (minY > oyNotchesOffsets[oyNotchesOffsets.Count - 1])
 											{
 											minY = (float)oyNotchesOffsets[oyNotchesOffsets.Count - 1];
@@ -989,7 +988,7 @@ namespace RD_AAOW
 											{
 											maxY = (float)oyNotchesOffsets[oyNotchesOffsets.Count - 1];
 											}
-										oyNotchesSizes.Add (float.Parse (values[1], cie.NumberFormat));
+										oyNotchesSizes.Add (float.Parse (values[1], nfi));
 										}
 									catch
 										{
@@ -1025,7 +1024,7 @@ namespace RD_AAOW
 								{
 								values = str.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 
-								textX.Add (float.Parse (values[0], cie.NumberFormat) + xOffsetSum);
+								textX.Add (float.Parse (values[0], nfi) + xOffsetSum);
 								if (minX > textX[textX.Count - 1])
 									{
 									minX = textX[textX.Count - 1];
@@ -1035,7 +1034,7 @@ namespace RD_AAOW
 									maxX = textX[textX.Count - 1];
 									}
 
-								textY.Add (double.Parse (values[1], cie.NumberFormat) + yOffsetSum);
+								textY.Add (double.Parse (values[1], nfi) + yOffsetSum);
 								if (minY > textY[textY.Count - 1])
 									{
 									minY = textY[textY.Count - 1];
@@ -1115,9 +1114,7 @@ namespace RD_AAOW
 				{
 				File.Delete (fileNameI);
 				}
-			catch
-				{
-				}
+			catch { }
 			initResult = InitResults.Ok;
 			}
 
