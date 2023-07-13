@@ -113,13 +113,13 @@ namespace RD_AAOW
 			// Контроль параметров
 			if (OFName.Text == "")
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "InputFileNotSpecified");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "InputFileNotSpecified");
 				return;
 				}
 
 			if (SFName.Text == "")
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "OutputFileNotSpecified");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "OutputFileNotSpecified");
 				return;
 				}
 
@@ -165,7 +165,7 @@ namespace RD_AAOW
 						throw new Exception ("Internal error occurred. Debug is required at point 1");
 					}
 
-				RDGenerics.MessageBox (RDMessageTypes.Warning, msg);
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Left, msg);
 				return;
 				}
 
@@ -200,7 +200,7 @@ namespace RD_AAOW
 						throw new Exception ("Internal error occurred. Debug is required at point 4");
 					}
 
-				RDGenerics.MessageBox (RDMessageTypes.Warning, msg);
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Left, msg);
 				return;
 				}
 
@@ -276,7 +276,7 @@ namespace RD_AAOW
 			vectorAdapter.CloseFile ();
 
 			if (showSuccessMessage)
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Success, "FileCreated");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Success_Center, "FileCreated");
 			}
 
 		// Сохранение образца сценария
@@ -295,7 +295,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "CannotCreateSample");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "CannotCreateSample");
 				return;
 				}
 

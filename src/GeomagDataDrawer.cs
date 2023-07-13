@@ -40,7 +40,7 @@ namespace RD_AAOW
 				// Справка по командной строке
 				if (args[0].Contains ("?"))
 					{
-					RDGenerics.LocalizedMessageBox (RDMessageTypes.Information, "CommandLineHelp");
+					RDGenerics.LocalizedMessageBox (RDMessageTypes.Information_Left, "CommandLineHelp");
 					return;
 					}
 
@@ -109,10 +109,12 @@ namespace RD_AAOW
 							outputType = (int)DataOutputTypes.GDD;
 							break;
 
-						/*case "xlsx":
+#if false
+						case "xlsx":
 						case ".xls":
 							outputType = DataOutputTypes.XLS;
-							break;*/
+							break;
+#endif
 
 						case ".csv":
 							outputType = (int)DataOutputTypes.CSV;
@@ -127,9 +129,11 @@ namespace RD_AAOW
 							outputType = (int)ImageOutputTypes.SVG;
 							break;
 
-							/*case ".emf":
-								outputType = (int)ImageOutputTypes.EMF;
-								break;*/
+#if false
+						case ".emf":
+							outputType = (int)ImageOutputTypes.EMF;
+							break;
+#endif
 						}
 					}
 
@@ -143,7 +147,7 @@ namespace RD_AAOW
 				// Контроль результата
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning,
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 						string.Format (Localization.GetText ("DataFileLoadError"), args[0],
 						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
 					return;
@@ -154,7 +158,7 @@ namespace RD_AAOW
 					{
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
-						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "DataFileSaveError");
+						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DataFileSaveError");
 						return;
 						}
 					}

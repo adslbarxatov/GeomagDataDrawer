@@ -87,7 +87,7 @@ namespace RD_AAOW
 		// Обработка ошибки ввода данных
 		private void MainDataGrid_DataError (object sender, DataGridViewDataErrorEventArgs e)
 			{
-			RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "IncorrectValueError");
+			RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "IncorrectValueError");
 			}
 
 		// Добавление строки
@@ -117,7 +117,7 @@ namespace RD_AAOW
 			// Контроль количества строк
 			if (MainDataGrid.Rows.Count <= 2)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "NotEnoughRowsError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "NotEnoughRowsError");
 				return;
 				}
 
@@ -231,7 +231,7 @@ namespace RD_AAOW
 			if (cancelled)
 				{
 				// Проверка на отмену изменений
-				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "AbortChanges",
+				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "AbortChanges",
 					LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) ==
 					RDMessageButtons.ButtonTwo)
 					{
@@ -242,7 +242,7 @@ namespace RD_AAOW
 			else
 				{
 				// Проверка на применение изменений
-				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "ApplyChanges",
+				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "ApplyChanges",
 					LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
@@ -254,7 +254,7 @@ namespace RD_AAOW
 
 				if (ddt.InitResult != DiagramDataInitResults.Ok)
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning,
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 						string.Format (Localization.GetText ("DataProcessingError"),
 						DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable)));
 					e.Cancel = true;

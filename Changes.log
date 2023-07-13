@@ -4,6 +4,9 @@ ToDo:
 - Add the runtime image movement?
 - Limit for the data editor?
 
+Version 5.3.8:
+• Updated the interface of message boxes
+
 Version 5.3.7:
 • Added UTF32 encoding;
 • All text encodings changed to UTF8;

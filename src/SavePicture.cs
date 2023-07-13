@@ -108,6 +108,7 @@ namespace RD_AAOW
 			double horizScale, vertScale, endScale = 1.0;
 
 			#region Сохранение растрового изображения
+
 			if (!VectorImage.Checked)
 				{
 				// Вариант с пользовательским размером
@@ -182,14 +183,16 @@ namespace RD_AAOW
 					}
 				catch
 					{
-					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
+					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
 					}
 				b.Dispose ();
 				g.Dispose ();
 				}
+
 			#endregion
 
 			#region Сохранение векторного изображения
+
 			else
 				{
 				switch (SFDialog.FilterIndex)
@@ -202,7 +205,7 @@ namespace RD_AAOW
 						if ((emfa.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (emfa) < 0))
 							{
-							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
+							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
 							}
 						break;
 
@@ -214,11 +217,12 @@ namespace RD_AAOW
 						if ((svga.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (svga) < 0))
 							{
-							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ImageSaveError");
+							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
 							}
 						break;
 					}
 				}
+
 			#endregion
 
 			// Закрытие окна

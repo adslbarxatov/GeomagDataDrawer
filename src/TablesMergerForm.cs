@@ -136,7 +136,7 @@ namespace RD_AAOW
 			// Контроль
 			if (dataTables.Count < 2)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "NotEnoughFilesToMerge");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "NotEnoughFilesToMerge");
 				return;
 				}
 
@@ -271,7 +271,7 @@ namespace RD_AAOW
 			// Финальный контроль
 			if (mergedTable.Count < 2)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TablesMergeError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TablesMergeError");
 				return;
 				}
 
@@ -288,7 +288,7 @@ namespace RD_AAOW
 
 		private void TableMergerForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			e.Cancel = (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TablesMerger_Exit",
+			e.Cancel = (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TablesMerger_Exit",
 				LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) != RDMessageButtons.ButtonOne);
 			}
 
@@ -303,7 +303,7 @@ namespace RD_AAOW
 			DiagramData dd = new DiagramData (mergedTable, mergedColumnNames);
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)(SFDialog.FilterIndex + 1), true) != 0)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "DataFileSaveError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DataFileSaveError");
 				return;
 				}
 

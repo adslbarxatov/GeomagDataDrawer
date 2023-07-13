@@ -767,8 +767,8 @@
   </data>
   <data name="StyleLoadingType" xml:space="preserve">
     <value>Select variant of using of the style file:
-• Click “Yes” if you want to apply the style(s) to selected diagram element(s);
-• Click “No” if you want to add new curve(s) with this style(s) to existing curve(s);
+• Click “Apply” if you want to apply the style(s) to selected diagram element(s);
+• Click “Add” if you want to add new curve(s) with this style(s) to existing curve(s);
 • Click “Cancel” if you don’t need to apply styles</value>
   </data>
   <data name="StyleSaveError" xml:space="preserve">

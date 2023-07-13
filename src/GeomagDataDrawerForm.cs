@@ -148,7 +148,7 @@ namespace RD_AAOW
 				if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult !=
 					DiagramDataInitResults.BrokenFile))
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning,
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 						string.Format (Localization.GetText ("DataFileLoadError"),
 						SentFileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult)));
 					return;
@@ -201,7 +201,7 @@ namespace RD_AAOW
 				}
 			else if (SentFileType != DataInputTypes.Unspecified)
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning,
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (Localization.GetText ("DataFileLoadError"), SentFileName,
 					DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
 				}
@@ -673,8 +673,8 @@ namespace RD_AAOW
 			if (ca.ForceExitConfirmation ||
 				!ca.ForceUsingBackupDataFile && (dd != null) && (dd.InitResult == DiagramDataInitResults.Ok))
 				{
-				if (RDGenerics.LocalizedMessageBox (ca.ForceUsingBackupDataFile ? RDMessageTypes.Question :
-					RDMessageTypes.Warning, ca.ForceUsingBackupDataFile ? "ApplicationExit" :
+				if (RDGenerics.LocalizedMessageBox (ca.ForceUsingBackupDataFile ? RDMessageTypes.Question_Center :
+					RDMessageTypes.Warning_Center, ca.ForceUsingBackupDataFile ? "ApplicationExit" :
 					"ApplicationExitNoBackup", LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) ==
 					RDMessageButtons.ButtonTwo)
 					{
@@ -695,7 +695,7 @@ namespace RD_AAOW
 			{
 			// Защита
 			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
-				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "AbortChanges",
+				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "AbortChanges",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) != RDMessageButtons.ButtonOne))
 				return;
 
@@ -720,7 +720,7 @@ namespace RD_AAOW
 			// Контроль результата (до настоящей загрузки результат BrokenFile допустим по признаку имён столбцов)
 			if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult != DiagramDataInitResults.BrokenFile))
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning,
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (Localization.GetText ("DataFileLoadError"),
 					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult)));
 				return;
@@ -745,7 +745,7 @@ namespace RD_AAOW
 			if (dd.InitResult != DiagramDataInitResults.Ok)
 				{
 				// Файл точно с ошибками, или выбрано некорректное количество строк для поиска имён
-				RDGenerics.MessageBox (RDMessageTypes.Warning,
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (Localization.GetText ("DataFileLoadError"),
 					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
 				return;
@@ -825,7 +825,7 @@ namespace RD_AAOW
 					}
 				else if (res == -3)
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning,
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 						string.Format (Localization.GetText ("LinesOverloadError"), DiagramData.MaxLines));
 					break;
 					}
@@ -864,7 +864,7 @@ namespace RD_AAOW
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)SFDialog.FilterIndex,
 				ca.ForceSavingColumnNames) < 0)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "DataFileSaveError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DataFileSaveError");
 				}
 			}
 
@@ -895,7 +895,7 @@ namespace RD_AAOW
 			{
 			// Защита
 			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
-				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "AbortChanges",
+				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "AbortChanges",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) != RDMessageButtons.ButtonOne))
 				return;
 
@@ -928,7 +928,7 @@ namespace RD_AAOW
 			{
 			// Защита
 			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
-				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "AbortChanges",
+				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "AbortChanges",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) != RDMessageButtons.ButtonOne))
 				return;
 
@@ -947,7 +947,7 @@ namespace RD_AAOW
 			{
 			// Защита
 			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
-				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "AbortChanges",
+				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "AbortChanges",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) != RDMessageButtons.ButtonOne))
 				return;
 
@@ -960,7 +960,7 @@ namespace RD_AAOW
 			if (ddt.InitResult != DiagramDataInitResults.Ok)
 				{
 				// Файл точно с ошибками, или выбрано некорректное количество строк для поиска имён
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "ClipboardLoadError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ClipboardLoadError");
 				return;
 				}
 
@@ -1022,22 +1022,22 @@ namespace RD_AAOW
 		private void LoadStyleDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Выбор варианта использования стилей
-			switch (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "StyleLoadingType",
-				LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No, LzDefaultTextValues.Button_Cancel))
+			switch (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Left, "StyleLoadingType",
+				LzDefaultTextValues.Button_Apply, LzDefaultTextValues.Button_Add, LzDefaultTextValues.Button_Cancel))
 				{
 				// Применение к выделенным кривым
 				case RDMessageButtons.ButtonOne:
 					// Контроль
 					if (LineNamesList.SelectedIndices.Count == 0)
 						{
-						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "LinesForLoadingStylesNSError");
+						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "LinesForLoadingStylesNSError");
 						return;
 						}
 
 					// Загрузка
 					if (dd.LoadStyle (LoadStyleDialog.FileName, LineNamesList.SelectedIndices) < 0)
 						{
-						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "BrokenStyleError");
+						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "BrokenStyleError");
 						return;
 						}
 					break;
@@ -1048,7 +1048,7 @@ namespace RD_AAOW
 					int oldLinesCount = LineNamesList.Items.Count;
 
 					if (dd.LoadStyle (LoadStyleDialog.FileName) < 0)
-						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "BrokenStyleError");
+						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "BrokenStyleError");
 
 					// Обновление списка названий кривых (файл стиля заведомо непустой)
 					for (int i = oldLinesCount; i < dd.LinesCount; i++)
@@ -1076,7 +1076,7 @@ namespace RD_AAOW
 			// Контроль
 			if (LineNamesList.SelectedIndices.Count == 0)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "LinesForSavingStylesNSError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "LinesForSavingStylesNSError");
 				return;
 				}
 
@@ -1088,7 +1088,7 @@ namespace RD_AAOW
 		private void SaveStyleDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			if (dd.SaveStyle (SaveStyleDialog.FileName, LineNamesList.SelectedIndices) < 0)
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "StyleSaveError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "StyleSaveError");
 			}
 
 		// Сброс стиля диаграммы
@@ -1097,11 +1097,11 @@ namespace RD_AAOW
 			// Контроль
 			if (LineNamesList.SelectedIndices.Count == 0)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "LinesForResetStylesNSError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "LinesForResetStylesNSError");
 				return;
 				}
 
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "StylesReset",
+			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "StylesReset",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonOne)
 				{
 				// Сброс
@@ -1124,7 +1124,7 @@ namespace RD_AAOW
 					throw new Exception (Localization.GetText ("ExceptionMessage") + " (9)");
 
 				case -2:
-					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TemplateSaveError");
+					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TemplateSaveError");
 					break;
 
 				default:
@@ -1137,25 +1137,25 @@ namespace RD_AAOW
 		// Восстановление шаблона добавления кривых
 		private void MReplaceTemplate_Click (object sender, EventArgs e)
 			{
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "TemplateReplace",
+			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "TemplateReplace",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) != RDMessageButtons.ButtonOne)
 				return;
 
 			if (!ColumnsAdderCmd.WriteParametersFile (dd, RDGenerics.AppStartupPath +
 				ConfigAccessor.LineParametersFileName))
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TemplateSaveError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TemplateSaveError");
 			}
 
 		// Восстановление шаблона добавления кривых
 		private void MRestoreTemplate_Click (object sender, EventArgs e)
 			{
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "TemplateReset",
+			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "TemplateReset",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) != RDMessageButtons.ButtonOne)
 				return;
 
 			if (!ColumnsAdderCmd.CreateDefaultParametersFile (RDGenerics.AppStartupPath +
 				ConfigAccessor.LineParametersFileName))
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "TemplateSaveError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TemplateSaveError");
 			}
 
 		// Редактирование данных диаграммы
@@ -1274,13 +1274,13 @@ namespace RD_AAOW
 					{
 					if (cad.IsNewObjectADiagram)
 						{
-						RDGenerics.MessageBox (RDMessageTypes.Warning,
+						RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 							string.Format (Localization.GetText ("LinesOverloadError"),
 							DiagramData.MaxLines));
 						}
 					else
 						{
-						RDGenerics.MessageBox (RDMessageTypes.Warning,
+						RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 							string.Format (Localization.GetText ("ObjectsOverloadError"),
 							DiagramData.MaxAdditionalObjects));
 						}
@@ -1314,11 +1314,11 @@ namespace RD_AAOW
 			// Контроль
 			if (LineNamesList.SelectedIndices.Count == 0)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "LinesForDeleteNSError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "LinesForDeleteNSError");
 				return;
 				}
 
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "LinesDelete",
+			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "LinesDelete",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonTwo)
 				return;
 
@@ -1389,7 +1389,7 @@ namespace RD_AAOW
 						}
 					else if (res == -3)
 						{
-						RDGenerics.MessageBox (RDMessageTypes.Warning,
+						RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 							string.Format (Localization.GetText ("LinesOverloadError"),
 							DiagramData.MaxLines));
 						break;
@@ -1540,7 +1540,7 @@ namespace RD_AAOW
 			// Контроль
 			if (LineNamesList.SelectedIndices.Count != 2)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "MergingError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "MergingError");
 				return;
 				}
 
@@ -1639,7 +1639,7 @@ namespace RD_AAOW
 			// Контроль
 			if ((LineNamesList.SelectedIndices.Count == 0) || (LineNamesList.SelectedIndex >= dd.LinesCount))
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "LineForReplaceNSError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "LineForReplaceNSError");
 				return;
 				}
 
@@ -1856,7 +1856,7 @@ namespace RD_AAOW
 			// Вряд ли, но на всякий случай
 			catch
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "LinesForSettingNSError");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "LinesForSettingNSError");
 				}
 
 			// Перерисовка
@@ -1994,7 +1994,7 @@ namespace RD_AAOW
 					}
 				catch
 					{
-					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "FontSelectError");
+					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "FontSelectError");
 					success = false;
 					}
 				}

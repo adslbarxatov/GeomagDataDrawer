@@ -19,8 +19,6 @@ namespace RD_AAOW
 		private char[] anyHeadersSplitters = new char[] { '\t', ';' };
 		private char[] csvSplitters = new char[] { ';' };
 		private char[] dateSplitters = new char[] { '.', '/', '-' };
-		/*private CultureInfo cie = new CultureInfo ("en-us");            // Десятичная точка
-		private CultureInfo cir = new CultureInfo ("ru-ru");            // Десятичная запятая*/
 
 		// Исходный массив данных
 		private List<List<double>> dataValues = new List<List<double>> ();
@@ -454,7 +452,7 @@ namespace RD_AAOW
 
 					// Попытка извлечения значения с текущим десятичным разделителем
 					double parsed = 0.0;
-					double.TryParse (PrepareDataValue (values[i], false), NumberStyles.Float,
+					double.TryParse (PrepareDataValue (values[i], false), RDGenerics.FloatNumberStyle,
 						Localization.GetCulture (SupportedLanguages.en_us).NumberFormat, out parsed);
 					dataValues[i].Add (parsed);
 					}
