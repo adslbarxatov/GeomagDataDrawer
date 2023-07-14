@@ -16,7 +16,6 @@ namespace RD_AAOW
 
 		// Внутренние параметры
 		private char[] splitters = new char[] { ';' };          // Массив сплиттеров строк параметров
-		/*private CultureInfo cie = new CultureInfo ("en-us");    // Тип десятичного разделителя*/
 		private const string tmpExtension = ".pcsc";            // Расширение вспомогательного файла
 		private const uint maxIncludeDeep = 100;                // Максимальное количество подключений
 

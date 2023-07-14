@@ -31,15 +31,13 @@ namespace RD_AAOW
 
 #if false
 
-		/*
-		Using the command line:
-
-		VectorImageGenerator [Script file name] [Image file name] [Image type {SVG | EMF}]
-
-		• If the second parameter is absent, image name wiil be generated from the name of the script file in SVG format;
-		• If the third parameter is missing or incorrectly specified, image will be saved in SVG format;
-		• If all parameters are missing, the application starts in normal mode
-		*/
+		// Using the command line:
+		//
+		// VectorImageGenerator [Script file name] [Image file name] [Image type {SVG | EMF}]
+		// 
+		// • If the second parameter is absent, image name wiil be generated from the name of the script file in SVG format;
+		// • If the third parameter is missing or incorrectly specified, image will be saved in SVG format;
+		// • If all parameters are missing, the application starts in normal mode
 
 		/// <summary>
 		/// Конструктор. Выполняет генерацию изображения в тихом режиме

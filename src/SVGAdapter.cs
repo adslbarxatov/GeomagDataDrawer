@@ -16,7 +16,6 @@ namespace RD_AAOW
 		private StreamWriter SW = null;
 		private uint width, height;
 		private string fileName;
-		/*private CultureInfo cie = new CultureInfo ("en-us");*/
 
 		/// <summary>
 		/// Возвращает результат инициализации класса

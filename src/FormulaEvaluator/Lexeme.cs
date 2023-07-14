@@ -12,9 +12,6 @@
 		private uint lexemeIndex;
 #endif
 
-		// Константы настройки
-		/*private CultureInfo ce = new CultureInfo ("en-us");*/
-
 		/// <summary>
 		/// Конструктор. Формирует лексему по её строковому представлению
 		/// </summary>
