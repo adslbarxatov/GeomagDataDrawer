@@ -94,9 +94,10 @@ namespace RD_AAOW
 				DiagramData dd = new DiagramData (OFDialog.FileNames[i], ufps.DataColumnsCount, cns.SkippedRowsCount);
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					ProcessingResults.Items.Add (string.Format (Localization.GetText ("FileAddError"),
+					ProcessingResults.Items.Add (DiagramData.GetDataLoadError (dd.InitResult, OFDialog.FileNames[i])
+						/*string.Format (Localization.GetText ("FileAddError"),
 						Path.GetFileName (OFDialog.FileNames[i]),
-						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
+						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult))*/);
 					continue;
 					}
 
@@ -303,7 +304,9 @@ namespace RD_AAOW
 			DiagramData dd = new DiagramData (mergedTable, mergedColumnNames);
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)(SFDialog.FilterIndex + 1), true) != 0)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DataFileSaveError");
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*DataFileSaveError"*/
+					Localization.GetFileProcessingMessage (SFDialog.FileName,
+					LzFileProcessingMessageTypes.Save_Failure));
 				return;
 				}
 

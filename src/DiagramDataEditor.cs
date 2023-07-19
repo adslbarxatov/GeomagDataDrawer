@@ -256,7 +256,8 @@ namespace RD_AAOW
 					{
 					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 						string.Format (Localization.GetText ("DataProcessingError"),
-						DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable)));
+						/*DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable)*/
+						Localization.GetText ("BrokenTableError")));
 					e.Cancel = true;
 					return;
 					}

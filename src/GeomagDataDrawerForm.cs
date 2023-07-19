@@ -70,6 +70,12 @@ namespace RD_AAOW
 			this.MinimumSize = new Size ((int)ConfigAccessor.MinWidth, (int)ConfigAccessor.MinHeight);
 			RDGenerics.LoadWindowDimensions (this);
 
+			if (!RDGenerics.IsStartupPathAccessible)
+				{
+				this.Text += Localization.GetDefaultText (LzDefaultTextValues.Message_LimitedFunctionality);
+				MRegister.Enabled = false;
+				}
+
 			// Потеря фокуса полем настройки
 			MainTabControl_Leave (MainTabControl, null);
 
@@ -149,8 +155,9 @@ namespace RD_AAOW
 					DiagramDataInitResults.BrokenFile))
 					{
 					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-						string.Format (Localization.GetText ("DataFileLoadError"),
-						SentFileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult)));
+						DiagramData.GetDataLoadError (ddt.InitResult, SentFileName)
+						/*string.Format (Localization.GetText ("DataFileLoadError"),
+						SentFileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult))*/);
 					return;
 					}
 
@@ -202,8 +209,9 @@ namespace RD_AAOW
 			else if (SentFileType != DataInputTypes.Unspecified)
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("DataFileLoadError"), SentFileName,
-					DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
+					DiagramData.GetDataLoadError (dd.InitResult, SentFileName)
+					/*string.Format (Localization.GetText ("DataFileLoadError"), SentFileName,
+					DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult))*/);
 				}
 
 			#endregion
@@ -335,8 +343,9 @@ namespace RD_AAOW
 				LineNamesList.Enabled = DrawLine.Enabled =
 				DiagramBox.Enabled = HorScroll.Enabled = VertScroll.Enabled =
 				MLoadStyle.Enabled = MSaveStyle.Enabled = MResetStyle.Enabled = MSaveTemplate.Enabled =
-				MSaveDataFile.Enabled = MSaveDiagramImage.Enabled = MRedactData.Enabled =
-				MRestoreTemplate.Enabled = MReplaceTemplate.Enabled = NewState;
+				MSaveDataFile.Enabled = MSaveDiagramImage.Enabled = MRedactData.Enabled = NewState;
+				
+				MRestoreTemplate.Enabled = MReplaceTemplate.Enabled = NewState && RDGenerics.IsStartupPathAccessible;
 				}
 
 			bool isAnObject = LineNamesList.SelectedIndex >= dd.LinesCount;
@@ -666,7 +675,8 @@ namespace RD_AAOW
 			if (ca.ForceUsingBackupDataFile && (dd != null) && (dd.InitResult == DiagramDataInitResults.Ok))
 				{
 				// Возвращаемый результат не имеет значения
-				dd.SaveDataFile (RDGenerics.AppStartupPath + ConfigAccessor.BackupDataFileName, DataOutputTypes.GDD, true);
+				dd.SaveDataFile (RDGenerics.AppStartupPath + ConfigAccessor.BackupDataFileName,
+					DataOutputTypes.GDD, true);
 				}
 
 			// Подтверждение
@@ -721,8 +731,9 @@ namespace RD_AAOW
 			if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult != DiagramDataInitResults.BrokenFile))
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("DataFileLoadError"),
-					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult)));
+					DiagramData.GetDataLoadError (ddt.InitResult, OFDialog.FileName)
+					/*string.Format (Localization.GetText ("DataFileLoadError"),
+					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult))*/);
 				return;
 				}
 
@@ -746,8 +757,9 @@ namespace RD_AAOW
 				{
 				// Файл точно с ошибками, или выбрано некорректное количество строк для поиска имён
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("DataFileLoadError"),
-					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
+					DiagramData.GetDataLoadError (dd.InitResult, OFDialog.FileName)
+					/*string.Format (Localization.GetText ("DataFileLoadError"),
+					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult))*/);
 				return;
 				}
 
@@ -864,7 +876,9 @@ namespace RD_AAOW
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)SFDialog.FilterIndex,
 				ca.ForceSavingColumnNames) < 0)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DataFileSaveError");
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*DataFileSaveError"*/
+					Localization.GetFileProcessingMessage (SFDialog.FileName,
+					LzFileProcessingMessageTypes.Save_Failure));
 				}
 			}
 
@@ -1124,7 +1138,8 @@ namespace RD_AAOW
 					throw new Exception (Localization.GetText ("ExceptionMessage") + " (9)");
 
 				case -2:
-					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TemplateSaveError");
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*TemplateSaveError"*/
+						Localization.GetFileProcessingMessage ("", LzFileProcessingMessageTypes.Save_Failure));
 					break;
 
 				default:
@@ -1143,7 +1158,9 @@ namespace RD_AAOW
 
 			if (!ColumnsAdderCmd.WriteParametersFile (dd, RDGenerics.AppStartupPath +
 				ConfigAccessor.LineParametersFileName))
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TemplateSaveError");
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*TemplateSaveError"*/
+					Localization.GetFileProcessingMessage (ConfigAccessor.LineParametersFileName,
+					LzFileProcessingMessageTypes.Save_Failure));
 			}
 
 		// Восстановление шаблона добавления кривых
@@ -1155,7 +1172,9 @@ namespace RD_AAOW
 
 			if (!ColumnsAdderCmd.CreateDefaultParametersFile (RDGenerics.AppStartupPath +
 				ConfigAccessor.LineParametersFileName))
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TemplateSaveError");
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*TemplateSaveError"*/
+					Localization.GetFileProcessingMessage (ConfigAccessor.LineParametersFileName,
+					LzFileProcessingMessageTypes.Save_Failure));
 			}
 
 		// Редактирование данных диаграммы

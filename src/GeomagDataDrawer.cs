@@ -148,8 +148,9 @@ namespace RD_AAOW
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
 					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-						string.Format (Localization.GetText ("DataFileLoadError"), args[0],
-						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult)));
+						DiagramData.GetDataLoadError (dd.InitResult, args[0])
+						/*string.Format (Localization.GetText ("DataFileLoadError"), args[0],
+						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult))*/);
 					return;
 					}
 
@@ -158,7 +159,8 @@ namespace RD_AAOW
 					{
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
-						RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DataFileSaveError");
+						RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*DataFileSaveError"*/
+							Localization.GetFileProcessingMessage (args[1], LzFileProcessingMessageTypes.Save_Failure));
 						return;
 						}
 					}

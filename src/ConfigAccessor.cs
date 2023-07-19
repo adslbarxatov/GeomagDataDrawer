@@ -162,7 +162,7 @@
 			forceExitConfirmation = (RDGenerics.GetAppSettingsValue ("ForceExitConfirmation") == "FEC");
 
 			string s = RDGenerics.GetAppSettingsValue ("ForceUsingBackupDataFile");
-			forceUsingBackupDataFile = (s == "FUBDF");
+			forceUsingBackupDataFile = (s == "FUBDF") && RDGenerics.IsStartupPathAccessible;
 
 			if (s == "")    // Требуется дополнительная обработка, т.к. значение по умолчанию - true
 				{

@@ -149,14 +149,20 @@ namespace RD_AAOW
 						break;
 
 					case SVGScriptReader.InitResults.CannotCreateTMP:
-					case SVGScriptReader.InitResults.FileNotAvailable:
+						msg = Localization.GetFileProcessingMessage ("",
+							LzFileProcessingMessageTypes.Save_Failure);
+						break;
+
 					case SVGScriptReader.InitResults.IncludeDeepOverflow:
 						msg += Localization.GetText ("VIG_" + svgsr.InitResult.ToString ());
 						break;
 
+					case SVGScriptReader.InitResults.FileNotAvailable:
 					case SVGScriptReader.InitResults.CannotIncludeFile:
-						msg += (string.Format (Localization.GetText ("VIG_" + svgsr.InitResult.ToString ()),
-							svgsr.FaliedIncludeFile));
+						/*msg += (string.Format (Localization.GetText ("VIG_" + svgsr.InitResult.ToString ()),
+							svgsr.FaliedIncludeFile));*/
+						msg = Localization.GetFileProcessingMessage (OFName.Text,
+							LzFileProcessingMessageTypes.Load_Failure);
 						break;
 
 					default:    // f.e., NotInited
@@ -190,6 +196,10 @@ namespace RD_AAOW
 				switch (vectorAdapter.InitResult)
 					{
 					case VectorAdapterInitResults.CannotCreateFile:
+						msg = Localization.GetFileProcessingMessage (SFName.Text,
+							LzFileProcessingMessageTypes.Save_Failure);
+						break;
+
 					case VectorAdapterInitResults.IncorrectImageSize:
 						msg += Localization.GetText ("VIG_" + vectorAdapter.InitResult.ToString ());
 						break;

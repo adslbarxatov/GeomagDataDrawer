@@ -3,6 +3,12 @@ Geomag data drawer: changes log
 ToDo:
 - Add the runtime image movement?
 - Limit for the data editor?
+- Translate the infopage
+
+Version 5.4.3:
+• Implemented the access rights checker: it will test the availability of the Windows registry
+  and the application placements for writing and notify user about possible problems;
+• Updated the storage method of text tips
 
 Version 5.4:
 • Rewritten settings operator: it should fix problems with requiring administrator rights

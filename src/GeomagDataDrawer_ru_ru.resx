@@ -478,10 +478,7 @@
     <value>Отсутствует необходимый компонент программы: {0:S}. Возможно, требуется переустановить программу</value>
   </data>
   <data name="DataFileLoadError" xml:space="preserve">
-    <value>Ошибка загрузки файла «{0:S}»: {1:S}</value>
-  </data>
-  <data name="DataFileSaveError" xml:space="preserve">
-    <value>Не удалось записать файл данных. Возможно, выбранное расположение недоступно для записи, или файл с данным именем уже существует и занят другой программой</value>
+    <value>Ошибка загрузки файла данных: </value>
   </data>
   <data name="DataProcessingError" xml:space="preserve">
     <value>Ошибка обработки данных: {0:S}</value>
@@ -518,9 +515,6 @@
   </data>
   <data name="ExcelNotAvailableError" xml:space="preserve">
     <value>файлы поддержки формата Microsoft Excel отсутствуют</value>
-  </data>
-  <data name="FileNotAvailableError" xml:space="preserve">
-    <value>указанный файл не найден или недоступен</value>
   </data>
   <data name="FontSelectError" xml:space="preserve">
     <value>Не удаётся использовать выбранный шрифт для построения диаграммы. Выберите другой шрифт или отмените действие</value>
@@ -784,9 +778,6 @@
   <data name="StylesReset" xml:space="preserve">
     <value>Сбросить стили выбранных кривых и объектов к начальным установкам?</value>
   </data>
-  <data name="TemplateSaveError" xml:space="preserve">
-    <value>Не удалось записать файл шаблона. Возможно, выбранное расположение недоступно для записи, или файл с данным именем уже существует и занят другой программой</value>
-  </data>
   <data name="TextTab_AutoTextOffset_TT" xml:space="preserve">
     <value>Флажок указывает, следует ли автоматически расчитывать позиции подписей изображений выбранных кривых</value>
   </data>
@@ -1013,9 +1004,6 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   <data name="UnknownFileParametersSelector_Label03" xml:space="preserve">
     <value>Столбец абсцисс:</value>
   </data>
-  <data name="TemplateLoadError" xml:space="preserve">
-    <value>Указанный файл не найден или недоступен</value>
-  </data>
   <data name="ShowVideo" xml:space="preserve">
     <value>Показать видеоруководство пользователя на нашем YouTube-канале?</value>
   </data>
@@ -1024,9 +1012,6 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   </data>
   <data name="FileAddCompleted" xml:space="preserve">
     <value>Добавлен файл «{0:S}»: столбцов – {1:D}, строк – {2:D}</value>
-  </data>
-  <data name="FileAddError" xml:space="preserve">
-    <value>Файл «{0:S}» не был добавлен: {1:S}</value>
   </data>
   <data name="FilesListReset" xml:space="preserve">
     <value>Список файлов сброшен</value>
@@ -1182,15 +1167,6 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   </data>
   <data name="VIG_BrokenText" xml:space="preserve">
     <value>ошибка описания текстовой подписи в строке {0:D}</value>
-  </data>
-  <data name="VIG_CannotCreateFile" xml:space="preserve">
-    <value>не удалось создать файл в указанном расположении</value>
-  </data>
-  <data name="VIG_CannotCreateTMP" xml:space="preserve">
-    <value>не удаётся создать вспомогательный файл. Возможно, расположение файла скрипта недоступно для записи</value>
-  </data>
-  <data name="VIG_CannotIncludeFile" xml:space="preserve">
-    <value>файл «{0:S}» не найден, недоступен, или параметры его включения некорректны</value>
   </data>
   <data name="VIG_FileNotAvailable" xml:space="preserve">
     <value>файл скрипта не найден или недоступен</value>

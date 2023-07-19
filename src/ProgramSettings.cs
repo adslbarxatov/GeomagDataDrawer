@@ -26,7 +26,12 @@ namespace RD_AAOW
 
 			// Настройка контролов
 			ConfirmExit.Checked = ca.ForceExitConfirmation;
-			ForceUsingBackupFile.Checked = ca.ForceUsingBackupDataFile;
+
+			if (RDGenerics.IsStartupPathAccessible)
+				ForceUsingBackupFile.Checked = ca.ForceUsingBackupDataFile;
+			else
+				ForceUsingBackupFile.Checked = ForceUsingBackupFile.Enabled = false;
+
 			ForceShowDiagram.Checked = ca.ForceShowDiagram;
 			ForceSavingColumnNames.Checked = ca.ForceSavingColumnNames;
 

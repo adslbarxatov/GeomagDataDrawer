@@ -2694,9 +2694,7 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != DiagramDataInitResults.Ok)
-				{
 				return -1;
-				}
 
 			// Выбор варианта сохранения
 			switch (DataFileType)
@@ -2817,14 +2815,11 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != DiagramDataInitResults.Ok)
-				{
 				return -1;
-				}
 
-			if ((LineOrObjectNumber < 0) || (LineOrObjectNumber > lineStyles.Count + additionalObjects.Count) || (SourceStyle == null))
-				{
+			if ((LineOrObjectNumber < 0) || (LineOrObjectNumber > lineStyles.Count + additionalObjects.Count) ||
+				(SourceStyle == null))
 				return -2;
-				}
 
 			// Присвоение
 			if (LineOrObjectNumber < lineStyles.Count)
@@ -2853,14 +2848,10 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != DiagramDataInitResults.Ok)
-				{
 				return -1;
-				}
 
 			if (Update && ((LineNumbers == null) || (LineNumbers.Count == 0)))
-				{
 				return -2;
-				}
 
 			// Попытка открытия файла
 			FileStream FS = null;
@@ -3331,6 +3322,49 @@ namespace RD_AAOW
 				{
 				return "00.00.0000";
 				}
+			}
+
+		/// <summary>
+		/// Метод возвращает текст ошибки при загрузке данных диаграммы
+		/// </summary>
+		/// <param name="Result">Полученный результат загрузки</param>
+		/// <param name="FilePath">Путь к файлу данных</param>
+		/// <returns>Текст ошибки</returns>
+		public static string GetDataLoadError (DiagramDataInitResults Result, string FilePath)
+			{
+			if (Result == DiagramDataInitResults.Ok)
+				return "";
+
+			string msg = Localization.GetText ("DataFileLoadError");
+			switch (Result)
+				{
+				case DiagramDataInitResults.NotInited:
+					msg += Localization.GetText ("NotInitedError");
+					break;
+
+				case DiagramDataInitResults.FileNotAvailable:
+					msg = Localization.GetFileProcessingMessage (FilePath,
+						LzFileProcessingMessageTypes.Load_Failure);
+					break;
+
+				case DiagramDataInitResults.BrokenFile:
+					msg += Localization.GetText ("BrokenFileError");
+					break;
+
+				case DiagramDataInitResults.NotEnoughData:
+					msg += Localization.GetText ("NotEnoughDataError");
+					break;
+
+				case DiagramDataInitResults.BrokenTable:
+					msg += Localization.GetText ("BrokenTableError");
+					break;
+
+				case DiagramDataInitResults.ExcelNotAvailable:
+					msg += Localization.GetText ("ExcelNotAvailableError");
+					break;
+				}
+
+			return msg;
 			}
 		}
 	}

@@ -478,10 +478,7 @@
     <value>Missing required component of the app: {0:S}. Probably, you need to reinstall it</value>
   </data>
   <data name="DataFileLoadError" xml:space="preserve">
-    <value>File “{0:S}” loading error: {1:S}</value>
-  </data>
-  <data name="DataFileSaveError" xml:space="preserve">
-    <value>Failed to write data file. Selected location may be not writable, or file with the same name already exists and is in use by another application</value>
+    <value>Data file loading error: </value>
   </data>
   <data name="DataProcessingError" xml:space="preserve">
     <value>Data processing error: {0:S}</value>
@@ -518,9 +515,6 @@
   </data>
   <data name="ExcelNotAvailableError" xml:space="preserve">
     <value>Support components for the Microsoft Excel format are missing</value>
-  </data>
-  <data name="FileNotAvailableError" xml:space="preserve">
-    <value>specified file was not found or unavailable</value>
   </data>
   <data name="FontSelectError" xml:space="preserve">
     <value>Unable to use selected font for plotting. Select another font or cancel the action</value>
@@ -777,9 +771,6 @@
   <data name="StylesReset" xml:space="preserve">
     <value>Do you want to reset style(s) of selected curve(s) and object(s) to default settings?</value>
   </data>
-  <data name="TemplateSaveError" xml:space="preserve">
-    <value>Failed to write the template file. Selected location may be not writable, or file with the same name already exists and is in use by another application</value>
-  </data>
   <data name="TextTab_AutoTextOffset_TT" xml:space="preserve">
     <value>Flag indicates whether to automatically calculate the placement of image caption and labels for selected curve(s)</value>
   </data>
@@ -1006,9 +997,6 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
   <data name="UnknownFileParametersSelector_Label03" xml:space="preserve">
     <value>Abscissas column number:</value>
   </data>
-  <data name="TemplateLoadError" xml:space="preserve">
-    <value>Specified file is unavailable</value>
-  </data>
   <data name="ShowVideo" xml:space="preserve">
     <value>Do you want to view the user videoguide on our YouTube channel?</value>
   </data>
@@ -1017,9 +1005,6 @@ GeomagDataDrawer &lt;filename&gt; &lt;filename_2&gt; [SLC] [ECC] – data files 
   </data>
   <data name="FileAddCompleted" xml:space="preserve">
     <value>File “{0:S}” has been added: columns – {1:D}, rows – {2:D}</value>
-  </data>
-  <data name="FileAddError" xml:space="preserve">
-    <value>File “{0:S}” hasn’t been added: {1:S}</value>
   </data>
   <data name="FilesListReset" xml:space="preserve">
     <value>Files list has been reset</value>
@@ -1172,15 +1157,6 @@ All unsaved data will be lost!</value>
   </data>
   <data name="VIG_BrokenText" xml:space="preserve">
     <value>wrong text subscription declaration at line {0:D}</value>
-  </data>
-  <data name="VIG_CannotCreateFile" xml:space="preserve">
-    <value>cannot create file in the specified directory</value>
-  </data>
-  <data name="VIG_CannotCreateTMP" xml:space="preserve">
-    <value>cannot create the temporary file. Probably, placement of the script file is not writable</value>
-  </data>
-  <data name="VIG_CannotIncludeFile" xml:space="preserve">
-    <value>file “{0:S}” not found, unavailable or declared with wrong parameters</value>
   </data>
   <data name="VIG_FileNotAvailable" xml:space="preserve">
     <value>script file not found or unavailable</value>

@@ -83,14 +83,14 @@ namespace RD_AAOW
 		/// <summary>
 		/// Возвращает имя файла, который не удалось подключить при сборке скрипта
 		/// </summary>
-		public string FaliedIncludeFile
+		public string FailedIncludeFile
 			{
 			get
 				{
-				return faliedIncludeFile;
+				return failedIncludeFile;
 				}
 			}
-		private string faliedIncludeFile = "";
+		private string failedIncludeFile = "";
 
 		/// <summary>
 		/// Возможные результаты инициализация класса
@@ -570,7 +570,7 @@ namespace RD_AAOW
 							FSO.Close ();
 
 							initResult = InitResults.CannotIncludeFile;
-							faliedIncludeFile = line;
+							failedIncludeFile = line;
 							return;
 							}
 						SRInc = new StreamReader (FSInc, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
@@ -588,7 +588,7 @@ namespace RD_AAOW
 							}
 						catch
 							{
-							faliedIncludeFile = FSInc.Name;
+							failedIncludeFile = FSInc.Name;
 							SR.Close ();
 							FSI.Close ();
 							SW.Close ();
