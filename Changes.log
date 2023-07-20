@@ -7,7 +7,7 @@ ToDo:
 
 Version 5.4.3:
 • Implemented the access rights checker: it will test the availability of the Windows registry
-  and the application placements for writing and notify user about possible problems;
+  and the application placement for writing and notify user about possible problems;
 • Updated the storage method of text tips
 
 Version 5.4:
