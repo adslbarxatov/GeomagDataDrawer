@@ -3,12 +3,13 @@
 
 
 Autonomous utility for plotting and preparing of data diagrams.
-Detailed description of the app is now available in [this video](https://youtu.be/uYtQJX5BgvU)
+Detailed description of the app is now available on [its own page](https://adslbarxatov.github.io/GeomagDataDrawer)
+and in [this video](https://youtu.be/uYtQJX5BgvU)
 
 ---
 
 Автономный инструмент построения и оформления диаграмм.
-Подробное описание приложения теперь доступно на [отдельной странице](https://adslbarxatov.github.io/GeomagDataDrawer)
+Подробное описание приложения теперь доступно на [отдельной странице](https://adslbarxatov.github.io/GeomagDataDrawer/ru)
 
 &nbsp;
 

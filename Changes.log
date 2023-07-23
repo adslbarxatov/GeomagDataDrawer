@@ -4,6 +4,7 @@ ToDo:
 - Add the runtime image movement?
 - Limit for the data editor?
 - Translate the infopage
+- Fix the placement of the horizontal scroll bar
 
 Version 5.4.3:
 • Implemented the access rights checker: it will test the availability of the Windows registry

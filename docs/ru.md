@@ -1,108 +1,108 @@
-# Geomag data drawer: complete user guide
-> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 23.07.2023; 21:17
+# Geomag data drawer: руководство пользователя
+> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 23.07.2023; 21:49
 
-# Content
-- [General information](#general-information)
-- [Main app interface](#main-app-interface)
-    - [Adding a curve or object to a diagram](#section-3)
-    - [Remove curves and objects from diagram](#section-4)
-    - [Hide/show curves and objects](#section-5)
-    - [Select curves and objects](#section-6)
-    - [Selecting a range for plotting a curve or line](#section-7)
-    - [Setting the location and size of the curve or object image](#section-8)
-    - [Curve image captions settings](#section-9)
-    - [Setting the coordinate axes of the curve image](#section-10)
-    - [Set curve image grid](#section-11)
-    - [Customizing fonts and colors of image captions](#section-12)
-    - [Set curve line style](#section-13)
-- [App menu](#section-14)
-    - File
-    - [“Open data file”](#section-16)
-    - [“Load from clipboard”](#section-17)
-    - [“Save data file”](#section-18)
-    - [“Save diagram”](#section-19)
-    - [“Close diagram”](#section-20)
-    - [“Generate curves”](#section-21)
-    - [“Program settings”](#section-22)
-    - [“Exit”](#section-23)
-- Operations
-    - [“Add curve or object"](#section-25)
-    - [“Parametric addition of curves"](#section-26)
-    - [“Select curve data columns"](#section-27)
-    - [“Merge curves or objects"](#section-28)
-    - [“Delete curves or objects"](#section-29)
-    - [“Edit diagram data"](#section-30)
-    - [“Load style"](#section-31)
-    - [“Save style"](#section-32)
-    - [“Reset style"](#section-33)
-    - [“Save curves template"](#section-34)
-- Help
-    - [“About / Help”](#section-36)
-    - [Menu item with interface language selection](#section-37)
-    - [“Associate files”](#section-38)
-    - Optional
-    - [“Join data tables”](#section-40)
-    - [“Create vector image”](#section-41)
-- [Hardware and software requirements and app contents](#section-42)
-    - App contents
-    - [Files and directories](#section-44)
-    - [Supported data formats](#section-45)
-    - [Support for Microsoft Office Excel formats](#microsoft-office-excel)
-    - [Requirements for installing the app](#section-46)
-    - [Working with the app from the command line](#section-47)
-- [Restrictions and default parameter values](#section-48)
-- [File format specifications](#section-49)
-    - Geomag data drawer files
-    - [Microsoft Office Excel data files](#microsoft-office-excel-1)
-    - [Data files in Windows CSV format](#windows-csv)
-    - [Files to extract data from](#section-50)
-- [Download links](https://adslbarxatov.github.io/DPArray#geomag-data-drawer)
-- [Русская версия](https://adslbarxatov.github.io/GeomagDataDrawer/ru)
+# Содержание
+- [Общие сведения о программе](#section-1)
+- [Главный интерфейс программы](#section-2)
+    - [Добавление кривой или объекта на диаграмму](#section-3)
+    - [Удаление кривых и объектов с диаграммы](#section-4)
+    - [Скрытие / отображение кривых и объектов](#section-5)
+    - [Выделение кривых и объектов](#section-6)
+    - [Выбор диапазона построения кривой или линии](#section-7)
+    - [Задание расположения и размера изображения кривой или объекта](#section-8)
+    - [Настройка подписей изображения кривой](#section-9)
+    - [Настройка координатных осей изображения кривой](#section-10)
+    - [Настройка сетки изображения кривой](#section-11)
+    - [Настройка шрифтов и цветов подписей изображения](#section-12)
+    - [Настройка стиля линии кривой](#section-13)
+- [Меню программы](#section-14)
+    - Файл
+    - [«Открыть файл данных»](#section-16)
+    - [«Загрузить из буфера обмена»](#section-17)
+    - [«Сохранить файл данных»](#section-18)
+    - [«Сохранить диаграмму»](#section-19)
+    - [«Закрыть диаграмму»](#section-20)
+    - [«Сгенерировать кривые»](#section-21)
+    - [«Настройки программы»](#section-22)
+    - [«Выход»](#section-23)
+    - Операции
+    - [«Добавить кривую или объект»](#section-25)
+    - [«Параметрическое добавление кривых»](#section-26)
+    - [«Выбор столбцов данных кривой»](#section-27)
+    - [«Совместить кривые или объекты»](#section-28)
+    - [«Удалить кривые или объекты»](#section-29)
+    - [«Редактировать данные диаграммы»](#section-30)
+    - [«Загрузить стиль»](#section-31)
+    - [«Сохранить стиль»](#section-32)
+    - [«Сбросить стиль»](#section-33)
+    - [«Сохранить шаблон добавления кривых»](#section-34)
+    - Помощь
+    - [«О программе / справка»](#section-36)
+    - [Пункт меню с выбором языка интерфейса](#section-37)
+    - [«Ассоциировать файлы»](#section-38)
+    - Дополнительно
+    - [«Соединить таблицы»](#section-40)
+    - [«Создать векторный рисунок»](#section-41)
+- [Аппаратно-программные требования и комплектация программы](#section-42)
+    - Комплектация программы
+    - [Создаваемые файлы и директории](#section-44)
+    - [Поддерживаемые форматы данных](#section-45)
+    - [Поддержка форматов Microsoft Office Excel](#microsoft-office-excel)
+    - [Требования к установке программы](#section-46)
+    - [Работа с программой из командной строки](#section-47)
+- [Ограничения и стандартные значения параметров](#section-48)
+- [Спецификации форматов файлов](#section-49)
+    - Файлы данных Geomag data drawer
+    - [Файлы данных в формате Microsoft Office Excel](#microsoft-office-excel-1)
+    - [Файлы данных в формате Windows CSV](#windows-csv)
+    - [Файлы, из которых необходимо извлечь данные](#section-50)
+- [Ссылки для загрузки](https://adslbarxatov.github.io/DPArray/ru#geomag-data-drawer)
+- [English version](https://adslbarxatov.github.io/GeomagDataDrawer)
 
 ---
 
-# 1. General information
+# 1. Общие сведения о программе
 
-***Geomag data drawer*** is a software tool designed to build diagrams based on tabular data. It was originally
-created as a means of visualizing the results of experimental measurements; can still be used for this purpose.
+***Geomag data drawer*** – программное средство, предназначенное для построения диаграмм на основе табличных данных.
+Изначально создавался как средство визуализации результатов экспериментальных измерений; может и сейчас быть использован с этой целью.
 
-Geomag data drawer supports the following data formats:
-- ***Microsoft Office Excel ’97 and ’07 Spreadsheets*** (`.xls`, `.xlsx`). Support is provided through additional software
-(see section [“Hardware and software requirements and app contents”](#section-42) of this guide). The presence of the
-installed Microsoft Office software package is not required.
-- ***Table data in Windows CSV format*** (`.csv`; separators are semicolons).
-- In order to expand the capabilities of the app, the ability to ***extract data from files of text formats*** has also been added.
-- In addition, the app has its ***own data storage format***, which includes both the diagram data itself,
-as well as its style and display settings (Geomag data drawer files, `.gdd`).
-- The app can ***generate tabular data*** by running a given numerical range through analytically
-given function. The function and plotting range can be manually specified by user.
-- Finally, it is possible to use ***text data from the clipboard*** for plotting.
-- Data file conversion from the command line is also available, which allows automatic (batch) processing.
+Geomag data drawer поддерживает следующие форматы представления данных:
+- ***Таблицы Microsoft Office Excel ’97 и ’07*** (`.xls`, `.xlsx`). Поддержка осуществляется с помощью
+дополнительного программного обеспечения (см. раздел [«Аппаратно-программные требования и комплектация программы»](#section-42)
+данного руководства). Наличие установленного пакета программ Microsoft Office не требуется.
+- ***Табличные данные в формате Windows CSV*** (`.csv`; разделители – точки с запятой).
+- В целях расширения возможностей программы добавлена также возможность ***извлечения данных из файлов текстовых форматов***.
+- Кроме того, программа имеет свой ***собственный формат хранения данных***, включающий как сами данные диаграммы,
+так и её стиль и настройки отображения (файлы данных Geomag data drawer, `.gdd`).
+- Программа может ***генерировать данные диаграммы*** путём прогона заданного числового диапазона через аналитически
+заданную функцию. Функция и диапазон построения могут быть указаны пользователем вручную.
+- Наконец, возможно использование ***текстовых данных из буфера обмена*** для построения диаграмм.
+- Дополнительно доступно преобразование файлов данных из командной строки, что позволяет выполнять автоматическую (пакетную) обработку.
 
-In terms of data visualization and processing, Geomag data drawer provides the following main features:
-- Construction of diagrams according to the presented data.
-- Generation of data for plotting curves from an analytically given function.
-- Editing diagram data in the built-in editor.
-- Saving data files in Windows CSV format and as raw tabular data.
-- Customization of most of the graphic characteristics of diagrams: sizes, placement, colors, fonts, lines, markers, etc.
-- Setting your own coordinate plane and independent use of data columns as abscissas and ordinates for each dependence under study.
-- Adding additional graphic objects: text labels, rectangles, ellipses and lines.
-- Saving diagrams in graphic format `.png` with the ability to set a sufficiently large output size.
-This allows you to overcome the limitations of raster graphics when further using the image.
-- Saving diagrams in vector formats `.svg` version 1.1 and `.emf`, if it is necessary to avoid losses
-when inserting an image into a printed document, or additional editing of the generated diagram in a vector graphics editor is required.
+В части визуализации и обработки данных Geomag data drawer обеспечивает следующие основные возможности:
+- Построение диаграмм по представленным данным.
+- Генерация данных для построения кривых по аналитически заданной функции.
+- Редактирование данных диаграммы во встроенном редакторе.
+- Сохранение файлов данных в формате Windows CSV и формате произвольных табличных данных.
+- Настройка большинства графических характеристик диаграмм: размеров, размещения, цветов, шрифтов, линий, маркеров и т.д.
+- Задание собственной координатной плоскости и независимое использование столбцов данных в качестве абсцисс и ординат для каждой исследуемой зависимости.
+- Добавление дополнительных графических объектов: текстовых подписей, прямоугольников, эллипсов и линий.
+- Сохранение диаграмм в графическом формате `.png` с возможностью задания достаточно большого выходного размера.
+Это позволяет преодолеть ограничения растровой графики при дальнейшем использовании изображения.
+- Сохранение диаграмм в векторных форматах `.svg` версии 1.1 и `.emf`, если необходимо избежать потерь при вставке изображения
+в печатный документ, или требуется дополнительное редактирование сформированной диаграммы в редакторе векторной графики.
 
-Implementation as a standalone application, support for all basic features for editing, building and designing diagrams, flexible
-settings system, bilingual interface, as well as the ability to store data in its own format eliminates the need to install additional
-software systems. Therefore, ***Geomag data drawer*** can be considered a very useful tool for processing and visualizing tabular data.
+Реализация в качестве отдельного приложения, поддержка всех основных возможностей по редактированию, построению и оформлению диаграмм,
+гибкая система управления, двуязычный интерфейс, а также возможность хранения данных в собственном формате снимает необходимость установки
+дополнительных программных комплексов. Поэтому ***Geomag data drawer*** можно считать весьма полезным инструментом обработки и визуализации табличных данных.
 
 [:arrow_double_up:](#section)
 
 ---
 
-# 2. Main app interface
+# 2. Главный интерфейс программы
 
-The main window of the app is shown in the figure below.
+Главное окно приложения представлено на рисунке ниже.
 
 <img src="/GeomagDataDrawer/img/2_01.png" />
 
