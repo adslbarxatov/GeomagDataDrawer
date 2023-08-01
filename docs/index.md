@@ -102,7 +102,7 @@ software systems. Therefore, ***Geomag data drawer*** can be considered a very u
 
 # 2. Main app interface
 
-***Translation is in progress***
+:warning: ***Translation is in progress*** :warning:
 
 The main window of the app is shown in the figure below.
 
