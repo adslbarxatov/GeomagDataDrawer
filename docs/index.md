@@ -2,8 +2,8 @@
 > **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 23.07.2023; 21:17
 
 # Content
-- [General information](#general-information)
-- [Main app interface](#main-app-interface)
+- [General information](#1-general-information)
+- [Main app interface](#2-main-app-interface)
     - [Adding a curve or object to a diagram](#section-3)
     - [Remove curves and objects from diagram](#section-4)
     - [Hide/show curves and objects](#section-5)
