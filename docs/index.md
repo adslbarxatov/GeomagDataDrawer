@@ -1,7 +1,7 @@
 # Geomag data drawer: complete user guide
 > **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 23.07.2023; 21:17
 
-# Content
+# Contents
 - [General information](#1-general-information)
 - [Main app interface](#2-main-app-interface)
     - [Adding a curve or object to a diagram](#section-3)
@@ -15,7 +15,7 @@
     - [Set curve image grid](#section-11)
     - [Customizing fonts and colors of image captions](#section-12)
     - [Set curve line style](#section-13)
-- [App menu](#section-14)
+- [App menu](#3-app-menu)
     - File
     - [“Open data file”](#section-16)
     - [“Load from clipboard”](#section-17)
@@ -96,7 +96,7 @@ Implementation as a standalone application, support for all basic features for e
 settings system, bilingual interface, as well as the ability to store data in its own format eliminates the need to install additional
 software systems. Therefore, ***Geomag data drawer*** can be considered a very useful tool for processing and visualizing tabular data.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -108,28 +108,21 @@ The main window of the app is shown in the figure below.
 
 <img src="/GeomagDataDrawer/img/2_01.png" />
 
-Интерфейс программы адаптирован для работы на планшетных ПК (увеличены элементы окна; добавлена возможность отключения
-функции позиционирования диаграмм мышью для исключения конфликтов жестов). Система отрисовки изображения адаптирована
-к особенностям ОС Windows 8; обновлена система хранения и обработки данных.
-
-Основные элементы окна:
-- Поле отображения диаграммы;
-- Поле списка добавленных кривых и объектов (доступен выбор произвольного набора пунктов для одновременной настройки; см. далее);
-- Кнопки добавления (![image070](https://user-images.githubusercontent.com/20893717/147865672-b9fc0533-edee-4611-96b8-a61a3bb26f6f.png))
-и удаления (![image073](https://user-images.githubusercontent.com/20893717/147865675-f8d2f1b1-41f6-4407-9aaf-340d534c5c2f.png)) кривых
-и дополнительных объектов; с версии 4.11 остальные кнопки вынесены в меню;
-- Кнопки скрытия / отображения (![image060](https://user-images.githubusercontent.com/20893717/147865701-9568b95b-2f2a-483d-ae25-7203f5fe3e21.png))
-и выделения (![image061](https://user-images.githubusercontent.com/20893717/147865708-a2b280f5-5129-4229-9a2c-dc2826726250.png)) кривых и объектов;
-с версии 4.11 совмещение кривых и объектов также вынесено в меню;
-- Панель параметров диаграммы, позволяющая настраивать собственные параметры отображения выбранных кривых и объектов. А именно:
-    - в каком диапазоне абсцисс и ординат следует построить кривую, а также требуется ли транспонирование (вкладка ![image033](https://user-images.githubusercontent.com/20893717/147865745-0a8f1729-373e-4d18-9ea5-78217277d0b7.png));
-    - как следует расположить изображение кривой и/или объекта на листе, а также какого оно должно быть размера (вкладка ![image034](https://user-images.githubusercontent.com/20893717/147865768-7e3dc1c0-eeb0-488e-8469-e7c52534fe44.png));
-    - требуется ли вручную установить расположение подписей диаграммы и название рисунка, или программа должна установить их автоматически (вкладка ![image036](https://user-images.githubusercontent.com/20893717/147865787-e0805f33-9fb5-45d7-9325-6c8ffc01e84b.png));
-    - как следует отображать координатные оси диаграммы (вкладка ![image046](https://user-images.githubusercontent.com/20893717/147865797-31df8b63-1cc6-4918-9616-097ae64dd5bb.png));
-    - как следует отображать координатную сетку диаграммы (вкладка ![image047](https://user-images.githubusercontent.com/20893717/147865806-4290b9b5-038b-4d02-a2e9-a2f8d85629b7.png));
-    - как следует отображать подписи диаграммы (вкладка ![image048](https://user-images.githubusercontent.com/20893717/147865810-e7c80d5a-e2e9-4bca-a2a6-ba59a3f9b8d8.png));
-    - как следует отображать линии кривых диаграммы (вкладка ![image049](https://user-images.githubusercontent.com/20893717/147865821-655cbd1b-faeb-4bdb-bd64-13c9bb091276.png));
-- Меню программы (см. раздел «[Меню программы](#section-14)»).
+The main elements of the window:
+- The diagram display field.
+- List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
+- Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" />) and deleting (<img src="/GeomagDataDrawer/img/2_73.png" />) curves
+and additional objects.
+- Buttons for hide/show (<img src="/GeomagDataDrawer/img/2_60.png" />) and select (<img src="/GeomagDataDrawer/img/2_61.png" />) curves and objects.
+- Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
+    - in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
+    - how to position the image of curve and/or object on the sheet, and what size it should be (tab <img src="/GeomagDataDrawer/img/2_34.png" />);
+    - whether it is necessary to manually set the location of the diagram captions and the title of the figure, or the app should set them automatically (tab <img src="/GeomagDataDrawer/img/2_36.png" />);
+    - how to display the coordinate axes of the diagram (tab <img src="/GeomagDataDrawer/img/2_46.png" />);
+    - how to display the coordinate grid of the diagram (tab <img src="/GeomagDataDrawer/img/2_47.png" />);
+    - how to display diagram labels (tab <img src="/GeomagDataDrawer/img/2_48.png" />);
+    - how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
+- App menu (see section “[App menu](#3-app-menu)”).
 
 Главное окно программы в процессе работы представлено на рисунке ниже.
 
@@ -165,7 +158,7 @@ The main window of the app is shown in the figure below.
 после чего восстановлены при следующем запуске. Данная функция дублируется *функцией автосохранения (при закрытии) и автовосстановления
 (при открытии)* состояния программы.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -173,7 +166,7 @@ The main window of the app is shown in the figure below.
 
 Чтобы добавить новую кривую или графический объект на диаграмму, необходимо нажать кнопку
 ![image070](https://user-images.githubusercontent.com/20893717/147865672-b9fc0533-edee-4611-96b8-a61a3bb26f6f.png) рядом со списком кривых
-и объектов. С версии 4.11 для этой функции доступна горячая клавиша, см. раздел «[Меню программы](#section-14)» данного руководства.
+и объектов. С версии 4.11 для этой функции доступна горячая клавиша, см. раздел «[Меню программы](#3-app-menu)» данного руководства.
 При этом будет вызвано окно параметров добавления.
 
 ![image020](https://user-images.githubusercontent.com/20893717/147865987-5001624f-7d18-4a1d-bff4-2eac4a29cef7.png)
@@ -183,7 +176,7 @@ The main window of the app is shown in the figure below.
 Количество кривых и объектов на диаграмме не должно превосходить максимально допустимое (см. раздел [«Ограничения и стандартные значения
 параметров»](#section-48) данного руководства).
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -192,9 +185,9 @@ The main window of the app is shown in the figure below.
 С помощью кнопки ![image073](https://user-images.githubusercontent.com/20893717/147865675-f8d2f1b1-41f6-4407-9aaf-340d534c5c2f.png) можно
 удалить кривые и/или объекты с диаграммы. При этом потребуется подтверждение пользователя. Пользователь может выбрать несколько кривых
 и объектов в списке для одновременного удаления. С версии 4.11 для этой функции доступна горячая клавиша; см. раздел 
-«[Меню программы](#section-14)» данного руководства.
+«[Меню программы](#3-app-menu)» данного руководства.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -204,7 +197,7 @@ The main window of the app is shown in the figure below.
 может временно скрывать выделенные кривые и объекты (кнопка при этом будет «отпущена»). При необходимости они могут быть снова отображены
 в любой момент (кнопка будет «нажата»).
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -215,7 +208,7 @@ The main window of the app is shown in the figure below.
 требуемые кривые и объекты. Все элементы диаграммы, затронутые прямоугольной областью выделения, будут выделены в списке добавленных кривых
 и объектов. Кнопка выбора при этом вернётся в неактивное состояние.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -238,7 +231,7 @@ The main window of the app is shown in the figure below.
 развороту осей абсцисс и ординат, соответственно. При этом опция транспонирования остаётся доступной. Всё это позволяет повысить гибкость
 и информативность диаграммы в зависимости от потребностей конкретного исследования.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -270,7 +263,7 @@ The main window of the app is shown in the figure below.
 Применительно к графическим объектам поля смещений определяют их расположение на диаграмме, а поля размеров задают величину прямоугольников,
 эллипсов и полей отображения линий. Размеры полей для текстовых подписей рассчитываются автоматически.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -291,7 +284,7 @@ The main window of the app is shown in the figure below.
 Применительно к графическому объекту «Текстовая строка» поле подписи задаёт собственно текст строки. Поведение объекта при этом не зависит
 от состояния флажка «Автоопределение».
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -315,7 +308,7 @@ The main window of the app is shown in the figure below.
 Кнопка «×» здесь и далее предназначена для отключения отображения того или иного элемента. Это, на самом деле, означает задание для него белого цвета,
 который интерпретируется программой как прозрачный и не отображается при перерисовке. Указание белого цвета для осей, сетки и подписей будет иметь тот же эффект.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -329,7 +322,7 @@ The main window of the app is shown in the figure below.
 совпадают с фоном (белый), поэтому сетка не видна. При «включении» сетки её линии отстраиваются в соответствии с расположением засечек на осях.
 Кнопка «×» или установка белого цвета линий скрывает сетку.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -347,7 +340,7 @@ The main window of the app is shown in the figure below.
 Программа не допускает использование некоторых шрифтов. Если пользователь выбирает неподходящий шрифт, программа извещает его об этом
 и предлагает выбрать другой. Установка белого цвета подписей отключает их.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -381,11 +374,11 @@ The main window of the app is shown in the figure below.
 Эта функция позволяет использовать в качестве маркеров практически любые изображения без особых изменений. В стандартную комплектацию
 программы дополнительные маркеры не входят.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
-# 3. Меню программы
+# 3. App menu
 
 Главное меню программы представлено пунктами, описанными ниже. В скобках указаны «горячие клавиши», с помощью которых можно вызвать соответствующее меню.
 Выделенные буквы можно использовать для быстрого вызова функции с нажатой клавишей `[Alt]`.
@@ -414,7 +407,7 @@ The main window of the app is shown in the figure below.
     - Выбор языка интерфейса (список).
     - Ассоциировать файлы.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -457,7 +450,7 @@ The main window of the app is shown in the figure below.
 не удалось (в частности, если количество предполагаемых столбцов при извлечении данных оказалось больше или меньше реального числа столбцов),
 программа именует их в порядке считывания: с.1, с.2 и т.д.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -468,7 +461,7 @@ The main window of the app is shown in the figure below.
 
 > ***Все несохранённые данные при этом теряются, если пользователь соглашается с соответствующим предупреждением.***
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -478,7 +471,7 @@ The main window of the app is shown in the figure below.
 с ошибкой, пользователь извещается об этом. Названия столбцов данных также могут быть сохранены, если соответствующая опция выбрана в настройках
 программы. Следует отметить, что сохранение графических объектов возможно только в собственном формате программы.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -503,7 +496,7 @@ The main window of the app is shown in the figure below.
 
 Кнопка «Сохранить» вызывает стандартное окно сохранения; кнопка «Отмена» прерывает операцию.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -513,7 +506,7 @@ The main window of the app is shown in the figure below.
 
 > ***Все несохранённые данные при этом теряются, если пользователь соглашается с соответствующим предупреждением.***
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -534,7 +527,7 @@ The main window of the app is shown in the figure below.
 
 > ***Все несохранённые данные при этом теряются, если пользователь соглашается с соответствующим предупреждением.***
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -556,7 +549,7 @@ The main window of the app is shown in the figure below.
 
 Кнопка «Сохранить» вызывает обновление конфигурации программы; кнопка «Отмена» позволяет покинуть окно настроек без их изменения.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -567,7 +560,7 @@ The main window of the app is shown in the figure below.
 
 > ***Все несохранённые данные при этом теряются, если пользователь соглашается с соответствующим предупреждением.***
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -577,7 +570,7 @@ The main window of the app is shown in the figure below.
 
 Пункт меню выполняет функции, аналогичные описанным в [пункте 2.1](#section-3) данного руководства.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -593,7 +586,7 @@ The main window of the app is shown in the figure below.
 целью пользователь может создать текстовый документ, строки которого сформированы по правилам, указанным в диалоговом окне, и загрузить его, нажав
 кнопку «Файл». Кроме того, файл, подходящий для этой функции, может быть создан с помощью соответствующего пункта меню.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -604,7 +597,7 @@ The main window of the app is shown in the figure below.
 ординат в выбранной зависимости. Данная опция может быть полезна в случае, если требуется быстро построить новую кривую на месте имеющейся,
 используя настройки стиля и расположение последней.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -627,7 +620,7 @@ The main window of the app is shown in the figure below.
 Данная функция может быть применена и к графическим объектам, если это необходимо. Обратите внимание, что процедура не является необратимой,
 т.к. всего лишь меняет расположение и стили отображения кривых на диаграмме.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -635,7 +628,7 @@ The main window of the app is shown in the figure below.
 
 Пункт меню выполняет функции, аналогичные описанным в [пункте 2.2](#section-4) данного руководства.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -672,7 +665,7 @@ The main window of the app is shown in the figure below.
 Кнопка «Сохранить изменения» в случае их корректности применяет внесённые изменения к данным диаграммы и инициирует её перерисовку.
 Кнопка «Отменить изменения» возвращает диаграмму в исходное состояние.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -689,7 +682,7 @@ The main window of the app is shown in the figure below.
 
 В стандартную комплектацию программы файлы стилей не входят.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -700,7 +693,7 @@ The main window of the app is shown in the figure below.
 кривым и объектам. Это позволяет создавать как стили отображения отдельных зависимостей, так и стили для представления групп файлов данных
 одинакового формата.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -709,7 +702,7 @@ The main window of the app is shown in the figure below.
 Пункт меню возвращает все параметры стиля всех выбранных кривых и объектов, кроме границ построения, на стандартные значения (см. раздел
 [«Ограничения и стандартные значения параметров»](#section-48) данного руководства).
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -718,7 +711,7 @@ The main window of the app is shown in the figure below.
 Позволяет сохранить шаблон добавления кривых на диаграмму, который затем может быть использован в функции параметрического добавления кривых.
 В файл записываются базовые параметры для всех кривых, добавленных на диаграмму к моменту вызова функции.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -729,7 +722,7 @@ The main window of the app is shown in the figure below.
 Пункт меню позволяет вызвать данное руководство пользователя, а также получить доступ к другим проектам
 и ресурсам Лаборатории.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -742,7 +735,7 @@ The main window of the app is shown in the figure below.
 - Русский (Россия);
 - Английский (США).
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -751,7 +744,7 @@ The main window of the app is shown in the figure below.
 Пункт меню позволяет закрепить приложение в качестве стандартного для открытия файлов `.gdd` и заблокировать от ручного редактирования
 файлы стилей `.gds`. Благодаря этому файлы диаграмм можно открывать двойным щелчком, без отдельного входа в приложение.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -789,7 +782,7 @@ The main window of the app is shown in the figure below.
 ```
 Результат будет зависет от выбранных настроек.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -800,7 +793,7 @@ The main window of the app is shown in the figure below.
 [здесь](https://github.com/adslbarxatov/GeomagDataDrawer/tree/master/VIGScripts) или путём сохранения
 образца из окна данной функции.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -813,7 +806,7 @@ The main window of the app is shown in the figure below.
 - `ExcelDataReader.dll`, `ExcelDataReader.DataSet.dll`, `ICSharpCode.SharpZipLib.dll` – файлы библиотек, обеспечивающих поддержку формата
 данных Microsoft Office Excel. Приложение может функционировать без поддержки этого формата.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -827,7 +820,7 @@ The main window of the app is shown in the figure below.
 - `GeomagDataDrawer.txt` – файл шаблона отображения открываемых файлов данных, содержащий описание автоматически добавляемых кривых;
 - `Markers` – директория для хранения дополнительных маркеров.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -840,7 +833,7 @@ The main window of the app is shown in the figure below.
 - `.gdd` – файлы данных Geomag data drawer;
 - `.png` – файлы изображений маркеров.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -869,7 +862,7 @@ The main window of the app is shown in the figure below.
 доступен для реинжиниринга с помощью бесплатных программных средств, что проверено на примере ILSpy; извлекаемый код информативен), считаем требования лицензий
 библиотек, включённых в сборку, ***выполненными***.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -886,7 +879,7 @@ The main window of the app is shown in the figure below.
 - Наличие процессора, способного к достаточно быстрой обработке объёмов данных, предоставляемых для построения диаграмм, и соответствующего объёма оперативной памяти;
 - Наличие монитора, поддерживающего достаточно большое разрешение.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -901,7 +894,7 @@ The main window of the app is shown in the figure below.
     - `[SLC]` – количество строк, используемых для поиска имён столбцов; если не указан, считывается из конфигурации приложения;
     - `[ECC]` – ожидаемое количество столбцов данных (для извлечения); если не указан, считывается из конфигурации приложения.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -946,7 +939,7 @@ The main window of the app is shown in the figure below.
 | Смещение рисунка кривой от верхнего левого края изображения, px* | (0, 0) | (9900, 9900) | (0, 0) |
 | Масштаб сохраняемого изображения | 1,0 | 10,0 | 1,0 |
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -957,7 +950,7 @@ The main window of the app is shown in the figure below.
 Спецификация формата `.gdd` на данный момент недоступна к публикации. Не рекомендуется самостоятельное внесение изменений в файлы
 данных Geomag data drawer во избежание потерь данных.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -967,7 +960,7 @@ The main window of the app is shown in the figure below.
 Таблица должна располагаться на первом листе файла. Допускаются текстовые пояснения в первых строках файла. Допускается использование
 формул без зависимостей, для разрешения которых необходим запуск Microsoft Office Excel. Допускается использование форматирования листа.
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -988,7 +981,7 @@ The main window of the app is shown in the figure below.
 3;0,9;4,33E-1
 ```
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
 
 ---
 
@@ -1012,4 +1005,4 @@ The main window of the app is shown in the figure below.
 | abcde1 1*0 40,9 | e1 1 0 40,9 | 0,0; 1,0; 0,0; 40,9 |
 | -10 +40.9 -4,9e-1 | -10 40.9 -4,9e-1 | -10,0; 40,9; -0,49 |
 
-[:arrow_double_up:](#section)
+[:arrow_double_up:](#contents)
