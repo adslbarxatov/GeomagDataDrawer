@@ -5,6 +5,7 @@ ToDo:
 - Limit for the data editor?
 - Translate the infopage
 - Fix the placement of the horizontal scroll bar
+- Fix the file loading error message
 
 Version 5.4.3:
 • Implemented the access rights checker: it will test the availability of the Windows registry

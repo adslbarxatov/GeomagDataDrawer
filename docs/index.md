@@ -111,8 +111,8 @@ The main window of the app is shown in the figure below.
 The main elements of the window:
 - The diagram display field.
 - List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
-- Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" />) and deleting (<img src="/GeomagDataDrawer/img/2_73.png" />) curves
-and additional objects.
+- Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" vertical-align:middle />)
+and deleting (<img src="/GeomagDataDrawer/img/2_73.png" vertical-align:-12px />) curves and additional objects.
 - Buttons for hide/show (<img src="/GeomagDataDrawer/img/2_60.png" />) and select (<img src="/GeomagDataDrawer/img/2_61.png" />) curves and objects.
 - Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
     - in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
@@ -124,9 +124,9 @@ and additional objects.
     - how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
 - App menu (see section “[App menu](#app-menu)”).
 
-Главное окно программы в процессе работы представлено на рисунке ниже.
+The main window of the app during operation is shown in the figure below:
 
-![image004](https://user-images.githubusercontent.com/20893717/147865850-4efc285a-ece6-4768-b432-7734ce790b30.png)
+<img src="/GeomagDataDrawer/img/2_02.png" />
 
 Все изменения, выполняемые пользователем в поле параметров диаграммы, немедленно отражаются на диаграмме применительно к тем кривым
 и графическим объектам, которые помечены в списке кривых и объектов и выделены серым цветом в поле диаграммы. Набор редактируемых
