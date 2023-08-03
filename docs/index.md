@@ -4,7 +4,7 @@
 # Contents
 - [General information](#general-information)
 - [Main app interface](#main-app-interface)
-    - [Adding a curve or object to a diagram](#section-3)
+    - [Adding a curve or object to a diagram](#adding-a-curve-or-object-to-a-diagram)
     - [Remove curves and objects from diagram](#section-4)
     - [Hide/show curves and objects](#section-5)
     - [Select curves and objects](#section-6)
@@ -27,7 +27,7 @@
     - [“Exit”](#section-23)
 - Operations
     - [“Add curve or object"](#section-25)
-    - [“Parametric addition of curves"](#section-26)
+    - [“Parametric curves addition"](#parametric-curves-addition)
     - [“Select curve data columns"](#section-27)
     - [“Merge curves or objects"](#section-28)
     - [“Delete curves or objects"](#section-29)
@@ -50,7 +50,7 @@
     - [Support for Microsoft Office Excel formats](#microsoft-office-excel)
     - [Requirements for installing the app](#section-46)
     - [Working with the app from the command line](#section-47)
-- [Restrictions and default parameter values](#section-48)
+- [Limits and default parameter values](#limits-and-default-parameter-values)
 - [File format specifications](#section-49)
     - Geomag data drawer files
     - [Microsoft Office Excel data files](#microsoft-office-excel-1)
@@ -102,8 +102,6 @@ software systems. Therefore, ***Geomag data drawer*** can be considered a very u
 
 # 2. Main app interface
 
-:warning: ***Translation is in progress*** :warning:
-
 The main window of the app is shown in the figure below.
 
 <img src="/GeomagDataDrawer/img/2_01.png" />
@@ -111,8 +109,8 @@ The main window of the app is shown in the figure below.
 The main elements of the window:
 - The diagram display field.
 - List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
-- Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" vertical-align:middle />)
-and deleting (<img src="/GeomagDataDrawer/img/2_73.png" vertical-align:-12px />) curves and additional objects.
+- Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" margin:12px />)
+and deleting (<img src="/GeomagDataDrawer/img/2_73.png" padding:12px />) curves and additional objects.
 - Buttons for hide/show (<img src="/GeomagDataDrawer/img/2_60.png" />) and select (<img src="/GeomagDataDrawer/img/2_61.png" />) curves and objects.
 - Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
     - in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
@@ -124,57 +122,60 @@ and deleting (<img src="/GeomagDataDrawer/img/2_73.png" vertical-align:-12px />)
     - how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
 - App menu (see section “[App menu](#app-menu)”).
 
+&nbsp;
+
 The main window of the app during operation is shown in the figure below:
 
 <img src="/GeomagDataDrawer/img/2_02.png" />
 
-Все изменения, выполняемые пользователем в поле параметров диаграммы, немедленно отражаются на диаграмме применительно к тем кривым
-и графическим объектам, которые помечены в списке кривых и объектов и выделены серым цветом в поле диаграммы. Набор редактируемых
-кривых и объектов может быть произвольным. Добавление в группу редактируемых выполняется аналогично выделению группы файлов
-в Проводнике Windows, т.е. с помощью клавиш `[Ctrl]` и `[Shift]`. Таким образом, пользователь может производить тонкую
-настройку параметров быстро и эффективно.
+All changes made by user in the diagram parameters field are immediately reflected in the diagram in relation
+to those curves and graphical objects that are marked in the list of curves and objects and highlighted
+in gray in the diagram field. The set of editable curves and objects can be arbitrary. Adding to the editable
+group is performed in the same way as selecting a group of files in Windows Explorer, i.e. using left mouse button
+and `[Ctrl]` and `[Shift]` keys. Thus, the user can fine-tune parameters quickly and efficiently.
 
-Каждый элемент управления в поле параметров, вкладки, а также пункты меню программы снабжены подсказками; для их вызова достаточно
-задержать курсор над любым элементом на две секунды; при отсутствии движения подсказка отображается в течение 30 секунд.
+:warning: ***Translation is in progress*** :warning:
 
-Программа поддерживает функцию операционной системы *«Открыть с помощью»*. В случае успешной загрузки программа сразу приступает
-к работе с указанным файлом.
+Each control in the parameter field, tabs, as well as app menu items are provided with hints. To call them,
+it’s enough to hold the cursor over any element for two seconds. If there is no movement, the tooltip is displayed for 30 seconds.
 
-Предусмотрена также возможность *автоматического построения кривых при загрузке файла* (если позволяет его содержимое).
-Для этого программа создаёт файл стандартного шаблона `GeomagDataDrawer.txt` (если его ещё нет), аналогичный тому, который используется в функции
-[параметрического добавления кривых](#section-26). Пользователь может изменять его по своему усмотрению, создавая различные стили предпросмотра.
-Это позволяет ускорить поиск нужного файла данных, ориентируясь на изображение диаграммы, а не на её табличное
-представление (аналогично просмотру фотографий).
+The app supports the function of an operating system *“Open with...”*. If loading is successful, the app immediately
+starts working with the specified file.
 
-В программе доступна возможность *движения по области построения*. Для этого можно воспользоваться полосами прокрутки, а также мышью.
-В последнем случае необходимо щёлкнуть левой кнопкой мыши в любой части области построения и сдвинуть указатель в том направлении,
-в котором требуется сдвинуть диаграмму, после чего отпустить кнопку (аналогично движению руки при перемещении большого листа бумаги).
+It’s also possible to *automatically build curves when loading a file* (if its content allows). To do this, the app
+creates a standard template file `GeomagDataDrawer.txt` (if it doesn’t already exist), similar to the one used
+in the [parametric curves addition](#parametric-curves-addition) function. The user can change it at will by creating different
+preview styles. This allows you to speed up the search for the desired data file, focusing on the image of the diagram,
+and not on its tabular representation (similar to viewing photos).
 
-Размер области построения, и, соответственно, размер сохраняемого изображения диаграммы определяется расположением изображений
-кривых и объектов; её правый нижний угол совпадает с правым нижним углом крайнего изображения кривой. Соответственно, для увеличения
-области построения необходимо переместить это изображение далее вправо и/или вниз.
+The app has an ability to *move around the plotting area*. To do this, you can use scroll bars, as well as mouse pointer.
+In the latter case, you need to left-click in any part of the area and move pointer in the direction in which you want
+to move the diagram, then release the button (similar to movement of a hand when moving a large sheet of paper).
 
-Наконец, если работа над диаграммой не была завершена, все данные и настройки могут быть сохранены в собственный формат файлов программы,
-после чего восстановлены при следующем запуске. Данная функция дублируется *функцией автосохранения (при закрытии) и автовосстановления
-(при открытии)* состояния программы.
+The size of plotting area, and, accordingly, the size of saved image of the diagram is determined by the location
+of images of curves and objects. Its lower right corner coincides with the lower right corner of an edge curve image.
+Accordingly, to increase the plotting area, it’s necessary to move this image further to the right and/or down.
+
+Finally, if work on the diagram hasn’t been completed, all data and settings can be saved to the app's own file format,
+and then restored at the next start. This function is duplicated by the *function of autosave (when closed)
+and auto-recovery (when opened)* of the app state.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 2.1. Добавление кривой или объекта на диаграмму
+## 2.1. Adding a curve or object to a diagram
 
-Чтобы добавить новую кривую или графический объект на диаграмму, необходимо нажать кнопку
-<img src="/GeomagDataDrawer/img/2_70.png" /> рядом со списком кривых
-и объектов. С версии 4.11 для этой функции доступна горячая клавиша, see section “[App menu](#app-menu)” of this guide.
-При этом будет вызвано окно параметров добавления.
+To add a new curve or graphical object to the diagram, click the <img src="/GeomagDataDrawer/img/2_70.png" />
+button next to the list of curves and objects. A hotkey is available for this function, see section “[App menu](#app-menu)”
+of this guide. This will open the addition options window:
 
-![image020](https://user-images.githubusercontent.com/20893717/147865987-5001624f-7d18-4a1d-bff4-2eac4a29cef7.png)
+<img src="/GeomagDataDrawer/img/2_03_en.png" />
 
-При добавлении кривой потребуется указать, какой столбец из загруженного файла данных будет столбцом абсцисс, а какой – столбцом ординат.
-При добавлении объекта потребуется выбрать его тип (в текущей версии – линия (4 вида), прямоугольник, эллипс или текстовая подпись).
-Количество кривых и объектов на диаграмме не должно превосходить максимально допустимое (см. раздел [«Ограничения и стандартные значения
-параметров»](#section-48) данного руководства).
+When adding a curve, you’ll need to specify which column from the downloaded data file will be *the abscissa column*
+and which will be *the ordinate column*. When adding an object, you’ll need to select its type (in the current version
+– line (4 types), rectangle, ellipse or text label). The number of curves and objects in the diagram should not
+exceed the maximum allowed (see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide).
 
 [:arrow_double_up:](#contents)
 
@@ -241,8 +242,8 @@ of this guide.
 
 ![image051](https://user-images.githubusercontent.com/20893717/147866262-cff5e3a1-b035-4d3f-994e-d0b9c2e9e26b.png)
 
-Размер изображения отдельной кривой или объекта и его смещение ограничены максимальным размером листа (см. раздел [«Ограничения
-и стандартные значения параметров»](#section-48) данного руководства). Но благодаря возможности
+Размер изображения отдельной кривой или объекта и его смещение ограничены максимальным размером листа
+(see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide). Но благодаря возможности
 перемещения по области построения и достаточно большому её размеру программа позволяет строить и размещать требуемым образом большое
 количество кривых на диаграмме.
 
@@ -299,7 +300,7 @@ of this guide.
 в этом случае число засечек выбирается как наиболее подходящее для заданного диапазона построения.
 
 Все параметры (здесь и далее) имеют допустимые диапазоны; ознакомиться с ними можно в разделе
-[«Ограничения и стандартные значения параметров»](#section-48) данного руководства.
+section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide.
 Цвет осей настраивается нажатием на цветную кнопку рядом с соответствующей надписью. Кнопка имеет цвет, соответствующий последнему выбранному цвету осей.
 
 Оси могут быть принудительно установлены слева (сверху), по центру (посередине) или снизу (справа), или их расположение может быть определено автоматически.
@@ -363,8 +364,8 @@ of this guide.
 
 Дополнительные маркеры получаются программой из изображений в формате `.png`, хранящихся в директории `Markers`, находящейся в одной
 директории с программой. Если данной директории не существует, программа автоматически её создаёт. Если в директории есть изображения в формате `.png`,
-программа загружает в качестве маркеров только те из них, которые доступны, не повреждены и имеют подходящий размер (см. раздел [«Ограничения
-и стандартные значения параметров»](#section-48) данного руководства). Успешно загруженные маркеры доступны
+программа загружает в качестве маркеров только те из них, которые доступны, не повреждены и имеют подходящий размер
+(see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide). Успешно загруженные маркеры доступны
 под номерами 7, 8 и далее.
 
 Следует отменить, что программа особым образом преобразует загружаемые изображения. А точнее:
@@ -393,7 +394,7 @@ of this guide.
     - Выход (`[Ctrl]` + `[Q]`).
 - Операции; включает подменю:
     - Добавить кривую или объект (`[F5]`);
-    - Параметрическое добавление кривых (`[Ctrl]` + `[F5]`);
+    - Parametric curves addition (`[Ctrl]` + `[F5]`);
     - Выбор столбцов данных кривой (`[F6]`);
     - Совместить кривые или объекты (`[F7]`);
     - Удалить кривые или объекты (`[F8]`);
@@ -426,9 +427,9 @@ of this guide.
 при загрузке файла данных они также будут отображены. Во всех остальных случаях работа начинается с пустого поля диаграммы. Но в любом случае файл
 должен содержать не менее двух строк и не менее двух столбцов данных.
 
-В программе явно задано максимально допустимое количество столбцов и строк данных (см. раздел
-[«Ограничения и стандартные значения параметров»](#section-48)
-данного руководства). Столбцы и строки данных, выходящие за допустимый диапазон, игнорируются при загрузке.
+В программе явно задано максимально допустимое количество столбцов и строк данных
+(see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide).
+Столбцы и строки данных, выходящие за допустимый диапазон, игнорируются при загрузке.
 
 При выборе опции извлечения данных из произвольного файла пользователю потребуется сначала указать предполагаемое количество столбцов данных.
 
@@ -484,7 +485,7 @@ of this guide.
 Пользователю предлагаются следующие варианты сохранения:
 - *Сохранить видимый макет*. В этом случае изображение сохраняется в том виде и размере, в котором оно отображается в главном окне программы.
 При этом можно увеличить масштаб изображения, если необходимо, например, повысить его качество. Ограничения величины масштаба можно найти
-в разделе [«Ограничения и стандартные значения параметров»](#section-48) данного руководства. Формат файла – `.png`.
+section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide. Формат файла – `.png`.
 - *Подогнать макет*. Данная группа вариантов позволяет сохранять изображения в пропорциях форматов бумаги A3 и A4. При этом отображаемое
 в главном окне изображение располагается в верхнем левом углу будущего листа бумаги, а его размер пересчитывается таким образом, чтобы оно
 максимально заполнило лист с учётом его расположения и размера. Незаполненная часть листа остаётся пустой. Заметим, что пересчёт изображения
@@ -518,8 +519,8 @@ of this guide.
 
 Пользователь может задать функции, табличное представление которых требуется рассчитать, и указать диапазон построения. В случае обнаружения ошибок
 при составлении функции пояснительные сообщения отображаются под полем ввода функции. Проверка корректности задания функции выполняется по нажатию
-кнопки «+» или клавиши [Enter]; функция при этом добавляется в список проверенных функций. Количество добавляемых кривых ограничено (см. раздел
-[«Ограничения и стандартные значения параметров»](#section-48) данного руководства). Корректность диапазона
+кнопки «+» или клавиши [Enter]; функция при этом добавляется в список проверенных функций. Количество добавляемых кривых ограничено
+(see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide). Корректность диапазона
 проверяется при нажатии кнопки «ОК».
 
 Кнопка «ОК» запускает генерацию и передаёт данные на отрисовку в главное окно программы. После этого становятся доступны все основные функции меню.
@@ -574,7 +575,7 @@ of this guide.
 
 ---
 
-## 3.2.2. «Параметрическое добавление кривых»
+## 3.2.2. «Parametric curves addition»
 
 Если необходимо быстро добавить несколько однотипных диаграмм и также быстро расположить их на листе, можно воспользоваться параметрическим
 добавлением кривых. С помощью соответствующего диалогового окна можно задать номера столбцов данных, размеры каждого изображения и его положение,
@@ -699,8 +700,8 @@ of this guide.
 
 ## 3.2.9. «Сбросить стиль»
 
-Пункт меню возвращает все параметры стиля всех выбранных кривых и объектов, кроме границ построения, на стандартные значения (см. раздел
-[«Ограничения и стандартные значения параметров»](#section-48) данного руководства).
+Пункт меню возвращает все параметры стиля всех выбранных кривых и объектов, кроме границ построения, на стандартные значения
+(see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide).
 
 [:arrow_double_up:](#contents)
 
@@ -708,10 +709,29 @@ of this guide.
 
 ## 3.2.10. «Сохранить шаблон добавления кривых»
 
-Позволяет сохранить шаблон добавления кривых на диаграмму, который затем может быть использован в функции параметрического добавления кривых.
+Позволяет сохранить шаблон добавления кривых на диаграмму, который затем может быть использован в функции
+[параметрического добавления кривых](#parametric-curves-addition).
 В файл записываются базовые параметры для всех кривых, добавленных на диаграмму к моменту вызова функции.
 
 [:arrow_double_up:](#contents)
+
+---
+
+## 3.2.11. «Заменить шаблон добавления кривых»
+
+Позволяет сохранить шаблон добавления кривых на диаграмму в качестве такового по умолчанию. После выполнения
+этой операции все новые файлы данных, не содержащие собственных стилей отображения, будут отображаться согласно
+вновь заданному шаблону.
+
+[:arrow_double_up:](#section)
+
+---
+
+## 3.2.12. «Сбросить шаблон добавления кривых»
+
+Позволяет восстановить стандартный шаблон добавления кривых (восемь первых кривых по четыре в линию).
+
+[:arrow_double_up:](#section)
 
 ---
 
