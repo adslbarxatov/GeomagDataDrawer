@@ -26,16 +26,16 @@
     - [“Program settings”](#section-22)
     - [“Exit”](#section-23)
 - Operations
-    - [“Add curve or object"](#section-25)
-    - [“Parametric curves addition"](#parametric-curves-addition)
-    - [“Select curve data columns"](#section-27)
-    - [“Merge curves or objects"](#section-28)
-    - [“Delete curves or objects"](#section-29)
-    - [“Edit diagram data"](#section-30)
-    - [“Load style"](#section-31)
-    - [“Save style"](#section-32)
-    - [“Reset style"](#section-33)
-    - [“Save curves template"](#section-34)
+    - [“Add curve or object”](#section-25)
+    - [“Parametric curves addition”](#parametric-curves-addition)
+    - [“Select curve data columns”](#section-27)
+    - [“Merge curves or objects”](#section-28)
+    - [“Delete curves or objects”](#section-29)
+    - [“Edit diagram data”](#section-30)
+    - [“Load style”](#section-31)
+    - [“Save style”](#section-32)
+    - [“Reset style”](#section-33)
+    - [“Save curves template”](#section-34)
 - Help
     - [“About / Help”](#section-36)
     - [Menu item with interface language selection](#section-37)
@@ -109,8 +109,8 @@ The main window of the app is shown in the figure below.
 The main elements of the window:
 - The diagram display field.
 - List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
-- Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" margin:12px />)
-and deleting (<img src="/GeomagDataDrawer/img/2_73.png" padding:12px />) curves and additional objects.
+- Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" />)
+and deleting (<img src="/GeomagDataDrawer/img/2_73.png" />) curves and additional objects.
 - Buttons for hide/show (<img src="/GeomagDataDrawer/img/2_60.png" />) and select (<img src="/GeomagDataDrawer/img/2_61.png" />) curves and objects.
 - Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
     - in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
@@ -133,8 +133,6 @@ to those curves and graphical objects that are marked in the list of curves and 
 in gray in the diagram field. The set of editable curves and objects can be arbitrary. Adding to the editable
 group is performed in the same way as selecting a group of files in Windows Explorer, i.e. using left mouse button
 and `[Ctrl]` and `[Shift]` keys. Thus, the user can fine-tune parameters quickly and efficiently.
-
-:warning: ***Translation is in progress*** :warning:
 
 Each control in the parameter field, tabs, as well as app menu items are provided with hints. To call them,
 it’s enough to hold the cursor over any element for two seconds. If there is no movement, the tooltip is displayed for 30 seconds.
@@ -182,6 +180,8 @@ exceed the maximum allowed (see section [“Limits and default parameter values�
 ---
 
 ## 2.2. Удаление кривых и объектов с диаграммы
+
+:warning: ***Translation is in progress*** :warning:
 
 С помощью кнопки <img src="/GeomagDataDrawer/img/2_73.png" /> можно
 удалить кривые и/или объекты с диаграммы. При этом потребуется подтверждение пользователя. Пользователь может выбрать несколько кривых
@@ -918,7 +918,7 @@ section [“Limits and default parameter values”](#limits-and-default-paramete
 
 ---
 
-# 5. Ограничения и стандартные значения параметров
+# 5. Limits and default parameter values
 
 > Все значения указаны только в отношении данной версии программы. Звёздочкой помечены параметры, ограничения и значения которых
 > пересчитываются с учётом масштаба при сохранении конечного изображения
