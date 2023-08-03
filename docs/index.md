@@ -2,8 +2,8 @@
 > **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 23.07.2023; 21:17
 
 # Contents
-- [General information](#1-general-information)
-- [Main app interface](#2-main-app-interface)
+- [General information](#general-information)
+- [Main app interface](#main-app-interface)
     - [Adding a curve or object to a diagram](#section-3)
     - [Remove curves and objects from diagram](#section-4)
     - [Hide/show curves and objects](#section-5)
@@ -15,7 +15,7 @@
     - [Set curve image grid](#section-11)
     - [Customizing fonts and colors of image captions](#section-12)
     - [Set curve line style](#section-13)
-- [App menu](#3-app-menu)
+- [App menu](#app-menu)
     - File
     - [“Open data file”](#section-16)
     - [“Load from clipboard”](#section-17)
@@ -122,7 +122,7 @@ and additional objects.
     - how to display the coordinate grid of the diagram (tab <img src="/GeomagDataDrawer/img/2_47.png" />);
     - how to display diagram labels (tab <img src="/GeomagDataDrawer/img/2_48.png" />);
     - how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
-- App menu (see section “[App menu](#3-app-menu)”).
+- App menu (see section “[App menu](#app-menu)”).
 
 Главное окно программы в процессе работы представлено на рисунке ниже.
 
@@ -165,8 +165,8 @@ and additional objects.
 ## 2.1. Добавление кривой или объекта на диаграмму
 
 Чтобы добавить новую кривую или графический объект на диаграмму, необходимо нажать кнопку
-![image070](https://user-images.githubusercontent.com/20893717/147865672-b9fc0533-edee-4611-96b8-a61a3bb26f6f.png) рядом со списком кривых
-и объектов. С версии 4.11 для этой функции доступна горячая клавиша, см. раздел «[Меню программы](#3-app-menu)» данного руководства.
+<img src="/GeomagDataDrawer/img/2_70.png" /> рядом со списком кривых
+и объектов. С версии 4.11 для этой функции доступна горячая клавиша, see section “[App menu](#app-menu)” of this guide.
 При этом будет вызвано окно параметров добавления.
 
 ![image020](https://user-images.githubusercontent.com/20893717/147865987-5001624f-7d18-4a1d-bff4-2eac4a29cef7.png)
@@ -182,10 +182,10 @@ and additional objects.
 
 ## 2.2. Удаление кривых и объектов с диаграммы
 
-С помощью кнопки ![image073](https://user-images.githubusercontent.com/20893717/147865675-f8d2f1b1-41f6-4407-9aaf-340d534c5c2f.png) можно
+С помощью кнопки <img src="/GeomagDataDrawer/img/2_73.png" /> можно
 удалить кривые и/или объекты с диаграммы. При этом потребуется подтверждение пользователя. Пользователь может выбрать несколько кривых
-и объектов в списке для одновременного удаления. С версии 4.11 для этой функции доступна горячая клавиша; см. раздел 
-«[Меню программы](#3-app-menu)» данного руководства.
+и объектов в списке для одновременного удаления. С версии 4.11 для этой функции доступна горячая клавиша; see section “[App menu](#app-menu)”
+of this guide.
 
 [:arrow_double_up:](#contents)
 
@@ -193,7 +193,7 @@ and additional objects.
 
 ## 2.3. Скрытие / отображение кривых и объектов
 
-С помощью кнопки ![image060](https://user-images.githubusercontent.com/20893717/147865701-9568b95b-2f2a-483d-ae25-7203f5fe3e21.png) пользователь
+С помощью кнопки <img src="/GeomagDataDrawer/img/2_60.png" /> пользователь
 может временно скрывать выделенные кривые и объекты (кнопка при этом будет «отпущена»). При необходимости они могут быть снова отображены
 в любой момент (кнопка будет «нажата»).
 
@@ -203,7 +203,7 @@ and additional objects.
 
 ## 2.4. Выделение кривых и объектов
 
-Кнопка ![image061](https://user-images.githubusercontent.com/20893717/147865708-a2b280f5-5129-4229-9a2c-dc2826726250.png) позволяет выделить кривые
+Кнопка <img src="/GeomagDataDrawer/img/2_61.png" /> позволяет выделить кривые
 и объекты для настройки с помощью мыши. Для этого необходимо нажать кнопку и в поле построения диаграммы мышью выделить зону, в которой находятся
 требуемые кривые и объекты. Все элементы диаграммы, затронутые прямоугольной областью выделения, будут выделены в списке добавленных кривых
 и объектов. Кнопка выбора при этом вернётся в неактивное состояние.
