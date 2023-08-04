@@ -108,31 +108,31 @@ The main window of the app is shown in the figure below.
 
 The main elements of the window:
 
-&#x3000; The diagram display field.
+&#x25B6; The diagram display field.
 
-&#x3000; List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
+&#x25B6; List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
 
-&#x3000; Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" />) and deleting (<img src="/GeomagDataDrawer/img/2_73.png" />) curves and additional objects.
+&#x25B6; Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" />) and deleting (<img src="/GeomagDataDrawer/img/2_73.png" />) curves and additional objects.
 
-&#x3000; Button for hide / show (<img src="/GeomagDataDrawer/img/2_60.png" />) curves and objects.
+&#x25B6; Button for hide / show (<img src="/GeomagDataDrawer/img/2_60.png" />) curves and objects.
 
-&#x3000; Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
+&#x25B6; Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
 
-&#x3007; in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
+&#x25B7; in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
 
-&#x3007; how to position the image of curve and/or object on the sheet, and what size it should be (tab <img src="/GeomagDataDrawer/img/2_34.png" />);
+&#x25B7; how to position the image of curve and/or object on the sheet, and what size it should be (tab <img src="/GeomagDataDrawer/img/2_34.png" />);
 
-&#x3007; whether it is necessary to manually set the location of the diagram captions and the title of the figure, or the app should set them automatically (tab <img src="/GeomagDataDrawer/img/2_36.png" />);
+&#x25B7; whether it is necessary to manually set the location of the diagram captions and the title of the figure, or the app should set them automatically (tab <img src="/GeomagDataDrawer/img/2_36.png" />);
 
-&#x3007; how to display the coordinate axes of the diagram (tab <img src="/GeomagDataDrawer/img/2_46.png" />);
+&#x25B7; how to display the coordinate axes of the diagram (tab <img src="/GeomagDataDrawer/img/2_46.png" />);
 
-&#x3007; how to display the coordinate grid of the diagram (tab <img src="/GeomagDataDrawer/img/2_47.png" />);
+&#x25B7; how to display the coordinate grid of the diagram (tab <img src="/GeomagDataDrawer/img/2_47.png" />);
 
-&#x3007; how to display diagram labels (tab <img src="/GeomagDataDrawer/img/2_48.png" />);
+&#x25B7; how to display diagram labels (tab <img src="/GeomagDataDrawer/img/2_48.png" />);
 
-&#x3007; how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
+&#x25B7; how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
 
-&#x3000; App menu (see section “[App menu](#app-menu)”).
+&#x25B6; App menu (see section “[App menu](#app-menu)”).
 
 &nbsp;
 
@@ -231,16 +231,17 @@ The content of the tab is shown in the figure below:
 
 <img src="/GeomagDataDrawer/img/2_50_en.png" />
 
-Диапазоны построения вычисляются автоматически при загрузке каждой кривой в соответствии с её реальными границами. Причём, границы округляются
-до первой слева значащей цифры. Несмотря на это, они могут быть изменены пользователем вручную по своему усмотрению. Из этой вкладки доступно
-также транспонирование кривой, т.е. обмен абсцисс с ординатами местами.
+Plotting ranges are calculated automatically when loading each curve in accordance with its real boundaries.
+Moreover, the boundaries are rounded up to the first significant figure on the left. Despite this, they can be changed
+manually by user at his discretion. From this tab, the transposition of the curve is also available, i.e. exchange
+of abscissas with ordinates in places.
 
-Следует отметить, что границы диапазонов не обязаны соблюдать правило «*max ≥ min*». В частности, координатная плоскость может быть «отражена»
-по горизонтали, по вертикали или по обоим направлениям сразу. Это можно сделать как вручную, так и с помощью кнопок
-![image037](https://user-images.githubusercontent.com/20893717/147866171-34e1412f-b799-487f-bbd2-9e5f3841bada.png) и
-![image038](https://user-images.githubusercontent.com/20893717/147866178-eb9d47b0-76f6-4acc-8e47-c26bfa504d96.png), что будет соответствовать
-развороту осей абсцисс и ординат, соответственно. При этом опция транспонирования остаётся доступной. Всё это позволяет повысить гибкость
-и информативность диаграммы в зависимости от потребностей конкретного исследования.
+Note that range boundaries aren’t required to respect the `max ≥ min` rule. In particular, the coordinate plane
+can be “reflected” horizontally, vertically, or in both directions at once. This can be done both manually
+and using <img src="/GeomagDataDrawer/img/2_37.png" /> and <img src="/GeomagDataDrawer/img/2_38.png" /> buttons,
+which will correspond to the rotation of the axes abscissa and ordinate, respectively. However, the transposition
+option remains available. All this allows you to increase the flexibility and informativeness of the diagram,
+depending on the needs of a particular study.
 
 [:arrow_double_up:](#contents)
 
