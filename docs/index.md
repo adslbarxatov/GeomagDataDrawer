@@ -9,7 +9,7 @@
     - [Hide / show curves and objects](#hide--show-curves-and-objects)
     - [Selection of curves and objects](#selection-of-curves-and-objects)
     - [Selection of a range for plotting a curve or line](#selection-of-a-range-for-plotting-a-curve-or-line)
-    - [Setting the location and size of the curve or object image](#section-8)
+    - [Setting the location and size of curve or object](#setting-the-location-and-size-of-curve-or-object)
     - [Curve image captions settings](#section-9)
     - [Setting the coordinate axes of the curve image](#section-10)
     - [Set curve image grid](#section-11)
@@ -118,19 +118,19 @@ The main elements of the window:
 
 &#x25B6; Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
 
-&#x25B7; in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
+&#x3000;&#x25B7; in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
 
-&#x25B7; how to position the image of curve and/or object on the sheet, and what size it should be (tab <img src="/GeomagDataDrawer/img/2_34.png" />);
+&#x3000;&#x25B7; how to position the image of curve and/or object on the sheet, and what size it should be (tab <img src="/GeomagDataDrawer/img/2_34.png" />);
 
-&#x25B7; whether it is necessary to manually set the location of the diagram captions and the title of the figure, or the app should set them automatically (tab <img src="/GeomagDataDrawer/img/2_36.png" />);
+&#x3000;&#x25B7; whether it is necessary to manually set the location of the diagram captions and the title of the figure, or the app should set them automatically (tab <img src="/GeomagDataDrawer/img/2_36.png" />);
 
-&#x25B7; how to display the coordinate axes of the diagram (tab <img src="/GeomagDataDrawer/img/2_46.png" />);
+&#x3000;&#x25B7; how to display the coordinate axes of the diagram (tab <img src="/GeomagDataDrawer/img/2_46.png" />);
 
-&#x25B7; how to display the coordinate grid of the diagram (tab <img src="/GeomagDataDrawer/img/2_47.png" />);
+&#x3000;&#x25B7; how to display the coordinate grid of the diagram (tab <img src="/GeomagDataDrawer/img/2_47.png" />);
 
-&#x25B7; how to display diagram labels (tab <img src="/GeomagDataDrawer/img/2_48.png" />);
+&#x3000;&#x25B7; how to display diagram labels (tab <img src="/GeomagDataDrawer/img/2_48.png" />);
 
-&#x25B7; how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
+&#x3000;&#x25B7; how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
 
 &#x25B6; App menu (see section “[App menu](#app-menu)”).
 
@@ -247,33 +247,34 @@ depending on the needs of a particular study.
 
 ---
 
-## 2.6. Задание расположения и размера изображения кривой или объекта
+## 2.6. Setting the location and size of curve or object
 
-Содержимое вкладки представлено на рисунке ниже.
+The content of the tab is shown in the figure below:
 
-![image051](https://user-images.githubusercontent.com/20893717/147866262-cff5e3a1-b035-4d3f-994e-d0b9c2e9e26b.png)
+<img src="/GeomagDataDrawer/img/2_51_en.png" />
 
-Размер изображения отдельной кривой или объекта и его смещение ограничены максимальным размером листа
-(see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide). Но благодаря возможности
-перемещения по области построения и достаточно большому её размеру программа позволяет строить и размещать требуемым образом большое
-количество кривых на диаграмме.
+The image size of an individual curve or object and its offset are limited by the maximum sheet size
+(see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide).
+But due to the ability to move around the plotting area and its rather large size, the app allows you to build
+and place a large number of curves on the diagram in the required way.
 
-С помощью соответствующих кнопок можно расположить выбранные кривые и объекты в ряд или в столбец. При этом программа автоматически
-рассчитает соответствующие координаты для выбранных изображений.
+Using the appropriate buttons, you can arrange the selected curves and objects in a row or column. The app will
+automatically calculate the corresponding coordinates for the selected images.
 
-В программе также есть возможность задания расположения изображения каждого элемента диаграммы с помощью мыши:
-- По *двойному щелчку левой кнопки мыши* на поле диаграммы текущие выбранные изображения смещаются таким образом, что их верхние левые
-углы устанавливаются на место щелчка.
-- По *двойному щелчку правой кнопки мыши* изображения изменяют размеры так, чтобы их нижние правые углы оказались в месте щелчка.
-- При *зажатой клавише* `[Ctrl]` *двойной щелчок левой кнопкой мыши* задаёт новое местоположение подписи рисунка.
-- *Двойной щелчок правой кнопкой при зажатой клавише* `[Ctrl]` устанавливает подписи осей диаграммы таким образом, чтобы они
-визуально пересекались в точке, в которой был выполнен щелчок.
+App also has the ability to set the location of the image of each element of the diagram using mouse:
+- By *double-clicking the left mouse button* on the diagram field, the currently selected images are shifted
+so that their upper left corners are set to the clicked position.
+- By *double-clicking the right mouse button* the images are resized so that their lower right corners
+are at the clicked position.
+- By *holding down the* `[Ctrl]` *key and double-clicking the left mouse button* the figure’s caption is shifted.
+- By *double-clicking the right mouse button while holding down* `[Ctrl]` *key* the labels of the diagram axes are shifted
+so that they visually intersect at the point where the click was made.
 
-Новые значения параметров передаются в соответствующие поля настроек диаграммы. Следовательно, ограничения на данную функцию накладываются
-те же, что и на соответствующие поля.
+The new parameter values are transferred to the corresponding fields of the diagram settings. Therefore,
+the restrictions on this function are the same as on the corresponding fields.
 
-Применительно к графическим объектам поля смещений определяют их расположение на диаграмме, а поля размеров задают величину прямоугольников,
-эллипсов и полей отображения линий. Размеры полей для текстовых подписей рассчитываются автоматически.
+In relation to graphical objects, the offset fields determine their location on the diagram, and the size fields
+set the size of rectangles, ellipses, and line display fields. Field sizes for text labels are calculated automatically.
 
 [:arrow_double_up:](#contents)
 
