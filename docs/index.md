@@ -6,7 +6,7 @@
 - [Main app interface](#main-app-interface)
     - [Adding a curve or object to a diagram](#adding-a-curve-or-object-to-a-diagram)
     - [Removing curves and objects from diagram](#removing-curves-and-objects-from-diagram)
-    - [Hide / show curves and objects](#hide-show-curves-and-objects)
+    - [Hide / show curves and objects](#hide--show-curves-and-objects)
     - [Selection of curves and objects](#selection-of-curves-and-objects)
     - [Selection of a range for plotting a curve or line](#selection-of-a-range-for-plotting-a-curve-or-line)
     - [Setting the location and size of the curve or object image](#section-8)
@@ -107,20 +107,32 @@ The main window of the app is shown in the figure below.
 <img src="/GeomagDataDrawer/img/2_01.png" />
 
 The main elements of the window:
-- The diagram display field.
-- List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
-- Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" />)
-and deleting (<img src="/GeomagDataDrawer/img/2_73.png" />) curves and additional objects.
-- Button for hide / show (<img src="/GeomagDataDrawer/img/2_60.png" />) curves and objects.
-- Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
-    - in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
-    - how to position the image of curve and/or object on the sheet, and what size it should be (tab <img src="/GeomagDataDrawer/img/2_34.png" />);
-    - whether it is necessary to manually set the location of the diagram captions and the title of the figure, or the app should set them automatically (tab <img src="/GeomagDataDrawer/img/2_36.png" />);
-    - how to display the coordinate axes of the diagram (tab <img src="/GeomagDataDrawer/img/2_46.png" />);
-    - how to display the coordinate grid of the diagram (tab <img src="/GeomagDataDrawer/img/2_47.png" />);
-    - how to display diagram labels (tab <img src="/GeomagDataDrawer/img/2_48.png" />);
-    - how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
-- App menu (see section “[App menu](#app-menu)”).
+
+&#x3000; The diagram display field.
+
+&#x3000; List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
+
+&#x3000; Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" />) and deleting (<img src="/GeomagDataDrawer/img/2_73.png" />) curves and additional objects.
+
+&#x3000; Button for hide / show (<img src="/GeomagDataDrawer/img/2_60.png" />) curves and objects.
+
+&#x3000; Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
+
+&#x3007; in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
+
+&#x3007; how to position the image of curve and/or object on the sheet, and what size it should be (tab <img src="/GeomagDataDrawer/img/2_34.png" />);
+
+&#x3007; whether it is necessary to manually set the location of the diagram captions and the title of the figure, or the app should set them automatically (tab <img src="/GeomagDataDrawer/img/2_36.png" />);
+
+&#x3007; how to display the coordinate axes of the diagram (tab <img src="/GeomagDataDrawer/img/2_46.png" />);
+
+&#x3007; how to display the coordinate grid of the diagram (tab <img src="/GeomagDataDrawer/img/2_47.png" />);
+
+&#x3007; how to display diagram labels (tab <img src="/GeomagDataDrawer/img/2_48.png" />);
+
+&#x3007; how to display the lines of curves on the diagram (tab <img src="/GeomagDataDrawer/img/2_49.png" />);
+
+&#x3000; App menu (see section “[App menu](#app-menu)”).
 
 &nbsp;
 
