@@ -5,10 +5,10 @@
 - [General information](#general-information)
 - [Main app interface](#main-app-interface)
     - [Adding a curve or object to a diagram](#adding-a-curve-or-object-to-a-diagram)
-    - [Remove curves and objects from diagram](#section-4)
-    - [Hide/show curves and objects](#section-5)
-    - [Select curves and objects](#section-6)
-    - [Selecting a range for plotting a curve or line](#section-7)
+    - [Removing curves and objects from diagram](#removing-curves-and-objects-from-diagram)
+    - [Hide / show curves and objects](#hide-show-curves-and-objects)
+    - [Selection of curves and objects](#selection-of-curves-and-objects)
+    - [Selection of a range for plotting a curve or line](#selection-of-a-range-for-plotting-a-curve-or-line)
     - [Setting the location and size of the curve or object image](#section-8)
     - [Curve image captions settings](#section-9)
     - [Setting the coordinate axes of the curve image](#section-10)
@@ -111,7 +111,7 @@ The main elements of the window:
 - List field of added curves and objects (selection of an arbitrary set of points for simultaneous adjustment is available; see below).
 - Buttons for adding (<img src="/GeomagDataDrawer/img/2_70.png" />)
 and deleting (<img src="/GeomagDataDrawer/img/2_73.png" />) curves and additional objects.
-- Buttons for hide/show (<img src="/GeomagDataDrawer/img/2_60.png" />) and select (<img src="/GeomagDataDrawer/img/2_61.png" />) curves and objects.
+- Button for hide / show (<img src="/GeomagDataDrawer/img/2_60.png" />) curves and objects.
 - Diagram options panel, which allows you to customize your own display settings for selected curves and objects. Namely:
     - in what range of abscissas and ordinates should the curve be drawn, and whether transposition is required (tab <img src="/GeomagDataDrawer/img/2_33.png" />);
     - how to position the image of curve and/or object on the sheet, and what size it should be (tab <img src="/GeomagDataDrawer/img/2_34.png" />);
@@ -179,47 +179,45 @@ exceed the maximum allowed (see section [“Limits and default parameter values�
 
 ---
 
-## 2.2. Удаление кривых и объектов с диаграммы
+## 2.2. Removing curves and objects from diagram
 
 :warning: ***Translation is in progress*** :warning:
 
-С помощью кнопки <img src="/GeomagDataDrawer/img/2_73.png" /> можно
-удалить кривые и/или объекты с диаграммы. При этом потребуется подтверждение пользователя. Пользователь может выбрать несколько кривых
-и объектов в списке для одновременного удаления. С версии 4.11 для этой функции доступна горячая клавиша; see section “[App menu](#app-menu)”
-of this guide.
+Using the <img src="/GeomagDataDrawer/img/2_73.png" /> button, you can remove curves and/or objects from the diagram. This will
+require user confirmation. User can select multiple curves and objects in the list to delete at the same time. A hotkey is available
+for this function; see section “[App menu](#app-menu)” of this guide.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 2.3. Скрытие / отображение кривых и объектов
+## 2.3. Hide / show curves and objects
 
-С помощью кнопки <img src="/GeomagDataDrawer/img/2_60.png" /> пользователь
-может временно скрывать выделенные кривые и объекты (кнопка при этом будет «отпущена»). При необходимости они могут быть снова отображены
-в любой момент (кнопка будет «нажата»).
-
-[:arrow_double_up:](#contents)
-
----
-
-## 2.4. Выделение кривых и объектов
-
-Кнопка <img src="/GeomagDataDrawer/img/2_61.png" /> позволяет выделить кривые
-и объекты для настройки с помощью мыши. Для этого необходимо нажать кнопку и в поле построения диаграммы мышью выделить зону, в которой находятся
-требуемые кривые и объекты. Все элементы диаграммы, затронутые прямоугольной областью выделения, будут выделены в списке добавленных кривых
-и объектов. Кнопка выбора при этом вернётся в неактивное состояние.
+Using the <img src="/GeomagDataDrawer/img/2_60.png" /> button, user can temporarily hide the selected curves and objects
+(the button will then be “released”). If necessary, they can be displayed again at any time (the button will be “pressed”).
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 2.5. Выбор диапазона построения кривой или линии
-> *Параметры этой и всех последующих вкладок применяются ко всем кривым, выбранным (выделенным) в списке кривых.
-> Часть функций будет недоступна при работе с графическими объектами*
+## 2.4. Selection of curves and objects
 
-Содержимое вкладки представлено на рисунке ниже.
+The middle mouse button allows you to select curves and objects for customization with
+the mouse. To do this, press the button and (holding it) select the area in which the required curves and objects are located
+in the diagram plotting field. All diagram elements affected by the rectangular selection area
+will be highlighted in the list of added curves and objects.
 
-![image050](https://user-images.githubusercontent.com/20893717/147866150-fa42a4d3-1bae-4269-b9fc-2ee18a236237.png)
+[:arrow_double_up:](#contents)
+
+---
+
+## 2.5. Selection of a range for plotting a curve or line
+> *Settings on this and all subsequent tabs apply to all curves selected (highlighted) in the curve list.
+> Some functions will be unavailable when working with graphic objects*
+
+The content of the tab is shown in the figure below:
+
+<img src="/GeomagDataDrawer/img/2_50_en.png" />
 
 Диапазоны построения вычисляются автоматически при загрузке каждой кривой в соответствии с её реальными границами. Причём, границы округляются
 до первой слева значащей цифры. Несмотря на это, они могут быть изменены пользователем вручную по своему усмотрению. Из этой вкладки доступно
