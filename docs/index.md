@@ -193,8 +193,6 @@ exceed the maximum allowed (see section [“Limits and default parameter values�
 
 ## 2.2. Removing curves and objects from diagram
 
-:warning: ***Translation is in progress*** :warning:
-
 Using the <img src="/GeomagDataDrawer/img/2_73.png" /> button, you can remove curves and/or objects from the diagram. This will
 require user confirmation. User can select multiple curves and objects in the list to delete at the same time. A hotkey is available
 for this function; see section “[App menu](#app-menu)” of this guide.
@@ -278,6 +276,8 @@ set the size of rectangles, ellipses, and line display fields. Field sizes for t
 
 [:arrow_double_up:](#contents)
 
+---
+:warning: ***Translation is in progress*** :warning:
 ---
 
 ## 2.7. Настройка подписей изображения кривой
