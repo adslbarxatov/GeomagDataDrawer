@@ -10,9 +10,9 @@
     - [Selection of curves and objects](#selection-of-curves-and-objects)
     - [Selection of a range for plotting a curve or line](#selection-of-a-range-for-plotting-a-curve-or-line)
     - [Setting the location and size of curve or object](#setting-the-location-and-size-of-curve-or-object)
-    - [Curve image captions settings](#section-9)
-    - [Setting the coordinate axes of the curve image](#section-10)
-    - [Set curve image grid](#section-11)
+    - [Setting the caption of curve image](#setting-the-caption-of-curve-image)
+    - [Setting coordinate axes of curve image](#setting-coordinate-axes-of-curve-image)
+    - [Setting the grid of curve image](#setting-the-grid-of-curve-image)
     - [Customizing fonts and colors of image captions](#section-12)
     - [Set curve line style](#section-13)
 - [App menu](#app-menu)
@@ -277,71 +277,78 @@ set the size of rectangles, ellipses, and line display fields. Field sizes for t
 [:arrow_double_up:](#contents)
 
 ---
-:warning: ***Translation is in progress*** :warning:
----
 
-## 2.7. Настройка подписей изображения кривой
+## 2.7. Setting the caption of curve image
 
-Содержимое вкладки представлено на рисунке ниже.
+The content of the tab is shown in the figure below:
 
 <img src="/GeomagDataDrawer/img/2_53_en.png" />
 
-При выборе *автоматического задания подписей* и их расположения все остальные поля становятся недоступными, а соответствующие параметры
-рассчитываются программой автоматически. Подписи осей размещаются рядом с осями внутри координатной плоскости; подписи изображений располагаются
-так, чтобы при наложении нескольких кривых они находились в одной строке с пробелами между ними. Сама подпись, равно как и название кривой
-в списке берётся либо из файла данных, либо формируется программой путём порядковой нумерации.
+When you select *automatically set captions* and their location, all other fields become inaccessible, and the corresponding
+parameters are calculated automatically by the app. Axis labels are placed next to the axes inside the coordinate plane.
+Image captions are arranged so that when several curves are superimposed, captions are in one line with spaces between them.
+The caption itself, as well as the name of the curve in the list, is taken either from the data file, or is formed by the app
+using serial numbering.
 
-При выборе *ручного задания подписей* в поля параметров подставляются значения, вычисленные программой. В дальнейшем они ограничены только
-размером изображения кривой. Заметим, что поле подписи диаграммы в этой вкладке применяется только к первой из выделенных кривых, если их выбрано несколько.
+When you select *manually set captions*, the values calculated by the app are substituted into the parameter fields.
+In the following, they’re limited only by size of the curve image. Note that the diagram label field in this tab only applies
+to the first of selected curves if there are several of them selected.
 
-Применительно к графическому объекту «Текстовая строка» поле подписи задаёт собственно текст строки. Поведение объекта при этом не зависит
-от состояния флажка «Автоопределение».
+As applied to the “Text label” graphical object, the label field sets the text of the label itself. The behavior of the object
+doesn’t depend on the state of the “Autodetect” checkbox.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 2.8. Настройка координатных осей изображения кривой
+## 2.8. Setting coordinate axes of curve image
 
-Содержимое вкладки представлено на рисунке ниже.
+The content of the tab is shown in the figure below:
 
 <img src="/GeomagDataDrawer/img/2_54_en.png" />
 
-С помощью соответствующих полей можно настроить число основных и дополнительных делений на осях диаграммы, толщину осей в пикселях, а также их цвет
-и относительное расположение, указать формат отображения чисел на шкалах (обычный или экспоненциальный). Возможен выбор автоопределения для числа делений;
-в этом случае число засечек выбирается как наиболее подходящее для заданного диапазона построения.
+Using the appropriate fields, you can set the number of main and additional divisions on the diagram axes, the thickness
+of axes in pixels, as well as their color and relative position, specify the format for displaying numbers (normal or exponential).
 
-Все параметры (здесь и далее) имеют допустимые диапазоны; ознакомиться с ними можно в разделе
+You can also select *auto-detection* for the number of divisions. In this case, the number of serifs is chosen as the most appropriate
+for the given plotting range.
+
+All parameters (here and below) have valid ranges; you can find them in the
 section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide.
-Цвет осей настраивается нажатием на цветную кнопку рядом с соответствующей надписью. Кнопка имеет цвет, соответствующий последнему выбранному цвету осей.
+The color of axes is adjusted by pressing the colored button next to the corresponding inscription. The button has a color corresponding
+to the last selected axis color.
 
-Оси могут быть принудительно установлены слева (сверху), по центру (посередине) или снизу (справа), или их расположение может быть определено автоматически.
-В последнем случае программа установит ось в пересечение с нулём другой оси или выровняет её по той стороне, к которой ноль окажется ближе.
+Axes can be forced to the left (top), center (middle) or bottom (right), or their location can be determined automatically.
+In the latter case, app will set the axis to the intersection with the zero of the other axis or align it to the side to which
+the zero is closer.
 
-Кнопка «×» здесь и далее предназначена для отключения отображения того или иного элемента. Это, на самом деле, означает задание для него белого цвета,
-который интерпретируется программой как прозрачный и не отображается при перерисовке. Указание белого цвета для осей, сетки и подписей будет иметь тот же эффект.
+The “×” button hereinafter is intended to disable the display of a particular element. This, in fact, means setting a white color for it,
+which is interpreted by the app as transparent and is not displayed when redrawing. Specifying white for the axes, grid, and labels
+will have the same effect.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 2.9. Настройка сетки изображения кривой
+## 2.9. Setting the grid of curve image
 
-Содержимое вкладки представлено на рисунке ниже.
+The content of the tab is shown in the figure below:
 
 <img src="/GeomagDataDrawer/img/2_55_en.png" />
 
-С помощью соответствующих полей можно настроить толщину линий сетки, а также цвета основных и дополнительных линий. Цвета линий сетки по умолчанию
-совпадают с фоном (белый), поэтому сетка не видна. При «включении» сетки её линии отстраиваются в соответствии с расположением засечек на осях.
-Кнопка «×» или установка белого цвета линий скрывает сетку.
+Using the appropriate fields, you can set thickness of the grid lines, as well as colors of the main and additional lines. The grid
+line colors default to match the background (white), so the grid is not visible. When “turning on” the grid, its lines are rebuilt
+in accordance with location of the notches on the axes. The “×” button or setting the line color to white hides the grid.
 
 [:arrow_double_up:](#contents)
 
+---
+:warning: ***Translation is in progress*** :warning:
 ---
 
 ## 2.10. Настройка шрифтов и цветов подписей изображения
 
-Содержимое вкладки представлено на рисунке ниже.
+The content of the tab is shown in the figure below:
 
 <img src="/GeomagDataDrawer/img/2_56_en.png" />
 
@@ -357,7 +364,7 @@ section [“Limits and default parameter values”](#limits-and-default-paramete
 
 ## 2.11. Настройка стиля линии кривой
 
-Содержимое вкладки представлено на рисунке ниже.
+The content of the tab is shown in the figure below:
 
 <img src="/GeomagDataDrawer/img/2_57_en.png" />
 
