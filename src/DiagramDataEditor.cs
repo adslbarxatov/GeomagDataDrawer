@@ -12,6 +12,7 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private DiagramData sourceData;
+		private int columnWithNewName = 0;
 
 		/// <summary>
 		/// Возвращает флаг, указывающий, были ли применены изменения
@@ -256,7 +257,6 @@ namespace RD_AAOW
 					{
 					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 						string.Format (Localization.GetText ("DataProcessingError"),
-						/*DiagramDataInitResultsMessage.ErrorMessage (DiagramDataInitResults.BrokenTable)*/
 						Localization.GetText ("BrokenTableError")));
 					e.Cancel = true;
 					return;
@@ -268,7 +268,6 @@ namespace RD_AAOW
 			}
 
 		// Изменение названия столбца
-		private int columnWithNewName = 0;
 		private void MainDataGrid_ColumnHeaderMouseDoubleClick (object sender, DataGridViewCellMouseEventArgs e)
 			{
 			ColumnNameInput.Visible = NewColumnName.Enabled = ApplyName.Enabled = AbortName.Enabled = true;

@@ -142,40 +142,28 @@ namespace RD_AAOW
 				// Тестовое открытие файла данных
 				DiagramData ddt = null;
 				if (SentFileType == DataInputTypes.Unknown)
-					{
 					ddt = new DiagramData (SentFileName, 2, 0);
-					}
 				else
-					{
 					ddt = new DiagramData (SentFileName, SentFileType, 0);
-					}
 
 				// Контроль результата (до настоящей загрузки результат BrokenFile допустим по признаку имён столбцов)
 				if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult !=
 					DiagramDataInitResults.BrokenFile))
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-						DiagramData.GetDataLoadError (ddt.InitResult, SentFileName)
-						/*string.Format (Localization.GetText ("DataFileLoadError"),
-						SentFileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult))*/);
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Left,
+						DiagramData.GetDataLoadError (ddt.InitResult, SentFileName));
 					return;
 					}
 
 				// Обновление параметров загрузки
 				if (!CheckFileLoadingParameters (SentFileType))
-					{
 					return;
-					}
 
 				// Контрольная загрузка файла, переданного из операционной системы
 				if (SentFileType == DataInputTypes.Unknown)
-					{
 					dd = new DiagramData (SentFileName, ca.ExpectedColumnsCount, ca.SkippedLinesCount);
-					}
 				else
-					{
 					dd = new DiagramData (SentFileName, SentFileType, ca.SkippedLinesCount);
-					}
 				}
 
 			// Контроль результата
@@ -208,10 +196,8 @@ namespace RD_AAOW
 				}
 			else if (SentFileType != DataInputTypes.Unspecified)
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					DiagramData.GetDataLoadError (dd.InitResult, SentFileName)
-					/*string.Format (Localization.GetText ("DataFileLoadError"), SentFileName,
-					DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult))*/);
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Left,
+					DiagramData.GetDataLoadError (dd.InitResult, SentFileName));
 				}
 
 			#endregion
@@ -314,10 +300,10 @@ namespace RD_AAOW
 			{
 			// Изменение размера поля отрисовки
 			HorScroll.Width = DiagramBox.Width = this.Width - 55;
-			VertScroll.Height = DiagramBox.Height = this.Height - 55 - DiagramBox.Top;
+			VertScroll.Height = DiagramBox.Height = this.Height - 65 - DiagramBox.Top;
 
 			VertScroll.Left = this.Width - 35;
-			HorScroll.Top = this.Height - 35 - HorScroll.Height;
+			HorScroll.Top = this.Height - 45 - HorScroll.Height;
 
 			// Перерисовка
 			Redraw ();
@@ -344,7 +330,7 @@ namespace RD_AAOW
 				DiagramBox.Enabled = HorScroll.Enabled = VertScroll.Enabled =
 				MLoadStyle.Enabled = MSaveStyle.Enabled = MResetStyle.Enabled = MSaveTemplate.Enabled =
 				MSaveDataFile.Enabled = MSaveDiagramImage.Enabled = MRedactData.Enabled = NewState;
-				
+
 				MRestoreTemplate.Enabled = MReplaceTemplate.Enabled = NewState && RDGenerics.IsStartupPathAccessible;
 				}
 
@@ -719,47 +705,33 @@ namespace RD_AAOW
 			// Тестовое открытие файла данных
 			DiagramData ddt = null;
 			if (OFDialog.FilterIndex == (int)DataInputTypes.Unknown)
-				{
 				ddt = new DiagramData (OFDialog.FileName, 2, 0);
-				}
 			else
-				{
 				ddt = new DiagramData (OFDialog.FileName, (DataInputTypes)OFDialog.FilterIndex, 0);
-				}
 
 			// Контроль результата (до настоящей загрузки результат BrokenFile допустим по признаку имён столбцов)
 			if ((ddt.InitResult != DiagramDataInitResults.Ok) && (ddt.InitResult != DiagramDataInitResults.BrokenFile))
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					DiagramData.GetDataLoadError (ddt.InitResult, OFDialog.FileName)
-					/*string.Format (Localization.GetText ("DataFileLoadError"),
-					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (ddt.InitResult))*/);
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Left,
+					DiagramData.GetDataLoadError (ddt.InitResult, OFDialog.FileName));
 				return;
 				}
 
 			// Обновление параметров загрузки файлов
 			if (!CheckFileLoadingParameters ((DataInputTypes)OFDialog.FilterIndex))
-				{
 				return;
-				}
 
 			// Контрольное открытие
 			if (OFDialog.FilterIndex == (int)DataInputTypes.Unknown)
-				{
 				dd = new DiagramData (OFDialog.FileName, ca.ExpectedColumnsCount, ca.SkippedLinesCount);
-				}
 			else
-				{
 				dd = new DiagramData (OFDialog.FileName, (DataInputTypes)OFDialog.FilterIndex, ca.SkippedLinesCount);
-				}
 
 			if (dd.InitResult != DiagramDataInitResults.Ok)
 				{
 				// Файл точно с ошибками, или выбрано некорректное количество строк для поиска имён
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					DiagramData.GetDataLoadError (dd.InitResult, OFDialog.FileName)
-					/*string.Format (Localization.GetText ("DataFileLoadError"),
-					OFDialog.FileName, DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult))*/);
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Left,
+					DiagramData.GetDataLoadError (dd.InitResult, OFDialog.FileName));
 				return;
 				}
 
@@ -797,9 +769,7 @@ namespace RD_AAOW
 				else
 					{
 					if (ca.ForceShowDiagram)
-						{
 						AddFirstColumns ();
-						}
 					}
 				}
 
@@ -876,7 +846,7 @@ namespace RD_AAOW
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)SFDialog.FilterIndex,
 				ca.ForceSavingColumnNames) < 0)
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*DataFileSaveError"*/
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					Localization.GetFileProcessingMessage (SFDialog.FileName,
 					LzFileProcessingMessageTypes.Save_Failure));
 				}
@@ -1138,7 +1108,7 @@ namespace RD_AAOW
 					throw new Exception (Localization.GetText ("ExceptionMessage") + " (9)");
 
 				case -2:
-					RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*TemplateSaveError"*/
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 						Localization.GetFileProcessingMessage ("", LzFileProcessingMessageTypes.Save_Failure));
 					break;
 
@@ -1158,7 +1128,7 @@ namespace RD_AAOW
 
 			if (!ColumnsAdderCmd.WriteParametersFile (dd, RDGenerics.AppStartupPath +
 				ConfigAccessor.LineParametersFileName))
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*TemplateSaveError"*/
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					Localization.GetFileProcessingMessage (ConfigAccessor.LineParametersFileName,
 					LzFileProcessingMessageTypes.Save_Failure));
 			}
@@ -1172,7 +1142,7 @@ namespace RD_AAOW
 
 			if (!ColumnsAdderCmd.CreateDefaultParametersFile (RDGenerics.AppStartupPath +
 				ConfigAccessor.LineParametersFileName))
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*TemplateSaveError"*/
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					Localization.GetFileProcessingMessage (ConfigAccessor.LineParametersFileName,
 					LzFileProcessingMessageTypes.Save_Failure));
 			}

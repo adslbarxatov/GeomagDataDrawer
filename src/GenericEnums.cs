@@ -170,46 +170,6 @@
 		NotInited = 1
 		}
 
-	/*
-	/// <summary>
-	/// Класс предоставляет метод, формирующий сообщения об ошибках
-	/// </summary>
-	public static class DiagramDataInitResultsMessage
-		{
-		/// <summary>
-		/// Метод формирует сообщение об ошибке
-		/// </summary>
-		/// <param name="Result">Результат инициализации класса</param>
-		/// <returns>Сообщение об ошибке</returns>
-		public static string ErrorMessage (DiagramDataInitResults Result)
-			{
-			switch (Result)
-				{
-				case DiagramDataInitResults.NotInited:
-					return Localization.GetText ("NotInitedError");
-
-				case DiagramDataInitResults.FileNotAvailable:
-					return Localization.GetText ("FileNotAvailableError");
-
-				case DiagramDataInitResults.BrokenFile:
-					return Localization.GetText ("BrokenFileError");
-
-				case DiagramDataInitResults.NotEnoughData:
-					return Localization.GetText ("NotEnoughDataError");
-
-				case DiagramDataInitResults.BrokenTable:
-					return Localization.GetText ("BrokenTableError");
-
-				case DiagramDataInitResults.ExcelNotAvailable:
-					return Localization.GetText ("ExcelNotAvailableError");
-
-				default:    // В том числе - OK
-					return "";
-				}
-			}
-		}
-	*/
-
 	/// <summary>
 	/// Возможные форматы отрисовки кривых
 	/// </summary>

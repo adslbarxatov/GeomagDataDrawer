@@ -420,7 +420,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				ProcessingResults.Text = /*Localization.GetText ("TemplateLoadError");*/
+				ProcessingResults.Text =
 					Localization.GetFileProcessingMessage (FileName, LzFileProcessingMessageTypes.Load_Failure);
 				return false;
 				}
@@ -465,7 +465,6 @@ namespace RD_AAOW
 				{
 				ProcessingResults.Text = Localization.GetFileProcessingMessage (FileName,
 					LzFileProcessingMessageTypes.Save_Failure);
-				/*Localization.GetText (TemplateSaveError");*/
 				return false;
 				}
 

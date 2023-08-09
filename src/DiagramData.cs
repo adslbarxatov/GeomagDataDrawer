@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
-using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
@@ -1244,7 +1243,7 @@ namespace RD_AAOW
 			if (ColumnNumber >= dataValues.Count)
 				return "";
 
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.ru_ru).NumberFormat;
+			var nfi = Localization.GetCulture (SupportedLanguages.ru_ru).NumberFormat;
 			return (dataColumnNames[(int)ColumnNumber] + ": " + dataValues[(int)ColumnNumber][0].ToString (nfi) +
 				((dataValues[0].Count > 1) ? ("; " + dataValues[(int)ColumnNumber][1].ToString (nfi)) : "") +
 				((dataValues[0].Count > 2) ? ("; " + dataValues[(int)ColumnNumber][2].ToString (nfi)) : "") +

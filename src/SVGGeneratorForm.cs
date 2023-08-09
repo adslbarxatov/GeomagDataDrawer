@@ -159,8 +159,6 @@ namespace RD_AAOW
 
 					case SVGScriptReader.InitResults.FileNotAvailable:
 					case SVGScriptReader.InitResults.CannotIncludeFile:
-						/*msg += (string.Format (Localization.GetText ("VIG_" + svgsr.InitResult.ToString ()),
-							svgsr.FaliedIncludeFile));*/
 						msg = Localization.GetFileProcessingMessage (OFName.Text,
 							LzFileProcessingMessageTypes.Load_Failure);
 						break;

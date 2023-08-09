@@ -147,10 +147,8 @@ namespace RD_AAOW
 				// Контроль результата
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-						DiagramData.GetDataLoadError (dd.InitResult, args[0])
-						/*string.Format (Localization.GetText ("DataFileLoadError"), args[0],
-						DiagramDataInitResultsMessage.ErrorMessage (dd.InitResult))*/);
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Left,
+						DiagramData.GetDataLoadError (dd.InitResult, args[0]));
 					return;
 					}
 
@@ -159,7 +157,7 @@ namespace RD_AAOW
 					{
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
-						RDGenerics.MessageBox (RDMessageTypes.Warning_Center, /*DataFileSaveError"*/
+						RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 							Localization.GetFileProcessingMessage (args[1], LzFileProcessingMessageTypes.Save_Failure));
 						return;
 						}
