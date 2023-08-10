@@ -4,7 +4,6 @@
 
 Autonomous utility for plotting and preparing of data diagrams.
 Detailed description of the app is now available on [its own page](https://adslbarxatov.github.io/GeomagDataDrawer)
-and in [this video](https://youtu.be/uYtQJX5BgvU)
 
 ---
 
