@@ -2744,7 +2744,7 @@ namespace RD_AAOW
 							break;
 						}
 					}
-				SW.Write ("\r\n");
+				SW.Write (Localization.RN);
 				}
 
 			// ЗАПИСЬ БЛОКА ДАННЫХ
@@ -2764,7 +2764,7 @@ namespace RD_AAOW
 						}
 					}
 
-				SW.Write ("\r\n");
+				SW.Write (Localization.RN);
 				}
 
 			// Завершено

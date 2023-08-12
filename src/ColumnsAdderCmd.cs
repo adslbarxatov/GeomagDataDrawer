@@ -437,13 +437,14 @@ namespace RD_AAOW
 
 				if (res != Localization.GetControlText (this.Name, "Correct"))
 					{
-					ProcessingResults.Text += ("#" + line.ToString () + ": " + res + "\r\n");
+					ProcessingResults.Text += ("#" + line.ToString () + ": " + res + 
+						Localization.RN);
 					}
 
 				if (line >= DiagramData.MaxLines)
 					{
 					ProcessingResults.Text += (string.Format (Localization.GetText ("LinesOverloadError"),
-						DiagramData.MaxLines) + "\r\n");
+						DiagramData.MaxLines) + Localization.RN);
 					break;
 					}
 				}

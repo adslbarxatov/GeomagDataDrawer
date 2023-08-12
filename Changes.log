@@ -5,6 +5,9 @@ ToDo:
 - Limit for the data editor?
 - Translate the infopage
 
+Version 5.4.7:
+• Fixed some issues with the Policy loader where it would sometimes ask for multiple confirmations
+
 Version 5.4.5:
 • Fixed some text messages;
 • Fixed some interface elements;

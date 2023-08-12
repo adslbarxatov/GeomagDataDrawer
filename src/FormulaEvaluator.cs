@@ -267,7 +267,7 @@ namespace RD_AAOW
 
 			// Проверка успешно завершена
 			InfoLabel.ForeColor = Color.FromArgb (0, 128, 0);
-			InfoLabel.Text = Localization.GetText ("NoErrors") + "\nf(x) = ";
+			InfoLabel.Text = Localization.GetText ("NoErrors") + Localization.RN + "f(x) = ";
 			string formula = "";
 			for (int i = 0; i < le.ExtractedLexemes.Count; i++)
 				{
