@@ -19,9 +19,9 @@
 - [App menu](#app-menu)
     - File
     - [“Open data file”](#open-data-file)
-    - [“Load from clipboard”](#section-17)
-    - [“Save data file”](#section-18)
-    - [“Save diagram”](#section-19)
+    - [“Load from clipboard”](#load-from-clipboard)
+    - [“Save data file”](#save-data-file)
+    - [“Save diagram”](#save-diagram)
     - [“Close diagram”](#section-20)
     - [“Generate curves”](#section-21)
     - [“Program settings”](#section-22)
@@ -316,16 +316,16 @@ for the given plotting range.
 
 All parameters (here and below) have valid ranges; you can find them in the
 section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide.
-The color of axes is adjusted by pressing the colored button next to the corresponding inscription. The button has a color corresponding
-to the last selected axis color.
+The color of axes is adjusted by pressing the colored button next to the corresponding inscription.
+The button has a color corresponding to the last selected axis color.
 
 Axes can be forced to the left (top), center (middle) or bottom (right), or their location can be determined automatically.
 In the latter case, app will set the axis to the intersection with the zero of the other axis or align it to the side to which
 the zero is closer.
 
-The “×” button hereinafter is intended to disable the display of a particular element. This, in fact, means setting a white color for it,
-which is interpreted by the app as transparent and is not displayed when redrawing. Specifying white for the axes, grid, and labels
-will have the same effect.
+The “×” button hereinafter is intended to disable the display of a particular element. This, in fact, means setting
+a white color for it, which is interpreted by the app as transparent and is not displayed when redrawing. Specifying
+white for the axes, grid, and labels will have the same effect.
 
 [:arrow_double_up:](#contents)
 
@@ -460,67 +460,70 @@ of columns of data.
 
 <img src="/GeomagDataDrawer/img/3_22_en.png" />
 
-Это значение может быть указано «с запасом», если точное число столбцов неизвестно. Все недостающие значения будут заменены нулями. Более
-подробные сведения об извлечении данных содержатся в разделе [“File format specifications”](#file-format-specifications) данного руководства.
+This value may be specified with a margin if the exact number of columns is unknown. All missing values will be replaced
+with zeros. For more information about data extraction, see section [“File format specifications”](#file-format-specifications)
+of this guide.
 
-При открытии любого файла (кроме `.gdd`) пользователю также потребуется указать количество строк файла, которое будет использоваться
-для поиска имён столбцов данных.
+When opening any file (except `.gdd`), the user will also be required to specify the number of lines in the file that
+will be used to look up the data column names.
 
-![image080](https://user-images.githubusercontent.com/20893717/147868744-b8245037-1d2a-4808-bac9-113afbf7d3cf.png)
+<img src="/GeomagDataDrawer/img/3_80_en.png" />
 
-Заданное количество строк будет рассматриваться программой именно как набор текста: данные из этих строк будут проигнорированы. Данное значение
-нужно указывать точно, т.к. меньшее значение будет вызывать ошибку (текст окажется там, где должны быть данные), а большее значение приведёт
-к потере части данных и некорректному отображению имён столбцов.
+The specified number of lines will be considered by the app exactly as text: the data from these lines will be ignored.
+This value must be specified accurately, because a smaller value will cause an error (the text will appear where the data
+should be), and a larger value will lead to the loss of part of the data and incorrect display of column names.
 
-Извлечённые из файла данных подписи столбцов данных используются для обозначения и подписывания кривых в программе. Если подписи считать
-не удалось (в частности, если количество предполагаемых столбцов при извлечении данных оказалось больше или меньше реального числа столбцов),
-программа именует их в порядке считывания: с.1, с.2 и т.д.
-
-[:arrow_double_up:](#contents)
-
----
-
-## 3.1.2. «Загрузить из буфера обмена»
-
-Пункт меню позволяет использовать текстовые данные в буфере обмена, скопированные из другой программы, для построения диаграммы.
-При этом пользователю будет предложено указать ожидаемое количество столбцов и количество строк для поиска имён столбцов.
-
-> ***Все несохранённые данные при этом теряются, если пользователь соглашается с соответствующим предупреждением.***
+The data column labels extracted from the data file are used to mark and label curves in the app. If column names couldn’t
+be read (in particular, if the number of expected columns during data extraction turned out to be more or less than
+the actual number of columns), the app names them in the order of reading: c.1, c.2, etc.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.1.3. «Сохранить файл данных»
+## 3.1.2. “Load from clipboard”
 
-Программа может сохранять загруженные данные в файлы всех типов, которые поддерживает (кроме `.xls` и `.xlsx`). Если сохранение произошло
-с ошибкой, пользователь извещается об этом. Названия столбцов данных также могут быть сохранены, если соответствующая опция выбрана в настройках
-программы. Следует отметить, что сохранение графических объектов возможно только в собственном формате программы.
+The menu item allows you to use text data on the clipboard copied from another app to create a diagram.
+This will prompt the user to specify the expected number of columns and number of rows to search for column names.
+
+> ***All unsaved data is lost if the user agrees to the corresponding warning***
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.1.4. «Сохранить диаграмму»
+## 3.1.3. “Save data file”
 
-Вызывает окно вариантов формирования конечного изображения диаграммы.
+The app can save loaded data to files of all types that it supports (except `.xls` and `.xlsx`). If saving occurs with
+an error, user is notified about this. Data column names can also be saved if the appropriate option is selected
+in the app settings. It should be noted that saving graphic objects is only possible in the app’s own format (`.gdd`).
 
-![image015](https://user-images.githubusercontent.com/20893717/147868885-7397ad58-6633-4f70-91d3-f680b25846b1.png)
+[:arrow_double_up:](#contents)
 
-Пользователю предлагаются следующие варианты сохранения:
-- *Сохранить видимый макет*. В этом случае изображение сохраняется в том виде и размере, в котором оно отображается в главном окне программы.
-При этом можно увеличить масштаб изображения, если необходимо, например, повысить его качество. Ограничения величины масштаба можно найти
-section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide. Формат файла – `.png`.
-- *Подогнать макет*. Данная группа вариантов позволяет сохранять изображения в пропорциях форматов бумаги A3 и A4. При этом отображаемое
-в главном окне изображение располагается в верхнем левом углу будущего листа бумаги, а его размер пересчитывается таким образом, чтобы оно
-максимально заполнило лист с учётом его расположения и размера. Незаполненная часть листа остаётся пустой. Заметим, что пересчёт изображения
-выполняется в качестве 300 dpi, что обеспечивает приемлемое качество печати на чёрно-белом и цветном принтере. Формат файла – `.png`.
-- *Сохранить как векторное изображение*. Этот вариант позволяет сохранять изображения в векторных форматах `.svg` и `.emf`. Подходит
-для выполнения более тонких модификаций изображения диаграммы, а также в других случаях, когда растровое изображение неприемлемо
-(например, при позиционировании изображения в тексте печатного документа). Элементы рисунка группируются таким образом, чтобы минимизировать
-время, необходимое на ручную коррекцию диаграммы.
+---
 
-Кнопка «Сохранить» вызывает стандартное окно сохранения; кнопка «Отмена» прерывает операцию.
+## 3.1.4. “Save diagram”
+
+Calls up a window of options for forming the final diagram image.
+
+<img src="/GeomagDataDrawer/img/3_15_en.png" />
+
+The user is offered the following saving options:
+- *Save visible layout*. In this case, the image is saved in the form and size in which it is displayed in the main app window.
+In this case, you can zoom in on the image if necessary, for example, to improve its quality. Limitations on the scale
+can be found in the section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide.
+File format is `.png`.
+- *Adjust the layout*. This group of options allows you to save images in A3 and A4 paper size proportions. In this case,
+the image displayed in the main window is located in the upper left corner of the future sheet of paper, and its size
+is recalculated so that it fills the sheet as much as possible, taking into account its location and size. The unfilled
+part of the sheet remains empty. Note that image conversion is performed in 300 dpi quality, which ensures acceptable
+print quality on black and white and color printers. File format is `.png`.
+- *Save as vector image*. This option allows you to save images in `.svg` and `.emf` vector formats. Suitable for making
+more subtle modifications to a diagram image, as well as in other cases where a bitmap image is not appropriate
+(for example, when positioning an image within the text of a printed document). The elements of the figure are grouped
+in such a way as to minimize the time required for manual correction of the diagram.
+ 
+The “Save” button opens a standard save window; the “Cancel” button aborts the operation.
 
 [:arrow_double_up:](#contents)
 
