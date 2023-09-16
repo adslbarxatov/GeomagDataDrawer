@@ -25,7 +25,7 @@ namespace RD_AAOW
 		// Имена столбцов исходного массива данных
 		private List<string> dataColumnNames = new List<string> ();
 
-#if !DataProcessingOnly
+		/*#if !DataProcessingOnly*/
 
 		// Массив кривых диаграммы
 		private List<DiagramCurve> curves = new List<DiagramCurve> ();
@@ -45,7 +45,7 @@ namespace RD_AAOW
 		// Нижний отступ от края изображения до диаграммы (в долях)
 		private const float BottomMargin = TopMargin + DiagramFieldPart;
 
-#endif
+		/*#endif*/
 
 		// КОНСТАНТЫ
 		private const float LeftMargin = 0.05f;     // Левый отступ от края изображения до диаграммы (в долях)
@@ -72,7 +72,7 @@ namespace RD_AAOW
 		/// </summary>
 		public const uint MaxDataRows = 20001;
 
-#if !DataProcessingOnly
+		/*#if !DataProcessingOnly*/
 
 		/// <summary>
 		/// Метод возвращает ссылку на стиль указанной кривой или заданного объекта
@@ -95,7 +95,7 @@ namespace RD_AAOW
 				}
 			}
 
-#endif
+		/*#endif*/
 
 		/// <summary>
 		/// Метод возвращает имя столбца исходных данных
@@ -115,7 +115,7 @@ namespace RD_AAOW
 				}
 			}
 
-#if !DataProcessingOnly
+		/*#if !DataProcessingOnly*/
 
 		/// <summary>
 		/// Метод возвращает тип дополнительного объекта
@@ -130,7 +130,7 @@ namespace RD_AAOW
 			return additionalObjects[(int)ObjectNumber];
 			}
 
-#endif
+		/*#endif*/
 
 		/// <summary>
 		/// Конструктор. Загружает данные из указанного файла.
@@ -149,7 +149,7 @@ namespace RD_AAOW
 				case DataInputTypes.CSV:
 					break;
 
-#if !DataProcessingOnly
+				/*#if !DataProcessingOnly*/
 
 				// Следующие обработки выполняются в дополнительных методах
 				case DataInputTypes.XLS:
@@ -162,7 +162,7 @@ namespace RD_AAOW
 						return;
 						}
 
-					// Вызов (контроль внутри функции невозможен, т.к. сразу при её вызове происходит контроль ссылок)
+					// Вызов
 					LoadExcelFile (DataFileName, SkippedLinesCount);
 					return;
 
@@ -170,7 +170,7 @@ namespace RD_AAOW
 					LoadGDDFile (DataFileName);
 					return;
 
-#endif
+				/*#endif*/
 
 				// Остальные файлы не подлежат обработке
 				default:
@@ -782,13 +782,9 @@ namespace RD_AAOW
 			try
 				{
 				if (DataFileName.Contains ("xlsx"))
-					{
 					excelReader = ExcelDataReader.ExcelReaderFactory.CreateOpenXmlReader (FS);
-					}
 				else
-					{
 					excelReader = ExcelDataReader.ExcelReaderFactory.CreateBinaryReader (FS);
-					}
 
 				DataSet dataSet = ExcelDataReader.ExcelDataReaderExtensions.AsDataSet (excelReader, null);
 				table = dataSet.Tables[0];
@@ -2706,10 +2702,10 @@ namespace RD_AAOW
 					break;
 
 				// Следующие обработки выполняются в дополнительных методах
-#if !DataProcessingOnly
+				/*#if !DataProcessingOnly*/
 				case DataOutputTypes.GDD:
 					return SaveGDDFile (DataFileName);
-#endif
+				/*#endif*/
 
 				// Остальные файлы не подлежат обработке
 				default:

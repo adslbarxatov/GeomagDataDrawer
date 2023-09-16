@@ -3,7 +3,10 @@ Geomag data drawer: changes log
 ToDo:
 - Add the runtime image movement?
 - Limit for the data editor?
-- Translate the infopage
+
+Version 5.5:
+• MSO Excel support libraries updated to v 3.6;
+• The translation of the complete user guide for the app to English has been completed
 
 Version 5.4.9:
 • New identity has been applied
