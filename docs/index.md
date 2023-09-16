@@ -1,5 +1,5 @@
 # Geomag data drawer: complete user guide
-> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 16.09.2023; 14:41
+> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 17.09.2023; 0:10
 
 # Contents
 - [General information](#general-information)
