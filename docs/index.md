@@ -55,7 +55,7 @@
 - [Limits and default parameter values](#limits-and-default-parameter-values)
 - [File format specifications](#file-format-specifications)
     - Geomag data drawer files
-    - [Microsoft Office Excel data files](#microsoft-office-excel-1)
+    - [Microsoft Office Excel data files](#microsoft-office-excel-data-files)
     - [Data files in Windows CSV format](#windows-csv)
     - [Files to extract data from](#section-50)
 - [Download links](https://adslbarxatov.github.io/DPArray#geomag-data-drawer)
@@ -927,44 +927,44 @@ it’s possible to indicate supported image types; the app will rely on the spec
 
 # 5. Limits and default parameter values
 
-> Все значения указаны только в отношении данной версии программы. Звёздочкой помечены параметры, ограничения и значения которых
-> пересчитываются с учётом масштаба при сохранении конечного изображения
+> All values are specified only for this version of the app. An asterisk marks parameters whose restrictions
+> and values are recalculated taking into account the scale when saving the final image
 
-| Параметр | Минимум | Максимум | Значение по умолчанию |
+| Parameter | Minimum | Maximum | Default value |
 | -------- | ------- | -------- | --------------------- |
-| Количество строк данных | 2 | 10001 | — |
-| Количество столбцов данных | 2 | 100 | — |
-| Количество кривых на диаграмме | 0 | 20 | — |
-| Количество графических объектов на диаграмме | 0 | 50 | — |
-| Число основных делений на оси Ox | 1 | 100 | Автоопределение |
-| Число дополнительных делений на оси Ox | 1 | 10 | 2 |
-| Число основных делений на оси Oy | 1 | 100 | Автоопределение |
-| Число дополнительных делений на оси Oy | 1 | 10 | 2 |
-| Толщина осей/засечек, px* | 1 | 10 | 1 |
-| Цвет осей/засечек | — | — | Чёрный |
-| Расположение оси Ox | — | — | Автоматически |
-| Расположение оси Oy | — | — | Автоматически |
-| Формат подписей оси Ox | — | — | Нормальный |
-| Формат подписей оси Oy | — | — | Нормальный |
-| Толщина линий сетки, px* | 1 | 10 | 1 |
-| Цвет основных линий сетки | — | — | Белый (фон) |
-| Цвет дополнительных линий сетки | — | — | Белый (фон) |
-| Длина подписи кривой | 0 | 200 | — |
-| Шрифт подписи кривой | — | — | Arial |
-| Кегль подписи кривой* | 4 | 36 | 9 |
-| Стиль подписи кривой | — | — | Обычный |
-| Цвет подписи кривой | — | — | Чёрный |
-| Шрифт подписей осей | — | — | Arial |
-| Кегль подписей осей* | 4 | 36 | 8 |
-| Стиль подписей осей | — | — | Обычный |
-| Цвет подписей осей | — | — | Чёрный |
-| Толщина кривых, px* | 1 | 10 | 1 |
-| Стиль отображения кривой | — | — | Линия без маркеров |
-| Маркер кривой | 1 | 6 + число успешно загруженных изображений маркеров | 1 (квадратик) |
-| Размеры изображения дополнительного маркера, px | 3 × 3 | 17 × 17 | — |
-| Размеры рисунка одной кривой, размер области диаграммы, размер сохраняемого изображения, px* | 100 × 100 | 10000 × 10000 | 500 × 500 |
-| Смещение рисунка кривой от верхнего левого края изображения, px* | (0, 0) | (9900, 9900) | (0, 0) |
-| Масштаб сохраняемого изображения | 1,0 | 10,0 | 1,0 |
+| Data rows quantity | 2 | 10001 | — |
+| Data columns quantity | 2 | 100 | — |
+| Quantity of curves on the diagram | 0 | 20 | — |
+| Quantity of graphic object on the diagram | 0 | 50 | — |
+| Quantity of primary notches on Ox axe | 1 | 100 | Autodetection |
+| Quantity of secondary notches on Ox axe | 1 | 10 | 2 |
+| Quantity of primary notches on Oy axe | 1 | 100 | Autodetection |
+| Quantity of secondary notches on Oy axe | 1 | 10 | 2 |
+| Width of axes / notches, px* | 1 | 10 | 1 |
+| Color of axes / notches | — | — | Black |
+| Placement of Ox axe | — | — | Auto |
+| Placement of Oy axe | — | — | Auto |
+| Format of numbers on Ox axe | — | — | Generic |
+| Format of numbers on Oy axe | — | — | Generic |
+| Width of grid lines, px* | 1 | 10 | 1 |
+| Color of primary grid lines | — | — | White (background) |
+| Color of secondary grid lines | — | — | White (background) |
+| Width of curve’s caption | 0 | 200 | — |
+| Font of curve’s caption | — | — | Arial |
+| Font size of curve’s caption* | 4 | 36 | 9 |
+| Style of curve’s caption | — | — | Default |
+| Color of curve’s caption | — | — | Black |
+| Font of axe’s caption | — | — | Arial |
+| Font size of axe’s caption* | 4 | 36 | 8 |
+| Style of axe’s caption | — | — | Default |
+| Color of axe’s caption | — | — | Color |
+| Width of curve’s line, px* | 1 | 10 | 1 |
+| Style of curve | — | — | Line without markers |
+| Curve’s marker | 1 | 6 + number of successfully loaded marker images | 1 (square) |
+| Size of image of additional marker, px | 3 × 3 | 17 × 17 | — |
+| Dimensions of image of single curve, size of the diagram area, size of the saved image, px* | 100 × 100 | 10000 × 10000 | 500 × 500 |
+| Offset the curve image from the top left edge of the diagram, px* | (0, 0) | (9900, 9900) | (0, 0) |
+| Scale of the saved image | 1,0 | 10,0 | 1,0 |
 
 [:arrow_double_up:](#contents)
 
@@ -972,20 +972,20 @@ it’s possible to indicate supported image types; the app will rely on the spec
 
 # 6. File format specifications
 
-## 6.1. Файлы данных Geomag data drawer
+## 6.1. Geomag data drawer files
 
-Спецификация формата `.gdd` на данный момент недоступна к публикации. Не рекомендуется самостоятельное внесение изменений в файлы
-данных Geomag data drawer во избежание потерь данных.
+The `.gdd` format specification is not currently available for publication. It’s not recommended to make changes
+to Geomag data drawer data files yourself to avoid data loss.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 6.2. Файлы данных в формате Microsoft Office Excel
+## 6.2. Microsoft Office Excel data files
 
-В файле `.xls` или `.xlsx` должна храниться одна таблица. Пустые поля, пропуски и иные элементы будут замещены нулями.
-Таблица должна располагаться на первом листе файла. Допускаются текстовые пояснения в первых строках файла. Допускается использование
-формул без зависимостей, для разрешения которых необходим запуск Microsoft Office Excel. Допускается использование форматирования листа.
+A `.xls` or `.xlsx` file must contain one table. Empty fields, gaps and other elements will be replaced with zeros.
+The table must be located on the first sheet of the file. Text explanations are allowed in the first lines of the file.
+You can use formulas without dependencies that require running Microsoft Office Excel to resolve. You can use sheet formatting.
 
 [:arrow_double_up:](#contents)
 
