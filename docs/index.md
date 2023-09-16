@@ -26,24 +26,26 @@
     - [“Generate curves”](#generate-curves)
     - [“Settings”](#settings)
     - [“Exit”](#exit)
-- Operations
+    - Operations
     - [“Add curve or object”](#add-curve-or-object)
     - [“Parametric curves addition”](#parametric-curves-addition)
     - [“Select curve’s data columns”](#select-curves-data-columns)
     - [“Merge curves or objects”](#merge-curves-or-objects)
     - [“Remove curves or objects”](#remove-curves-or-objects)
     - [“Edit diagram data”](#edit-diagram-data)
-    - [“Load style”](#section-31)
-    - [“Save style”](#section-32)
-    - [“Reset style”](#section-33)
-    - [“Save curves template”](#section-34)
-- Help
+    - [“Load style”](#load-style)
+    - [“Save style”](#save-style)
+    - [“Reset style”](#reset-style)
+    - [“Save curves addition template”](#save-curves-addition-template)
+    - [«Заменить шаблон добавления кривых»](#section-35)
+    - [«Сбросить шаблон добавления кривых»](#section-36)
+    - Additional
+    - [“Merge data tables”](#section-40)
+    - [“Create vector image”](#section-41)
+    - Help
     - [“About / Help”](#section-36)
     - [Menu item with interface language selection](#section-37)
     - [“Associate files”](#section-38)
-    - Optional
-    - [“Join data tables”](#section-40)
-    - [“Create vector image”](#section-41)
 - [Hardware and software requirements and app contents](#section-42)
     - App contents
     - [Files and directories](#section-44)
@@ -700,48 +702,48 @@ The “Cancel changes” button returns the diagram to its original state.
 
 ---
 
-## 3.2.7. «Загрузить стиль»
+## 3.2.7. “Load style”
 
-Вызывает стандартное окно открытия файла, позволяющее выбрать необходимый стиль отображения выбранных кривых и объектов. Если файл стиля `.gds`
-не доступен, его загрузка не выполняется; если файл повреждён, его загрузка выполняется настолько, насколько это возможно.
+Calls up a standard file opening window, allowing you to select the desired display style for selected curves and objects.
+If a `.gds` style file is not available, it’s not loaded; if the file is damaged, it’s loaded as best as possible.
 
-Далее пользователю предлагается выбрать, каким образом следует интерпретировать загруженный стиль:
-- *Применить к выделенным кривым и объектам*. В этом случае номера столбцов данных, сохранённые в файле стиля, игнорируются, а стиль
-применяется ко всем выделенным кривым и объектам в порядке прямой нумерации.
-- *Добавить на диаграмму кривые, заявленные в файле стиля*. В этом случае, если указанные в файле стиля столбцы данных доступны, будут добавлены
-соответствующие кривые, и уже к ним будут применены содержащиеся в файле стили.
+Next, user is asked to choose how to interpret the loaded style:
+- *Apply to selected curves and objects*. In this case, the data column numbers stored in the style file are ignored,
+and the style is applied to all selected curves and objects in direct numbering order.
+- *Add curves specified in the style file to the diagram*. In this case, if the data columns specified in the style
+file are available, the corresponding curves will be added, and the styles contained in the file will be applied to them.
 
-В стандартную комплектацию программы файлы стилей не входят.
-
-[:arrow_double_up:](#contents)
-
----
-
-## 3.2.8. «Сохранить стиль»
-
-Вызывает стандартное окно сохранения файла, позволяющее выбрать необходимое местоположение и имя для нового файла стиля. В файл сохраняются
-все параметры в том состоянии, в котором они находились на момент выбора данного пункта меню? применительно ко всем выбранным в данный момент
-кривым и объектам. Это позволяет создавать как стили отображения отдельных зависимостей, так и стили для представления групп файлов данных
-одинакового формата.
+Style files aren’t included in the standard package of the application.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.2.9. «Сбросить стиль»
+## 3.2.8. “Save style”
 
-Пункт меню возвращает все параметры стиля всех выбранных кривых и объектов, кроме границ построения, на стандартные значения
+Calls up the standard file save window, allowing you to select the desired location and name for the new style file.
+All parameters are saved to the file in the state in which they were at the time of selecting this menu item in relation
+to all currently selected curves and objects. This allows you to create both styles for displaying individual dependencies,
+as well as styles for representing groups of data files of the same format.
+
+[:arrow_double_up:](#contents)
+
+---
+
+## 3.2.9. “Reset style”
+
+The menu item returns all style parameters of all selected curves and objects, except for plotting range, to standard values
 (see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide).
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.2.10. «Сохранить шаблон добавления кривых»
+## 3.2.10. “Save curves addition template”
 
-Позволяет сохранить шаблон добавления кривых на диаграмму, который затем может быть использован в функции
-[параметрического добавления кривых](#parametric-curves-addition).
-В файл записываются базовые параметры для всех кривых, добавленных на диаграмму к моменту вызова функции.
+Allows you to save a template for adding curves to a diagram, which can then be used in a function of
+[parametric curves addition](#parametric-curves-addition).
+The file records the basic parameters for all curves added to the diagram at the time the option is called.
 
 [:arrow_double_up:](#contents)
 
