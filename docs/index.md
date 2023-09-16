@@ -886,23 +886,17 @@ The app supports following formats:
 
 ## 4.4. Support for Microsoft Office Excel formats
 
-Support for Microsoft Office Excel ’97 and ’07 table files is performed using the ExcelDataReader library version 3.4
-(the `ExcelDataReader.dll`, `ExcelDataReader.DataSet.dll` libraries) and an auxiliary library that provides file archiving
+Support for Microsoft Office Excel ’97 and ’07 table files is performed using the ExcelDataReader library
+(`ExcelDataReader.dll` and `ExcelDataReader.DataSet.dll`, version 3.6) and an auxiliary library that provides file archiving
 functionality to support the MS Excel ’07 format (library `ICSharpCode.SharpZipLib.dll`, version 0.86.0.518).
 
-Both libraries are distributed under the MIT license. Below is its text ([original](https://opensource.org/license/mit)).
+Both libraries are distributed under the MIT license through the **nuget** system. Below is its text ([original](https://opensource.org/license/mit)).
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the «Software»), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 > 1. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 > The software is provided «as is», without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
 
-A set of libraries is available [here](https://github.com/ExcelDataReader/ExcelDataReader). The library code isn’t included
-in the executable file (located in the libraries). The included libraries were not modified during the development of the app.
-
-By including the text of the MIT license into this guide, and also without using methods to protect the app source code
-from reverse engineering (the code is not obfuscated or packaged; it’s available for reverse engineering using free software,
-which was verified using the example of ILSpy; the extracted code is informative), we consider the license requirements
-libraries included in the build are ***satisfied***.
+App can work without these libraries, but loading of files `.xls` and `.xlsx` will be unavailable.
 
 [:arrow_double_up:](#contents)
 

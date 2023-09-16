@@ -866,28 +866,17 @@ Geomag data drawer поддерживает следующие форматы п
 
 ## 4.4. Поддержка форматов Microsoft Office Excel
 
-Поддержка файлов таблиц Microsoft Office Excel ’97 и ’07 выполняется с помощью библиотеки ExcelDataReader версии 3.4 
-(библиотеки `ExcelDataReader.dll`, `ExcelDataReader.DataSet.dll`) и вспомогательной библиотеки, предоставляющей функционал архивирования файлов
+Поддержка файлов таблиц Microsoft Office Excel ’97 и ’07 выполняется с помощью библиотеки ExcelDataReader
+(библиотеки `ExcelDataReader.dll` и `ExcelDataReader.DataSet.dll`, версия 3.6) и вспомогательной библиотеки, предоставляющей функционал архивирования файлов
 для поддержки формата MS Excel ’07 версии 0.86.0.518 (библиотека `ICSharpCode.SharpZipLib.dll`).
 
-Обе библиотеки распространяются на основе лицензии МТИ (MIT license). Ниже приведён её текст ([оригинал](https://opensource.org/license/mit)).
-
-> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the «Software»), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-> 1. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-> The software is provided «as is», without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
-
-Перевод:
+Обе библиотеки распространяются на основе лицензии МТИ (MIT license) через систему **nuget**. Ниже приведён её текст ([оригинал](https://opensource.org/license/mit)).
 
 > Данная лицензия разрешает лицам, получившим копию данного программного обеспечения и сопутствующей документации (в дальнейшем именуемыми «Программное Обеспечение»), безвозмездно использовать Программное Обеспечение без ограничений, включая неограниченное право на использование, копирование, изменение, добавление, публикацию, распространение, сублицензирование и/или продажу копий Программного Обеспечения, а также лицам, которым предоставляется данное Программное Обеспечение, при соблюдении следующих условий:
 > 1. Указанное выше уведомление об авторском праве и данные условия должны быть включены во все копии или значимые части данного Программного Обеспечения.
 > Данное программное обеспечение предоставляется «как есть», без каких-либо гарантий, явно выраженных или подразумеваемых, включая гарантии товарной пригодности, соответствия по его конкретному назначению и отсутствия нарушений, но не ограничиваясь ими. Ни в каком случае авторы или правообладатели не несут ответственности по каким-либо искам, за ущерб или по иным требованиям, в том числе, при действии контракта, деликте или иной ситуации, возникшим из-за использования программного обеспечения или иных действий с программным обеспечением.
 
-Комплект библиотек доступен [здесь](https://github.com/ExcelDataReader/ExcelDataReader). Код библиотек не включён в исполняемый файл (находится в библиотеках).
-Библиотеки, включённые в комплектацию, не модифицировались при разработке приложения.
-
-Включив текст лицензии MIT в это руководство, а также не использовав методы защиты исходного кода программы от реинжиниринга (код не обфусцирован и не упакован;
-доступен для реинжиниринга с помощью бесплатных программных средств, что проверено на примере ILSpy; извлекаемый код информативен), считаем требования лицензий
-библиотек, включённых в сборку, ***выполненными***.
+Приложение может работать без указанных библиотек, но загрузка файлов `.xls` и `.xlsx` будет недоступна.
 
 [:arrow_double_up:](#section)
 
