@@ -1,5 +1,5 @@
 # Geomag data drawer: complete user guide
-> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 11.08.2023; 0:51
+> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 16.09.2023; 14:41
 
 # Contents
 - [General information](#general-information)
@@ -344,8 +344,6 @@ in accordance with location of the notches on the axes. The “×” button or s
 [:arrow_double_up:](#contents)
 
 ---
-:warning: ***Translation is in progress*** :warning:
----
 
 ## 2.10. Customizing fonts and colors for captions
 
@@ -621,6 +619,8 @@ the corresponding menu item.
 
 [:arrow_double_up:](#contents)
 
+---
+:warning: ***Translation is in progress*** :warning:
 ---
 
 ## 3.2.3. «Выбор столбцов данных кривой»
