@@ -29,10 +29,10 @@
 - Operations
     - [“Add curve or object”](#add-curve-or-object)
     - [“Parametric curves addition”](#parametric-curves-addition)
-    - [“Select curve data columns”](#section-27)
-    - [“Merge curves or objects”](#section-28)
-    - [“Delete curves or objects”](#section-29)
-    - [“Edit diagram data”](#section-30)
+    - [“Select curve’s data columns”](#select-curves-data-columns)
+    - [“Merge curves or objects”](#merge-curves-or-objects)
+    - [“Remove curves or objects”](#remove-curves-or-objects)
+    - [“Edit diagram data”](#edit-diagram-data)
     - [“Load style”](#section-31)
     - [“Save style”](#section-32)
     - [“Reset style”](#section-33)
@@ -623,80 +623,78 @@ the corresponding menu item.
 :warning: ***Translation is in progress*** :warning:
 ---
 
-## 3.2.3. «Выбор столбцов данных кривой»
+## 3.2.3. “Select curve’s data columns”
 
-Пункт меню позволяет изменить столбцы данных, использованные при построении выбранной кривой. При этом будет вызвано окно, аналогичное тому, которое
-вызывается при простом добавлении кривой. Здесь потребуется указать, какой столбец из файла данных будет новым столбцом абсцисс, а какой – столбцом
-ординат в выбранной зависимости. Данная опция может быть полезна в случае, если требуется быстро построить новую кривую на месте имеющейся,
-используя настройки стиля и расположение последней.
-
-[:arrow_double_up:](#contents)
-
----
-
-## 3.2.4. «Совместить кривые или объекты»
-
-Пункт меню позволяет совместить две кривые, т.е. расположить их друг над другом и опционально задать общие оси. Функция требует, чтобы перед
-её вызовом были выделены ровно две кривые; в противном случае совмещение выполнено не будет.
-
-Окно параметров совмещения кривых представлено на рисунке ниже.
-
-![image063](https://user-images.githubusercontent.com/20893717/147869889-1bf8e42c-f477-4abd-8fe7-b186be280f91.png)
-
-Пользователь может указать, на месте какой из кривых следует расположить результат совмещения. Также можно выбрать, какая ось будет общей
-для двух кривых, и следует ли установить цвет подписей осей и подписи кривой в цвет самой кривой для повышения наглядности диаграммы.
-
-При совмещении общим осям кривых присваиваются одинаковые параметры (максимальное и минимальное значение, число засечек и расположение),
-а разные оси разводятся по краям изображения кривой. Общими также становятся размеры изображений кривых, значение параметра транспонирования кривой
-и параметры осей; размещение подписей кривых выполняется в автоматическом режиме.
-
-Данная функция может быть применена и к графическим объектам, если это необходимо. Обратите внимание, что процедура не является необратимой,
-т.к. всего лишь меняет расположение и стили отображения кривых на диаграмме.
+The menu item allows you to change the data columns used to plot the selected curve. This will open a window similar
+to the one that is called up when simply adding a curve. Here you will need to indicate which column from the data file
+will be the new abscissa column, and which will be the ordinate column in the selected relation. This option can be useful
+if you need to quickly create a new curve in place of an existing one, using the style settings and the location of the latter.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.2.5. «Удалить кривые или объекты»
+## 3.2.4. “Merge curves or objects”
 
-Пункт меню выполняет функции, аналогичные описанным в [пункте 2.2](#section-4) данного руководства.
+The menu item allows you to combine two curves, i.e. place them on top of each other and optionally set common axes.
+The function requires that exactly two curves be selected before calling it; otherwise the alignment will not be performed.
+
+The curve alignment parameters window is shown in the figure below.
+
+<img src="/GeomagDataDrawer/img/3_63_en.png" />
+
+User can specify where the alignment result should be placed at which of the curves. You can also choose which axis
+is shared between two curves, and whether to set the color of the axis labels and curve labels to the color of
+the curve itself to enhance the visualization of the diagram.
+
+When combining, the common axes of the curves are assigned the same parameters (maximum and minimum values,
+number of ticks, and location), and different axes are placed along the edges of the curve image. The dimensions of the curve
+images, the value of the curve transposition parameter, and the axes parameters also become common; placement of curve labels
+is performed automatically.
+
+This function can also be applied to graphic objects, if necessary. Please note that the procedure is not irreversible,
+because it just changes the location and display styles of curves on the diagram.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.2.6. «Редактировать данные диаграммы»
+## 3.2.5. “Remove curves or objects”
 
-Пункт меню вызывает окно редактирования данных диаграммы:
+The menu item performs functions similar to those described in
+[clause 2.2](#removing-curves-and-objects-from-diagram) of this guide.
 
-![image040](https://user-images.githubusercontent.com/20893717/147869954-ae07465f-d803-4a64-ac7d-239b27fc1f3b.png)
+[:arrow_double_up:](#contents)
 
-> ***Данная опция может работать медленно и при вызове на некоторое время замораживать интерфейс программы.
-> Это связано с особенностями механизмов работы редактора и не является сбоем или ошибкой.***
+---
 
-Данные в таблице представлены в том виде, в котором они были получены из файла данных. Для редактирования каждого отдельного значения достаточно выделить
-соответствующую ячейку и начать клавишу `[F2]` либо дважды щёлкнуть её. Дробные значения должны вводиться с десятичным разделителем, указанным
-в настройках ОС. Обо всех ошибках при заполнении ячеек таблицы пользователь извещается или сразу при попытке покинуть ячейку, или при попытке
-сохранить внесённые изменения.
+## 3.2.6. “Edit diagram data”
 
-Доступно также редактирование имён столбцов данных. Для этого достаточно дважды щёлкнуть по заголовку столбца, название которого требуется изменить.
+The menu item opens a window for editing diagram data:
 
-Для самой таблицы доступны следующие операции:
-- Перемещение текущей выбранной строки на одну позицию вверх (кнопка
-![image041](https://user-images.githubusercontent.com/20893717/147870027-ca60fb71-6be0-42c2-b173-64889eda63fd.png)).
-В качестве текущей здесь и далее выступает последняя выделенная строка;
-- Перемещение текущей выбранной строки на одну позицию вниз (кнопка
-![image042](https://user-images.githubusercontent.com/20893717/147870034-8aaaf99a-2bd1-4065-a073-1658267f35f0.png));
-- Добавление строки перед текущей выбранной (кнопка
-![image043](https://user-images.githubusercontent.com/20893717/147870039-c363440c-acad-4f33-9157-867ca20e7d92.png));
-- Добавление строки после текущей выбранной (кнопка
-![image044](https://user-images.githubusercontent.com/20893717/147870051-fb300b87-8d6d-4661-b8df-dda21a72f0e1.png));
-- Удаление выбранных строк (кнопка
-![image045](https://user-images.githubusercontent.com/20893717/147870055-a2c9c3ff-c394-4ff8-ac07-b00867e873e3.png)).
-Удаляются все затронутые выделением строки. То, как при этом выделены столбцы, не имеет значения.
+<img src="/GeomagDataDrawer/img/3_40_en.png" />
 
-Кнопка «Сохранить изменения» в случае их корректности применяет внесённые изменения к данным диаграммы и инициирует её перерисовку.
-Кнопка «Отменить изменения» возвращает диаграмму в исходное состояние.
+> ***This option may work slowly and freeze the app interface for a while when called.
+> This is due to the peculiarities of the editor’s operating mechanisms and is not a failure or error***
+
+The data in the table is presented as it was obtained from the data file. To edit each individual value, simply select
+the corresponding cell and press the `[F2]` key or double-click it. Fractional values must be entered with the decimal
+separator specified in the OS settings. The user is notified of all errors when filling out table cells either immediately
+when trying to leave the cell, or when trying to save the changes made.
+
+You can also edit data column names. To do this, just double-click on the header of the column whose name you want to change.
+
+The following operations are available for the table itself:
+- Move the currently selected line one position up (button <img src="/GeomagDataDrawer/img/3_41.png" />).
+Hereinafter, the last selected line is used as the current line.
+- Move the currently selected line one position down (button <img src="/GeomagDataDrawer/img/3_42.png" />).
+- Add a line before the currently selected one (button <img src="/GeomagDataDrawer/img/3_43.png" />).
+- Add a line after the currently selected one (button <img src="/GeomagDataDrawer/img/3_44.png" />).
+- Delete selected rows (button <img src="/GeomagDataDrawer/img/3_45.png" />).
+All affected rows are deleted. It doesn’t matter in what order columns are selected.
+
+The “Save changes” button, if correct, applies the changes made to the diagram data and initiates its redrawing.
+The “Cancel changes” button returns the diagram to its original state.
 
 [:arrow_double_up:](#contents)
 
