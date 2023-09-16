@@ -22,12 +22,12 @@
     - [“Load from clipboard”](#load-from-clipboard)
     - [“Save data file”](#save-data-file)
     - [“Save diagram”](#save-diagram)
-    - [“Close diagram”](#section-20)
-    - [“Generate curves”](#section-21)
-    - [“Program settings”](#section-22)
-    - [“Exit”](#section-23)
+    - [“Close diagram”](#close-diagram)
+    - [“Generate curves”](#generate-curves)
+    - [“Settings”](#settings)
+    - [“Exit”](#exit)
 - Operations
-    - [“Add curve or object”](#section-25)
+    - [“Add curve or object”](#add-curve-or-object)
     - [“Parametric curves addition”](#parametric-curves-addition)
     - [“Select curve data columns”](#section-27)
     - [“Merge curves or objects”](#section-28)
@@ -411,7 +411,7 @@ the corresponding menu.
     - Save diagram (`[Ctrl]` + `[I]`);
     - Close diagram (`[Ctrl]` + `[W]`);
     - Generate curves (`[Ctrl]` + `[G]`);
-    - Program settings (`[Ctrl]` + `[P]`);
+    - Settings (`[Ctrl]` + `[P]`);
     - Exit (`[Ctrl]` + `[Q]`).
 - Operations; includes submenu:
     - Add curve or object (`[F5]`);
@@ -529,91 +529,95 @@ The “Save” button opens a standard save window; the “Cancel” button abor
 
 ---
 
-## 3.1.5. «Закрыть диаграмму»
+## 3.1.5. “Close diagram”
 
-Меню закрывает текущую диаграмму и возвращает программу в начальное состояние. Поля настроек и пункты меню, связанные с сохранением, блокируются.
+The menu closes the current diagram and returns the app to its initial state. Settings fields and menu items related
+to saving are blocked.
 
-> ***Все несохранённые данные при этом теряются, если пользователь соглашается с соответствующим предупреждением.***
-
-[:arrow_double_up:](#contents)
-
----
-
-## 3.1.6. «Сгенерировать кривые»
-
-Вызывает окно, позволяющее задать аналитические функции и диапазон генерации данных.
-
-![image081](https://user-images.githubusercontent.com/20893717/147869357-a560690c-c492-4073-9ceb-a9e2f2b35661.png)
-
-Пользователь может задать функции, табличное представление которых требуется рассчитать, и указать диапазон построения. В случае обнаружения ошибок
-при составлении функции пояснительные сообщения отображаются под полем ввода функции. Проверка корректности задания функции выполняется по нажатию
-кнопки «+» или клавиши [Enter]; функция при этом добавляется в список проверенных функций. Количество добавляемых кривых ограничено
-(see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide). Корректность диапазона
-проверяется при нажатии кнопки «ОК».
-
-Кнопка «ОК» запускает генерацию и передаёт данные на отрисовку в главное окно программы. После этого становятся доступны все основные функции меню.
-Кнопка «Отмена» возвращает программу в исходное состояние.
-
-> ***Все несохранённые данные при этом теряются, если пользователь соглашается с соответствующим предупреждением.***
+> ***All unsaved data is lost if the user agrees to the corresponding warning***
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.1.7. «Настройки программы»
+## 3.1.6. “Generate curves”
 
-Вызывает окно настроек программы.
+Calls up a window that allows you to set analytical functions and data generation range.
 
-![image017](https://user-images.githubusercontent.com/20893717/147869561-82181086-9a87-410a-adff-bcb0d0a326b2.png)
+<img src="/GeomagDataDrawer/img/3_81_en.png" />
 
-Пользователь может:
-- Установить обязательный запрос на завершение работы с программой. Если эта опция отключена, выход из программы может быть произведён,
-в том числе – случайным закрытием главного окна, что может привести к потере важных данных (если не установлена следующая опция).
-- Включить функцию автоматического восстановления состояния программы. Если она включена, последние загруженные данные и отображаемые кривые будут
-восстановлены программой в том же виде при следующем запуске.
-- Включить функцию автоматического добавления кривых на диаграмму при загрузке файла данных (см. раздел
-[«Главный интерфейс программы»](#section-2) данного руководства).
-- Включить функцию сохранения названий столбцов данных в файлах данных текстовых форматов.
-- Отключить функцию позиционирования диаграмм мышью. Рекомендуется при работе на планшетных ПК во избежание конфликтов жестов.
+User can specify the functions whose tabular representation needs to be calculated and specify the plotting range.
+If errors are detected when composing a function, explanatory messages are displayed below the function input field.
+The correctness of the function setting is checked by pressing the “+” button or the [Enter] key; the function is added
+to the list of tested functions. The number of curves you can add is limited (see section
+[“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide). Range correctness
+is checked when you click “OK” button.
 
-Кнопка «Сохранить» вызывает обновление конфигурации программы; кнопка «Отмена» позволяет покинуть окно настроек без их изменения.
+The “OK” button starts generation and transfers data for drawing to the main app window. After this, all main menu functions
+become available. The “Cancel” button returns the app to its previous state.
 
-[:arrow_double_up:](#contents)
-
----
-
-## 3.1.8. «Выход»
-
-Позволяет завершить работу с программой. В зависимости от настроек, завершение работы может сопровождаться сохранением состояния диаграммы и запросом
-на выход из приложения. При этом программа сохраняет размеры и положение главного окна; они восстанавливаются при следующем запуске.
-
-> ***Все несохранённые данные при этом теряются, если пользователь соглашается с соответствующим предупреждением.***
+> ***All unsaved data is lost if the user agrees to the corresponding warning***
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.2. «Операции»
+## 3.1.7. “Settings”
 
-## 3.2.1. «Добавить кривую или объект»
+Calls up the app settings window.
 
-Пункт меню выполняет функции, аналогичные описанным в [пункте 2.1](#section-3) данного руководства.
+<img src="/GeomagDataDrawer/img/3_17_en.png" />
+
+The user can:
+- Set a mandatory request to exit the app. If this option is disabled, the app can be exited, including by accidentally
+closing the main window, which can lead to the loss of important data (unless the following option is set).
+- Enable the function of automatic restoration of the app state. If enabled, the last loaded data and displayed curves
+will be restored by the app in the same form the next time it is launched.
+- Enable the function of automatically adding curves to the diagram when loading a data file (see section
+[“Main app interface”](#main-app-interface) of this guide).
+- Enable the function of saving data column names in text data files.
+
+The “Save” button causes the app configuration to be updated; the “Cancel” button allows you to leave the settings
+window without changing them.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.2.2. «Parametric curves addition»
+## 3.1.8. “Exit”
 
-Если необходимо быстро добавить несколько однотипных диаграмм и также быстро расположить их на листе, можно воспользоваться параметрическим
-добавлением кривых. С помощью соответствующего диалогового окна можно задать номера столбцов данных, размеры каждого изображения и его положение,
-а также подпись к нему.
+Allows you to exit the app. Depending on the settings, exit may be accompanied by saving the diagram state and
+a request to exit. In this case, the app saves the size and position of the main window; they are restored at the next startup.
 
-![image021](https://user-images.githubusercontent.com/20893717/147869713-de608939-1905-4e37-96d0-aca05e7b1943.png)
+> ***All unsaved data is lost if the user agrees to the corresponding warning***
 
-Если требуется добавить несколько диаграмм за один раз, можно воспользоваться опцией загрузки параметров из файла. С этой
-целью пользователь может создать текстовый документ, строки которого сформированы по правилам, указанным в диалоговом окне, и загрузить его, нажав
-кнопку «Файл». Кроме того, файл, подходящий для этой функции, может быть создан с помощью соответствующего пункта меню.
+[:arrow_double_up:](#contents)
+
+---
+
+## 3.2. “Operations”
+
+## 3.2.1. “Add curve or object”
+
+The menu item performs functions similar to those described in
+[clause 2.1](#adding-a-curve-or-object-to-a-diagram) of this guide.
+
+[:arrow_double_up:](#contents)
+
+---
+
+## 3.2.2. “Parametric curves addition”
+
+If you need to quickly add several diagrams of the same type and also quickly arrange them on a sheet, you can use
+the parametric addition of curves. Using the corresponding dialog box, you can specify the numbers of data columns,
+the dimensions of each image and its position, as well as its caption.
+
+<img src="/GeomagDataDrawer/img/3_21_en.png" />
+
+If you need to add several diagrams at once, you can use the option to load parameters from a file. For this purpose,
+the user can create a text document, the lines of which are formed according to the rules specified in the dialog box,
+and load it by clicking the “File” button. In addition, a file suitable for this function can be created using
+the corresponding menu item.
 
 [:arrow_double_up:](#contents)
 
