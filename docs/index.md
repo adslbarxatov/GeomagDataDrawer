@@ -43,16 +43,15 @@
     - [“Merge data tables”](#merge-data-tables)
     - [“Create vector image”](#create-vector-image)
     - Help
-    - [“About / Help”](#about-help)
-    - [Menu item with interface language selection](#section-37)
-    - [“Associate files”](#section-38)
-- [Hardware and software requirements and app contents](#section-42)
+    - [“About / Help”](#about--help)
+    - [Menu item with interface language selection](#menu-item-with-interface-language-selection)
+    - [“Associate files”](#associate-files)
+- [Hardware and software requirements and app contents](#hardware-and-software-requirements-and-app-contents)
     - App contents
-    - [Files and directories](#section-44)
-    - [Supported data formats](#section-45)
-    - [Support for Microsoft Office Excel formats](#microsoft-office-excel)
-    - [Requirements for installing the app](#section-46)
-    - [Working with the app from the command line](#section-47)
+    - [Files and directories](#files-and-directories)
+    - [Supported file formats](#supported-file-formats)
+    - [Support for Microsoft Office Excel formats](#support-for-microsoft-office-excel-formats)
+    - [Working with the app from the command line](#working-with-the-app-from-the-command-line)
 - [Limits and default parameter values](#limits-and-default-parameter-values)
 - [File format specifications](#file-format-specifications)
     - Geomag data drawer files
@@ -825,124 +824,102 @@ The menu item allows you to call up this user manual, as well as access other pr
 
 ---
 
-## 3.4.2. Пункт меню с выбором языка интерфейса
+## 3.4.2. Menu item with interface language selection
 
-Пункт меню позволяет выбрать язык подписей и подсказок интерфейса программы. Язык меняется сразу, без перезапуска программы, после чего сохраняется
-в конфигурации приложения.
+The menu item allows you to select the language of captions and tooltips of the app interface. The language changes
+immediately, without restarting the app, and is then saved in the app configuration.
 
-В текущей версии доступны следующие языки:
-- Русский (Россия);
-- Английский (США).
-
-[:arrow_double_up:](#contents)
-
----
-
-## 3.4.3. «Ассоциировать файлы»
-
-Пункт меню позволяет закрепить приложение в качестве стандартного для открытия файлов `.gdd` и заблокировать от ручного редактирования
-файлы стилей `.gds`. Благодаря этому файлы диаграмм можно открывать двойным щелчком, без отдельного входа в приложение.
+The following languages are available in the current version:
+- Russian (Russia);
+- English (USA).
 
 [:arrow_double_up:](#contents)
 
 ---
 
-# 4. Аппаратно-программные требования и комплектация программы
+## 3.4.3. “Associate files”
 
-## 4.1. Комплектация программы
-
-В стандартную комплектацию программы входят следующие файлы:
-- `GeomagDataDrawer.exe` – исполняемый модуль программы;
-- `ExcelDataReader.dll`, `ExcelDataReader.DataSet.dll`, `ICSharpCode.SharpZipLib.dll` – файлы библиотек, обеспечивающих поддержку формата
-данных Microsoft Office Excel. Приложение может функционировать без поддержки этого формата.
+The menu item allows you to set the app as the default one for opening `.gdd` files and block `.gds` style files from manual
+editing. Thanks to this, diagram files can be opened by double-clicking, without having to entering the app separately.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 4.2. Создаваемые файлы и директории
+# 4. Hardware and software requirements and app contents
 
-Программа может создавать следующие файлы и директории:
-- `.gds` – файлы стилей отдельных кривых диаграммы;
-- `.png`, `.svg`, `.emf` – файлы изображений диаграмм;
-- `.gdd`, `*.*`, `.csv` – файлы данных, сохранённые программой;
-- `Backup.gdd` – файл данных для автоматического восстановления состояния программы;
-- `GeomagDataDrawer.txt` – файл шаблона отображения открываемых файлов данных, содержащий описание автоматически добавляемых кривых;
-- `Markers` – директория для хранения дополнительных маркеров.
+## 4.1. App contents
 
-[:arrow_double_up:](#contents)
-
----
-
-## 4.3. Поддерживаемые форматы данных
-
-Программа поддерживает следующие форматы:
-- `.xls`, `.xlsx` – файлы таблиц Microsoft Office Excel ’97 и ’07;
-- `.csv` – файлы табличных данных;
-- `*.*` – файлы произвольных табличных данных или текстовые файлы с доступными для извлечения данными;
-- `.gdd` – файлы данных Geomag data drawer;
-- `.png` – файлы изображений маркеров.
+The standard package of the app includes the following files:
+- `GeomagDataDrawer.exe` – executable module;
+- `ExcelDataReader.dll`, `ExcelDataReader.DataSet.dll`, `ICSharpCode.SharpZipLib.dll` – library files that provide support
+for the Microsoft Office Excel data format. The app can function without support for this format (without these libraries).
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 4.4. Поддержка форматов Microsoft Office Excel
+## 4.2. Files and directories
 
-Поддержка файлов таблиц Microsoft Office Excel ’97 и ’07 выполняется с помощью библиотеки ExcelDataReader версии 3.4 
-(библиотеки `ExcelDataReader.dll`, `ExcelDataReader.DataSet.dll`) и вспомогательной библиотеки, предоставляющей функционал архивирования файлов
-для поддержки формата MS Excel ’07 версии 0.86.0.518 (библиотека `ICSharpCode.SharpZipLib.dll`).
+The app can create the following files and directories:
+- `.gds` – files of styles of individual diagram curves;
+- `.png`, `.svg`, `.emf` – diagram image files;
+- `.gdd`, `*.*`, `.csv` – data files saved by the app;
+- `Backup.gdd` – data file for automatically restoring the app state;
+- `GeomagDataDrawer.txt` – a template file for displaying opened data files, containing a description of automatically added curves;
+- `Markers` – directory for storing additional markers.
 
-Обе библиотеки распространяются на основе лицензии МТИ (MIT license). Ниже приведён её текст ([оригинал](https://opensource.org/licenses/mit-license.php)).
+[:arrow_double_up:](#contents)
+
+---
+
+## 4.3. Supported file formats
+
+The app supports following formats:
+- `.xls`, `.xlsx` – Microsoft Office Excel ’97 and ’07 table files;
+- `.csv` – tabular data files;
+- `*.*` – files of arbitrary tabular data or text files with data available for extraction;
+- `.gdd` – Geomag data drawer data files;
+- `.png` – marker image files.
+
+[:arrow_double_up:](#contents)
+
+---
+
+## 4.4. Support for Microsoft Office Excel formats
+
+Support for Microsoft Office Excel ’97 and ’07 table files is performed using the ExcelDataReader library version 3.4
+(the `ExcelDataReader.dll`, `ExcelDataReader.DataSet.dll` libraries) and an auxiliary library that provides file archiving
+functionality to support the MS Excel ’07 format (library `ICSharpCode.SharpZipLib.dll`, version 0.86.0.518).
+
+Both libraries are distributed under the MIT license. Below is its text ([original](https://opensource.org/license/mit)).
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the «Software»), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 > 1. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 > The software is provided «as is», without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
 
-Перевод:
+A set of libraries is available [here](https://github.com/ExcelDataReader/ExcelDataReader). The library code isn’t included
+in the executable file (located in the libraries). The included libraries were not modified during the development of the app.
 
-> Данная лицензия разрешает лицам, получившим копию данного программного обеспечения и сопутствующей документации (в дальнейшем именуемыми «Программное Обеспечение»), безвозмездно использовать Программное Обеспечение без ограничений, включая неограниченное право на использование, копирование, изменение, добавление, публикацию, распространение, сублицензирование и/или продажу копий Программного Обеспечения, а также лицам, которым предоставляется данное Программное Обеспечение, при соблюдении следующих условий:
-> 1. Указанное выше уведомление об авторском праве и данные условия должны быть включены во все копии или значимые части данного Программного Обеспечения.
-> Данное программное обеспечение предоставляется «как есть», без каких-либо гарантий, явно выраженных или подразумеваемых, включая гарантии товарной пригодности, соответствия по его конкретному назначению и отсутствия нарушений, но не ограничиваясь ими. Ни в каком случае авторы или правообладатели не несут ответственности по каким-либо искам, за ущерб или по иным требованиям, в том числе, при действии контракта, деликте или иной ситуации, возникшим из-за использования программного обеспечения или иных действий с программным обеспечением.
-
-Комплект библиотек доступен [здесь](https://github.com/ExcelDataReader/ExcelDataReader). Код библиотек не включён в исполняемый файл (находится в библиотеках).
-Библиотеки, включённые в комплектацию, не модифицировались при разработке приложения.
-
-Включив текст лицензии MIT в файл справки, а также не использовав методы защиты исходного кода программы от реинжиниринга (код не обфусцирован и не упакован;
-доступен для реинжиниринга с помощью бесплатных программных средств, что проверено на примере ILSpy; извлекаемый код информативен), считаем требования лицензий
-библиотек, включённых в сборку, ***выполненными***.
+By including the text of the MIT license into this guide, and also without using methods to protect the app source code
+from reverse engineering (the code is not obfuscated or packaged; it’s available for reverse engineering using free software,
+which was verified using the example of ILSpy; the extracted code is informative), we consider the license requirements
+libraries included in the build are ***satisfied***.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 4.5. Требования к установке программы
+## 4.5. Working with the app from the command line
 
-Обязательные требования к установке программы:
-- Доступная оперативная память – не менее 256 Мб;
-- Доступное дисковое пространство – не менее 20 Мб;
-- Установленная среда .NET Framework версии 4.8.
-
-Дополнительные требования к установке программы:
-- Наличие свободного места для хранения изображений диаграмм и сохраняемых файлов данных;
-- Наличие видеокарты, способной к достаточно быстрой обработке быстро сменяющихся изображений;
-- Наличие процессора, способного к достаточно быстрой обработке объёмов данных, предоставляемых для построения диаграмм, и соответствующего объёма оперативной памяти;
-- Наличие монитора, поддерживающего достаточно большое разрешение.
-
-[:arrow_double_up:](#contents)
-
----
-
-## 4.6. Работа с программой из командной строки
-
-Варианты использования программы из командной строки:
-- `GeomagDataDrawer` – запуск программы;
-- `GeomagDataDrawer /?` – отображение сообщения с вариантами использования программы из командной строки;
-- `GeomagDataDrawer <имя_файла>` – загрузка файла «имя_файла»;
-- `GeomagDataDrawer <имя_файла> <имя_файла_2> [SLC] [ECC]` – преобразование файлов из первого формата во второй. В качестве конечных файлов
-допускается указание поддерживаемых типов изображений; приложение будет опираться на указанные расширения файлов при преобразовании.
-    - `[SLC]` – количество строк, используемых для поиска имён столбцов; если не указан, считывается из конфигурации приложения;
-    - `[ECC]` – ожидаемое количество столбцов данных (для извлечения); если не указан, считывается из конфигурации приложения.
+Options for using the app from the command line:
+- `GeomagDataDrawer` – run the app;
+- `GeomagDataDrawer /?` – displays a message with options for using the app from the command line;
+- `GeomagDataDrawer <file_name>` – loading the file “file_name”;
+- `GeomagDataDrawer <file_name> <file_name_2> [SLC] [ECC]` – converting files from the first format to the second. As final files
+it’s possible to indicate supported image types; the app will rely on the specified file extensions when converting.
+     - `[SLC]` – number of lines used to search for column names; if not specified, read from the app configuration;
+     - `[ECC]` – expected number of data columns (to be extracted); if not specified, read from the app configuration.
 
 [:arrow_double_up:](#contents)
 
