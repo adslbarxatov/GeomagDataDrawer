@@ -56,8 +56,8 @@
 - [File format specifications](#file-format-specifications)
     - Geomag data drawer files
     - [Microsoft Office Excel data files](#microsoft-office-excel-data-files)
-    - [Data files in Windows CSV format](#windows-csv)
-    - [Files to extract data from](#section-50)
+    - [Data files in Windows CSV format](#data-files-in-windows-csv-format)
+    - [Files to extract data from](#files-to-extract-data-from)
 - [Download links](https://adslbarxatov.github.io/DPArray#geomag-data-drawer)
 - [Русская версия](https://adslbarxatov.github.io/GeomagDataDrawer/ru)
 
@@ -168,7 +168,7 @@ The size of plotting area, and, accordingly, the size of saved image of the diag
 of images of curves and objects. Its lower right corner coincides with the lower right corner of an edge curve image.
 Accordingly, to increase the plotting area, it’s necessary to move this image further to the right and/or down.
 
-Finally, if work on the diagram hasn’t been completed, all data and settings can be saved to the app's own file format,
+Finally, if work on the diagram hasn’t been completed, all data and settings can be saved to the app’s own file format,
 and then restored at the next start. This function is duplicated by the *function of autosave (when closed)
 and auto-recovery (when opened)* of the app state.
 
@@ -184,7 +184,7 @@ of this guide. This will open the addition options window:
 
 <img src="/GeomagDataDrawer/img/2_03_en.png" />
 
-When adding a curve, you’ll need to specify which column from the downloaded data file will be *the abscissa column*
+When adding a curve, you’ll need to specify which column from the loaded data file will be *the abscissa column*
 and which will be *the ordinate column*. When adding an object, you’ll need to select its type (in the current version
 – line (4 types), rectangle, ellipse or text label). The number of curves and objects in the diagram should not
 exceed the maximum allowed (see section [“Limits and default parameter values”](#limits-and-default-parameter-values) of this guide).
@@ -621,8 +621,6 @@ the corresponding menu item.
 [:arrow_double_up:](#contents)
 
 ---
-:warning: ***Translation is in progress*** :warning:
----
 
 ## 3.2.3. “Select curve’s data columns”
 
@@ -991,18 +989,18 @@ You can use formulas without dependencies that require running Microsoft Office 
 
 ---
 
-## 6.3. Файлы данных в формате Windows CSV
+## 6.3. Data files in Windows CSV format
 
-Требуется одинаковое количество числовых значений в строках файла `.csv`. Количество подписей должно совпадать с числом столбцов данных,
-иначе они будут проигнорированы. Значения должны быть разделены точкой с запятой (`;`) в любых количествах, но не менее одного. Десятичным
-признаком может быть точка (`.`) или запятая (`,`). При сохранении файла программа использует запятую. Допускается обычное
-и экспоненциальное представление чисел с дробной частью и без неё (с символами `E` и `e`). Абзацы и посторонние символы будут замещены
-нулевыми значениями. Используется кодовая страница Windows1251.
+The same number of numeric values are required across the lines of the `.csv` file. The number of captions must match
+the number of data columns, otherwise they will be ignored. Values must be separated by semicolons (`;`) in any number,
+but not less than one. The decimal character can be a period (`.`) or a comma (`,`). When saving a file, the app uses
+a comma. Conventional and exponential representation of numbers with and without fractional parts (with symbols `E`
+and `e`) is allowed. Paragraphs and extraneous characters will be replaced with null values.
 
-Пример содержимого файла в формате Windows CSV:
+Example file contents in Windows CSV format:
 
 ```
-Ст.1;Ст.2;Ст.3
+Col.1;Col.2;Col.3
 1;10;40,9
 2;20,1;4.39e-01
 3;0,9;4,33E-1
@@ -1012,21 +1010,21 @@ You can use formulas without dependencies that require running Microsoft Office 
 
 ---
 
-## 6.4. Файлы, из которых необходимо извлечь данные
+## 6.4. Files to extract data from
 
-Используется кодовая страница Windows1251. Символы `0` – `9`, `-`, латинские `e` и `E`, `.` и `,` считаются элементами
-числовых значений. Все остальные символы используются в качестве разделителей. Наборы допустимых символов, которые не являются числами, интерпретируются
-как нулевые значения. Нулевыми значениями замещаются также недостающие значения в строках, если при загрузке файла было задано число столбцов,
-превышающее имеющееся в файле.
+The characters `0` – `9`, `-`, Latin `e` and `E`, `.` and `,` are considered elements of numeric values. All other characters
+are used as delimiters. Sets of valid characters that aren’t numbers are interpreted as null values. Zero values also replace
+missing values in rows if, when loading the file, the number of columns exceeding those available in the file was specified.
 
-Если в строке нет числовых значений, она игнорируется. Если же в строке есть хоть один допустимый символ, она загружается программой. В связи с этим
-перед загрузкой файла настоятельно рекомендуется удалить из него все строки, которые могут быть интерпретированы подобным образом, или воспользоваться
-опцией поиска названий столбцов. В противном случае на диаграмме могут быть отображены некорректные (с точки зрения её смысла) показания, а диапазон
-её построения, рассчитанный с учётом таких данных, может сильно отличаться от требуемого.
+If a line has no numeric values, it is ignored. If the line contains at least one valid character, it is loaded
+by the app. Therefore, before loading the file, it’s strongly recommended to remove any lines from it that could be
+interpreted in this way, or use the option to search for column names. Otherwise, the diagram may display incorrect
+(from the point of view of its meaning) readings, and the range of its plotting, calculated taking into account
+such data, may differ greatly from the expected one.
 
-Пример содержимого файла и его интерпретации:
+Example of file contents and its interpretation:
 
-| Исходные данные | Данные после удаления разделителей | Результат |
+| Initial data | Data after removing delimiters | Result |
 | - | - | - |
 | 1 10 40.9 | 1 10 40.9 | 1,0; 10,0; 40,9 |
 | abcde1 1*0 40,9 | e1 1 0 40,9 | 0,0; 1,0; 0,0; 40,9 |
