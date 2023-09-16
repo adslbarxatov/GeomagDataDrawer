@@ -37,13 +37,13 @@
     - [“Save style”](#save-style)
     - [“Reset style”](#reset-style)
     - [“Save curves addition template”](#save-curves-addition-template)
-    - [«Заменить шаблон добавления кривых»](#section-35)
-    - [«Сбросить шаблон добавления кривых»](#section-36)
+    - [“Replace preview template”](#replace-preview-template)
+    - [“Restore preview template”](#restore-preview-template)
     - Additional
-    - [“Merge data tables”](#section-40)
-    - [“Create vector image”](#section-41)
+    - [“Merge data tables”](#merge-data-tables)
+    - [“Create vector image”](#create-vector-image)
     - Help
-    - [“About / Help”](#section-36)
+    - [“About / Help”](#about-help)
     - [Menu item with interface language selection](#section-37)
     - [“Associate files”](#section-38)
 - [Hardware and software requirements and app contents](#section-42)
@@ -427,7 +427,7 @@ the corresponding menu.
     - Replace preview template;
     - Restore preview template.
 - Additional; includes submenu:
-    - Merge tables;
+    - Merge data tables;
     - Generate vector image.
 - Help; includes submenu:
     - About the app / help (`[F1]`);
@@ -749,62 +749,28 @@ The file records the basic parameters for all curves added to the diagram at the
 
 ---
 
-## 3.2.11. «Заменить шаблон добавления кривых»
+## 3.2.11. “Replace preview template”
 
-Позволяет сохранить шаблон добавления кривых на диаграмму в качестве такового по умолчанию. После выполнения
-этой операции все новые файлы данных, не содержащие собственных стилей отображения, будут отображаться согласно
-вновь заданному шаблону.
-
-[:arrow_double_up:](#section)
-
----
-
-## 3.2.12. «Сбросить шаблон добавления кривых»
-
-Позволяет восстановить стандартный шаблон добавления кривых (восемь первых кривых по четыре в линию).
+Allows you to save the template for adding curves to a diagram as the default one. After this operation is completed,
+all new data files that don’t contain their own display styles will be displayed according to the newly specified template.
 
 [:arrow_double_up:](#section)
 
 ---
 
-## 3.3. «Помощь»
+## 3.2.12. “Restore preview template”
 
-## 3.3.1. «О программе / справка»
+Allows you to restore the standard template for adding curves (the first eight curves, four in a line).
 
-Пункт меню позволяет вызвать данное руководство пользователя, а также получить доступ к другим проектам
-и ресурсам Лаборатории.
-
-[:arrow_double_up:](#contents)
+[:arrow_double_up:](#section)
 
 ---
 
-## 3.3.2. Пункт меню с выбором языка интерфейса
+## 3.3. “Additional”
 
-Пункт меню позволяет выбрать язык подписей и подсказок интерфейса программы. Язык меняется сразу, без перезапуска программы, после чего сохраняется
-в конфигурации приложения.
+## 3.3.1. “Merge data tables”
 
-В текущей версии доступны следующие языки:
-- Русский (Россия);
-- Английский (США).
-
-[:arrow_double_up:](#contents)
-
----
-
-## 3.3.3. «Ассоциировать файлы»
-
-Пункт меню позволяет закрепить приложение в качестве стандартного для открытия файлов `.gdd` и заблокировать от ручного редактирования
-файлы стилей `.gds`. Благодаря этому файлы диаграмм можно открывать двойным щелчком, без отдельного входа в приложение.
-
-[:arrow_double_up:](#contents)
-
----
-
-## 3.4. «Дополнительно»
-
-## 3.4.1. «Соединить таблицы»
-
-Эта функция позволяет объединять таблицы данных различных типов в единый файл. Например, если имеются следующие файлы:
+This feature allows you to combine data tables of different types into a single file. For example, if you have the following files:
 
 ```
   A B
@@ -817,14 +783,14 @@ The file records the basic parameters for all curves added to the diagram at the
 3 2 3 2
 ```
 
-на их основе можно получить следующие итоговые таблицы: без восстановления пропусков
+based on them, you can obtain the following summary tables: *without restoring gaps*
 
 ```
   A B C D E
 1 1 1 8 9 4
 3 6 7 2 3 2
 ```
-и с восстановлением пропусков
+and *with the restoration of gaps*
 
 ```
   A B C D E
@@ -832,18 +798,50 @@ The file records the basic parameters for all curves added to the diagram at the
 2 4 5 0 0 0
 3 6 7 2 3 2
 ```
-Результат будет зависет от выбранных настроек.
+The result will depend on the selected settings.
 
 [:arrow_double_up:](#contents)
 
 ---
 
-## 3.4.2. «Создать векторный рисунок»
+## 3.3.2. “Create vector image”
 
-Этот инструмент позволяет генерировать векторное изображение (`SVG` или `EMF`), используя файл скрипта
-с настраиваемыми параметрами кривых, осей и текстовых меток. С описанием формата скрипта можно ознакомиться
-[здесь](https://github.com/adslbarxatov/GeomagDataDrawer/tree/master/VIGScripts) или путём сохранения
-образца из окна данной функции.
+This tool allows you to generate a vector image (`SVG` or `EMF`) using a script file with customizable parameters for curves,
+axes and text labels. A description of the script format can be found
+[here](https://github.com/adslbarxatov/GeomagDataDrawer/tree/master/VIGScripts) or by saving a sample from the window
+of this function.
+
+[:arrow_double_up:](#contents)
+
+---
+
+## 3.4. “Help”
+
+## 3.4.1. “About / Help”
+
+The menu item allows you to call up this user manual, as well as access other projects and resources of the Laboratory.
+
+[:arrow_double_up:](#contents)
+
+---
+
+## 3.4.2. Пункт меню с выбором языка интерфейса
+
+Пункт меню позволяет выбрать язык подписей и подсказок интерфейса программы. Язык меняется сразу, без перезапуска программы, после чего сохраняется
+в конфигурации приложения.
+
+В текущей версии доступны следующие языки:
+- Русский (Россия);
+- Английский (США).
+
+[:arrow_double_up:](#contents)
+
+---
+
+## 3.4.3. «Ассоциировать файлы»
+
+Пункт меню позволяет закрепить приложение в качестве стандартного для открытия файлов `.gdd` и заблокировать от ручного редактирования
+файлы стилей `.gds`. Благодаря этому файлы диаграмм можно открывать двойным щелчком, без отдельного входа в приложение.
 
 [:arrow_double_up:](#contents)
 
