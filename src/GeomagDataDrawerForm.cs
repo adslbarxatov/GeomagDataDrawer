@@ -39,7 +39,12 @@ namespace RD_AAOW
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			for (int i = 0; i < 4; i++)     // Заглушки
+			// Блокировка формата отображения чисел (для фиксации на NaN, десятичной точке и т. п.;
+			// иначе в редакторе невозможно выставить точки разрыва)
+			Application.CurrentCulture = Localization.GetCulture (SupportedLanguages.en_us);
+
+			// Настройка списков
+			for (int i = 0; i < 4; i++)
 				{
 				OxPlacementCombo.Items.Add (i.ToString ());
 				OyPlacementCombo.Items.Add (i.ToString ());

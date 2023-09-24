@@ -49,9 +49,14 @@ namespace RD_AAOW
 			InitializeComponent ();
 			sourceData = SourceData;
 
-			Localization.SetControlsText (this);  // Кнопки
-			Localization.SetControlsText (ColumnNameInput, MainToolTip);  // Панель имени столбца
-			Localization.SetControlsText (this, MainToolTip); // Подсказки
+			// Кнопки
+			Localization.SetControlsText (this);
+
+			// Панель имени столбца
+			Localization.SetControlsText (ColumnNameInput, MainToolTip);
+
+			// Подсказки
+			Localization.SetControlsText (this, MainToolTip);
 
 			SaveButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Save);
 			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);

@@ -4,6 +4,9 @@ ToDo:
 - Add the runtime image movement?
 - Limit for the data editor?
 
+Version 5.5.1:
+• Fixed problem with NaN values on systems with non-English localizations
+
 Version 5.5:
 • MSO Excel support libraries updated to v 3.6;
 • The translation of the complete user guide for the app to English has been completed

@@ -1,5 +1,5 @@
-# GeomagDataDrawer v 5.5
-> PCC: 00136297212E8A35
+# GeomagDataDrawer v 5.5.1
+> PCC: 00136299ED4221CB
 
 
 Autonomous utility for plotting and preparing of data diagrams.
