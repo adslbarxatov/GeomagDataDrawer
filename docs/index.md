@@ -677,8 +677,10 @@ The menu item opens a window for editing diagram data:
 > This is due to the peculiarities of the editor’s operating mechanisms and is not a failure or error***
 
 The data in the table is presented as it was obtained from the data file. To edit each individual value, simply select
-the corresponding cell and press the `[F2]` key or double-click it. Fractional values must be entered with the decimal
-separator specified in the OS settings. The user is notified of all errors when filling out table cells either immediately
+the corresponding cell and press the `[F2]` key or double-click it. Fractional values should be entered with the decimal
+separator specified in the OS settings. Not-a-number values (line breaks) should be entered as `NaN` (case-sensitive).
+
+User is notified of all errors when filling out table cells either immediately
 when trying to leave the cell, or when trying to save the changes made.
 
 You can also edit data column names. To do this, just double-click on the header of the column whose name you want to change.

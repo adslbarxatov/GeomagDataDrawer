@@ -25,8 +25,6 @@ namespace RD_AAOW
 		// Имена столбцов исходного массива данных
 		private List<string> dataColumnNames = new List<string> ();
 
-		/*#if !DataProcessingOnly*/
-
 		// Массив кривых диаграммы
 		private List<DiagramCurve> curves = new List<DiagramCurve> ();
 
@@ -45,12 +43,14 @@ namespace RD_AAOW
 		// Нижний отступ от края изображения до диаграммы (в долях)
 		private const float BottomMargin = TopMargin + DiagramFieldPart;
 
-		/*#endif*/
+		// Левый отступ от края изображения до диаграммы (в долях)
+		private const float LeftMargin = 0.05f;
 
-		// КОНСТАНТЫ
-		private const float LeftMargin = 0.05f;     // Левый отступ от края изображения до диаграммы (в долях)
-		private const float TopMargin = 0.01f;      // Верхний отступ от края изображения до диаграммы (в долях)
-		private const float DiagramFieldPart = 0.9f;        // Доля поля диаграммы
+		// Верхний отступ от края изображения до диаграммы (в долях)
+		private const float TopMargin = 0.01f;
+
+		// Доля поля диаграммы
+		private const float DiagramFieldPart = 0.9f;
 
 		/// <summary>
 		/// Максимально допустимое количество кривых на диаграмме
@@ -72,13 +72,13 @@ namespace RD_AAOW
 		/// </summary>
 		public const uint MaxDataRows = 20001;
 
-		/*#if !DataProcessingOnly*/
-
 		/// <summary>
 		/// Метод возвращает ссылку на стиль указанной кривой или заданного объекта
 		/// </summary>
-		/// <param name="LineOrObjectNumber">Номер кривой или объекта, стиль которой или которого требуется вернуть</param>
-		/// <returns>Запрошенный стиль или NULL, если номер кривой указан некорректно или список кривых пуст</returns>
+		/// <param name="LineOrObjectNumber">Номер кривой или объекта,
+		/// стиль которой или которого требуется вернуть</param>
+		/// <returns>Запрошенный стиль или NULL, если номер кривой указан некорректно
+		/// или список кривых пуст</returns>
 		public DiagramStyle GetStyle (int LineOrObjectNumber)
 			{
 			if ((LineOrObjectNumber >= lineStyles.Count + additionalObjects.Count) || (LineOrObjectNumber < 0))
@@ -94,8 +94,6 @@ namespace RD_AAOW
 				return additionalObjectsStyles[LineOrObjectNumber - lineStyles.Count];
 				}
 			}
-
-		/*#endif*/
 
 		/// <summary>
 		/// Метод возвращает имя столбца исходных данных
@@ -115,8 +113,6 @@ namespace RD_AAOW
 				}
 			}
 
-		/*#if !DataProcessingOnly*/
-
 		/// <summary>
 		/// Метод возвращает тип дополнительного объекта
 		/// </summary>
@@ -129,8 +125,6 @@ namespace RD_AAOW
 
 			return additionalObjects[(int)ObjectNumber];
 			}
-
-		/*#endif*/
 
 		/// <summary>
 		/// Конструктор. Загружает данные из указанного файла.
@@ -148,8 +142,6 @@ namespace RD_AAOW
 				// Следующие обработки выполняются в данном методе
 				case DataInputTypes.CSV:
 					break;
-
-				/*#if !DataProcessingOnly*/
 
 				// Следующие обработки выполняются в дополнительных методах
 				case DataInputTypes.XLS:
@@ -170,13 +162,12 @@ namespace RD_AAOW
 					LoadGDDFile (DataFileName);
 					return;
 
-				/*#endif*/
-
 				// Остальные файлы не подлежат обработке
 				default:
 					initResult = DiagramDataInitResults.BrokenFile;
 					return;
 				}
+
 			#endregion
 
 			// Попытка открытия файла
@@ -2702,10 +2693,8 @@ namespace RD_AAOW
 					break;
 
 				// Следующие обработки выполняются в дополнительных методах
-				/*#if !DataProcessingOnly*/
 				case DataOutputTypes.GDD:
 					return SaveGDDFile (DataFileName);
-				/*#endif*/
 
 				// Остальные файлы не подлежат обработке
 				default:
