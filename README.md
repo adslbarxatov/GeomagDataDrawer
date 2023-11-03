@@ -1,15 +1,18 @@
-# GeomagDataDrawer v 5.5.3
-> PCC: 001363A8B13CABD7
+# GeomagDataDrawer
+
+## Description
+
+Stand-alone tool for building and designing diagrams based on tabular data.
+Detailed description of the app is available on [its own page](https://adslbarxatov.github.io/GeomagDataDrawer)
+
+&nbsp;
 
 
 
-Autonomous utility for plotting and preparing of data diagrams.
-Detailed description of the app is now available on [its own page](https://adslbarxatov.github.io/GeomagDataDrawer)
+## Описание
 
----
-
-Автономный инструмент построения и оформления диаграмм.
-Подробное описание приложения теперь доступно на [отдельной странице](https://adslbarxatov.github.io/GeomagDataDrawer/ru)
+Автономный инструмент построения и оформления диаграмм на основе табличных данных.
+Подробное описание приложения доступно на [отдельной странице](https://adslbarxatov.github.io/GeomagDataDrawer/ru)
 
 &nbsp;
 

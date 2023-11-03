@@ -4,6 +4,10 @@ ToDo:
 - Add the runtime image movement?
 - Limit for the data editor?
 
+Version 5.5.5:
+• The offline quick help has been discontinued;
+• Completed the process of version control unification
+
 Version 5.5.3:
 • Updates and fixes have been applied to the update polling mechanism, as well as to other auxiliary functions
 

@@ -543,9 +543,6 @@
   <data name="GridTab_GridWidth_TT" xml:space="preserve">
     <value>Поле задаёт толщину линий сетки</value>
   </data>
-  <data name="HelpFileError" xml:space="preserve">
-    <value>Не удалось открыть руководство пользователя. Проверьте ваше интернет-соединение</value>
-  </data>
   <data name="ImageSaveError" xml:space="preserve">
     <value>Не удалось сохранить изображение диаграммы. Возможно, выбранное расположение недоступно для записи, или файл с данным именем уже существует и занят другой программой</value>
   </data>
@@ -1077,12 +1074,6 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   </data>
   <data name="TablesSorting" xml:space="preserve">
     <value>Сортировка строк...</value>
-  </data>
-  <data name="HelpText" xml:space="preserve">
-    <value>Geomag data drawer – программное средство, предназначенное для построения диаграмм на основе табличных данных. Изначально создавался как средство визуализации результатов экспериментальных измерений; может и сейчас быть использован с этой целью. Но не только...</value>
-  </data>
-  <data name="HelpText_TM" xml:space="preserve">
-    <value>Этот инструмент позволяет объединять таблицы данных различных типов в единый файл путём добавления столбцов</value>
   </data>
   <data name="MUpperHelp_MRegister" xml:space="preserve">
     <value>Ассоциировать файлы</value>
