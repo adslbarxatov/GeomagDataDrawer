@@ -69,10 +69,10 @@
 created as a means of visualizing the results of experimental measurements; can still be used for this purpose.
 
 Geomag data drawer supports the following data formats:
-- ***Microsoft Office Excel ’97 and ’07 Spreadsheets*** (`.xls`, `.xlsx`). Support is provided through additional software
+- ***Microsoft Office Excel ’97 and ’07 spreadsheets*** (`.xls`, `.xlsx`). Support is provided through additional software
 (see section [“Hardware and software requirements and app contents”](#section-42) of this guide). The presence of the
 installed Microsoft Office software package is not required.
-- ***Table data in Windows CSV format*** (`.csv`; separators are semicolons).
+- ***Tabular data in Windows CSV format*** (`.csv`; separators are semicolons).
 - In order to expand the capabilities of the app, the ability to ***extract data from files of text formats*** has also been added.
 - In addition, the app has its ***own data storage format***, which includes both the diagram data itself,
 as well as its style and display settings (Geomag data drawer files, `.gdd`).
