@@ -103,17 +103,20 @@ namespace RD_AAOW
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			Localization.SetControlsText (this);    // Кнопки
-			Localization.SetControlsText (MergingAxes); // Панели
-			Localization.SetControlsText (MergingVariant);
+			// Кнопки
+			RDLocale.SetControlsText (this);
 
-			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
-			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
-			this.Text = Localization.GetControlText (this.Name, "T");
+			// Панели
+			RDLocale.SetControlsText (MergingAxes);
+			RDLocale.SetControlsText (MergingVariant);
+
+			ApplyButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK);
+			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
+			this.Text = RDLocale.GetControlText (this.Name, "T");
 
 			// Сохранение параметров
-			FirstLine.Text = Localization.GetControlText (MergingVariant.Name, "Line") + " " + Line1Name;
-			SecondLine.Text = Localization.GetControlText (MergingVariant.Name, "Line") + " " + Line2Name;
+			FirstLine.Text = RDLocale.GetControlText (MergingVariant.Name, "Line") + " " + Line1Name;
+			SecondLine.Text = RDLocale.GetControlText (MergingVariant.Name, "Line") + " " + Line2Name;
 
 			// Запуск
 			this.ShowDialog ();

@@ -66,10 +66,10 @@ namespace RD_AAOW
 			// Инициализация и локазизация формы
 			InitializeComponent ();
 
-			this.Text = Localization.GetControlText ("FormulaEvaluator", "T");
-			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
-			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
-			Localization.SetControlsText (this);
+			this.Text = RDLocale.GetControlText ("FormulaEvaluator", "T");
+			ApplyButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK);
+			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
+			RDLocale.SetControlsText (this);
 
 			StartValue.Maximum = EndValue.Maximum = (decimal)ExpressionEvaluator.EvaluationLimit;
 			StartValue.Minimum = EndValue.Minimum = (decimal)-ExpressionEvaluator.EvaluationLimit;
@@ -164,53 +164,53 @@ namespace RD_AAOW
 			switch (le.FollowingStatus)
 				{
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedConstant:
-					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedConstantError"), le.LastLexeme);
+					InfoLabel.Text = string.Format (RDLocale.GetText ("MisplacedConstantError"), le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedDivisionOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedDivisionOperatorError");
+					InfoLabel.Text = RDLocale.GetText ("MisplacedDivisionOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedExponentiationOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedExponentiationOperatorError");
+					InfoLabel.Text = RDLocale.GetText ("MisplacedExponentiationOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedFunctionCall:
-					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedFunctionCallError"),
+					InfoLabel.Text = string.Format (RDLocale.GetText ("MisplacedFunctionCallError"),
 						le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedLeftParenthesis:
-					InfoLabel.Text = Localization.GetText ("MisplacedLeftParenthesisError");
+					InfoLabel.Text = RDLocale.GetText ("MisplacedLeftParenthesisError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedMinusOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedMinusOperatorError");
+					InfoLabel.Text = RDLocale.GetText ("MisplacedMinusOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedMultiplicationOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedMultiplicationOperatorError");
+					InfoLabel.Text = RDLocale.GetText ("MisplacedMultiplicationOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedNumber:
-					InfoLabel.Text = string.Format (Localization.GetText ("MisplacedNumberError"),
+					InfoLabel.Text = string.Format (RDLocale.GetText ("MisplacedNumberError"),
 						le.LastLexeme);
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedPlusOperator:
-					InfoLabel.Text = Localization.GetText ("MisplacedPlusOperatorError");
+					InfoLabel.Text = RDLocale.GetText ("MisplacedPlusOperatorError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedRightParenthesis:
-					InfoLabel.Text = Localization.GetText ("MisplacedRightParenthesisError");
+					InfoLabel.Text = RDLocale.GetText ("MisplacedRightParenthesisError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.MisplacedVariable:
-					InfoLabel.Text = Localization.GetText ("MisplacedVariableError");
+					InfoLabel.Text = RDLocale.GetText ("MisplacedVariableError");
 					break;
 
 				case LexemesFollowingMatrix.LexemesFollowingStatuses.UnknownLexeme:
-					InfoLabel.Text = string.Format (Localization.GetText ("UnknownLexemeError"),
+					InfoLabel.Text = string.Format (RDLocale.GetText ("UnknownLexemeError"),
 						le.LastLexeme);
 					break;
 				}
@@ -231,25 +231,25 @@ namespace RD_AAOW
 			switch (le.ExpressionStatus)
 				{
 				case LexemesExtractor.ExpressionStatuses.ExpressionIsEmpty:
-					InfoLabel.Text = Localization.GetText ("ExpressionIsEmptyError");
+					InfoLabel.Text = RDLocale.GetText ("ExpressionIsEmptyError");
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.IncorrectExpressionEnd:
-					InfoLabel.Text = string.Format (Localization.GetText ("IncorrectExpressionEndError"),
+					InfoLabel.Text = string.Format (RDLocale.GetText ("IncorrectExpressionEndError"),
 						le.LastLexeme);
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.IncorrectExpressionStart:
-					InfoLabel.Text = string.Format (Localization.GetText ("IncorrectExpressionStartError"),
+					InfoLabel.Text = string.Format (RDLocale.GetText ("IncorrectExpressionStartError"),
 						le.LastLexeme);
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.LeftParenthesisWasNotClosed:
-					InfoLabel.Text = Localization.GetText ("LeftParenthesisWasNotClosedError");
+					InfoLabel.Text = RDLocale.GetText ("LeftParenthesisWasNotClosedError");
 					break;
 
 				case LexemesExtractor.ExpressionStatuses.MisplacedRightParenthesis:
-					InfoLabel.Text = Localization.GetText ("UnexpectedRightParenthesisError");
+					InfoLabel.Text = RDLocale.GetText ("UnexpectedRightParenthesisError");
 					break;
 				}
 
@@ -267,7 +267,7 @@ namespace RD_AAOW
 
 			// Проверка успешно завершена
 			InfoLabel.ForeColor = Color.FromArgb (0, 128, 0);
-			InfoLabel.Text = Localization.GetText ("NoErrors") + Localization.RN + "f(x) = ";
+			InfoLabel.Text = RDLocale.GetText ("NoErrors") + RDLocale.RN + "f(x) = ";
 			string formula = "";
 			for (int i = 0; i < le.ExtractedLexemes.Count; i++)
 				{
@@ -304,7 +304,7 @@ namespace RD_AAOW
 		// Определение количества точек
 		private void StartValue_ValueChanged (object sender, EventArgs e)
 			{
-			Label05.Text = Localization.GetControlText ("FormulaEvaluator", "Label05W");
+			Label05.Text = RDLocale.GetControlText ("FormulaEvaluator", "Label05W");
 			if (StepValue.Value == 0)
 				Label05.Text += " ∞";
 			else

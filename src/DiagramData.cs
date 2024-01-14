@@ -219,7 +219,7 @@ namespace RD_AAOW
 
 			// Сброс указателя чтения в файле (потребуется повторный пропуск)
 			FS.Seek (0, SeekOrigin.Begin);
-			SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Разметка массива
 			for (int i = 0; i < dataColumnsCount; i++)
@@ -285,7 +285,7 @@ namespace RD_AAOW
 						{
 						// Заполнение строки
 						dataValues[i].Add (double.Parse (PrepareDataValue (values[i], true),
-							Localization.GetCulture (SupportedLanguages.en_us).NumberFormat));
+							RDLocale.GetCulture (RDLanguages.en_us).NumberFormat));
 						}
 					catch
 						{
@@ -343,7 +343,7 @@ namespace RD_AAOW
 			{
 			// Контроль значений
 			if ((ColumnsCount < 2) || (ColumnsCount > MaxDataColumns) || !FromClipboard && (DataFileName == null))
-				throw new Exception (Localization.GetText ("ExceptionMessage") + " (1)");
+				throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (1)");
 
 			// Попытка открытия файла
 			FileStream FS = null;
@@ -360,18 +360,14 @@ namespace RD_AAOW
 					initResult = DiagramDataInitResults.FileNotAvailable;
 					return;
 					}
-				SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+				SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 				}
 			else
 				{
 				if (Clipboard.ContainsText ())
-					{
 					SR = new StringReader (Clipboard.GetText (TextDataFormat.Text));
-					}
 				else
-					{
 					return;
-					}
 				}
 
 			// Разметка массива
@@ -383,6 +379,7 @@ namespace RD_AAOW
 			string[] values = null;     // Извлечённые значения
 
 			#region Извлечение имён столбцов (по возможности)
+
 			bool namesFound = false;
 			for (uint i = 0; i < SkippedLinesCount; i++)
 				{
@@ -415,9 +412,8 @@ namespace RD_AAOW
 
 			// Контроль количества имён
 			for (int j = dataColumnNames.Count; j < ColumnsCount; j++)
-				{
 				dataColumnNames.Add ("c." + (j + 1).ToString ());
-				}
+
 			#endregion
 
 			#region Чтение значений
@@ -443,7 +439,7 @@ namespace RD_AAOW
 					// Попытка извлечения значения с текущим десятичным разделителем
 					double parsed = 0.0;
 					double.TryParse (PrepareDataValue (values[i], false), RDGenerics.FloatNumberStyle,
-						Localization.GetCulture (SupportedLanguages.en_us).NumberFormat, out parsed);
+						RDLocale.GetCulture (RDLanguages.en_us).NumberFormat, out parsed);
 					dataValues[i].Add (parsed);
 					}
 
@@ -479,7 +475,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if (Table == null)
-				throw new Exception (Localization.GetText ("ExceptionMessage") + " (3)");
+				throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (3)");
 
 			// Вызов функции загрузки
 			LoadDataFromTable (Table, 0);
@@ -496,7 +492,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if ((X == null) || (Y == null) || (X.Count == 0))
-				throw new Exception (Localization.GetText ("ExceptionMessage") + " (4)");
+				throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (4)");
 
 			if ((X.Count < 2) || (Y.Count != ColumnsNames.Count))
 				{
@@ -509,7 +505,7 @@ namespace RD_AAOW
 				{
 				// Контроль
 				if (X.Count != Y[c].Count)
-					throw new Exception (Localization.GetText ("ExceptionMessage") + " (5)");
+					throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (5)");
 
 				// Создание структуры
 				if (c == 0)
@@ -544,7 +540,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if ((DataTable == null) || (ColumnNames == null))
-				throw new Exception (Localization.GetText ("ExceptionMessage") + " (6)");
+				throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (6)");
 
 			if ((DataTable.Count < 2) || (ColumnNames.Count < 2))
 				{
@@ -560,7 +556,7 @@ namespace RD_AAOW
 				{
 				// Контроль
 				if (DataTable[r].Count != ColumnNames.Count)
-					throw new Exception (Localization.GetText ("ExceptionMessage") + " (7)");
+					throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (7)");
 
 				for (int c = 0; c < DataTable[r].Count; c++)
 					{
@@ -592,7 +588,7 @@ namespace RD_AAOW
 				}
 
 			// Файл открыт
-			BinaryReader BR = new BinaryReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			BinaryReader BR = new BinaryReader (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			try
 				{
@@ -641,8 +637,8 @@ namespace RD_AAOW
 			// Чтение основного массива данных
 			for (int i = 0; i < rows; i++)
 				{
-				// Любое исключение здесь, включая IndexOutOfRange (некорректное число элементов, пустая строка, конец файла), 
-				// будет означать нарушение в структуре файла
+				// Любое исключение здесь, включая IndexOutOfRange (некорректное число элементов,
+				// пустая строка, конец файла), будет означать нарушение в структуре файла
 				try
 					{
 					for (int j = 0; j < dataColumnsCount; j++)
@@ -871,7 +867,7 @@ namespace RD_AAOW
 					try
 						{
 						dataValues[c].Add (double.Parse (PrepareDataValue (table.Rows[(int)r].ItemArray[c].ToString (),
-							true), Localization.GetCulture (SupportedLanguages.en_us).NumberFormat));
+							true), RDLocale.GetCulture (RDLanguages.en_us).NumberFormat));
 						}
 					catch
 						{
@@ -1230,7 +1226,7 @@ namespace RD_AAOW
 			if (ColumnNumber >= dataValues.Count)
 				return "";
 
-			var nfi = Localization.GetCulture (SupportedLanguages.ru_ru).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.ru_ru).NumberFormat;
 			return (dataColumnNames[(int)ColumnNumber] + ": " + dataValues[(int)ColumnNumber][0].ToString (nfi) +
 				((dataValues[0].Count > 1) ? ("; " + dataValues[(int)ColumnNumber][1].ToString (nfi)) : "") +
 				((dataValues[0].Count > 2) ? ("; " + dataValues[(int)ColumnNumber][2].ToString (nfi)) : "") +
@@ -1555,7 +1551,7 @@ namespace RD_AAOW
 					case NumbersFormat.Normal:
 					default:
 						txt = (styleMinX + (styleMaxX - styleMinX) * (double)i /
-							(double)styleXPrimaryDiv).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
+							(double)styleXPrimaryDiv).ToString (RDLocale.GetCulture (RDLanguages.en_us).NumberFormat);
 						break;
 
 					case NumbersFormat.Exponential:
@@ -1659,7 +1655,7 @@ namespace RD_AAOW
 					case NumbersFormat.Normal:
 					default:
 						txt = (styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
-							(double)styleYPrimaryDiv).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
+							(double)styleYPrimaryDiv).ToString (RDLocale.GetCulture (RDLanguages.en_us).NumberFormat);
 						break;
 
 					case NumbersFormat.Exponential:
@@ -2216,7 +2212,7 @@ namespace RD_AAOW
 					case NumbersFormat.Normal:
 					default:
 						txt = (styleMinX + (styleMaxX - styleMinX) * (double)i /
-							(double)styleXPrimaryDiv).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
+							(double)styleXPrimaryDiv).ToString (RDLocale.GetCulture (RDLanguages.en_us).NumberFormat);
 						break;
 
 					case NumbersFormat.Exponential:
@@ -2342,7 +2338,7 @@ namespace RD_AAOW
 					case NumbersFormat.Normal:
 					default:
 						txt = (styleMinY + (styleMaxY - styleMinY) * (double)(styleYPrimaryDiv - i) /
-							(double)styleYPrimaryDiv).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
+							(double)styleYPrimaryDiv).ToString (RDLocale.GetCulture (RDLanguages.en_us).NumberFormat);
 						break;
 
 					case NumbersFormat.Exponential:
@@ -2556,22 +2552,19 @@ namespace RD_AAOW
 			{
 			// Контроль состояния
 			if (initResult != DiagramDataInitResults.Ok)
-				{
 				return -1;
-				}
 
 			// Создание нового файла
 			if ((VectorAdapter == null) || (VectorAdapter.InitResult != VectorAdapterInitResults.Opened))
-				{
 				return -3;
-				}
 
 			// Отрисовка изображений
 			for (int i = 0; i < curves.Count; i++)
 				{
 				if (lineStyles[i].AllowDrawing)
 					{
-					DrawDiagram (lineStyles[i].DiagramImageLeftOffset, lineStyles[i].DiagramImageTopOffset, i, VectorAdapter);
+					DrawDiagram (lineStyles[i].DiagramImageLeftOffset, lineStyles[i].DiagramImageTopOffset,
+						i, VectorAdapter);
 					}
 				}
 
@@ -2580,14 +2573,17 @@ namespace RD_AAOW
 				{
 				if (additionalObjectsStyles[i].AllowDrawing)
 					{
-					DrawObject (additionalObjectsStyles[i].DiagramImageLeftOffset, additionalObjectsStyles[i].DiagramImageTopOffset,
-						i, VectorAdapter);
+					DrawObject (additionalObjectsStyles[i].DiagramImageLeftOffset,
+						additionalObjectsStyles[i].DiagramImageTopOffset, i, VectorAdapter);
 					}
 				}
 
 			// Готово
 			if (!VectorAdapter.CloseFile ())
-				throw new Exception (Localization.GetText ("ExceptionMessage") + " (8)");
+				{
+				throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (8)");
+				}
+
 			return 0;
 			}
 
@@ -2606,7 +2602,7 @@ namespace RD_AAOW
 				}
 
 			// Начало записи
-			BinaryWriter BW = new BinaryWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			BinaryWriter BW = new BinaryWriter (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 			BW.Write ("Geomag data drawer file format. File version: " + ProgramDescription.AssemblyVersion +
 				". Creation date: " + DateTime.Now.ToString ("dd.MM.yyyy, HH:mm:ss"));  // Запись версии и даты
 
@@ -2625,9 +2621,7 @@ namespace RD_AAOW
 			for (int row = 0; row < dataValues[0].Count; row++)
 				{
 				for (int col = 0; col < dataValues.Count; col++)
-					{
 					BW.Write (dataValues[col][row]);
-					}
 				}
 
 			// ЗАПИСЬ ПАРАМЕТРОВ КРИВЫХ
@@ -2711,7 +2705,7 @@ namespace RD_AAOW
 				{
 				return -2;
 				}
-			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Запись имён столбцов
 			if (SaveColumnNames)
@@ -2729,7 +2723,7 @@ namespace RD_AAOW
 							break;
 						}
 					}
-				SW.Write (Localization.RN);
+				SW.Write (RDLocale.RN);
 				}
 
 			// ЗАПИСЬ БЛОКА ДАННЫХ
@@ -2740,16 +2734,16 @@ namespace RD_AAOW
 					switch (DataFileType)
 						{
 						case DataOutputTypes.ANY:
-							SW.Write (dataValues[col][row].ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat) + anyDataSplitters[1].ToString ());
+							SW.Write (dataValues[col][row].ToString (RDLocale.GetCulture (RDLanguages.en_us).NumberFormat) + anyDataSplitters[1].ToString ());
 							break;
 
 						case DataOutputTypes.CSV:
-							SW.Write (dataValues[col][row].ToString (Localization.GetCulture (SupportedLanguages.ru_ru).NumberFormat) + csvSplitters[0].ToString ());
+							SW.Write (dataValues[col][row].ToString (RDLocale.GetCulture (RDLanguages.ru_ru).NumberFormat) + csvSplitters[0].ToString ());
 							break;
 						}
 					}
 
-				SW.Write (Localization.RN);
+				SW.Write (RDLocale.RN);
 				}
 
 			// Завершено
@@ -2849,7 +2843,7 @@ namespace RD_AAOW
 				}
 
 			// Файл открыт
-			BinaryReader BR = new BinaryReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			BinaryReader BR = new BinaryReader (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Получение количества стилей в файле
 			uint stylesCount = 0;
@@ -2888,7 +2882,8 @@ namespace RD_AAOW
 
 						lineStyles[LineNumbers[i]] = new DiagramStyle (style);
 
-						// Установка настроек (стилевые параметры игнорируются, т.к. конкретная кривая может иметь другие границы и номера столбцов)
+						// Установка настроек (стилевые параметры игнорируются, т.к. конкретная
+						// кривая может иметь другие границы и номера столбцов)
 						lineStyles[LineNumbers[i]].MinX = curves[LineNumbers[i]].MinimumX;
 						lineStyles[LineNumbers[i]].MaxX = curves[LineNumbers[i]].MaximumX;
 						lineStyles[LineNumbers[i]].MinY = curves[LineNumbers[i]].MinimumY;
@@ -2922,7 +2917,8 @@ namespace RD_AAOW
 						{
 						lineStyles[lineStyles.Count - 1] = new DiagramStyle (style);
 
-						// Установка настроек (стилевые параметры игнорируются, т.к. конкретная кривая может иметь другие границы)
+						// Установка настроек (стилевые параметры игнорируются, т.к. конкретная
+						// кривая может иметь другие границы)
 						lineStyles[lineStyles.Count - 1].MinX = curves[lineStyles.Count - 1].MinimumX;
 						lineStyles[lineStyles.Count - 1].MaxX = curves[lineStyles.Count - 1].MaximumX;
 						lineStyles[lineStyles.Count - 1].MinY = curves[lineStyles.Count - 1].MinimumY;
@@ -3026,7 +3022,7 @@ namespace RD_AAOW
 				}
 
 			// Файл открыт
-			BinaryWriter BW = new BinaryWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			BinaryWriter BW = new BinaryWriter (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 			BW.Write ("Geomag data drawer style file. File version: " + ProgramDescription.AssemblyVersion +
 				". Creation date: " + DateTime.Now.ToString ("dd.MM.yyyy, HH:mm:ss"));  // Запись версии и даты
 
@@ -3273,7 +3269,7 @@ namespace RD_AAOW
 			if (result.Contains (dateSplitters[0].ToString ())) // Дата в формате ДД.ММ.ГГ[ГГ]
 				try
 					{
-					dt = DateTime.Parse (result, Localization.GetCulture (SupportedLanguages.ru_ru).DateTimeFormat);
+					dt = DateTime.Parse (result, RDLocale.GetCulture (RDLanguages.ru_ru).DateTimeFormat);
 					}
 				catch
 					{
@@ -3283,14 +3279,15 @@ namespace RD_AAOW
 			else // if (result.Contains (dateSplitters[1].ToString ())) // Дата в формате ММ/ДД/ГГ[ГГ]
 				try
 					{
-					dt = DateTime.Parse (result, Localization.GetCulture (SupportedLanguages.en_us).DateTimeFormat);
+					dt = DateTime.Parse (result, RDLocale.GetCulture (RDLanguages.en_us).DateTimeFormat);
 					}
 				catch
 					{
 					return result;
 					}
 
-			return ((double)dt.Year + (dt.DayOfYear - 1) / (dt.Year % 4 == 0 ? 366.0 : 365.0)).ToString (Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
+			return ((double)dt.Year + (dt.DayOfYear - 1) / (dt.Year % 4 == 0 ?
+				366.0 : 365.0)).ToString (RDLocale.GetCulture (RDLanguages.en_us).NumberFormat);
 			}
 
 		// Метод разворачивает значение даты из рационального числа
@@ -3319,32 +3316,34 @@ namespace RD_AAOW
 			if (Result == DiagramDataInitResults.Ok)
 				return "";
 
-			string msg = Localization.GetText ("DataFileLoadError");
+			string msg = RDLocale.GetText ("DataFileLoadError");
 			switch (Result)
 				{
 				case DiagramDataInitResults.NotInited:
-					msg += Localization.GetText ("NotInitedError");
+					msg += RDLocale.GetText ("NotInitedError");
 					break;
 
 				case DiagramDataInitResults.FileNotAvailable:
-					msg = Localization.GetFileProcessingMessage (FilePath,
-						LzFileProcessingMessageTypes.Load_Failure);
+					/*msg = Localization.GetFileProcessingMessage (FilePath,
+						LzFileProcessingMessageTypes.Load_Failure);*/
+					msg = string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
+						FilePath);
 					break;
 
 				case DiagramDataInitResults.BrokenFile:
-					msg += Localization.GetText ("BrokenFileError");
+					msg += RDLocale.GetText ("BrokenFileError");
 					break;
 
 				case DiagramDataInitResults.NotEnoughData:
-					msg += Localization.GetText ("NotEnoughDataError");
+					msg += RDLocale.GetText ("NotEnoughDataError");
 					break;
 
 				case DiagramDataInitResults.BrokenTable:
-					msg += Localization.GetText ("BrokenTableError");
+					msg += RDLocale.GetText ("BrokenTableError");
 					break;
 
 				case DiagramDataInitResults.ExcelNotAvailable:
-					msg += Localization.GetText ("ExcelNotAvailableError");
+					msg += RDLocale.GetText ("ExcelNotAvailableError");
 					break;
 				}
 

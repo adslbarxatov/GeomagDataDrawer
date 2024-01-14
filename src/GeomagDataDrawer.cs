@@ -22,7 +22,7 @@ namespace RD_AAOW
 			Application.SetCompatibleTextRenderingDefault (false);
 
 			// Язык интерфейса и контроль XPUN
-			if (!Localization.IsXPUNClassAcceptable)
+			if (!RDLocale.IsXPUNClassAcceptable)
 				return;
 
 			// Проверка запуска единственной копии
@@ -82,9 +82,7 @@ namespace RD_AAOW
 					{
 					uint.TryParse (args[2], out skippedLinesCount);
 					if (skippedLinesCount > ConfigAccessor.MaxSkippedLinesCount)
-						{
 						skippedLinesCount = ConfigAccessor.MaxSkippedLinesCount;
-						}
 
 					if (args.Length > 3)
 						{
@@ -158,7 +156,10 @@ namespace RD_AAOW
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
 						RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-							Localization.GetFileProcessingMessage (args[1], LzFileProcessingMessageTypes.Save_Failure));
+							/*Localization.GetFileProcessingMessage (args[1],
+							LzFileProcessingMessageTypes.Save_Failure)*/
+							string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
+							args[1]));
 						return;
 						}
 					}
@@ -187,6 +188,7 @@ namespace RD_AAOW
 						dd.GetStyle (i).DiagramImageHeight = cad.ImageHeight[i];
 						dd.GetStyle (i).DiagramImageLeftOffset = cad.ImageLeft[i];
 						dd.GetStyle (i).DiagramImageTopOffset = cad.ImageTop[i];
+
 						if (!cad.AutoNameOffset[i])
 							{
 							dd.GetStyle (i).LineName = cad.LineName[i];

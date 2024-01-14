@@ -18,10 +18,10 @@ namespace RD_AAOW
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
-			Localization.SetControlsText (this);
-			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
-			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
-			this.Text = Localization.GetControlText (this.Name, "T");
+			RDLocale.SetControlsText (this);
+			ApplyButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK);
+			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
+			this.Text = RDLocale.GetControlText (this.Name, "T");
 
 			// Настройка контролов
 			ColumnsCount.Maximum = ConfigAccessor.MaxExpectedColumnsCount;

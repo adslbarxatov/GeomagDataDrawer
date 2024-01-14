@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 
 namespace RD_AAOW
@@ -495,9 +494,10 @@ namespace RD_AAOW
 			uint includeDeep = 0;       // Количество подключенных файлов (для прерывания зацикливания)
 			string fileNameI = FileName,    // Имена промежуточных файлов
 				fileNameO = FileName + tmpExtension + step.ToString ();
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 
 			#region Сборка скрипта
+
 			while (notIncluded)
 				{
 				notIncluded = false;
@@ -512,7 +512,7 @@ namespace RD_AAOW
 					initResult = InitResults.FileNotAvailable;
 					return;
 					}
-				SR = new StreamReader (FSI, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+				SR = new StreamReader (FSI, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 				try
 					{
@@ -526,7 +526,7 @@ namespace RD_AAOW
 					initResult = InitResults.FileNotAvailable;
 					return;
 					}
-				SW = new StreamWriter (FSO, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+				SW = new StreamWriter (FSO, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 				// Запись
 				while (!SR.EndOfStream)
@@ -573,7 +573,7 @@ namespace RD_AAOW
 							failedIncludeFile = line;
 							return;
 							}
-						SRInc = new StreamReader (FSInc, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+						SRInc = new StreamReader (FSInc, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 						// Получение координат вставки
 						line = SR.ReadLine ();
@@ -637,6 +637,7 @@ namespace RD_AAOW
 				step++;
 				fileNameO = FileName + tmpExtension + step.ToString ();
 				}
+
 			#endregion
 
 			// Попытка открытия собранного файла
@@ -649,7 +650,7 @@ namespace RD_AAOW
 				initResult = InitResults.FileNotAvailable;
 				return;
 				}
-			SR = new StreamReader (FSI, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			SR = new StreamReader (FSI, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Создание накопителей смещений
 			List<float> xOffset = new List<float> ();
@@ -664,6 +665,7 @@ namespace RD_AAOW
 				switch (str)
 					{
 					#region Оператор смещения поля отрисовки
+
 					case "{":
 						// Добавление смещения
 						sourceScript.Add (str);     // Формирование исходного скрипта
@@ -679,12 +681,14 @@ namespace RD_AAOW
 							}
 						catch
 							{
-							throw new Exception (Localization.GetText ("ExceptionMessage") + " (2)");
+							throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (2)");
 							}
 						break;
+
 					#endregion
 
 					#region Оператор отмены последнего смещения
+
 					case "}":
 						sourceScript.Add (str);
 
@@ -695,12 +699,14 @@ namespace RD_AAOW
 							}
 						catch
 							{
-							throw new Exception (Localization.GetText ("ExceptionMessage") + " (3)");
+							throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (3)");
 							}
 						break;
+
 					#endregion
 
 					#region Блок описания кривой
+
 					case "[Line]":
 						sourceScript.Add (str);
 
@@ -726,7 +732,8 @@ namespace RD_AAOW
 								case "c=":
 									try
 										{
-										values = str.Substring (2).Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
+										values = str.Substring (2).Split (splitters,
+											StringSplitOptions.RemoveEmptyEntries);
 										linesColors[linesColors.Count - 1] = Color.FromArgb (int.Parse (values[0]),
 											int.Parse (values[1]), int.Parse (values[2]));
 										}
@@ -760,9 +767,10 @@ namespace RD_AAOW
 								default:
 									try
 										{
-										values = str.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
+										values = str.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 										linesX[linesX.Count - 1].Add (float.Parse (values[0], nfi) + xOffsetSum);
-										// Пересчёт границ необходим для того, чтобы элементы не выходили за границы изображения
+										// Пересчёт границ необходим для того, чтобы элементы не выходили
+										// за границы изображения
 										if (minX > linesX[linesX.Count - 1][linesX[linesX.Count - 1].Count - 1])
 											{
 											minX = linesX[linesX.Count - 1][linesX[linesX.Count - 1].Count - 1];
@@ -795,9 +803,11 @@ namespace RD_AAOW
 
 						sourceScript.Add ("");
 						break;
+
 					#endregion
 
 					#region Блок описания оси Ox
+
 					case "[Ox]":
 						sourceScript.Add (str);
 
@@ -807,9 +817,7 @@ namespace RD_AAOW
 
 						// Проверка на наличие предыдущих описаний
 						if (oxInited)
-							{
 							break;
-							}
 						oxInited = true;
 
 						// Заполнение
@@ -840,8 +848,10 @@ namespace RD_AAOW
 								case "c=":
 									try
 										{
-										values = str.Substring (2).Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
-										oxColor = Color.FromArgb (int.Parse (values[0]), int.Parse (values[1]), int.Parse (values[2]));
+										values = str.Substring (2).Split (splitters,
+											StringSplitOptions.RemoveEmptyEntries);
+										oxColor = Color.FromArgb (int.Parse (values[0]), int.Parse (values[1]),
+											int.Parse (values[2]));
 										}
 									catch
 										{
@@ -873,7 +883,7 @@ namespace RD_AAOW
 								default:
 									try
 										{
-										values = str.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
+										values = str.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 										oxNotchesOffsets.Add (float.Parse (values[0], nfi) + xOffsetSum);
 										if (minX > oxNotchesOffsets[oxNotchesOffsets.Count - 1])
 											{
@@ -899,9 +909,11 @@ namespace RD_AAOW
 
 						sourceScript.Add ("");
 						break;
+
 					#endregion
 
 					#region Блок описания оси Oy
+
 					case "[Oy]":
 						sourceScript.Add (str);
 
@@ -944,8 +956,10 @@ namespace RD_AAOW
 								case "c=":
 									try
 										{
-										values = str.Substring (2).Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
-										oyColor = Color.FromArgb (int.Parse (values[0]), int.Parse (values[1]), int.Parse (values[2]));
+										values = str.Substring (2).Split (splitters,
+											StringSplitOptions.RemoveEmptyEntries);
+										oyColor = Color.FromArgb (int.Parse (values[0]), int.Parse (values[1]),
+											int.Parse (values[2]));
 										}
 									catch
 										{
@@ -977,7 +991,7 @@ namespace RD_AAOW
 								default:
 									try
 										{
-										values = str.Split (splitters, System.StringSplitOptions.RemoveEmptyEntries);
+										values = str.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 										oyNotchesOffsets.Add (double.Parse (values[0], nfi) + yOffsetSum);
 										if (minY > oyNotchesOffsets[oyNotchesOffsets.Count - 1])
 											{
@@ -1003,9 +1017,11 @@ namespace RD_AAOW
 
 						sourceScript.Add ("");
 						break;
+
 					#endregion
 
 					#region Блок описания подписей
+
 					case "[Text]":
 						sourceScript.Add (str);
 
@@ -1064,6 +1080,7 @@ namespace RD_AAOW
 
 						sourceScript.Add ("");
 						break;
+
 						#endregion
 					}
 				}

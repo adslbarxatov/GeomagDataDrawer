@@ -142,7 +142,7 @@
 			// Числа с точками
 			try
 				{
-				double a = double.Parse (lexemeValue, Localization.GetCulture (SupportedLanguages.en_us).NumberFormat);
+				double a = double.Parse (lexemeValue, RDLocale.GetCulture (RDLanguages.en_us).NumberFormat);
 
 				// Точно число
 				lexemeValue = a.ToString ();

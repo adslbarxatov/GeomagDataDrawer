@@ -76,12 +76,12 @@ namespace RD_AAOW
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = Localization.GetControlText ("ColumnsAdder", "TN");
+			this.Text = RDLocale.GetControlText ("ColumnsAdder", "TN");
 
 			// Заполнение списка типов объектов
 			for (int i = 1; i <= 9; i++)
 				{
-				ObjectCombo.Items.Add (Localization.GetControlText ("ColumnsAdder", "ObjectType_" +
+				ObjectCombo.Items.Add (RDLocale.GetControlText ("ColumnsAdder", "ObjectType_" +
 					i.ToString ()));
 				}
 			ObjectCombo.Text = ObjectCombo.Items[0].ToString ();
@@ -102,7 +102,7 @@ namespace RD_AAOW
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = Localization.GetControlText ("ColumnsAdder", "TE");
+			this.Text = RDLocale.GetControlText ("ColumnsAdder", "TE");
 
 			// Запрет на обновление данных дополнительных объектов
 			Radio02.Enabled = false;
@@ -115,9 +115,9 @@ namespace RD_AAOW
 		private void ColumnsAdderConstructor (DiagramData SourceData, int OldXColumnNumber, int OldYColumnNumber)
 			{
 			// Локазизация формы
-			ApplyButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_OK);
-			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
-			Localization.SetControlsText (this);
+			ApplyButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK);
+			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
+			RDLocale.SetControlsText (this);
 
 			// Загрузка параметров
 			for (uint col = 0; col < SourceData.DataColumnsCount; col++)
@@ -128,13 +128,10 @@ namespace RD_AAOW
 
 			// Определение отображаемых столбцов
 			if ((OldXColumnNumber >= 0) && (OldXColumnNumber < SourceData.DataColumnsCount))
-				{
 				xColumnNumber = (uint)OldXColumnNumber;
-				}
+
 			if ((OldYColumnNumber >= 0) && (OldYColumnNumber < SourceData.DataColumnsCount))
-				{
 				yColumnNumber = (uint)OldYColumnNumber;
-				}
 
 			XCombo.Text = XCombo.Items[(int)xColumnNumber].ToString ();
 			YCombo.Text = YCombo.Items[(int)yColumnNumber].ToString ();

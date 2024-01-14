@@ -50,17 +50,17 @@ namespace RD_AAOW
 			sourceData = SourceData;
 
 			// Кнопки
-			Localization.SetControlsText (this);
+			RDLocale.SetControlsText (this);
 
 			// Панель имени столбца
-			Localization.SetControlsText (ColumnNameInput, MainToolTip);
+			RDLocale.SetControlsText (ColumnNameInput, MainToolTip);
 
 			// Подсказки
-			Localization.SetControlsText (this, MainToolTip);
+			RDLocale.SetControlsText (this, MainToolTip);
 
-			SaveButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Save);
-			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
-			this.Text = Localization.GetControlText (this.Name, "T");
+			SaveButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);
+			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
+			this.Text = RDLocale.GetControlText (this.Name, "T");
 
 			// Запуск
 			this.ShowDialog ();
@@ -238,7 +238,7 @@ namespace RD_AAOW
 				{
 				// Проверка на отмену изменений
 				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "AbortChanges",
-					LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) ==
+					RDLDefaultTexts.Button_YesNoFocus, RDLDefaultTexts.Button_No) ==
 					RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
@@ -249,7 +249,7 @@ namespace RD_AAOW
 				{
 				// Проверка на применение изменений
 				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "ApplyChanges",
-					LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonTwo)
+					RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
 					return;
@@ -261,8 +261,8 @@ namespace RD_AAOW
 				if (ddt.InitResult != DiagramDataInitResults.Ok)
 					{
 					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-						string.Format (Localization.GetText ("DataProcessingError"),
-						Localization.GetText ("BrokenTableError")));
+						string.Format (RDLocale.GetText ("DataProcessingError"),
+						RDLocale.GetText ("BrokenTableError")));
 					e.Cancel = true;
 					return;
 					}

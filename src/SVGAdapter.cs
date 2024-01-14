@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
 
 namespace RD_AAOW
@@ -54,7 +53,7 @@ namespace RD_AAOW
 				initResult = VectorAdapterInitResults.CannotCreateFile;
 				return;
 				}
-			SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Запись заголовка
 			SW.WriteLine ("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
@@ -148,7 +147,7 @@ namespace RD_AAOW
 				X1, X2, Y1, Y2, out x1, out x2, out y1, out y2);
 
 			// Отрисовка
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 			SW.WriteLine ("<line stroke=\"#" + (LineColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
 				"\" stroke-width=\"" + ((double)LineWidth / 2.0).ToString (nfi) +
 				"\" x1=\"" + x1.ToString (nfi) +
@@ -211,7 +210,7 @@ namespace RD_AAOW
 				X1, X2, Y1, Y2, out x1, out x2, out y1, out y2);
 
 			// Отрисовка
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 			if (Fill)
 				{
 				SW.WriteLine ("<rect fill=\"#" + (RectangleColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
@@ -286,7 +285,7 @@ namespace RD_AAOW
 				X1, X2, Y1, Y2, out x1, out x2, out y1, out y2);
 
 			// Отрисовка
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 			if (Fill)
 				{
 				SW.WriteLine ("<ellipse fill=\"#" + (RectangleColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
@@ -433,7 +432,7 @@ namespace RD_AAOW
 				return false;
 
 			// Отрисовка
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 			SW.WriteLine ("<image overflow=\"visible\" x=\"" + X.ToString (nfi) +
 				"\" y=\"" + Y.ToString (nfi) + "\" width=\"" + ImageWidth.ToString () +
 				"\" height=\"" + ImageHeight + "\" xlink:href=\"data:image/png;base64," + codeString + "\"></image>");
@@ -462,7 +461,7 @@ namespace RD_AAOW
 				return false;
 
 			// Отрисовка (перечёркивание не выполняется)
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 			SW.WriteLine ("<text x=\"" + X.ToString (nfi) + "\" y=\"" +
 				Y.ToString (nfi) + "\" fill=\"#" + (TextColor.ToArgb () & 0xFFFFFF).ToString ("X06") +
 				"\" font-family=\"'" + TextFont.Name + "'\" font-size=\"" + TextFont.Size + "\">" +
@@ -594,7 +593,7 @@ namespace RD_AAOW
 				}
 
 			// Запись маркера в файл
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 			SW.WriteLine ("<image overflow=\"visible\" x=\"" + (CenterX - (double)MarkerImage.Width /
 				2.0).ToString (nfi) +
 				"\" y=\"" + (CenterY - (double)MarkerImage.Height / 2.0).ToString (nfi) + "\" width=\"" +

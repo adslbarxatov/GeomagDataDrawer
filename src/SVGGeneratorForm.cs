@@ -125,7 +125,7 @@ namespace RD_AAOW
 			SVGScriptReader svgsr = new SVGScriptReader (OFName.Text);
 			if (svgsr.InitResult != SVGScriptReader.InitResults.Ok)
 				{
-				string msg = Localization.GetText ("VIG_ScriptReadingError");
+				string msg = RDLocale.GetText ("VIG_ScriptReadingError");
 
 				switch (svgsr.InitResult)
 					{
@@ -144,23 +144,27 @@ namespace RD_AAOW
 					case SVGScriptReader.InitResults.BrokenOyWidth:
 
 					case SVGScriptReader.InitResults.BrokenText:
-						msg += (string.Format (Localization.GetText ("VIG_" + svgsr.InitResult.ToString ()),
+						msg += (string.Format (RDLocale.GetText ("VIG_" + svgsr.InitResult.ToString ()),
 							svgsr.CurrentLine));
 						break;
 
 					case SVGScriptReader.InitResults.CannotCreateTMP:
-						msg = Localization.GetFileProcessingMessage ("",
-							LzFileProcessingMessageTypes.Save_Failure);
+						/*msg = Localization.GetFileProcessingMessage ("",
+							LzFileProcessingMessageTypes.Save_Failure);*/
+						msg = string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
+							"?");
 						break;
 
 					case SVGScriptReader.InitResults.IncludeDeepOverflow:
-						msg += Localization.GetText ("VIG_" + svgsr.InitResult.ToString ());
+						msg += RDLocale.GetText ("VIG_" + svgsr.InitResult.ToString ());
 						break;
 
 					case SVGScriptReader.InitResults.FileNotAvailable:
 					case SVGScriptReader.InitResults.CannotIncludeFile:
-						msg = Localization.GetFileProcessingMessage (OFName.Text,
-							LzFileProcessingMessageTypes.Load_Failure);
+						/*msg = Localization.GetFileProcessingMessage (OFName.Text,
+							LzFileProcessingMessageTypes.Load_Failure);*/
+						msg = string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
+							OFName.Text);
 						break;
 
 					default:    // f.e., NotInited
@@ -189,17 +193,19 @@ namespace RD_AAOW
 				}
 			if (vectorAdapter.InitResult != VectorAdapterInitResults.Opened)
 				{
-				string msg = Localization.GetText ("FileWritingError");
+				string msg = RDLocale.GetText ("FileWritingError");
 
 				switch (vectorAdapter.InitResult)
 					{
 					case VectorAdapterInitResults.CannotCreateFile:
-						msg = Localization.GetFileProcessingMessage (SFName.Text,
-							LzFileProcessingMessageTypes.Save_Failure);
+						/*msg = Localization.GetFileProcessingMessage (SFName.Text,
+							LzFileProcessingMessageTypes.Save_Failure);*/
+						msg = string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
+							SFName.Text);
 						break;
 
 					case VectorAdapterInitResults.IncorrectImageSize:
-						msg += Localization.GetText ("VIG_" + vectorAdapter.InitResult.ToString ());
+						msg += RDLocale.GetText ("VIG_" + vectorAdapter.InitResult.ToString ());
 						break;
 
 					default:    // f.e., Closed, NotInited
@@ -305,7 +311,7 @@ namespace RD_AAOW
 				return;
 				}
 
-			if (Localization.IsCurrentLanguageRuRu)
+			if (RDLocale.IsCurrentLanguageRuRu)
 				FS.Write (RD_AAOW.Properties.GeomagDataDrawer.Sample_ru_ru, 0,
 					RD_AAOW.Properties.GeomagDataDrawer.Sample_ru_ru.Length);
 			else
@@ -319,17 +325,17 @@ namespace RD_AAOW
 		private void LocalizeForm ()
 			{
 			// Локализация
-			OFDialog.Title = OFLabel.Text = Localization.GetText ("VIG_OFDialogTitle");
-			OFDialog.Filter = SSDialog.Filter = Localization.GetText ("VIG_OFDialogFilter");
+			OFDialog.Title = OFLabel.Text = RDLocale.GetText ("VIG_OFDialogTitle");
+			OFDialog.Filter = SSDialog.Filter = RDLocale.GetText ("VIG_OFDialogFilter");
 
-			SFDialog.Title = SFLabel.Text = Localization.GetText ("VIG_SFDialogTitle");
-			SFDialog.Filter = Localization.GetText ("VIG_SFDialogFilter");
+			SFDialog.Title = SFLabel.Text = RDLocale.GetText ("VIG_SFDialogTitle");
+			SFDialog.Filter = RDLocale.GetText ("VIG_SFDialogFilter");
 
-			SSDialog.Title = Localization.GetText ("VIG_SSDialogTitle");
+			SSDialog.Title = RDLocale.GetText ("VIG_SSDialogTitle");
 
-			SaveSample.Text = Localization.GetText ("VIG_SaveSampleText");
-			GenerateImage.Text = Localization.GetText ("VIG_GenerateImageText");
-			BExit.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
+			SaveSample.Text = RDLocale.GetText ("VIG_SaveSampleText");
+			GenerateImage.Text = RDLocale.GetText ("VIG_GenerateImageText");
+			BExit.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
 			}
 		}
 	}

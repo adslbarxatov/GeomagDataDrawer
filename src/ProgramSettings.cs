@@ -19,10 +19,10 @@ namespace RD_AAOW
 			// Инициализация и локализация формы
 			InitializeComponent ();
 
-			Localization.SetControlsText (this);
-			SaveButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Save);
-			AbortButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Cancel);
-			this.Text = Localization.GetControlText (this.Name, "T");
+			RDLocale.SetControlsText (this);
+			SaveButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);
+			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
+			this.Text = RDLocale.GetControlText (this.Name, "T");
 
 			// Настройка контролов
 			ConfirmExit.Checked = ca.ForceExitConfirmation;
