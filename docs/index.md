@@ -1,9 +1,9 @@
 # Geomag data drawer: complete user guide
-> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 17.09.2023; 0:10
+> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 11.02.2024; 20:27
 
 # Contents
 - [General information](#general-information)
-- [Video guide](https://youtube.com/watch?v=uYtQJX5BgvU)
+- [Video guide](https://youtube.com/watch?v=afbtGUPnZ2w)
 - [Main app interface](#main-app-interface)
     - [Adding a curve or object to a diagram](#adding-a-curve-or-object-to-a-diagram)
     - [Removing curves and objects from diagram](#removing-curves-and-objects-from-diagram)
@@ -106,7 +106,7 @@ software systems. Therefore, ***Geomag data drawer*** can be considered a very u
 
 The main window of the app is shown in the figure below.
 
-<img src="/GeomagDataDrawer/img/2_01.png" />
+<img src="/GeomagDataDrawer/img/2_01_en.png" />
 
 The main elements of the window:
 

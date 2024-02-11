@@ -416,8 +416,6 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				/*ProcessingResults.Text =
-					Localization.GetFileProcessingMessage (FileName, LzFileProcessingMessageTypes.Load_Failure);*/
 				ProcessingResults.Text =
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt), FileName);
 				return false;
@@ -461,8 +459,6 @@ namespace RD_AAOW
 			{
 			if (!CreateDefaultParametersFile (FileName))
 				{
-				/*ProcessingResults.Text = Localization.GetFileProcessingMessage (FileName,
-					LzFileProcessingMessageTypes.Save_Failure);*/
 				ProcessingResults.Text =
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
 					FileName);

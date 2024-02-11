@@ -1,4 +1,3 @@
-_Changes for v 5.6_:
-- Core updates have been applied;
-- Fixed some minor interface bugs;
-- Added a new version of offline help
+_Changes for v 5.6.1_:
+- Added localized video guides;
+- Core updates have been applied

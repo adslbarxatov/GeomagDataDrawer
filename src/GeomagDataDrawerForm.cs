@@ -852,8 +852,6 @@ namespace RD_AAOW
 				ca.ForceSavingColumnNames) < 0)
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					/*Localization.GetFileProcessingMessage (SFDialog.FileName,
-					LzFileProcessingMessageTypes.Save_Failure)*/
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					SFDialog.FileName));
 				}
@@ -1116,10 +1114,7 @@ namespace RD_AAOW
 
 				case -2:
 					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-						/*Localization.GetFileProcessingMessage ("",
-						LzFileProcessingMessageTypes.Save_Failure)*/
-						string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
-						"?"));
+						string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt), "?"));
 					break;
 
 				default:
@@ -1139,8 +1134,6 @@ namespace RD_AAOW
 			if (!ColumnsAdderCmd.WriteParametersFile (dd, RDGenerics.AppStartupPath +
 				ConfigAccessor.LineParametersFileName))
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					/*Localization.GetFileProcessingMessage (ConfigAccessor.LineParametersFileName,
-					LzFileProcessingMessageTypes.Save_Failure)*/
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					ConfigAccessor.LineParametersFileName));
 			}
@@ -1155,8 +1148,6 @@ namespace RD_AAOW
 			if (!ColumnsAdderCmd.CreateDefaultParametersFile (RDGenerics.AppStartupPath +
 				ConfigAccessor.LineParametersFileName))
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					/*Localization.GetFileProcessingMessage (ConfigAccessor.LineParametersFileName,
-					LzFileProcessingMessageTypes.Save_Failure)*/
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					ConfigAccessor.LineParametersFileName));
 			}

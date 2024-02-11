@@ -3324,8 +3324,6 @@ namespace RD_AAOW
 					break;
 
 				case DiagramDataInitResults.FileNotAvailable:
-					/*msg = Localization.GetFileProcessingMessage (FilePath,
-						LzFileProcessingMessageTypes.Load_Failure);*/
 					msg = string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
 						FilePath);
 					break;

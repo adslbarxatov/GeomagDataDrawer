@@ -148,8 +148,6 @@ namespace RD_AAOW
 			mergeType = MergeType.SelectedIndex;
 
 			// Запуск 
-			/*HardWorkExecutor hwe = new HardWorkExecutor (ExecuteMerge, null, " ", true, true);
-			*/
 			RDGenerics.RunWork (ExecuteMerge, null, null,
 				RDRunWorkFlags.CaptionInTheMiddle | RDRunWorkFlags.AllowOperationAbort);
 
@@ -305,8 +303,6 @@ namespace RD_AAOW
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)(SFDialog.FilterIndex + 1), true) != 0)
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					/*Localization.GetFileProcessingMessage (SFDialog.FileName,
-					LzFileProcessingMessageTypes.Save_Failure)*/
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					SFDialog.FileName));
 				return;

@@ -156,8 +156,6 @@ namespace RD_AAOW
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
 						RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-							/*Localization.GetFileProcessingMessage (args[1],
-							LzFileProcessingMessageTypes.Save_Failure)*/
 							string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 							args[1]));
 						return;

@@ -149,8 +149,6 @@ namespace RD_AAOW
 						break;
 
 					case SVGScriptReader.InitResults.CannotCreateTMP:
-						/*msg = Localization.GetFileProcessingMessage ("",
-							LzFileProcessingMessageTypes.Save_Failure);*/
 						msg = string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 							"?");
 						break;
@@ -161,8 +159,6 @@ namespace RD_AAOW
 
 					case SVGScriptReader.InitResults.FileNotAvailable:
 					case SVGScriptReader.InitResults.CannotIncludeFile:
-						/*msg = Localization.GetFileProcessingMessage (OFName.Text,
-							LzFileProcessingMessageTypes.Load_Failure);*/
 						msg = string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
 							OFName.Text);
 						break;
@@ -198,8 +194,6 @@ namespace RD_AAOW
 				switch (vectorAdapter.InitResult)
 					{
 					case VectorAdapterInitResults.CannotCreateFile:
-						/*msg = Localization.GetFileProcessingMessage (SFName.Text,
-							LzFileProcessingMessageTypes.Save_Failure);*/
 						msg = string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 							SFName.Text);
 						break;
