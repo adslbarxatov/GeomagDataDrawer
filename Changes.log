@@ -1,8 +1,8 @@
 Geomag data drawer: changes log
 
 ToDo:
-- Add the runtime image movement?
 - Limit for the data editor?
+- Move the [auto] flag on the axes tab to the top
 
 Version 5.6.1:
 • Added localized video guides
