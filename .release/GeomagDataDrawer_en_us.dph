@@ -1,0 +1,16 @@
+﻿Geomag data drawer is a software tool designed to build diagrams based on tabular data. It was originally created as a means of visualizing the results of experimental measurements; can still be used for this purpose.
+
+Geomag data drawer supports the Microsoft Office Excel spreadsheets, tabular data in Windows CSV format and data extraction from files of text formats. The app can generate tabular data by running a given numerical range through analytically given function. Finally, it is possible to use text data from the clipboard for plotting.
+
+In terms of data visualization and processing, Geomag data drawer provides the following main features:
+- Construction of diagrams according to the presented data.
+- Generation of data for plotting curves from an analytically given function.
+- Editing diagram data in the built-in editor.
+- Saving data files in Windows CSV format and as raw tabular data.
+- Customization of most of the graphic characteristics of diagrams: sizes, placement, colors, fonts, lines, markers, etc.
+- Setting your own coordinate plane and independent use of data columns as abscissas and ordinates for each dependence under study.
+- Adding additional graphic objects: text labels, rectangles, ellipses and lines.
+- Saving diagrams in graphic format .png with the ability to set a sufficiently large output size. This allows you to overcome the limitations of raster graphics when further using the image.
+- Saving diagrams in vector formats .svg version 1.1 and .emf, if it is necessary to avoid losses when inserting an image into a printed document, or additional editing of the generated diagram in a vector graphics editor is required.
+
+Implementation as a standalone application, support for all basic features for editing, building and designing diagrams, flexible settings system, bilingual interface, as well as the ability to store data in its own format eliminates the need to install additional software systems. Therefore, Geomag data drawer can be considered a very useful tool for processing and visualizing tabular data

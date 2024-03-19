@@ -2,7 +2,11 @@ Geomag data drawer: changes log
 
 ToDo:
 - Limit for the data editor?
-- Move the [auto] flag on the axes tab to the top
+
+Version 5.7:
+• Update for XPUN has been applied;
+• Adjusted some interface elements;
+• Removed the menu icons
 
 Version 5.6.1:
 • Added localized video guides

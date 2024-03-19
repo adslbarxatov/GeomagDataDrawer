@@ -12,8 +12,7 @@ namespace RD_AAOW
 	public partial class GeomagDataDrawerForm: Form
 		{
 		// Создание класса-представителя данных диаграммы (фиктивная инициализация)
-		private DiagramData dd =
-			new DiagramData ("", DataInputTypes.Unknown, 0);
+		private DiagramData dd = new DiagramData ("", DataInputTypes.Unknown, 0);
 
 		// Состояние загрузки значений параметров в контролы
 		private bool loading = false, selectionMode = false;
