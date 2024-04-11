@@ -3,6 +3,11 @@ Geomag data drawer: changes log
 ToDo:
 - Limit for the data editor?
 
+Version 5.7.2:
+• Updated HypeHelp and Updates checker mechanics: this should fix apps freezing immediately
+  after launch (on some PCs);
+• Updated the HypeHelp links list
+
 Version 5.7:
 • Update for XPUN has been applied;
 • Adjusted some interface elements;
