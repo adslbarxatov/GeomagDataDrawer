@@ -2,6 +2,7 @@ Geomag data drawer: changes log
 
 ToDo:
 - Limit for the data editor?
+- Попробовать подтянуть шаблон из самого приложения, если внешний файл недоступен
 
 Version 5.7.2:
 • Updated HypeHelp and Updates checker mechanics: this should fix apps freezing immediately
