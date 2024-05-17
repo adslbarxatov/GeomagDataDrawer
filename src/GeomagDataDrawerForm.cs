@@ -74,7 +74,7 @@ namespace RD_AAOW
 			this.MinimumSize = new Size ((int)ConfigAccessor.MinWidth, (int)ConfigAccessor.MinHeight);
 			RDGenerics.LoadWindowDimensions (this);
 
-			if (!RDGenerics.IsStartupPathAccessible)
+			if (!RDGenerics.AppHasAccessRights (false, false))
 				{
 				this.Text += RDLocale.GetDefaultText (RDLDefaultTexts.Message_LimitedFunctionality);
 				MRegister.Enabled = false;
@@ -335,7 +335,8 @@ namespace RD_AAOW
 				MLoadStyle.Enabled = MSaveStyle.Enabled = MResetStyle.Enabled = MSaveTemplate.Enabled =
 				MSaveDataFile.Enabled = MSaveDiagramImage.Enabled = MRedactData.Enabled = NewState;
 
-				MRestoreTemplate.Enabled = MReplaceTemplate.Enabled = NewState && RDGenerics.IsStartupPathAccessible;
+				MRestoreTemplate.Enabled = MReplaceTemplate.Enabled = NewState &&
+					RDGenerics.AppHasAccessRights (false, false);
 				}
 
 			bool isAnObject = LineNamesList.SelectedIndex >= dd.LinesCount;

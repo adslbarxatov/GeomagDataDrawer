@@ -409,26 +409,38 @@ namespace RD_AAOW
 			ProcessingResults.Text = "";
 
 			// Попытка открытия файла
+			TextReader TR;
+			string s;
 			FileStream FS = null;
-			try
-				{
-				FS = new FileStream (FileName, FileMode.Open);
-				}
-			catch
-				{
-				ProcessingResults.Text =
-					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt), FileName);
-				return false;
-				}
 
-			// Файл открыт
-			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
+			if (RDGenerics.StartedFromMSStore)
+				{
+				s = RDGenerics.GetEncoding (RDEncodings.UTF8).
+					GetString (RD_AAOW.Properties.GeomagDataDrawer.LineParameters);
+				TR = new StringReader (s);
+				}
+			else
+				{
+				try
+					{
+					FS = new FileStream (FileName, FileMode.Open);
+					}
+				catch
+					{
+					ProcessingResults.Text =
+						string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt), FileName);
+					return false;
+					}
+
+				// Файл открыт
+				TR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
+				}
 
 			// Чтение и обработка
 			uint line = 0;
-			while (!SR.EndOfStream)
+			while (!string.IsNullOrWhiteSpace (s = TR.ReadLine ()))
 				{
-				string res = ProcessCommandLine (SR.ReadLine ());
+				string res = ProcessCommandLine (s);
 				line++;
 
 				if (res != RDLocale.GetControlText (this.Name, "Correct"))
@@ -445,8 +457,9 @@ namespace RD_AAOW
 				}
 
 			// Завершено
-			SR.Close ();
-			FS.Close ();
+			TR.Close ();
+			if (FS != null)
+				FS.Close ();
 			return true;
 			}
 
