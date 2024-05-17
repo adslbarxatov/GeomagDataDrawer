@@ -2,7 +2,6 @@ Geomag data drawer: changes log
 
 ToDo:
 - Limit for the data editor?
-- Попробовать подтянуть шаблон из самого приложения, если внешний файл недоступен
 
 Version 5.7.6:
 • The application has been retargeted to .NET Framework 4.8.1;
