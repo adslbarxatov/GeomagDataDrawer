@@ -32,15 +32,20 @@
 			{
 			get
 				{
-				return forceExitConfirmation;
+				/*return forceExitConfirmation;
+				*/
+				return RDGenerics.GetSettings (forceExitConfirmationPar, true);
 				}
 			set
 				{
-				forceExitConfirmation = value;
-				RDGenerics.SetAppSettingsValue ("ForceExitConfirmation", forceExitConfirmation ? "FEC" : "0");
+				/*forceExitConfirmation = value;
+				RDGenerics.SetAppSettingsValue ("ForceExitConfirmation", forceExitConfirmation ? "FEC" : "0");*/
+				RDGenerics.SetSettings (forceExitConfirmationPar, value);
 				}
 			}
-		private bool forceExitConfirmation;
+		/*private bool forceExitConfirmation;
+		*/
+		private const string forceExitConfirmationPar = "ForceExitConfirmation";
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость использования автоматически сохраняемого файла данных
@@ -49,16 +54,21 @@
 			{
 			get
 				{
-				return forceUsingBackupDataFile;
+				/*return forceUsingBackupDataFile;
+				*/
+				return RDGenerics.GetSettings (forceUsingBackupDataFilePar, true);
 				}
 			set
 				{
-				forceUsingBackupDataFile = value;
+				/*forceUsingBackupDataFile = value;
 				RDGenerics.SetAppSettingsValue ("ForceUsingBackupDataFile", forceUsingBackupDataFile ?
-					"FUBDF" : "0");
+					"FUBDF" : "0");*/
+				RDGenerics.SetSettings (forceUsingBackupDataFilePar, value);
 				}
 			}
-		private bool forceUsingBackupDataFile;
+		/*private bool forceUsingBackupDataFile;
+		*/
+		private const string forceUsingBackupDataFilePar = "ForceUsingBackupDataFile";
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость автоматического добавления первых столбцов на диаграмму
@@ -67,15 +77,20 @@
 			{
 			get
 				{
-				return forceShowDiagram;
+				/*return forceShowDiagram;
+				*/
+				return RDGenerics.GetSettings (forceShowDiagramPar, true);
 				}
 			set
 				{
-				forceShowDiagram = value;
-				RDGenerics.SetAppSettingsValue ("ForceShowDiagram", forceShowDiagram ? "FSD" : "0");
+				/*forceShowDiagram = value;
+				RDGenerics.SetAppSettingsValue ("ForceShowDiagram", forceShowDiagram ? "FSD" : "0");*/
+				RDGenerics.SetSettings (forceShowDiagramPar, value);
 				}
 			}
-		private bool forceShowDiagram;
+		/*private bool forceShowDiagram;
+		*/
+		private const string forceShowDiagramPar = "ForceShowDiagram";
 
 		/// <summary>
 		/// Возвращает или задаёт необходимость сохранения имён столбцов
@@ -84,15 +99,20 @@
 			{
 			get
 				{
-				return forceSavingColumnNames;
+				/*return forceSavingColumnNames;
+				*/
+				return RDGenerics.GetSettings (forceSavingColumnNamesPar, true);
 				}
 			set
 				{
-				forceSavingColumnNames = value;
-				RDGenerics.SetAppSettingsValue ("ForceSavingColumnNames", forceSavingColumnNames ? "FSCN" : "0");
+				/*forceSavingColumnNames = value;
+				RDGenerics.SetAppSettingsValue ("ForceSavingColumnNames", forceSavingColumnNames ? "FSCN" : "0");*/
+				RDGenerics.SetSettings (forceSavingColumnNamesPar, value);
 				}
 			}
-		private bool forceSavingColumnNames;
+		/*private bool forceSavingColumnNames;
+		*/
+		private const string forceSavingColumnNamesPar = "ForceSavingColumnNames";
 
 		/// <summary>
 		/// Возвращает или задаёт количество первых строк файла, используемых для поиска подписей
@@ -101,19 +121,25 @@
 			{
 			get
 				{
-				return skippedLinesCount;
+				/*return skippedLinesCount;
+				*/
+				return RDGenerics.GetSettings (skippedLinesCountPar, 0);
 				}
 			set
 				{
-				if (value > MaxSkippedLinesCount)
+				/*if (value > MaxSkippedLinesCount)
 					skippedLinesCount = MaxSkippedLinesCount;
 				else
 					skippedLinesCount = value;
 
-				RDGenerics.SetAppSettingsValue ("SkippedLinesCount", skippedLinesCount.ToString ());
+				RDGenerics.SetAppSettingsValue ("SkippedLinesCount", skippedLinesCount.ToString ());*/
+				RDGenerics.SetSettings (skippedLinesCountPar, value > MaxSkippedLinesCount ?
+					MaxSkippedLinesCount : 0);
 				}
 			}
-		private uint skippedLinesCount;
+		/*private uint skippedLinesCount;
+		*/
+		private const string skippedLinesCountPar = "SkippedLinesCount";
 
 		/// <summary>
 		/// Максимальное количество первых строк, пропускаемых при загрузке файла
@@ -127,21 +153,31 @@
 			{
 			get
 				{
-				return expectedColumnsCount;
+				/*return expectedColumnsCount;
+				*/
+				return RDGenerics.GetSettings (expectedColumnsCountPar, MinExpectedColumnsCount);
 				}
 			set
 				{
-				if (value > MaxExpectedColumnsCount)
+				/*if (value > MaxExpectedColumnsCount)
 					expectedColumnsCount = MaxExpectedColumnsCount;
 				else if (value < MinExpectedColumnsCount)
 					expectedColumnsCount = MinExpectedColumnsCount;
 				else
 					expectedColumnsCount = value;
 
-				RDGenerics.SetAppSettingsValue ("ExpectedColumnsCount", expectedColumnsCount.ToString ());
+				RDGenerics.SetAppSettingsValue ("ExpectedColumnsCount", expectedColumnsCount.ToString ());*/
+				uint v = value;
+				if (v < MinExpectedColumnsCount)
+					v = MinExpectedColumnsCount;
+				if (v > MaxExpectedColumnsCount)
+					v = MaxExpectedColumnsCount;
+				RDGenerics.SetSettings (expectedColumnsCountPar, v);
 				}
 			}
-		private uint expectedColumnsCount;
+		/*private uint expectedColumnsCount;
+		*/
+		private const string expectedColumnsCountPar = "ExpectedColumnsCount";
 
 		/// <summary>
 		/// Максимальное количество столбцов для опции извлечения данных
@@ -153,7 +189,7 @@
 		/// </summary>
 		public const uint MinExpectedColumnsCount = 2;
 
-		/// <summary>
+		/*/// <summary>
 		/// Конструктор. Загружает ранее сохранённые параметры работы программы
 		/// </summary>
 		public ConfigAccessor ()
@@ -211,6 +247,6 @@
 				}
 
 			// Завершено
-			}
+			}*/
 		}
 	}

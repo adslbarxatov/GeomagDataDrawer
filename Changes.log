@@ -3,8 +3,9 @@ Geomag data drawer: changes log
 ToDo:
 - Limit for the data editor?
 
-ToDo:
-- Проверить прерывание запуска для MS Store
+Version 5.7.8:
+• Updated the settings storage (requires some re-adjustments);
+• XPUN update has been applied
 
 Version 5.7.6:
 • The application has been retargeted to .NET Framework 4.8.1;
