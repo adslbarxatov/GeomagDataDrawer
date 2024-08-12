@@ -32,19 +32,13 @@
 			{
 			get
 				{
-				/*return forceExitConfirmation;
-				*/
 				return RDGenerics.GetSettings (forceExitConfirmationPar, true);
 				}
 			set
 				{
-				/*forceExitConfirmation = value;
-				RDGenerics.SetAppSettingsValue ("ForceExitConfirmation", forceExitConfirmation ? "FEC" : "0");*/
 				RDGenerics.SetSettings (forceExitConfirmationPar, value);
 				}
 			}
-		/*private bool forceExitConfirmation;
-		*/
 		private const string forceExitConfirmationPar = "ForceExitConfirmation";
 
 		/// <summary>
@@ -54,20 +48,13 @@
 			{
 			get
 				{
-				/*return forceUsingBackupDataFile;
-				*/
 				return RDGenerics.GetSettings (forceUsingBackupDataFilePar, true);
 				}
 			set
 				{
-				/*forceUsingBackupDataFile = value;
-				RDGenerics.SetAppSettingsValue ("ForceUsingBackupDataFile", forceUsingBackupDataFile ?
-					"FUBDF" : "0");*/
 				RDGenerics.SetSettings (forceUsingBackupDataFilePar, value);
 				}
 			}
-		/*private bool forceUsingBackupDataFile;
-		*/
 		private const string forceUsingBackupDataFilePar = "ForceUsingBackupDataFile";
 
 		/// <summary>
@@ -77,19 +64,13 @@
 			{
 			get
 				{
-				/*return forceShowDiagram;
-				*/
 				return RDGenerics.GetSettings (forceShowDiagramPar, true);
 				}
 			set
 				{
-				/*forceShowDiagram = value;
-				RDGenerics.SetAppSettingsValue ("ForceShowDiagram", forceShowDiagram ? "FSD" : "0");*/
 				RDGenerics.SetSettings (forceShowDiagramPar, value);
 				}
 			}
-		/*private bool forceShowDiagram;
-		*/
 		private const string forceShowDiagramPar = "ForceShowDiagram";
 
 		/// <summary>
@@ -99,19 +80,13 @@
 			{
 			get
 				{
-				/*return forceSavingColumnNames;
-				*/
 				return RDGenerics.GetSettings (forceSavingColumnNamesPar, true);
 				}
 			set
 				{
-				/*forceSavingColumnNames = value;
-				RDGenerics.SetAppSettingsValue ("ForceSavingColumnNames", forceSavingColumnNames ? "FSCN" : "0");*/
 				RDGenerics.SetSettings (forceSavingColumnNamesPar, value);
 				}
 			}
-		/*private bool forceSavingColumnNames;
-		*/
 		private const string forceSavingColumnNamesPar = "ForceSavingColumnNames";
 
 		/// <summary>
@@ -121,24 +96,14 @@
 			{
 			get
 				{
-				/*return skippedLinesCount;
-				*/
 				return RDGenerics.GetSettings (skippedLinesCountPar, 0);
 				}
 			set
 				{
-				/*if (value > MaxSkippedLinesCount)
-					skippedLinesCount = MaxSkippedLinesCount;
-				else
-					skippedLinesCount = value;
-
-				RDGenerics.SetAppSettingsValue ("SkippedLinesCount", skippedLinesCount.ToString ());*/
 				RDGenerics.SetSettings (skippedLinesCountPar, value > MaxSkippedLinesCount ?
 					MaxSkippedLinesCount : 0);
 				}
 			}
-		/*private uint skippedLinesCount;
-		*/
 		private const string skippedLinesCountPar = "SkippedLinesCount";
 
 		/// <summary>
@@ -153,20 +118,10 @@
 			{
 			get
 				{
-				/*return expectedColumnsCount;
-				*/
 				return RDGenerics.GetSettings (expectedColumnsCountPar, MinExpectedColumnsCount);
 				}
 			set
 				{
-				/*if (value > MaxExpectedColumnsCount)
-					expectedColumnsCount = MaxExpectedColumnsCount;
-				else if (value < MinExpectedColumnsCount)
-					expectedColumnsCount = MinExpectedColumnsCount;
-				else
-					expectedColumnsCount = value;
-
-				RDGenerics.SetAppSettingsValue ("ExpectedColumnsCount", expectedColumnsCount.ToString ());*/
 				uint v = value;
 				if (v < MinExpectedColumnsCount)
 					v = MinExpectedColumnsCount;
@@ -175,8 +130,6 @@
 				RDGenerics.SetSettings (expectedColumnsCountPar, v);
 				}
 			}
-		/*private uint expectedColumnsCount;
-		*/
 		private const string expectedColumnsCountPar = "ExpectedColumnsCount";
 
 		/// <summary>
@@ -188,65 +141,5 @@
 		/// Минимальное количество столбцов для опции извлечения данных
 		/// </summary>
 		public const uint MinExpectedColumnsCount = 2;
-
-		/*/// <summary>
-		/// Конструктор. Загружает ранее сохранённые параметры работы программы
-		/// </summary>
-		public ConfigAccessor ()
-			{
-			// Флаги
-			forceExitConfirmation = (RDGenerics.GetAppSettingsValue ("ForceExitConfirmation") == "FEC");
-
-			string s = RDGenerics.GetAppSettingsValue ("ForceUsingBackupDataFile");
-			forceUsingBackupDataFile = (s == "FUBDF") && RDGenerics.AppHasAccessRights (false, false);
-
-			if (s == "")    // Требуется дополнительная обработка, т.к. значение по умолчанию - true
-				{
-				forceUsingBackupDataFile = true;
-				RDGenerics.SetAppSettingsValue ("ForceUsingBackupDataFile", "FUBDF");
-				}
-
-			s = RDGenerics.GetAppSettingsValue ("ForceShowDiagram");
-			forceShowDiagram = (s == "FSD");
-
-			if (s == "")
-				{
-				forceShowDiagram = true;
-				RDGenerics.SetAppSettingsValue ("ForceShowDiagram", "FSD");
-				}
-
-			s = RDGenerics.GetAppSettingsValue ("ForceSavingColumnNames");
-			forceSavingColumnNames = (s == "FSCN");
-
-			if (s == "")
-				{
-				forceSavingColumnNames = true;
-				RDGenerics.SetAppSettingsValue ("ForceSavingColumnNames", "FSCN");
-				}
-
-			// Строки поиска заголовков
-			try
-				{
-				skippedLinesCount = uint.Parse (RDGenerics.GetAppSettingsValue ("SkippedLinesCount"));
-				}
-			catch
-				{
-				skippedLinesCount = 0;
-				RDGenerics.SetAppSettingsValue ("SkippedLinesCount", skippedLinesCount.ToString ());
-				}
-
-			// Ожидаемое число столбцов
-			try
-				{
-				expectedColumnsCount = uint.Parse (RDGenerics.GetAppSettingsValue ("ExpectedColumnsCount"));
-				}
-			catch
-				{
-				expectedColumnsCount = MinExpectedColumnsCount;
-				RDGenerics.SetAppSettingsValue ("ExpectedColumnsCount", expectedColumnsCount.ToString ());
-				}
-
-			// Завершено
-			}*/
 		}
 	}
