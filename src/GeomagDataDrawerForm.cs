@@ -75,10 +75,10 @@ namespace RD_AAOW
 			RDGenerics.LoadWindowDimensions (this);
 
 			if (!RDGenerics.AppHasAccessRights (false, false))
-				{
+				/*{*/
 				this.Text += RDLocale.GetDefaultText (RDLDefaultTexts.Message_LimitedFunctionality);
-				MRegister.Enabled = false;
-				}
+				/*MRegister.Enabled = false;
+				}*/
 
 			// Потеря фокуса полем настройки
 			MainTabControl_Leave (MainTabControl, null);
@@ -239,6 +239,8 @@ namespace RD_AAOW
 			SFDialog.Filter = string.Format (RDLocale.GetControlText (this.Name, "SFDialog_F"),
 				ProgramDescription.AssemblyTitle, ProgramDescription.AppDataExtension);
 			SFDialog.Title = RDLocale.GetControlText (this.Name, "SFDialog");
+			OpenImageDialog.Filter = RDLocale.GetControlText (this.Name, "OIDialog_F");
+			OpenImageDialog.Title = RDLocale.GetControlText (this.Name, "OIDialog");
 
 			LoadStyleDialog.Filter = SaveStyleDialog.Filter = string.Format (RDLocale.GetControlText (this.Name,
 				"StyleDialog_F"), ProgramDescription.AppStyleExtension);
@@ -868,6 +870,7 @@ namespace RD_AAOW
 			{
 			// Выполнение настройки
 			ProgramSettings ps = new ProgramSettings ();
+			ps.Dispose ();
 
 			// Перезагрузка параметров
 			ca = new ConfigAccessor ();
@@ -891,10 +894,15 @@ namespace RD_AAOW
 			// Генерация данных по формуле
 			FormulaEvaluator fe = new FormulaEvaluator ();
 			if (fe.Cancelled)
+				{
+				fe.Dispose ();
 				return;
+				}
 
 			// Создание диаграммы
 			dd = new DiagramData (fe.X, fe.Y, fe.ColumnsNames);
+			fe.Dispose ();
+
 			if (dd.InitResult != DiagramDataInitResults.Ok)
 				throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (2)");
 
@@ -970,6 +978,59 @@ namespace RD_AAOW
 			Redraw ();
 			}
 
+		// Генерация кривой
+		private void MProcessImage_Click (object sender, EventArgs e)
+			{
+			// Защита
+			if ((dd != null) && (dd.InitResult == DiagramDataInitResults.Ok) &&
+				(RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "AbortChanges",
+				RDLDefaultTexts.Button_YesNoFocus, RDLDefaultTexts.Button_No) != RDMessageButtons.ButtonOne))
+				return;
+
+			// Получение изображения
+			if (OpenImageDialog.ShowDialog () != DialogResult.OK)
+				return;
+
+			Bitmap b;
+			try
+				{
+				b = (Bitmap)Image.FromFile (OpenImageDialog.FileName);
+				}
+			catch
+				{
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "NotAnImageError");
+				return;
+				}
+
+			// Генерация данных по формуле
+			ImageProcessor ip = new ImageProcessor (b);
+			if (ip.Cancelled)
+				{
+				ip.Dispose ();
+				return;
+				}
+
+			// Создание диаграммы
+			dd = new DiagramData (ip.X, ip.Y, ip.ColumnsNames);
+			ip.Dispose ();
+
+			if (dd.InitResult != DiagramDataInitResults.Ok)
+				throw new Exception (RDLocale.GetText ("ExceptionMessage") + " (3)");
+
+			// Сброс списка кривых
+			LineNamesList.Items.Clear ();
+
+			// Включение заблокированных контролов
+			ChangeControlsState (true);
+
+			// Загрузка
+			if (ca.ForceShowDiagram)
+				AddFirstColumns ();
+
+			// Перерисовка
+			Redraw ();
+			}
+
 		#endregion
 
 		#region Меню программы «Справка»
@@ -980,11 +1041,11 @@ namespace RD_AAOW
 			RDGenerics.ShowAbout (false);
 			}
 
-		// Справка
+		/*// Справка
 		private void MRegister_Click (object sender, EventArgs e)
 			{
 			ProgramDescription.RegisterAppExtensions ();
-			}
+			}*/
 
 		// Изменение языка интерфейса
 		private void MLanguage_SelectedIndexChanged (object sender, EventArgs e)

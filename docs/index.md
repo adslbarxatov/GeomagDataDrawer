@@ -1,5 +1,5 @@
 # Geomag data drawer: complete user guide
-> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 11.02.2024; 20:27
+> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 17.08.2024; 1:33
 
 # Contents
 - [General information](#general-information)
@@ -24,6 +24,7 @@
     - [“Save diagram”](#save-diagram)
     - [“Close diagram”](#close-diagram)
     - [“Generate curves”](#generate-curves)
+    - [“Extract from image”](#extract-from-image)
     - [“Settings”](#settings)
     - [“Exit”](#exit)
     - Operations
@@ -410,6 +411,7 @@ the corresponding menu.
     - Save diagram (`[Ctrl]` + `[I]`);
     - Close diagram (`[Ctrl]` + `[W]`);
     - Generate curves (`[Ctrl]` + `[G]`);
+    - Extract from image (`[Ctrl]` + `[M]`);
     - Settings (`[Ctrl]` + `[P]`);
     - Exit (`[Ctrl]` + `[Q]`).
 - Operations; includes submenu:
@@ -561,7 +563,24 @@ become available. The “Cancel” button returns the app to its previous state.
 
 ---
 
-## 3.1.7. “Settings”
+## 3.1.7. “Extract from image”
+
+Calls up a window that allows you to extract data from image. Before it user should select
+an image file for extraction.
+
+<img src="/GeomagDataDrawer/img/3_82_en.png" />
+
+User can use left and right mouse buttons to specify the ends of the control line segment.
+The line that the resulting segment overlaps will be used to extract color information,
+which in turn will serve as the source of data for plotting the diagram.
+
+> ***All unsaved data is lost if the user agrees to the corresponding warning***
+
+[:arrow_double_up:](#contents)
+
+---
+
+## 3.1.8. “Settings”
 
 Calls up the app settings window.
 
@@ -583,7 +602,7 @@ window without changing them.
 
 ---
 
-## 3.1.8. “Exit”
+## 3.1.9. “Exit”
 
 Allows you to exit the app. Depending on the settings, exit may be accompanied by saving the diagram state and
 a request to exit. In this case, the app saves the size and position of the main window; they are restored at the next startup.

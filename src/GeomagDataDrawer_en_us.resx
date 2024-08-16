@@ -826,7 +826,7 @@ Allowed:
     <value>Close diagram</value>
   </data>
   <data name="MFile_MGenerate" xml:space="preserve">
-    <value>Generate curve(s)...</value>
+    <value>Generate data...</value>
   </data>
   <data name="ExpressionIsEmptyError" xml:space="preserve">
     <value>Expression is empty</value>
@@ -937,7 +937,7 @@ Allowed:
     <value>Clipboard doesn’t contain suitable data for diagram</value>
   </data>
   <data name="MFile_MGenerate_TT" xml:space="preserve">
-    <value>Generate curve(s) from analytically defined function(s)</value>
+    <value>Generate data from analytically defined function(s)</value>
   </data>
   <data name="MFile_MLoadFromClipboard_TT" xml:space="preserve">
     <value>Loading the diagram data from clipboard</value>
@@ -1205,5 +1205,31 @@ All unsaved data will be lost!</value>
   </data>
   <data name="TemplateReplace" xml:space="preserve">
     <value>Do you want to replace the default preview template?</value>
+  </data>
+  <data name="MFile_MProcessImage" xml:space="preserve">
+    <value>Extract from image...</value>
+  </data>
+  <data name="MFile_MProcessImage_TT" xml:space="preserve">
+    <value>Extract data from image gradients</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OIDialog" xml:space="preserve">
+    <value>Choose image file</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OIDialog_F" xml:space="preserve">
+    <value>Image files (PNG, JPEG, GIF, BMP)|*.bmp;*.gif;*.jpe;*.jpeg;*.jpg;*.png</value>
+  </data>
+  <data name="NotAnImageError" xml:space="preserve">
+    <value>The specified file is not available or is not a supported image file</value>
+  </data>
+  <data name="ExtractButton" xml:space="preserve">
+    <value>Extract</value>
+  </data>
+  <data name="ImageProcessor_T" xml:space="preserve">
+    <value>Data extraction from image</value>
+  </data>
+  <data name="ImageExtractionGuide" xml:space="preserve">
+    <value>Use the left and right mouse buttons to specify the ends of the control line segment.
+
+The line that the resulting segment overlaps will be used to extract color information, which in turn will serve as the source of data for plotting the diagram</value>
   </data>
 </root>

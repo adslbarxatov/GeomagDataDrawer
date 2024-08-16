@@ -32,7 +32,9 @@ namespace RD_AAOW
 			// Отображение справки и запроса на принятие Политики
 			if (!RDGenerics.AcceptEULA ())
 				return;
-			RDGenerics.ShowAbout (true);
+			if (!RDGenerics.ShowAbout (true))
+				ProgramDescription.RegisterAppExtensions ();
+
 
 			// Передача параметра и предполагаемого типа файла
 			if (args.Length > 0)

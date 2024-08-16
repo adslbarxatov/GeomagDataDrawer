@@ -18,6 +18,7 @@ namespace RD_AAOW
 			{
 			// Инициализация и локализация формы
 			InitializeComponent ();
+			RDGenerics.LoadWindowDimensions (this);
 
 			RDLocale.SetControlsText (this);
 			SaveButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);
@@ -54,6 +55,12 @@ namespace RD_AAOW
 			ca.ForceSavingColumnNames = ForceSavingColumnNames.Checked;
 
 			this.Close ();
+			}
+
+		// Закрытие окна
+		private void ProgramSettings_FormClosing (object sender, FormClosingEventArgs e)
+			{
+			RDGenerics.SaveWindowDimensions (this);
 			}
 		}
 	}

@@ -1210,4 +1210,30 @@ GeomagDataDrawer &lt;имя_файла&gt; &lt;имя_файла_2&gt; [SLC] [EC
   <data name="TemplateReplace" xml:space="preserve">
     <value>Заменить стандартный шаблон предпросмотра?</value>
   </data>
+  <data name="MFile_MProcessImage" xml:space="preserve">
+    <value>Извлечь из изображения...</value>
+  </data>
+  <data name="MFile_MProcessImage_TT" xml:space="preserve">
+    <value>Извлечь данные из градиентов изображения</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OIDialog" xml:space="preserve">
+    <value>Выберите файл изображения</value>
+  </data>
+  <data name="GeomagDataDrawerForm_OIDialog_F" xml:space="preserve">
+    <value>Файлы изображений (PNG, JPEG, GIF, BMP)|*.bmp;*.gif;*.jpe;*.jpeg;*.jpg;*.png</value>
+  </data>
+  <data name="NotAnImageError" xml:space="preserve">
+    <value>Указанный файл недоступен или не является поддерживаемым файлом изображения</value>
+  </data>
+  <data name="ExtractButton" xml:space="preserve">
+    <value>Извлечь</value>
+  </data>
+  <data name="ImageProcessor_T" xml:space="preserve">
+    <value>Извлечение данных из изображения</value>
+  </data>
+  <data name="ImageExtractionGuide" xml:space="preserve">
+    <value>Используйте левую и правую кнопки мыши, чтобы указать концы контрольного отрезка.
+
+Линия, которую перекроет полученный отрезок, будет использована для извлечения цветовой информации, которая, в свою очередь, послужит источником данных для построения диаграммы</value>
+  </data>
 </root>
