@@ -75,10 +75,7 @@ namespace RD_AAOW
 			RDGenerics.LoadWindowDimensions (this);
 
 			if (!RDGenerics.AppHasAccessRights (false, false))
-				/*{*/
 				this.Text += RDLocale.GetDefaultText (RDLDefaultTexts.Message_LimitedFunctionality);
-				/*MRegister.Enabled = false;
-				}*/
 
 			// Потеря фокуса полем настройки
 			MainTabControl_Leave (MainTabControl, null);
@@ -1040,12 +1037,6 @@ namespace RD_AAOW
 			{
 			RDGenerics.ShowAbout (false);
 			}
-
-		/*// Справка
-		private void MRegister_Click (object sender, EventArgs e)
-			{
-			ProgramDescription.RegisterAppExtensions ();
-			}*/
 
 		// Изменение языка интерфейса
 		private void MLanguage_SelectedIndexChanged (object sender, EventArgs e)

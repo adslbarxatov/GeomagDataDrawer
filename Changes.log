@@ -3,6 +3,9 @@ Geomag data drawer: changes log
 ToDo:
 - Limit for the data editor?
 
+Version 5.8.2:
+• The new identity has been applied
+
 Version 5.8:
 • Implemented the data extractor for image files. It allows you to put the line segment
   on the picture and obtain the RGB separated data from pixels that are covered by this line.
