@@ -828,7 +828,8 @@ namespace RD_AAOW
 				LeftOffset.Value = cad.ImageLeft[i];
 				TopOffset.Value = cad.ImageTop[i];
 
-				if (!(AutoTextOffset.Checked = cad.AutoNameOffset[i]))
+				AutoTextOffset.Checked = cad.AutoNameOffset[i];
+				if (!AutoTextOffset.Checked)
 					{
 					LineName.Text = cad.LineName[i];
 					LineNameLeftOffset.Value = cad.LineNameLeftOffset[i];
@@ -2180,7 +2181,7 @@ namespace RD_AAOW
 
 		private void LineNamesList_Leave (object sender, EventArgs e)
 			{
-			LineNamesList.Height = LineNamesList.ItemHeight * 3 + 4;
+			LineNamesList.Height = LineNamesList.ItemHeight * 1 + 4;
 			}
 
 		#endregion

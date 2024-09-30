@@ -221,8 +221,8 @@ namespace RD_AAOW
 		private string ProcessCommandLine (string Line)
 			{
 			// Разделение параметров
-			char[] splitters = new char[] { ';' };  // Массив сплиттеров
-			string[] values = Line.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
+			/*char[] splitters = new char[] { ';' };  // Массив сплиттеров*/
+			string[] values = Line.Split (parFileSplitter, StringSplitOptions.RemoveEmptyEntries);
 
 			// Предварительные значения
 			bool autoNameOffsetT = true;
@@ -236,7 +236,7 @@ namespace RD_AAOW
 			uint lineNameLeftOffsetT = 0;
 			uint lineNameTopOffsetT = 0;
 
-			if ((values.Length == 6) || (values.Length == 9))
+			if ((values.Length == 6) || (values.Length == 10))
 				{
 				// Короткая строка
 				try
@@ -272,9 +272,9 @@ namespace RD_AAOW
 					}
 
 				// Длинная строка
-				if (values.Length == 9)
+				if (values.Length == 10)
 					{
-					autoNameOffsetT = false;
+					autoNameOffsetT = (values[9] == "1");
 
 					lineNameT = values[6];
 
@@ -553,17 +553,19 @@ namespace RD_AAOW
 			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Запись
+			string sp = parFileSplitter[0].ToString ();
 			for (int i = 0; i < Data.LinesCount; i++)
 				{
-				SW.Write ((Data.GetStyle (i).XColumnNumber + 1).ToString () + ";");
-				SW.Write ((Data.GetStyle (i).YColumnNumber + 1).ToString () + ";");
-				SW.Write (Data.GetStyle (i).DiagramImageWidth.ToString () + ";");
-				SW.Write (Data.GetStyle (i).DiagramImageHeight.ToString () + ";");
-				SW.Write (Data.GetStyle (i).DiagramImageLeftOffset.ToString () + ";");
-				SW.Write (Data.GetStyle (i).DiagramImageTopOffset.ToString () + ";");
-				SW.Write (Data.GetStyle (i).LineName + ";");
-				SW.Write (Data.GetStyle (i).LineNameLeftOffset.ToString () + ";");
-				SW.WriteLine (Data.GetStyle (i).LineNameTopOffset.ToString ());
+				SW.Write ((Data.GetStyle (i).XColumnNumber + 1).ToString () + sp);
+				SW.Write ((Data.GetStyle (i).YColumnNumber + 1).ToString () + sp);
+				SW.Write (Data.GetStyle (i).DiagramImageWidth.ToString () + sp);
+				SW.Write (Data.GetStyle (i).DiagramImageHeight.ToString () + sp);
+				SW.Write (Data.GetStyle (i).DiagramImageLeftOffset.ToString () + sp);
+				SW.Write (Data.GetStyle (i).DiagramImageTopOffset.ToString () + sp);
+				SW.Write (Data.GetStyle (i).LineName + sp);
+				SW.Write (Data.GetStyle (i).LineNameLeftOffset.ToString () + sp);
+				SW.Write (Data.GetStyle (i).LineNameTopOffset.ToString () + sp);
+				SW.WriteLine (Data.GetStyle (i).AutoTextOffset ? "1" : "0");
 				}
 
 			// Завершение
@@ -571,5 +573,6 @@ namespace RD_AAOW
 			FS.Close ();
 			return true;
 			}
+		private static char[] parFileSplitter = new char[] { ';' };
 		}
 	}

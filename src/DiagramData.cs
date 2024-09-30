@@ -82,17 +82,12 @@ namespace RD_AAOW
 		public DiagramStyle GetStyle (int LineOrObjectNumber)
 			{
 			if ((LineOrObjectNumber >= lineStyles.Count + additionalObjects.Count) || (LineOrObjectNumber < 0))
-				{
 				return null;
-				}
-			else if (LineOrObjectNumber < lineStyles.Count)
-				{
+
+			if (LineOrObjectNumber < lineStyles.Count)
 				return lineStyles[LineOrObjectNumber];
-				}
-			else
-				{
-				return additionalObjectsStyles[LineOrObjectNumber - lineStyles.Count];
-				}
+
+			return additionalObjectsStyles[LineOrObjectNumber - lineStyles.Count];
 			}
 
 		/// <summary>
@@ -104,13 +99,9 @@ namespace RD_AAOW
 		public string GetDataColumnName (uint ColumnNumber)
 			{
 			if (ColumnNumber >= dataValues.Count)
-				{
 				return null;
-				}
-			else
-				{
-				return dataColumnNames[(int)ColumnNumber];
-				}
+
+			return dataColumnNames[(int)ColumnNumber];
 			}
 
 		/// <summary>
@@ -3196,7 +3187,6 @@ namespace RD_AAOW
 			// Завершение
 			return table;
 			}
-
 
 		/// <summary>
 		/// Метод возвращает исходный массив данных

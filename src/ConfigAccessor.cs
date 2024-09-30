@@ -8,12 +8,12 @@
 		/// <summary>
 		/// Возвращает минимально возможную ширину окна
 		/// </summary>
-		public const uint MinWidth = 555;
+		public const uint MinWidth = 560;
 
 		/// <summary>
 		/// Возвращает минимально возможную высоту окна
 		/// </summary>
-		public const uint MinHeight = 660;
+		public const uint MinHeight = 635;
 
 		/// <summary>
 		/// Возвращает имя автоматически сохраняемого файла данных

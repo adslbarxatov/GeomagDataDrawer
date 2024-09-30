@@ -3,6 +3,11 @@ Geomag data drawer: changes log
 ToDo:
 - Limit for the data editor?
 
+Version 5.8.4:
+• Current updates have been applied;
+• Fixed the non-auto axes placement when using preview templates;
+• Some interface improvements have been applied
+
 Version 5.8.2:
 • The new identity has been applied
 
