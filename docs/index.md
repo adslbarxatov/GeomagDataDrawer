@@ -60,7 +60,7 @@
     - [Data files in Windows CSV format](#data-files-in-windows-csv-format)
     - [Files to extract data from](#files-to-extract-data-from)
 - [Download links](https://adslbarxatov.github.io/DPArray#geomag-data-drawer)
-- [Русская версия](https://adslbarxatov.github.io/GeomagDataDrawer/ru)
+- [Версия на русском языке](https://adslbarxatov.github.io/GeomagDataDrawer/ru)
 
 ---
 
