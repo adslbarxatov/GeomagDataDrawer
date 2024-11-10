@@ -33,8 +33,8 @@ namespace RD_AAOW
 			if (!RDGenerics.AcceptEULA ())
 				return;
 			if (!RDGenerics.ShowAbout (true))
-				ProgramDescription.RegisterAppExtensions ();
-
+				RDGenerics.RegisterFileAssociations (true);
+			/*ProgramDescription.RegisterAppExtensions ();*/
 
 			// Передача параметра и предполагаемого типа файла
 			if (args.Length > 0)

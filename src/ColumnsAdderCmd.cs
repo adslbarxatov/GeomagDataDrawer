@@ -221,7 +221,6 @@ namespace RD_AAOW
 		private string ProcessCommandLine (string Line)
 			{
 			// Разделение параметров
-			/*char[] splitters = new char[] { ';' };  // Массив сплиттеров*/
 			string[] values = Line.Split (parFileSplitter, StringSplitOptions.RemoveEmptyEntries);
 
 			// Предварительные значения
