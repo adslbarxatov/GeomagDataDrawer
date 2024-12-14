@@ -34,7 +34,6 @@ namespace RD_AAOW
 				return;
 			if (!RDGenerics.ShowAbout (true))
 				RDGenerics.RegisterFileAssociations (true);
-			/*ProgramDescription.RegisterAppExtensions ();*/
 
 			// Передача параметра и предполагаемого типа файла
 			if (args.Length > 0)
