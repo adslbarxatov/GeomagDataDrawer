@@ -66,7 +66,8 @@ namespace RD_AAOW
 			// Инициализация и локазизация формы
 			InitializeComponent ();
 
-			this.Text = RDLocale.GetControlText ("FormulaEvaluator", "T");
+			/*this.Text = RDLocale.GetControlText ("FormulaEvaluator", "T");*/
+			this.Text = RDLocale.GetText (this.Name + "_T");
 			ApplyButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK);
 			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
 			RDLocale.SetControlsText (this);
@@ -97,7 +98,7 @@ namespace RD_AAOW
 				((uint)(Math.Abs (EndValue.Value - StartValue.Value) / StepValue.Value) + 1 >
 				DiagramData.MaxDataRows) || (EndValue.Value == StartValue.Value))
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "IncorrectRangeError");
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "IncorrectRangeError");
 				return;
 				}
 
@@ -304,7 +305,8 @@ namespace RD_AAOW
 		// Определение количества точек
 		private void StartValue_ValueChanged (object sender, EventArgs e)
 			{
-			Label05.Text = RDLocale.GetControlText ("FormulaEvaluator", "Label05W");
+			/*Label05.Text = RDLocale.GetControlText ("FormulaEvaluator", "Label05W");*/
+			Label05.Text = RDLocale.GetText (this.Name + "_Label05W");
 			if (StepValue.Value == 0)
 				Label05.Text += " ∞";
 			else

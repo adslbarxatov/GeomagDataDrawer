@@ -30,9 +30,9 @@ namespace RD_AAOW
 				return;
 
 			// Отображение справки и запроса на принятие Политики
-			if (!RDGenerics.AcceptEULA ())
+			if (!RDInterface.AcceptEULA ())
 				return;
-			if (!RDGenerics.ShowAbout (true))
+			if (!RDInterface.ShowAbout (true))
 				RDGenerics.RegisterFileAssociations (true);
 
 			// Передача параметра и предполагаемого типа файла
@@ -41,7 +41,7 @@ namespace RD_AAOW
 				// Справка по командной строке
 				if (args[0].Contains ("?"))
 					{
-					RDGenerics.LocalizedMessageBox (RDMessageTypes.Information_Left, "CommandLineHelp");
+					RDInterface.LocalizedMessageBox (RDMessageTypes.Information_Left, "CommandLineHelp");
 					return;
 					}
 
@@ -146,7 +146,7 @@ namespace RD_AAOW
 				// Контроль результата
 				if (dd.InitResult != DiagramDataInitResults.Ok)
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning_Left,
+					RDInterface.MessageBox (RDMessageTypes.Warning_Left,
 						DiagramData.GetDataLoadError (dd.InitResult, args[0]));
 					return;
 					}
@@ -156,7 +156,7 @@ namespace RD_AAOW
 					{
 					if (dd.SaveDataFile (args[1], (DataOutputTypes)outputType, true) < 0)
 						{
-						RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+						RDInterface.MessageBox (RDMessageTypes.Warning_Center,
 							string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 							args[1]));
 						return;

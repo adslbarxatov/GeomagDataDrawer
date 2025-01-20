@@ -31,7 +31,8 @@ namespace RD_AAOW
 			RDLocale.SetControlsText (this);
 			SaveButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);
 			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
-			this.Text = RDLocale.GetControlText (this.Name, "T");
+			/*this.Text = RDLocale.GetControlText (this.Name, "T");*/
+			this.Text = RDLocale.GetText (this.Name + "_T");
 
 			// Передача значений
 			for (int i = 0; i < DiagramData.LinesCount; i++)
@@ -45,7 +46,8 @@ namespace RD_AAOW
 			imageHeight = DiagramData.DiagramHeight;
 
 			// Настройка контролов
-			SFDialog.Title = RDLocale.GetControlText (this.Name, "SFDialog");
+			/*SFDialog.Title = RDLocale.GetControlText (this.Name, "SFDialog");*/
+			SFDialog.Title = RDLocale.GetText (this.Name + "_SFDialog");
 
 			ImageScale.Minimum = (decimal)DiagramStyle.MinScale;
 			ImageScale.Maximum = (decimal)DiagramStyle.MaxScale;
@@ -185,7 +187,7 @@ namespace RD_AAOW
 					}
 				catch
 					{
-					RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
+					RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
 					}
 				b.Dispose ();
 				g.Dispose ();
@@ -207,7 +209,7 @@ namespace RD_AAOW
 						if ((emfa.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (emfa) < 0))
 							{
-							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
+							RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
 							}
 						break;
 
@@ -219,7 +221,7 @@ namespace RD_AAOW
 						if ((svga.InitResult != VectorAdapterInitResults.Opened) ||
 							(diagramData.DrawAllDiagrams (svga) < 0))
 							{
-							RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
+							RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "ImageSaveError");
 							}
 						break;
 					}
@@ -235,13 +237,15 @@ namespace RD_AAOW
 		private void CustomSize_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = true;
-			SFDialog.Filter = RDLocale.GetControlText (this.Name, "SFDialog_FR");
+			/*SFDialog.Filter = RDLocale.GetControlText (this.Name, "SFDialog_FR");*/
+			SFDialog.Filter = RDLocale.GetText (this.Name + "_SFDialog_FR");
 			}
 
 		private void A4Horiz_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = false;
-			SFDialog.Filter = RDLocale.GetControlText (this.Name, "SFDialog_FR");
+			/*SFDialog.Filter = RDLocale.GetControlText (this.Name, "SFDialog_FR");*/
+			SFDialog.Filter = RDLocale.GetText (this.Name + "_SFDialog_FR");
 			}
 
 		private void A4Vert_CheckedChanged (object sender, EventArgs e)
@@ -262,7 +266,8 @@ namespace RD_AAOW
 		private void VectorImage_CheckedChanged (object sender, EventArgs e)
 			{
 			ImageScale.Enabled = false;
-			SFDialog.Filter = RDLocale.GetControlText (this.Name, "SFDialog_FV");
+			/*SFDialog.Filter = RDLocale.GetControlText (this.Name, "SFDialog_FV");*/
+			SFDialog.Filter = RDLocale.GetText (this.Name + "_SFDialog_FV");
 			}
 		}
 	}

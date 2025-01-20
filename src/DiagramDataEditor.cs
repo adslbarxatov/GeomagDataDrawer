@@ -53,14 +53,15 @@ namespace RD_AAOW
 			RDLocale.SetControlsText (this);
 
 			// Панель имени столбца
-			RDLocale.SetControlsText (ColumnNameInput, MainToolTip);
+			ConfigAccessor.SetControlsText (ColumnNameInput, MainToolTip);
 
 			// Подсказки
-			RDLocale.SetControlsText (this, MainToolTip);
+			ConfigAccessor.SetControlsText (this, MainToolTip);
 
 			SaveButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);
 			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
-			this.Text = RDLocale.GetControlText (this.Name, "T");
+			/*this.Text = RDLocale.GetControlText (this.Name, "T");*/
+			this.Text = RDLocale.GetText (this.Name + "_T");
 
 			// Запуск
 			this.ShowDialog ();
@@ -93,7 +94,7 @@ namespace RD_AAOW
 		// Обработка ошибки ввода данных
 		private void MainDataGrid_DataError (object sender, DataGridViewDataErrorEventArgs e)
 			{
-			RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "IncorrectValueError");
+			RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "IncorrectValueError");
 			}
 
 		// Добавление строки
@@ -123,7 +124,7 @@ namespace RD_AAOW
 			// Контроль количества строк
 			if (MainDataGrid.Rows.Count <= 2)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "NotEnoughRowsError");
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "NotEnoughRowsError");
 				return;
 				}
 
@@ -237,7 +238,7 @@ namespace RD_AAOW
 			if (cancelled)
 				{
 				// Проверка на отмену изменений
-				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "AbortChanges",
+				if (RDInterface.LocalizedMessageBox (RDMessageTypes.Question_Center, "AbortChanges",
 					RDLDefaultTexts.Button_YesNoFocus, RDLDefaultTexts.Button_No) ==
 					RDMessageButtons.ButtonTwo)
 					{
@@ -248,7 +249,7 @@ namespace RD_AAOW
 			else
 				{
 				// Проверка на применение изменений
-				if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center, "ApplyChanges",
+				if (RDInterface.LocalizedMessageBox (RDMessageTypes.Question_Center, "ApplyChanges",
 					RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonTwo)
 					{
 					e.Cancel = true;
@@ -260,7 +261,7 @@ namespace RD_AAOW
 
 				if (ddt.InitResult != DiagramDataInitResults.Ok)
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+					RDInterface.MessageBox (RDMessageTypes.Warning_Center,
 						string.Format (RDLocale.GetText ("DataProcessingError"),
 						RDLocale.GetText ("BrokenTableError")));
 					e.Cancel = true;

@@ -53,9 +53,11 @@ namespace RD_AAOW
 			{
 			// Локализация
 			OFDialog.Filter = RDLocale.GetText (this.Name + "_OFDialog_F");
-			OFDialog.Title = RDLocale.GetControlText ("GeomagDataDrawerForm", "OFDialog");
+			/*OFDialog.Title = RDLocale.GetControlText ("GeomagDataDrawerForm", "OFDialog");*/
+			OFDialog.Title = RDLocale.GetText ("GeomagDataDrawerForm_OFDialog");
 			SFDialog.Filter = RDLocale.GetText (this.Name + "_SFDialog_F");
-			SFDialog.Title = RDLocale.GetControlText ("GeomagDataDrawerForm", "SFDialog");
+			/*SFDialog.Title = RDLocale.GetControlText ("GeomagDataDrawerForm", "SFDialog");*/
+			SFDialog.Title = RDLocale.GetText ("GeomagDataDrawerForm_SFDialog");
 
 			while (MergeType.Items.Count < 2)
 				{
@@ -135,7 +137,7 @@ namespace RD_AAOW
 			// Контроль
 			if (dataTables.Count < 2)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "NotEnoughFilesToMerge");
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "NotEnoughFilesToMerge");
 				return;
 				}
 
@@ -148,7 +150,7 @@ namespace RD_AAOW
 			mergeType = MergeType.SelectedIndex;
 
 			// Запуск 
-			RDGenerics.RunWork (ExecuteMerge, null, null,
+			RDInterface.RunWork (ExecuteMerge, null, null,
 				RDRunWorkFlags.CaptionInTheMiddle | RDRunWorkFlags.AllowOperationAbort);
 
 			// Завершено
@@ -270,7 +272,7 @@ namespace RD_AAOW
 			// Финальный контроль
 			if (mergedTable.Count < 2)
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TablesMergeError");
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TablesMergeError");
 				return;
 				}
 
@@ -287,7 +289,7 @@ namespace RD_AAOW
 
 		private void TableMergerForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			e.Cancel = (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TablesMerger_Exit",
+			e.Cancel = (RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "TablesMerger_Exit",
 				RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) != RDMessageButtons.ButtonOne);
 			}
 
@@ -302,7 +304,7 @@ namespace RD_AAOW
 			DiagramData dd = new DiagramData (mergedTable, mergedColumnNames);
 			if (dd.SaveDataFile (SFDialog.FileName, (DataOutputTypes)(SFDialog.FilterIndex + 1), true) != 0)
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					SFDialog.FileName));
 				return;

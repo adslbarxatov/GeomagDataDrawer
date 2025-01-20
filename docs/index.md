@@ -1,9 +1,9 @@
 # Geomag data drawer: complete user guide
-> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 17.08.2024; 1:33
+> **ƒ** &nbsp;Nicolay B. aka RD_AAOW, Соля́ников Я.; 21.01.2025; 0:33
 
 # Contents
 - [General information](#general-information)
-- [Video guide](https://youtube.com/watch?v=afbtGUPnZ2w)
+- [Video guide](https://youtube.com/watch?v=rNMALrRyM0g)
 - [Main app interface](#main-app-interface)
     - [Adding a curve or object to a diagram](#adding-a-curve-or-object-to-a-diagram)
     - [Removing curves and objects from diagram](#removing-curves-and-objects-from-diagram)

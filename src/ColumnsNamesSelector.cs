@@ -20,15 +20,20 @@ namespace RD_AAOW
 			RDLocale.SetControlsText (this);
 			ApplyButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK);
 			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
-			this.Text = RDLocale.GetControlText (this.Name, "T");
+			/*this.Text = RDLocale.GetControlText (this.Name, "T");*/
+			this.Text = RDLocale.GetText (this.Name + "_T");
 
 			// Настройка контролов
 			ColumnsCount.Maximum = ConfigAccessor.MaxSkippedLinesCount;
 			try
 				{
-				ColumnsCount.Value = skippedRowsCount = SkippedRowsCount;
+				skippedRowsCount = SkippedRowsCount;
+				ColumnsCount.Value = skippedRowsCount;
 				}
-			catch { }
+			catch
+				{
+				ColumnsCount.Value = 0;
+				}
 
 			// Запуск
 			this.ShowDialog ();

@@ -76,13 +76,15 @@ namespace RD_AAOW
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = RDLocale.GetControlText ("ColumnsAdder", "TN");
+			/*this.Text = RDLocale.GetControlText ("ColumnsAdder", "TN");*/
+			this.Text = RDLocale.GetText (this.Name + "_TN");
 
 			// Заполнение списка типов объектов
 			for (int i = 1; i <= 9; i++)
 				{
-				ObjectCombo.Items.Add (RDLocale.GetControlText ("ColumnsAdder", "ObjectType_" +
-					i.ToString ()));
+				/*ObjectCombo.Items.Add (RDLocale.GetControlText ("ColumnsAdder", "ObjectType_" +
+					i.ToString ()));*/
+				ObjectCombo.Items.Add (RDLocale.GetText (this.Name + "_ObjectType_" + i.ToString ()));
 				}
 			ObjectCombo.Text = ObjectCombo.Items[0].ToString ();
 
@@ -102,7 +104,8 @@ namespace RD_AAOW
 			{
 			// Инициализация
 			InitializeComponent ();
-			this.Text = RDLocale.GetControlText ("ColumnsAdder", "TE");
+			/*this.Text = RDLocale.GetControlText ("ColumnsAdder", "TE");*/
+			this.Text = RDLocale.GetText (this.Name + "_TE");
 
 			// Запрет на обновление данных дополнительных объектов
 			Radio02.Enabled = false;

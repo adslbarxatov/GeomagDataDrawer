@@ -23,7 +23,8 @@ namespace RD_AAOW
 			RDLocale.SetControlsText (this);
 			SaveButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);
 			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
-			this.Text = RDLocale.GetControlText (this.Name, "T");
+			/*this.Text = RDLocale.GetControlText (this.Name, "T");*/
+			this.Text = RDLocale.GetText (this.Name + "_T");
 
 			// Настройка контролов
 			ConfirmExit.Checked = ca.ForceExitConfirmation;

@@ -1,4 +1,6 @@
-﻿namespace RD_AAOW
+﻿using System.Windows.Forms;
+
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс обеспечивает доступ к конфигурации программы
@@ -101,7 +103,7 @@
 			set
 				{
 				RDGenerics.SetSettings (skippedLinesCountPar, value > MaxSkippedLinesCount ?
-					MaxSkippedLinesCount : 0);
+					MaxSkippedLinesCount : value);
 				}
 			}
 		private const string skippedLinesCountPar = "SkippedLinesCount";
@@ -141,5 +143,90 @@
 		/// Минимальное количество столбцов для опции извлечения данных
 		/// </summary>
 		public const uint MinExpectedColumnsCount = 2;
+
+		// Вспомогательный настроечный функционал
+
+		/// <summary>
+		/// Метод устанавливает локализованные подписи для всех контролов, входящих в состав 
+		/// указанного контейнера (Text и ToolTipText)
+		/// 
+		/// Used: 1
+		/// </summary>
+		/// <param name="Container">Контейнер типа Panel</param>
+		/// <param name="TextContainer">Контейнер подписей типа ToolTip</param>
+		public static void SetControlsText (Panel Container, ToolTip TextContainer)
+			{
+			string s;
+			for (int i = 0; i < Container.Controls.Count; i++)
+				{
+				s = RDLocale.GetText (Container.Name + "_" + Container.Controls[i].Name);
+				if (!string.IsNullOrEmpty (s))
+					Container.Controls[i].Text = s;
+
+				s = RDLocale.GetText (Container.Name + "_" + Container.Controls[i].Name + "_TT");
+				if (!string.IsNullOrEmpty (s))
+					TextContainer.SetToolTip (Container.Controls[i], s);
+				}
+			}
+
+		/// <summary>
+		/// Метод устанавливает локализованные подписи для всех контролов, входящих в состав 
+		/// указанного контейнера (только ToolTipText)
+		/// 
+		/// Used: 2
+		/// </summary>
+		/// <param name="Container">Контейнер типа Form</param>
+		/// <param name="TextContainer">Контейнер подписей типа ToolTip</param>
+		public static void SetControlsText (Form Container, ToolTip TextContainer)
+			{
+			string s;
+			for (int i = 0; i < Container.Controls.Count; i++)
+				{
+				s = RDLocale.GetText (Container.Name + "_" + Container.Controls[i].Name + "_TT");
+				if (!string.IsNullOrEmpty (s))
+					TextContainer.SetToolTip (Container.Controls[i], s);
+				}
+			}
+
+		/// <summary>
+		/// Метод устанавливает локализованные подписи для всех контролов, входящих в состав 
+		/// указанного контейнера (только ToolTipText)
+		/// 
+		/// Used: 1
+		/// </summary>
+		/// <param name="Container">Контейнер типа TabPage</param>
+		/// <param name="TextContainer">Контейнер подписей типа ToolTip</param>
+		public static void SetControlsText (TabPage Container, ToolTip TextContainer)
+			{
+			string s;
+			for (int i = 0; i < Container.Controls.Count; i++)
+				{
+				s = RDLocale.GetText (Container.Name + "_" + Container.Controls[i].Name + "_TT");
+				if (!string.IsNullOrEmpty (s))
+					TextContainer.SetToolTip (Container.Controls[i], s);
+				}
+			}
+
+		/// <summary>
+		/// Метод устанавливает локализованные подписи для всех пунктов, входящих в состав 
+		/// указанного меню (Text и ToolTipText)
+		/// 
+		/// Used: 1
+		/// </summary>
+		/// <param name="Container">Контейнер типа ToolStripMenuItem</param>
+		public static void SetControlsText (ToolStripMenuItem Container)
+			{
+			string s;
+			for (int i = 0; i < Container.DropDownItems.Count; i++)
+				{
+				s = RDLocale.GetText (Container.Name + "_" + Container.DropDownItems[i].Name);
+				if (!string.IsNullOrEmpty (s))
+					Container.DropDownItems[i].Text = s;
+
+				s = RDLocale.GetText (Container.Name + "_" + Container.DropDownItems[i].Name + "_TT");
+				if (!string.IsNullOrEmpty (s))
+					Container.DropDownItems[i].ToolTipText = s;
+				}
+			}
 		}
 	}

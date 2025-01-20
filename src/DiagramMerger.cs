@@ -9,27 +9,6 @@ namespace RD_AAOW
 	public partial class DiagramMerger: Form
 		{
 		/// <summary>
-		/// Оси совмещения
-		/// </summary>
-		public enum MergeAxes
-			{
-			/// <summary>
-			/// Ox
-			/// </summary>
-			Ox,
-
-			/// <summary>
-			/// Oy
-			/// </summary>
-			Oy,
-
-			/// <summary>
-			/// Обе
-			/// </summary>
-			Both
-			}
-
-		/// <summary>
 		/// Выбранная ось совмещения
 		/// </summary>
 		public MergeAxes MergeAxe
@@ -40,22 +19,6 @@ namespace RD_AAOW
 				}
 			}
 		private MergeAxes mergeAxe = MergeAxes.Ox;
-
-		/// <summary>
-		/// Варианты совмещения
-		/// </summary>
-		public enum MergeVariants
-			{
-			/// <summary>
-			/// На месте первой кривой
-			/// </summary>
-			FirstLine,
-
-			/// <summary>
-			/// На месте второй кривой
-			/// </summary>
-			SecondLine
-			}
 
 		/// <summary>
 		/// Выбранный вариант совмещения
@@ -109,14 +72,20 @@ namespace RD_AAOW
 			// Панели
 			RDLocale.SetControlsText (MergingAxes);
 			RDLocale.SetControlsText (MergingVariant);
+			/*Ox.Text = Ox.Name;
+			Oy.Text = Oy.Name;*/
 
 			ApplyButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_OK);
 			AbortButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Cancel);
-			this.Text = RDLocale.GetControlText (this.Name, "T");
+			/*this.Text = RDLocale.GetControlText (this.Name, "T");*/
+			this.Text = RDLocale.GetText (this.Name + "_T");
 
 			// Сохранение параметров
-			FirstLine.Text = RDLocale.GetControlText (MergingVariant.Name, "Line") + " " + Line1Name;
-			SecondLine.Text = RDLocale.GetControlText (MergingVariant.Name, "Line") + " " + Line2Name;
+			string line = RDLocale.GetText (MergingVariant.Name + "_Line");
+			/*FirstLine.Text = RDLocale.GetControlText (MergingVariant.Name, "Line") + " " + Line1Name;
+			SecondLine.Text = RDLocale.GetControlText (MergingVariant.Name, "Line") + " " + Line2Name;*/
+			FirstLine.Text = line + " " + Line1Name;
+			SecondLine.Text = line + " " + Line2Name;
 
 			// Запуск
 			this.ShowDialog ();

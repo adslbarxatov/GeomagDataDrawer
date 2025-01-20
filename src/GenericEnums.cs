@@ -268,4 +268,41 @@
 		/// </summary>
 		Closed = 2
 		}
+
+	/// <summary>
+	/// Оси совмещения
+	/// </summary>
+	public enum MergeAxes
+		{
+		/// <summary>
+		/// Ox
+		/// </summary>
+		Ox,
+
+		/// <summary>
+		/// Oy
+		/// </summary>
+		Oy,
+
+		/// <summary>
+		/// Обе
+		/// </summary>
+		Both,
+		}
+
+	/// <summary>
+	/// Варианты совмещения
+	/// </summary>
+	public enum MergeVariants
+		{
+		/// <summary>
+		/// На месте первой кривой
+		/// </summary>
+		FirstLine,
+
+		/// <summary>
+		/// На месте второй кривой
+		/// </summary>
+		SecondLine,
+		}
 	}
