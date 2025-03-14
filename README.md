@@ -4,7 +4,7 @@
 
 Stand-alone tool for building and designing diagrams based on tabular data.
 
-Detailed description of the app is available on [its own page](https://adslbarxatov.github.io/GeomagDataDrawer).
+:warning: This project has been replaced with the [GraphArray tool](https://adslbarxatov.github.io/GraphArray). This repository will no longer receive updates
 
 ---
 
@@ -19,7 +19,7 @@ By starting to work with this product, you fully agree with this Policy and acce
 
 Автономный инструмент построения и оформления диаграмм на основе табличных данных.
 
-Подробное описание приложения доступно на [отдельной странице](https://adslbarxatov.github.io/GeomagDataDrawer/ru).
+:warning: Проект заменён [инструментом GraphArray](https://adslbarxatov.github.io/GraphArray/ru). Данный репозиторий более не будет получать обновления
 
 ---
 
